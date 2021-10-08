@@ -14,8 +14,9 @@ public class LivenessFlow {
   public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, Swift.Error>) -> Swift.Void)
   public func onGetPhotoData(image: UIKit.UIImage) -> UIKit.UIImage?
   public init(isPassive: Swift.Bool = false, timeout: Foundation.TimeInterval)
-  public func start(complation: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
+  public func start(completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
   public func stop()
+  public func restart(completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
   public func switchMode(isAuto: Swift.Bool)
   public func processManual(image: UIKit.UIImage, frameNo: Swift.Int) -> UIKit.UIImage?
   @objc deinit
@@ -103,6 +104,17 @@ extension Google_Protobuf_Struct {
   public subscript(key: Swift.String) -> Google_Protobuf_Value? {
     get
     set(newValue)
+  }
+}
+public enum ENV : Swift.String {
+  case DEV, STAGING, DEMO, PROD
+  public var domain: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
   }
 }
 @_hasMissingDesignatedInitializers public class UploadImageRequest {
@@ -427,17 +439,18 @@ public protocol FlowDelegate : AnyObject {
 public class OCRFlow {
   public var delegate: FlowDelegate?
   final public let enableManualUpload: Swift.Bool
-  public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, Swift.Error>) -> Swift.Void)
+  public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, Swift.Error>) -> Swift.Void)
+  public func onGetPhotoData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, Swift.Error>) -> Swift.Void)
   public init(card: OCRCard)
   public func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
   public func start(handler: ((Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)?)
   public func restart()
   public func switchMode(isAuto: Swift.Bool)
-  public func onGetPhotoData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, Swift.Error>) -> Swift.Void)
   @objc deinit
 }
 extension OCRFlow {
   public func recordResult(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
+  public func confirm(ocrResult: OCRResult, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> ())
 }
 public struct TextFormatEncodingOptions {
   public var printUnknownFields: Swift.Bool
@@ -793,7 +806,6 @@ public protocol OCRResult : AuthMeResult {
   var confirmedData: [Swift.String : Swift.String] { get }
   var frontImage: UIKit.UIImage? { get }
   var backImage: UIKit.UIImage? { get }
-  func confirm(complete: @escaping (Swift.Error?) -> ())
   func orderedData() -> [(Swift.String, Swift.String)]
   func set(key: Swift.String, value: Swift.String)
 }
@@ -810,7 +822,6 @@ public protocol OCRResult : AuthMeResult {
   public func get(type: DataType) -> Swift.String
   public func set(type: DataType, value: Swift.String)
   public func set(key: Swift.String, value: Swift.String)
-  public func confirm(complete: @escaping (Swift.Error?) -> ())
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class MRZResult : OCRBaseResult<MRZResult.DataType> {
@@ -3271,6 +3282,11 @@ extension Google_Protobuf_BytesValue : Message, _MessageImplementationBase, _Pro
 }
 public struct OCRInitialRequest {
 }
+@_hasMissingDesignatedInitializers public class APIURL {
+  public static let shared: APIURL
+  public func baseURL() -> Swift.String
+  @objc deinit
+}
 public protocol Visitor {
   mutating func visitSingularFloatField(value: Swift.Float, fieldNumber: Swift.Int) throws
   mutating func visitSingularDoubleField(value: Swift.Double, fieldNumber: Swift.Int) throws
@@ -3385,6 +3401,9 @@ public struct UnknownStorage : Swift.Equatable {
 }
 extension UploadInfoRequestBody : Swift.Encodable {}
 extension UploadInfoRequestBody : Swift.Decodable {}
+extension ENV : Swift.Equatable {}
+extension ENV : Swift.Hashable {}
+extension ENV : Swift.RawRepresentable {}
 extension AnyUnpackError : Swift.Equatable {}
 extension AnyUnpackError : Swift.Hashable {}
 extension LivenessResult.Confidence : Swift.Equatable {}

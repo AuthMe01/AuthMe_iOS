@@ -30,27 +30,27 @@
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		vIkT3suDiMgRDxO5Rt7wMHuPkUc=
+		/O6JZgAcjSSydywTMyXj4VNbtz4=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		u1jfIjl1jcWzjJ+f2wibQBoVe0w=
+		AykAnsZdhp7PKE2jCFSmN6qYk3A=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		nFMiVj1KLy1Y9N8jR1tvMpX6Wfc=
+		F4dkYed9MAVdk8Q6EHpsVhNm3pw=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		vIkT3suDiMgRDxO5Rt7wMHuPkUc=
+		/O6JZgAcjSSydywTMyXj4VNbtz4=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64.swiftinterface</key>
 		<data>
-		u1jfIjl1jcWzjJ+f2wibQBoVe0w=
+		AykAnsZdhp7PKE2jCFSmN6qYk3A=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		nFMiVj1KLy1Y9N8jR1tvMpX6Wfc=
+		F4dkYed9MAVdk8Q6EHpsVhNm3pw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -130,42 +130,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			YSwU8UbQlduNdw/pEgI0CImtLAZGrxDzZe/hBHuM8wI=
+			qhlUnl0/pmRG+wmWmCKEaaq6LikZjLlFffoBfQEjUdk=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			l1AkYwcKCZN2tdMK0nuT9KjvPGnUZP2GnhlhqbtHQD8=
+			XSzi+KqDMdOZY/+NEf0KtdZd7tmtaorg5wflBBKhJCU=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			fMeTUL/Sq35C9pm8GofnMGnzIz8XtS7vAWW8qYwplnM=
+			g/4E1PQKHal5vMJnqAjJMhqY4JuY4JajSyNbkRETMBA=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			YSwU8UbQlduNdw/pEgI0CImtLAZGrxDzZe/hBHuM8wI=
+			qhlUnl0/pmRG+wmWmCKEaaq6LikZjLlFffoBfQEjUdk=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/arm64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			l1AkYwcKCZN2tdMK0nuT9KjvPGnUZP2GnhlhqbtHQD8=
+			XSzi+KqDMdOZY/+NEf0KtdZd7tmtaorg5wflBBKhJCU=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			fMeTUL/Sq35C9pm8GofnMGnzIz8XtS7vAWW8qYwplnM=
+			g/4E1PQKHal5vMJnqAjJMhqY4JuY4JajSyNbkRETMBA=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

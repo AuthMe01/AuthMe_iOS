@@ -30,27 +30,27 @@
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		hK84jiWyAKeZNqLJwj0qmaVhlVs=
+		Vb0jE8/GorWvpGf+9Ah5mHJMelI=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		woJaLuaSnVjOljbn15JEQjjxLEg=
+		Rrv1bEfTYA/G/SdUz/f9iilMe7k=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		y5g1HOk3KgydeB3dZGAdj+OhMyM=
+		xxyRqeRttylQPqVNk5AZ43Qxq6Y=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		hK84jiWyAKeZNqLJwj0qmaVhlVs=
+		Vb0jE8/GorWvpGf+9Ah5mHJMelI=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		woJaLuaSnVjOljbn15JEQjjxLEg=
+		Rrv1bEfTYA/G/SdUz/f9iilMe7k=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		y5g1HOk3KgydeB3dZGAdj+OhMyM=
+		xxyRqeRttylQPqVNk5AZ43Qxq6Y=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -130,42 +130,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			9VSNsXRwPpiOCreZ+t/4xa0aqO1mFhlQDgo25X6a1eA=
+			JAFECMgqMPcf6QP3o80LKZddPGDXl1D3lFT7FXRsBOQ=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wZekG57hG+FhI3VKg37NxYt9S+ygw5kf6dZYcnaA+YE=
+			ZpUifa0/m53m2qsnaOcOvcNi05KDtmuaIdKSo5Inniw=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			X4IFwf/l26fCF+8QAEcvLDnGCoSaFNc+yWtateFn5xA=
+			FGeJbkPVy05Opo9jAnOhZbwJ2s5554+E4D9LUdRHGbA=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			9VSNsXRwPpiOCreZ+t/4xa0aqO1mFhlQDgo25X6a1eA=
+			JAFECMgqMPcf6QP3o80LKZddPGDXl1D3lFT7FXRsBOQ=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wZekG57hG+FhI3VKg37NxYt9S+ygw5kf6dZYcnaA+YE=
+			ZpUifa0/m53m2qsnaOcOvcNi05KDtmuaIdKSo5Inniw=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			X4IFwf/l26fCF+8QAEcvLDnGCoSaFNc+yWtateFn5xA=
+			FGeJbkPVy05Opo9jAnOhZbwJ2s5554+E4D9LUdRHGbA=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
