@@ -10,7 +10,11 @@
 		</data>
 		<key>Headers/AuthMe.h</key>
 		<data>
-		vNaYbkmH4KJ5YX/ahL+cNgbCDOU=
+		I1ZuhClPyPImrvf0T5P2vsPiTkM=
+		</data>
+		<key>Headers/EngineWrapper.h</key>
+		<data>
+		AfrypYiyk6cksbGYzmvbgBOs2PA=
 		</data>
 		<key>Headers/FaceDetector.hpp</key>
 		<data>
@@ -26,31 +30,31 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Obw/0xhtp4vfKlBZQDxP7pt4gCg=
+		rj1/4oWYXfXGJp+ubZbW+9eLBwg=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		Vb0jE8/GorWvpGf+9Ah5mHJMelI=
+		oOySGzFQz2ctWq8j6B6b8l4lPkw=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		Rrv1bEfTYA/G/SdUz/f9iilMe7k=
+		8hLSiaYH8eDgy7uFDHw9TGCDIbg=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		xxyRqeRttylQPqVNk5AZ43Qxq6Y=
+		bC0LuJT7QOsfboMusIA95l3E0ZY=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		Vb0jE8/GorWvpGf+9Ah5mHJMelI=
+		oOySGzFQz2ctWq8j6B6b8l4lPkw=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		Rrv1bEfTYA/G/SdUz/f9iilMe7k=
+		8hLSiaYH8eDgy7uFDHw9TGCDIbg=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		xxyRqeRttylQPqVNk5AZ43Qxq6Y=
+		bC0LuJT7QOsfboMusIA95l3E0ZY=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -63,6 +67,10 @@
 		<key>card_classifier_v1_fp32.mnn</key>
 		<data>
 		WJOg8dJ72/gkX18Izg9WuQsUmbE=
+		</data>
+		<key>laser_tag_model_fp32.mnn</key>
+		<data>
+		sKn8NyvbI07qxrst9WtukMg10QM=
 		</data>
 		<key>mask_detection_sim_v1.mnn</key>
 		<data>
@@ -88,6 +96,14 @@
 		<data>
 		ouhTmP2N145R1vX7dPf0YMSbYrk=
 		</data>
+		<key>test_1_gt_F.png</key>
+		<data>
+		FzJbmB/ViQBpbgPJ/GMwLyX48rw=
+		</data>
+		<key>test_2_gt_T.png</key>
+		<data>
+		58OQo4hhkt/6QNGI8BwM1l3axi8=
+		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
@@ -102,7 +118,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			+myhxl/raqQ4BzAaKtGz014mVMvEe4IGSnJVzB7z5IQ=
+			AZupkFbQpp39TNQY72FN3tOaTk4yznM8xyjzsyCiffw=
+			</data>
+		</dict>
+		<key>Headers/EngineWrapper.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			CvXgzaSBTXN13BGRkUtUQcfUfK1l5qq5ldobJ6HRpzA=
 			</data>
 		</dict>
 		<key>Headers/FaceDetector.hpp</key>
@@ -130,42 +153,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			JAFECMgqMPcf6QP3o80LKZddPGDXl1D3lFT7FXRsBOQ=
+			efdgvM/loiVaj8H8X7/EC5yF+G8uKswRxK5ZxLpx5eE=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZpUifa0/m53m2qsnaOcOvcNi05KDtmuaIdKSo5Inniw=
+			1xlGoy3M2TLFdUuLyT2a9gfUAbgqzCx9Ze2ev5LE8hY=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			FGeJbkPVy05Opo9jAnOhZbwJ2s5554+E4D9LUdRHGbA=
+			+IjeC+QsN5vMq81cJsbnRmGlWbTt5YsMVVOj0OzV4tk=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			JAFECMgqMPcf6QP3o80LKZddPGDXl1D3lFT7FXRsBOQ=
+			efdgvM/loiVaj8H8X7/EC5yF+G8uKswRxK5ZxLpx5eE=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZpUifa0/m53m2qsnaOcOvcNi05KDtmuaIdKSo5Inniw=
+			1xlGoy3M2TLFdUuLyT2a9gfUAbgqzCx9Ze2ev5LE8hY=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			FGeJbkPVy05Opo9jAnOhZbwJ2s5554+E4D9LUdRHGbA=
+			+IjeC+QsN5vMq81cJsbnRmGlWbTt5YsMVVOj0OzV4tk=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -187,6 +210,13 @@
 			<key>hash2</key>
 			<data>
 			r2+4JbdQL8jxCS/805/1Eia5uz6C4fw6YBecFvL49ZM=
+			</data>
+		</dict>
+		<key>laser_tag_model_fp32.mnn</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			8hJt/ephABOKHvJad70WsuYk/FcIa9Oq0x1uSkjBVbk=
 			</data>
 		</dict>
 		<key>mask_detection_sim_v1.mnn</key>
@@ -229,6 +259,20 @@
 			<key>hash2</key>
 			<data>
 			V24qQKsICdXKp3cTRh/Q+cRF2i71uE53T2ieofyHyBk=
+			</data>
+		</dict>
+		<key>test_1_gt_F.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			2qAoz8rvRhW+wqKapvFpXzmB+lVZjCMIOQ4Kr++eaTE=
+			</data>
+		</dict>
+		<key>test_2_gt_T.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			91RRZ2RcMpz+IysTuUSF7/SyPOFLHm5ztcooQ3ZfhU0=
 			</data>
 		</dict>
 	</dict>

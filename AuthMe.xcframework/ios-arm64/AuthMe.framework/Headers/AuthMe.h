@@ -18,3 +18,6 @@ FOUNDATION_EXPORT const unsigned char AuthMeVersionString[];
 #include "FaceDetector.hpp"
 #include "ImageConverter.h"
 #include "MNNModel.hpp"
+
+#include "EngineWrapper.h"
+//#include "engine.hpp"

@@ -106,6 +106,35 @@ extension Google_Protobuf_Struct {
     set(newValue)
   }
 }
+public enum AntiForgeryRotate {
+  case left
+  case up
+  case front
+  public static func == (a: AntiForgeryRotate, b: AntiForgeryRotate) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct RotatePoints {
+  public init(leftUp: CoreGraphics.CGPoint, leftDown: CoreGraphics.CGPoint, rightUp: CoreGraphics.CGPoint, rightDown: CoreGraphics.CGPoint)
+}
+public class AntiForgeryFlow {
+  public static func transformedLeftPoint(w: Swift.Float, h: Swift.Float, degree: Swift.Float, x: inout Swift.Float, y: inout Swift.Float)
+  public static func transformedTopPoint(w: Swift.Float, h: Swift.Float, degree: Swift.Float, x: inout Swift.Float, y: inout Swift.Float)
+  public var viewRotatePoints: RotatePoints?
+  public var delegate: FlowDelegate?
+  public init(enableSpoofing: Swift.Bool)
+  @objc deinit
+  public func start(handler: ((Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)?)
+  public func restart()
+  public func restartOCR() -> Swift.Bool
+  public func onGetPreviewData(image: UIKit.UIImage, rotateHandler: ((AntiForgeryRotate) -> Swift.Void)? = nil, handler: @escaping (Swift.Result<OCRResult, Swift.Error>) -> Swift.Void)
+  public func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
+  public func enterRotateLeft()
+  public func enterRotateUp()
+  public func enterRotateFront()
+}
 public enum ENV : Swift.String {
   case DEV, STAGING, DEMO, PROD
   public var domain: Swift.String {
@@ -273,6 +302,8 @@ extension Message {
   public init(textFormatString: Swift.String, extensions: ExtensionMap? = nil) throws
   public init(textFormatString: Swift.String, options: TextFormatDecodingOptions, extensions: ExtensionMap? = nil) throws
 }
+public struct OCRFinishScanDocRequest {
+}
 public struct Google_Protobuf_Timestamp {
   public var seconds: Swift.Int64
   public var nanos: Swift.Int32
@@ -315,6 +346,8 @@ public protocol Enum : Swift.Hashable, Swift.RawRepresentable {
 extension Enum {
   public func hash(into hasher: inout Swift.Hasher)
 }
+public struct OCRInitScanDocRequest {
+}
 extension Message {
   public init(unpackingAny: Google_Protobuf_Any, extensions: ExtensionMap? = nil, options: BinaryDecodingOptions = BinaryDecodingOptions()) throws
 }
@@ -328,6 +361,15 @@ public struct BinaryDecodingOptions {
   public var discardUnknownFields: Swift.Bool
   public init()
 }
+public enum AuthMeError : Swift.String, Foundation.LocalizedError {
+  case ERROR_NETWORK
+  case INITIALIZE_FAIL
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
 public protocol FaceImageComparable {
   var fileID: Swift.String { get }
 }
@@ -337,10 +379,15 @@ public protocol AuthMeResult : FaceImageComparable {
   public static var version: Swift.Double {
     get
   }
-  public static func initialize(accessToken: Swift.String, languageProvider: @escaping () -> (Swift.String))
+  public static var baseUrl: Swift.String {
+    get
+    set
+  }
+  public static func initialize(accessToken: Swift.String, languageProvider: @escaping () -> (Swift.String), completion: @escaping (Swift.Result<Swift.Void, AuthMeError>) -> Swift.Void)
   public static func compareFace(image1: UIKit.UIImage, image2: UIKit.UIImage, completion: @escaping (CompareResult) -> ())
   public static func compareFace(image1: FaceImageComparable, image2: FaceImageComparable, completion: @escaping (CompareResult) -> ())
   public static func comfirmResult(result: OCRResult, complete: @escaping () -> ())
+  public static func personalInfo(consent: Swift.Bool, url: Swift.String, completion: @escaping (Swift.Result<Foundation.Data, Swift.Error>) -> ())
   @objc deinit
 }
 public struct CompareResult {
@@ -370,6 +417,12 @@ public enum BinaryEncodingError : Swift.Error {
   public var hashValue: Swift.Int {
     get
   }
+}
+extension AntiForgeryFlow {
+  public func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
+  public func confirmScan(ocrResult: OCRResult, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
+  public func recordResult(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
+  public func confirm(ocrResult: OCRResult, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> ())
 }
 @_hasMissingDesignatedInitializers public class UploadRecognitionRequest {
   @objc deinit
@@ -447,10 +500,6 @@ public class OCRFlow {
   public func restart()
   public func switchMode(isAuto: Swift.Bool)
   @objc deinit
-}
-extension OCRFlow {
-  public func recordResult(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
-  public func confirm(ocrResult: OCRResult, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> ())
 }
 public struct TextFormatEncodingOptions {
   public var printUnknownFields: Swift.Bool
@@ -1047,6 +1096,9 @@ extension Google_Protobuf_Mixin : Message, _MessageImplementationBase, _ProtoNam
   public var hashValue: Swift.Int {
     get
   }
+}
+public struct OCRUploadError : Foundation.LocalizedError {
+  public static func getError(code: Swift.String) -> OCRUploadError
 }
 extension Message {
   public static func jsonString<C>(from collection: C, options: JSONEncodingOptions = JSONEncodingOptions()) throws -> Swift.String where Self == C.Element, C : Swift.Collection
@@ -3047,6 +3099,10 @@ public struct ExtensionFieldValueSet : Swift.Hashable {
     get
   }
 }
+extension OCRFlow {
+  public func recordResult(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
+  public func confirm(ocrResult: OCRResult, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> ())
+}
 extension Message {
   public func serializedData(partial: Swift.Bool = false) throws -> Foundation.Data
   @inlinable public init(serializedData data: Foundation.Data, extensions: ExtensionMap? = nil, partial: Swift.Bool = false, options: BinaryDecodingOptions = BinaryDecodingOptions()) throws {
@@ -3401,6 +3457,8 @@ public struct UnknownStorage : Swift.Equatable {
 }
 extension UploadInfoRequestBody : Swift.Encodable {}
 extension UploadInfoRequestBody : Swift.Decodable {}
+extension AntiForgeryRotate : Swift.Equatable {}
+extension AntiForgeryRotate : Swift.Hashable {}
 extension ENV : Swift.Equatable {}
 extension ENV : Swift.Hashable {}
 extension ENV : Swift.RawRepresentable {}
@@ -3409,6 +3467,9 @@ extension AnyUnpackError : Swift.Hashable {}
 extension LivenessResult.Confidence : Swift.Equatable {}
 extension LivenessResult.Confidence : Swift.Hashable {}
 extension LivenessResult.Confidence : Swift.RawRepresentable {}
+extension AuthMeError : Swift.Equatable {}
+extension AuthMeError : Swift.Hashable {}
+extension AuthMeError : Swift.RawRepresentable {}
 extension CompareResult.Similarity : Swift.Equatable {}
 extension CompareResult.Similarity : Swift.Hashable {}
 extension CompareResult.Similarity : Swift.RawRepresentable {}
