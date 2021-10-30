@@ -14,7 +14,7 @@
 		</data>
 		<key>Headers/EngineWrapper.h</key>
 		<data>
-		AfrypYiyk6cksbGYzmvbgBOs2PA=
+		CuDDIIXUclWfYMTRLo+d3t0679A=
 		</data>
 		<key>Headers/FaceDetector.hpp</key>
 		<data>
@@ -42,7 +42,7 @@
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		9YNOa44HTfC1kSDJfkQUlXLJ7fQ=
+		fytT2PAxquvxA1/rBvM2n86tjuo=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		9YNOa44HTfC1kSDJfkQUlXLJ7fQ=
+		fytT2PAxquvxA1/rBvM2n86tjuo=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -70,7 +70,7 @@
 		</data>
 		<key>laser_tag_model_fp32.mnn</key>
 		<data>
-		sKn8NyvbI07qxrst9WtukMg10QM=
+		5OXZ+l6rhZo6rsbf0xRW4VyKe/k=
 		</data>
 		<key>mask_detection_sim_v1.mnn</key>
 		<data>
@@ -125,7 +125,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			CvXgzaSBTXN13BGRkUtUQcfUfK1l5qq5ldobJ6HRpzA=
+			g3bIwcaG5N7e6L4Rt34DwSY6yuGmhFq2MWCcNCrCxBg=
 			</data>
 		</dict>
 		<key>Headers/FaceDetector.hpp</key>
@@ -167,7 +167,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Ixuez5cOdRmfAJtBKUS+efMsAYghQjyLLoo2sj5iLi0=
+			OfQcPBYrb42wbgACuEZVNGdHo4m+4K32EpdnAI0q39Y=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/arm64.swiftdoc</key>
@@ -188,7 +188,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Ixuez5cOdRmfAJtBKUS+efMsAYghQjyLLoo2sj5iLi0=
+			OfQcPBYrb42wbgACuEZVNGdHo4m+4K32EpdnAI0q39Y=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -216,7 +216,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			8hJt/ephABOKHvJad70WsuYk/FcIa9Oq0x1uSkjBVbk=
+			6bdKIEo3ZUvm3+IZ7t/yes4lZfqj/1kOFuJHoQ+9zYI=
 			</data>
 		</dict>
 		<key>mask_detection_sim_v1.mnn</key>

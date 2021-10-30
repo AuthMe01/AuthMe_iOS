@@ -22,7 +22,7 @@ long engine_createSession(long model_);
 
 void engine_releaseSession(long model_, long session_);
 
-float engine_laserTagDetection(long model_, long session_, UIImage* image);
+int engine_laserTagDetection(long model_, long session_, UIImage* image);
 
 void getTransformedLeftPoint(float w,
                              float h,
