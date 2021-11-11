@@ -30,31 +30,31 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		rj1/4oWYXfXGJp+ubZbW+9eLBwg=
+		CTLcXglGycqnvda8NSABedEdJZc=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		oOySGzFQz2ctWq8j6B6b8l4lPkw=
+		xuAxSuXQ/IsujHXJkabfSn+MYRw=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		8hLSiaYH8eDgy7uFDHw9TGCDIbg=
+		a5Pa1V084teVWeRjH30etdMR3Ek=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		h0nkjPLNbuvhqARF3YZhFYUXCmU=
+		4jh2So7yaCRGcW6JdE7DMndyKPU=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		oOySGzFQz2ctWq8j6B6b8l4lPkw=
+		xuAxSuXQ/IsujHXJkabfSn+MYRw=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		8hLSiaYH8eDgy7uFDHw9TGCDIbg=
+		a5Pa1V084teVWeRjH30etdMR3Ek=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		h0nkjPLNbuvhqARF3YZhFYUXCmU=
+		4jh2So7yaCRGcW6JdE7DMndyKPU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -70,7 +70,7 @@
 		</data>
 		<key>laser_tag_model_fp32.mnn</key>
 		<data>
-		5OXZ+l6rhZo6rsbf0xRW4VyKe/k=
+		bRj7TP2s/q1rQKolo9D7WU3VrXY=
 		</data>
 		<key>mask_detection_sim_v1.mnn</key>
 		<data>
@@ -153,42 +153,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			efdgvM/loiVaj8H8X7/EC5yF+G8uKswRxK5ZxLpx5eE=
+			gIhkMYuh5nejnbOlC6HhpMaAZpb9sMXphTx2zqqaQCs=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1xlGoy3M2TLFdUuLyT2a9gfUAbgqzCx9Ze2ev5LE8hY=
+			Wpyahur6vImAtzfpfvmtGTziiPxCAPpYu0kaK8efwE8=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			eE2R1Qu6XfzNT1DSbrlOCDxRhqQP/2d5yNpZ/f+zpC8=
+			EpIlzEiX4faRU4hf8jG3ngwHU8kpjgvtUlZ7GmOGcQg=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			efdgvM/loiVaj8H8X7/EC5yF+G8uKswRxK5ZxLpx5eE=
+			gIhkMYuh5nejnbOlC6HhpMaAZpb9sMXphTx2zqqaQCs=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1xlGoy3M2TLFdUuLyT2a9gfUAbgqzCx9Ze2ev5LE8hY=
+			Wpyahur6vImAtzfpfvmtGTziiPxCAPpYu0kaK8efwE8=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			eE2R1Qu6XfzNT1DSbrlOCDxRhqQP/2d5yNpZ/f+zpC8=
+			EpIlzEiX4faRU4hf8jG3ngwHU8kpjgvtUlZ7GmOGcQg=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -216,7 +216,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			6bdKIEo3ZUvm3+IZ7t/yes4lZfqj/1kOFuJHoQ+9zYI=
+			bw8NHyVl8qBOFLyn9YmynQ5MBDmYK3SrY6qXdO7S8uE=
 			</data>
 		</dict>
 		<key>mask_detection_sim_v1.mnn</key>

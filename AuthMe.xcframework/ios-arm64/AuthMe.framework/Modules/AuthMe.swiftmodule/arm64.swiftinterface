@@ -126,25 +126,15 @@ public class AntiForgeryFlow {
   public var delegate: FlowDelegate?
   public init(enableSpoofing: Swift.Bool)
   @objc deinit
-  public func start(handler: ((Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)?)
+  public func start(needConfirm: Swift.Bool, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
   public func restart()
   public func restartOCR() -> Swift.Bool
-  public func onGetPreviewData(image: UIKit.UIImage, rotateHandler: ((AntiForgeryRotate) -> Swift.Void)? = nil, handler: @escaping (Swift.Result<OCRResult, Swift.Error>) -> Swift.Void)
-  public func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
+  public func onGetPreviewData(image: UIKit.UIImage, rotateReverse: (() -> ())? = nil, rotateHandler: ((AntiForgeryRotate) -> Swift.Void)? = nil, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  public func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   public func enterRotateLeft()
   public func enterRotateUp()
   public func enterRotateFront()
-}
-public enum ENV : Swift.String {
-  case DEV, STAGING, DEMO, PROD
-  public var domain: Swift.String {
-    get
-  }
-  public init?(rawValue: Swift.String)
-  public typealias RawValue = Swift.String
-  public var rawValue: Swift.String {
-    get
-  }
+  public func enterReverse() -> Swift.Bool
 }
 @_hasMissingDesignatedInitializers public class UploadImageRequest {
   @objc deinit
@@ -253,9 +243,6 @@ extension _MessageImplementationBase {
   public static func == (lhs: Self, rhs: Self) -> Swift.Bool
   public func _protobuf_generated_isEqualTo(other: Self) -> Swift.Bool
 }
-@_hasMissingDesignatedInitializers public class CardDetectionRequest {
-  @objc deinit
-}
 public struct LivenessResult : AuthMeResult {
   public let confidence: LivenessResult.Confidence
   public let image: UIKit.UIImage?
@@ -292,9 +279,6 @@ extension Google_Protobuf_SourceContext : Message, _MessageImplementationBase, _
 extension UnsafeMutableBufferPointer {
 }
 extension UnsafeMutableRawBufferPointer {
-}
-@_hasMissingDesignatedInitializers public class RecognitionRecordRequest {
-  @objc deinit
 }
 extension Message {
   public func textFormatString() -> Swift.String
@@ -383,6 +367,7 @@ public protocol AuthMeResult : FaceImageComparable {
     get
     set
   }
+  public static func initial(isLiveness: Swift.Bool = false, accessToken: Swift.String, languageProvider: @escaping () -> (Swift.String), completion: @escaping (Swift.Result<Swift.Void, AuthMeError>) -> Swift.Void)
   public static func initialize(accessToken: Swift.String, languageProvider: @escaping () -> (Swift.String), completion: @escaping (Swift.Result<Swift.Void, AuthMeError>) -> Swift.Void)
   public static func compareFace(image1: UIKit.UIImage, image2: UIKit.UIImage, completion: @escaping (CompareResult) -> ())
   public static func compareFace(image1: FaceImageComparable, image2: FaceImageComparable, completion: @escaping (CompareResult) -> ())
@@ -419,13 +404,10 @@ public enum BinaryEncodingError : Swift.Error {
   }
 }
 extension AntiForgeryFlow {
-  public func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
-  public func confirmScan(ocrResult: OCRResult, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
+  public func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  public func confirmScan(ocrResult: OCRResult, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   public func recordResult(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
   public func confirm(ocrResult: OCRResult, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> ())
-}
-@_hasMissingDesignatedInitializers public class UploadRecognitionRequest {
-  @objc deinit
 }
 extension Google_Protobuf_Timestamp {
   public init(seconds: Swift.Int64 = 0, nanos: Swift.Int32 = 0)
@@ -460,9 +442,6 @@ public enum BinaryDelimited {
   public static func serialize(message: Message, to stream: Foundation.OutputStream, partial: Swift.Bool = false) throws
   public static func parse<M>(messageType: M.Type, from stream: Foundation.InputStream, extensions: ExtensionMap? = nil, partial: Swift.Bool = false, options: BinaryDecodingOptions = BinaryDecodingOptions()) throws -> M where M : Message
   public static func merge<M>(into message: inout M, from stream: Foundation.InputStream, extensions: ExtensionMap? = nil, partial: Swift.Bool = false, options: BinaryDecodingOptions = BinaryDecodingOptions()) throws where M : Message
-}
-@_hasMissingDesignatedInitializers public class RecognitionFixRequest {
-  @objc deinit
 }
 public protocol ExtensibleMessage : Message {
   var _protobuf_extensionFieldValues: ExtensionFieldValueSet { get set }
@@ -3336,7 +3315,24 @@ extension Google_Protobuf_BytesValue : Message, _MessageImplementationBase, _Pro
     get
   }
 }
-public struct OCRInitialRequest {
+public enum OCRError : Swift.String, Foundation.LocalizedError {
+  case ERROR_NETWORK
+  case ERROR_RESPONSE
+  case NO_DETECTED
+  case UNEXPECTED_CARD
+  case CARD_TOO_SMALL
+  case CARD_REFLECTIVE
+  case LOW_SHARPNESS
+  case CARD_SKEWED
+  case WORNG_CARD_TYPE
+  case CARD_NOT_IN_REGION
+  case CARD_NOT_ALIGN
+  case PROCESS_FAIL
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
 }
 @_hasMissingDesignatedInitializers public class APIURL {
   public static let shared: APIURL
@@ -3459,9 +3455,6 @@ extension UploadInfoRequestBody : Swift.Encodable {}
 extension UploadInfoRequestBody : Swift.Decodable {}
 extension AntiForgeryRotate : Swift.Equatable {}
 extension AntiForgeryRotate : Swift.Hashable {}
-extension ENV : Swift.Equatable {}
-extension ENV : Swift.Hashable {}
-extension ENV : Swift.RawRepresentable {}
 extension AnyUnpackError : Swift.Equatable {}
 extension AnyUnpackError : Swift.Hashable {}
 extension LivenessResult.Confidence : Swift.Equatable {}
@@ -3500,3 +3493,6 @@ extension TextFormatDecodingError : Swift.Equatable {}
 extension TextFormatDecodingError : Swift.Hashable {}
 extension JSONEncodingError : Swift.Equatable {}
 extension JSONEncodingError : Swift.Hashable {}
+extension OCRError : Swift.Equatable {}
+extension OCRError : Swift.Hashable {}
+extension OCRError : Swift.RawRepresentable {}
