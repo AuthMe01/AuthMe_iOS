@@ -830,10 +830,13 @@ extension Google_Protobuf_Any {
 }
 public protocol OCRResult : AuthMeResult {
   var fileID: Swift.String { get }
+  var scanID: Swift.String { get }
   var data: [Swift.String : Swift.String] { get }
   var confirmedData: [Swift.String : Swift.String] { get }
   var frontImage: UIKit.UIImage? { get }
   var backImage: UIKit.UIImage? { get }
+  func confirm(complete: @escaping (Swift.Error?) -> ())
+  func confirmScan(complete: @escaping (Swift.Error?) -> ())
   func orderedData() -> [(Swift.String, Swift.String)]
   func set(key: Swift.String, value: Swift.String)
 }
@@ -846,10 +849,13 @@ public protocol OCRResult : AuthMeResult {
   final public let isAuto: Swift.Bool
   final public let fileID: Swift.String
   final public let requestID: Swift.String
+  final public let scanID: Swift.String
   public func orderedData() -> [(Swift.String, Swift.String)]
   public func get(type: DataType) -> Swift.String
   public func set(type: DataType, value: Swift.String)
   public func set(key: Swift.String, value: Swift.String)
+  public func confirm(complete: @escaping (Swift.Error?) -> ())
+  public func confirmScan(complete: @escaping (Swift.Error?) -> ())
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class MRZResult : OCRBaseResult<MRZResult.DataType> {
@@ -3318,6 +3324,7 @@ extension Google_Protobuf_BytesValue : Message, _MessageImplementationBase, _Pro
 public enum OCRError : Swift.String, Foundation.LocalizedError {
   case ERROR_NETWORK
   case ERROR_RESPONSE
+  case ERROR_SYSTEM_BUSY
   case NO_DETECTED
   case UNEXPECTED_CARD
   case CARD_TOO_SMALL

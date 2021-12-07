@@ -38,11 +38,11 @@
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		QdEPyPRKvXndtg+094dCFPcQ/W0=
+		hcZyxmNmAqZI45YH1VK6BfWE1qw=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		lavbzjzl5J69C/4sU1rFkPD/0wo=
+		iwrh3Kxc/EgJ840lxa2R4u9eAxU=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -50,11 +50,11 @@
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64.swiftinterface</key>
 		<data>
-		QdEPyPRKvXndtg+094dCFPcQ/W0=
+		hcZyxmNmAqZI45YH1VK6BfWE1qw=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		lavbzjzl5J69C/4sU1rFkPD/0wo=
+		iwrh3Kxc/EgJ840lxa2R4u9eAxU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -70,7 +70,7 @@
 		</data>
 		<key>laser_tag_model_fp32.mnn</key>
 		<data>
-		bRj7TP2s/q1rQKolo9D7WU3VrXY=
+		D9HRwN46u0qvhQ+NlUK/NRWF5X8=
 		</data>
 		<key>mask_detection_sim_v1.mnn</key>
 		<data>
@@ -160,14 +160,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			znrBa6yEOaVszB9bucVApx+sGJjaHbAHtyrcsgM6ImA=
+			XUXU2dMl3lSh0GyQipjhZX+2bc8fR4NZytoPBoF6Tes=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			BQTGVBKOFwKsXfIr17KTmnqvXdjfE7HY7fQLIcBPbLc=
+			EPMakiyh5oz6aXUg8onJ11nO8llySTqVC5tTkd8I0ls=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/arm64.swiftdoc</key>
@@ -181,14 +181,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			znrBa6yEOaVszB9bucVApx+sGJjaHbAHtyrcsgM6ImA=
+			XUXU2dMl3lSh0GyQipjhZX+2bc8fR4NZytoPBoF6Tes=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			BQTGVBKOFwKsXfIr17KTmnqvXdjfE7HY7fQLIcBPbLc=
+			EPMakiyh5oz6aXUg8onJ11nO8llySTqVC5tTkd8I0ls=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -216,7 +216,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			bw8NHyVl8qBOFLyn9YmynQ5MBDmYK3SrY6qXdO7S8uE=
+			1qZi4OwqxIHG69jsHeq+Lt+Ij0RVp+JmzPq8XC/W+b8=
 			</data>
 		</dict>
 		<key>mask_detection_sim_v1.mnn</key>
