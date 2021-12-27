@@ -4,21 +4,29 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>20211213_laser_tag_model_ycbcr.mnn</key>
+		<key>.gitattributes</key>
 		<data>
-		JBAWjQlGjH3x519QMFLH7ix2t24=
+		tIpIz4NNYf6I6KrkcEfIs3LJuMQ=
+		</data>
+		<key>.gitignore</key>
+		<data>
+		5rlw79OTgRi2Th6y+r9LfdF9YFg=
+		</data>
+		<key>.gitmodules</key>
+		<data>
+		2jmj7l5rSw0yVb/vlWAYkK/YBwk=
 		</data>
 		<key>Headers/AuthMe-Swift.h</key>
 		<data>
-		FVinTlCYcFYDVuwknmrjGXA3fUM=
+		7pRND2XWYZjbcjaGbEzLMTK8CXA=
 		</data>
 		<key>Headers/AuthMe.h</key>
 		<data>
-		I1ZuhClPyPImrvf0T5P2vsPiTkM=
+		l9zEKj7KbPuchBXf6k8T4Wk+oYY=
 		</data>
 		<key>Headers/EngineWrapper.h</key>
 		<data>
-		CuDDIIXUclWfYMTRLo+d3t0679A=
+		mZLBfqcezwQN9VPHMAPmxSY19ME=
 		</data>
 		<key>Headers/FaceDetector.hpp</key>
 		<data>
@@ -32,37 +40,217 @@
 		<data>
 		5WGa1dn2DhEyf+rYFzLy7sbiXeo=
 		</data>
+		<key>Headers/MoicaFuncion.h</key>
+		<data>
+		4Sc/+VJ8bRqIjp3BkHqWED885I0=
+		</data>
+		<key>Headers/NFCMOICA.h</key>
+		<data>
+		JsZWNkCIW4YqdoW2bN8NWVbxorc=
+		</data>
+		<key>Headers/UltraFace.hpp</key>
+		<data>
+		n4Ieyqpv3f+tI8S0F96Xn0sigqs=
+		</data>
+		<key>Headers/card_classification.h</key>
+		<data>
+		tW3yYmkwj+ZfWyDb+5uqlFaYups=
+		</data>
+		<key>Headers/card_classification.hpp</key>
+		<data>
+		/lM/UWsfRv8DU+7nQezQIvNauWw=
+		</data>
+		<key>Headers/card_detection.h</key>
+		<data>
+		wnv4Rx+2U1UidysYSfGcwK/uu38=
+		</data>
+		<key>Headers/card_detection.hpp</key>
+		<data>
+		o2qwTUc/WEXG4pHen+2+3Hd/QiU=
+		</data>
+		<key>Headers/computational_geometry.hpp</key>
+		<data>
+		jMVGMBTDt3E9VwJJ1Z/AHpePzfM=
+		</data>
+		<key>Headers/cpu_provider_factory.h</key>
+		<data>
+		+q86LBBsP7r277FZr/vOJCMsw68=
+		</data>
+		<key>Headers/crypto.hpp</key>
+		<data>
+		Nbqk092+4/gJBWcSTF+W85qTcDg=
+		</data>
+		<key>Headers/cv_template_extention.hpp</key>
+		<data>
+		QrZcRgQDdlHOai96IFm3zCE+bDI=
+		</data>
+		<key>Headers/engine_base.h</key>
+		<data>
+		mLpqYEFEkxbNixBEt5wzLW80Aqs=
+		</data>
+		<key>Headers/engine_base.hpp</key>
+		<data>
+		4oSqv2ElpMAOQeQkuUpMgVjsFCM=
+		</data>
+		<key>Headers/engine_core.hpp</key>
+		<data>
+		2K0VGUZF0y/mTwSn8DIDdU+lwf4=
+		</data>
+		<key>Headers/engine_error_code.h</key>
+		<data>
+		BwG9bQ9XGZcCsackI971xgDj9aM=
+		</data>
+		<key>Headers/engine_type.h</key>
+		<data>
+		q5XFDd/EBf1YMfQfztsok+uwXHU=
+		</data>
+		<key>Headers/engine_type.hpp</key>
+		<data>
+		pTtjDGile+jdyOverBBfKC5RvCs=
+		</data>
+		<key>Headers/face_anti_spoofing.h</key>
+		<data>
+		1VeYf9NRcmOQpqS0gdtMy8qMLfw=
+		</data>
+		<key>Headers/face_anti_spoofing.hpp</key>
+		<data>
+		qMaGNvEm+y4SINqV6o93jCoFeWU=
+		</data>
+		<key>Headers/face_detection.h</key>
+		<data>
+		vcfnB19mCmidXJbrDXEZwaXvGx4=
+		</data>
+		<key>Headers/face_detection.hpp</key>
+		<data>
+		iQnD4CjJ0zVna/0fPeJ95FKQNuI=
+		</data>
+		<key>Headers/image_assessment.h</key>
+		<data>
+		HwE3ByGqJfH8jiSS91R72VMSdv0=
+		</data>
+		<key>Headers/image_assessment.hpp</key>
+		<data>
+		en8BWB3uKQqZt1E2TtHLEC25t70=
+		</data>
+		<key>Headers/ios_chtse.h</key>
+		<data>
+		BvHD7KxqTvrjjrVwiW33804s4EY=
+		</data>
+		<key>Headers/ios_chtse_apdu.h</key>
+		<data>
+		jUgJH225CHTe1E1E4CD0hojZ/EU=
+		</data>
+		<key>Headers/ios_chtse_moi.h</key>
+		<data>
+		DHDdtdo+NYTg8rRbmQ4SzwK1ftw=
+		</data>
+		<key>Headers/laser_tag_detection.h</key>
+		<data>
+		9a7mCisZDLURddzORLMVisBicdg=
+		</data>
+		<key>Headers/laser_tag_detection.hpp</key>
+		<data>
+		uKLt2wYwmqcxv8uhYwwj1rTGkEY=
+		</data>
+		<key>Headers/model_cryption.hpp</key>
+		<data>
+		st62eTSvoZZFKJDEuksFP9CIIKA=
+		</data>
+		<key>Headers/mrz_detection.h</key>
+		<data>
+		HSkJnMi83A/0OlZ1eToMytBv5w8=
+		</data>
+		<key>Headers/mrz_detection.hpp</key>
+		<data>
+		EpGcB5aOKPvW6fQXvf/pPg6yerc=
+		</data>
+		<key>Headers/mrz_recognition.h</key>
+		<data>
+		R3zmRseLWPgKU7G2UTWbXuDIX54=
+		</data>
+		<key>Headers/mrz_recognition.hpp</key>
+		<data>
+		HUFI+16BrDCa7T6zwzYP53b+f+E=
+		</data>
+		<key>Headers/mrz_service.h</key>
+		<data>
+		mdb4vhpSUfm5btoQIW5uAGWG2E4=
+		</data>
+		<key>Headers/mrz_service.hpp</key>
+		<data>
+		hoOU5bAGyPurwFMS9wswis1VhUk=
+		</data>
+		<key>Headers/nn_inference.hpp</key>
+		<data>
+		eJN1pwawnNprabJ/tFM24v/nCnA=
+		</data>
+		<key>Headers/onnxruntime_c_api.h</key>
+		<data>
+		JNDJ7u+M//xp3Si11SAF9QCj+QQ=
+		</data>
+		<key>Headers/onnxruntime_cxx_api.h</key>
+		<data>
+		RZpqFvNfYFPbXIffix7ZOXrcMvE=
+		</data>
+		<key>Headers/onnxruntime_cxx_inline.h</key>
+		<data>
+		35IeW2ldWlkBBvOhgQD2BWsP8Og=
+		</data>
+		<key>Headers/pkcs11.h</key>
+		<data>
+		nwe9kTkYs+xGXkx3ie7Mr9YcPXA=
+		</data>
+		<key>Headers/taiwan_hole_detection.h</key>
+		<data>
+		kK+nGdi6ydK/fvNcYjlDFQJgOLk=
+		</data>
+		<key>Headers/taiwan_hole_detection.hpp</key>
+		<data>
+		92SCZId0wI0wRPz8NX1LpAPZvRE=
+		</data>
+		<key>Headers/utility.hpp</key>
+		<data>
+		fX3SgGu/1wI0mbH/uZn0ejsp9FE=
+		</data>
+		<key>Headers/utility_define.hpp</key>
+		<data>
+		AQDzijScG76CHEC+JkvmDpGkZAw=
+		</data>
 		<key>Info.plist</key>
 		<data>
-		CTLcXglGycqnvda8NSABedEdJZc=
+		+k1tX9ePrH02uJnUNuVH/mkQdkc=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		xuAxSuXQ/IsujHXJkabfSn+MYRw=
+		AXTAcnyuFBzq4R8WFR/FFj4dj14=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		pvPKpZwOnjYnFQzVDAGY2au4IsA=
+		LXnqAkZ72d+L3UOFGQgO6NXUpFE=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		0QV3Cis1vmmSxe1AEXOCV7BUsU4=
+		j8AdFAxrfb73boXhcmKKRZPh+qg=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		xuAxSuXQ/IsujHXJkabfSn+MYRw=
+		AXTAcnyuFBzq4R8WFR/FFj4dj14=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		pvPKpZwOnjYnFQzVDAGY2au4IsA=
+		LXnqAkZ72d+L3UOFGQgO6NXUpFE=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		0QV3Cis1vmmSxe1AEXOCV7BUsU4=
+		j8AdFAxrfb73boXhcmKKRZPh+qg=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		UoNrAIEVl4wYtmabOQjnWk2/8m8=
+		</data>
+		<key>RFB-S-with-Mask2_sim.quant.onnx</key>
+		<data>
+		Xc90AsvjI3z2nShL69RLx3UDQN4=
 		</data>
 		<key>blink_20210119.mnn</key>
 		<data>
@@ -71,6 +259,10 @@
 		<key>card_classifier_v1_fp32.mnn</key>
 		<data>
 		WJOg8dJ72/gkX18Izg9WuQsUmbE=
+		</data>
+		<key>laser_tag_model_fp32.onnx</key>
+		<data>
+		VK6svnEITIFLTQVJvdCKJ0IFTlM=
 		</data>
 		<key>mask_detection_sim_v1.mnn</key>
 		<data>
@@ -92,39 +284,61 @@
 		<data>
 		5AcLjGRZObRWX2wSuneXSHCIpvY=
 		</data>
+		<key>taiwan_hole_model_fp32.onnx</key>
+		<data>
+		LC7MT5K348MvhB6PnGHd2V+RhrU=
+		</data>
 		<key>tddfav2_mobile_mb05_fp32.mnn</key>
 		<data>
 		ouhTmP2N145R1vX7dPf0YMSbYrk=
 		</data>
+		<key>triplet_align_fit_int8.onnx</key>
+		<data>
+		tQLnekr0PUMPMUtQVfY4j9ZINlY=
+		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>20211213_laser_tag_model_ycbcr.mnn</key>
+		<key>.gitattributes</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			EbYNunc+KjHFBDX+SPAAa8g0y2InlXXqP3OpE5BH3Mo=
+			S5mFv2a3MDnXP0KJABmOACv86fSXQmbY2Ofl4pX4DDs=
+			</data>
+		</dict>
+		<key>.gitignore</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Ts7GjfEmCi7O1JwgU/wKDBn1hVuSzyzOP8OOk8bZfko=
+			</data>
+		</dict>
+		<key>.gitmodules</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
 			</data>
 		</dict>
 		<key>Headers/AuthMe-Swift.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			v3Ft1m0l0nSbhTB7sjNZz8M89lDFtCDz4w54DHh3DCs=
+			+pnHypByRqrNEA5VrJ202mxp2/ZqfaT9DkWXSQbTWLg=
 			</data>
 		</dict>
 		<key>Headers/AuthMe.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			AZupkFbQpp39TNQY72FN3tOaTk4yznM8xyjzsyCiffw=
+			QJEOCDfN+h9c6nHFcOe81OBOZ2cjQMz5+zaufyUuxtY=
 			</data>
 		</dict>
 		<key>Headers/EngineWrapper.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			g3bIwcaG5N7e6L4Rt34DwSY6yuGmhFq2MWCcNCrCxBg=
+			M7LDS/hbQasTZs3hnED+9P6HiQ1U2XeeuZUKolu4zfE=
 			</data>
 		</dict>
 		<key>Headers/FaceDetector.hpp</key>
@@ -148,46 +362,354 @@
 			0TkRMGE8dOXHv/qXxdQZPYRUXcBApwqqcLgy0G852Cs=
 			</data>
 		</dict>
+		<key>Headers/MoicaFuncion.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			fbp29ONN4XGLS70u3Z24A68+fD+jBpNldGcl4j+6sI0=
+			</data>
+		</dict>
+		<key>Headers/NFCMOICA.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			HoPBT/szA1/rBQ4ecfG4ZoROAcbS2GAptZzIN7pZpDc=
+			</data>
+		</dict>
+		<key>Headers/UltraFace.hpp</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			BNL6MYmoEwMNLMPlUHqBSlym8CZkp3AskSMf0ylhv3o=
+			</data>
+		</dict>
+		<key>Headers/card_classification.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			3bqh2hsOHu/hCNETGFNpLeh7w1+hz8yxREgmdL907Ic=
+			</data>
+		</dict>
+		<key>Headers/card_classification.hpp</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			tNnEKUITddnXUrojQw76ptL9jpSILS4E5J7p62S0zQA=
+			</data>
+		</dict>
+		<key>Headers/card_detection.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			M9wU7w03gRgmCVhu1taktzM6u3XAGKwNkFEv2WyqF3c=
+			</data>
+		</dict>
+		<key>Headers/card_detection.hpp</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			oSsbgKPuScGMagxboDfEgoxovVlrnTXOk/ykToaaJz0=
+			</data>
+		</dict>
+		<key>Headers/computational_geometry.hpp</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			fqGfxCU0LbgpUl+wS1Yw/CXSgTP33OyzXmava3XFUb0=
+			</data>
+		</dict>
+		<key>Headers/cpu_provider_factory.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			DeUtEpxxjAfucaFrSVPY1IPfAZdGoRyq13oGUKL07Uc=
+			</data>
+		</dict>
+		<key>Headers/crypto.hpp</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Qr3eS9uyRFf7+PNCM8AJnCskGsML9iMw1KjDmuOnkmY=
+			</data>
+		</dict>
+		<key>Headers/cv_template_extention.hpp</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			CleL66vTo/0oDuLy1If4tDJ8GUDwY0zZzukd0Gt2jCk=
+			</data>
+		</dict>
+		<key>Headers/engine_base.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			eGC7oFx8yvqN5WcPTHULgBWFbliYhaGRwLnX5XedlgQ=
+			</data>
+		</dict>
+		<key>Headers/engine_base.hpp</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			LYTkX0lgIIhb+kYSFHqSjpyPSQzlPzL6n2f18tPn2Ls=
+			</data>
+		</dict>
+		<key>Headers/engine_core.hpp</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/KXnWXPFmde4gXYMMOxHh9r2oTh8uauIMNcu/mglAfE=
+			</data>
+		</dict>
+		<key>Headers/engine_error_code.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			10e5voS8taf/9mHWZWTq4ETr+J0/ITJw/XEswL8ekU4=
+			</data>
+		</dict>
+		<key>Headers/engine_type.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			k2Cjko2BarOvxG4jJCGgVymD0VHqxWAu2MS8xm0lpO4=
+			</data>
+		</dict>
+		<key>Headers/engine_type.hpp</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			jYMfwn6BsSVLOHvEd80uRBlbKhReBOHoFd76W0hT9gM=
+			</data>
+		</dict>
+		<key>Headers/face_anti_spoofing.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			1lXJuX6Lrix38xh3X0ZtnWP4l1pYKNcAqH4QWGRT6sg=
+			</data>
+		</dict>
+		<key>Headers/face_anti_spoofing.hpp</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			dEo45+rwqOB/LaNX7bVO1EOGUChL9iBEngJWvqdOZ34=
+			</data>
+		</dict>
+		<key>Headers/face_detection.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			rihks+StfJ7n2BRWj/EKIA30sCmOT3K2kw3Qczx2Cbs=
+			</data>
+		</dict>
+		<key>Headers/face_detection.hpp</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bD2o24ZVYzHqWRYCaQ+1fgSReVg3OLCBpBEbfik3bU4=
+			</data>
+		</dict>
+		<key>Headers/image_assessment.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			DsUmdkgtbRPa/oKuFjGOl/KRFLUoaDsTfuZUYopAR1A=
+			</data>
+		</dict>
+		<key>Headers/image_assessment.hpp</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			UqoHMToaUSKBvfEjQMTafIknP/KmoKrYXtr+dPqdm8I=
+			</data>
+		</dict>
+		<key>Headers/ios_chtse.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			1tRMEHdhjEpvCJAt2QflAyahdl8VWt1SKuG/dxl1w7c=
+			</data>
+		</dict>
+		<key>Headers/ios_chtse_apdu.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Z/rE9Gb5XXA5MA8X2iqipg5GyLnN0LzTEOEhcvI9yFk=
+			</data>
+		</dict>
+		<key>Headers/ios_chtse_moi.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			eUmTUhryhfvbDgFQkh4+Yhlee21uD0TRBytSkpOLMY8=
+			</data>
+		</dict>
+		<key>Headers/laser_tag_detection.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			z3PJYR+nciwLAuU6u5u7q4gBIR5tgBTDYcH/GrhYpR8=
+			</data>
+		</dict>
+		<key>Headers/laser_tag_detection.hpp</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			1FRkFbiFQxxdcG1WQdOvP3fmc5Hvx7DYcTc/FhgI08A=
+			</data>
+		</dict>
+		<key>Headers/model_cryption.hpp</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			J6qfAkRYnGWPfjtVhUFY2SATloxtnqE/oPK+rxyJCcw=
+			</data>
+		</dict>
+		<key>Headers/mrz_detection.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			HZZyqVqXMdydd6FcmLH6GzRFvPp6Tk6RcxIkVS78Gp0=
+			</data>
+		</dict>
+		<key>Headers/mrz_detection.hpp</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			FRHtgLj8iIIrezRIve6R51rAmiei0hspv+6Ou3EY9LQ=
+			</data>
+		</dict>
+		<key>Headers/mrz_recognition.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			NHkd0yYuN15Kj2xLrXWBi6I4TvyW32jzCp7UHF5nk/E=
+			</data>
+		</dict>
+		<key>Headers/mrz_recognition.hpp</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			5WdqvyX66rht2uEL4+J/yRDnXFLAEhPhejs6olaylHk=
+			</data>
+		</dict>
+		<key>Headers/mrz_service.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			qRpFgwzGjarueHODDjRbTWh8wkMgqJFCkEFyMtdHul4=
+			</data>
+		</dict>
+		<key>Headers/mrz_service.hpp</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			EIvrSKG2lPidQMtIKUi42G1YaaLClaogEjjwkC2JihU=
+			</data>
+		</dict>
+		<key>Headers/nn_inference.hpp</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			NbuI5Hzqn7LjW4N63L3b2k1muFLEixzIU6bC3fjRiiQ=
+			</data>
+		</dict>
+		<key>Headers/onnxruntime_c_api.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			04x8RFKgNj1yM0GknUQq52AFU2GfeYqR73Lsb05CUws=
+			</data>
+		</dict>
+		<key>Headers/onnxruntime_cxx_api.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			xxx35uWhZawMcMM2fPBmHDO7Jt6S5OEAcDByasZahIE=
+			</data>
+		</dict>
+		<key>Headers/onnxruntime_cxx_inline.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/Mwim2ry50Htgt+yTWSeAufTQ2C5ygAUsaoqiZ0FTfs=
+			</data>
+		</dict>
+		<key>Headers/pkcs11.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			6aeK32IIpZZIMFUVyP/0ncZ5ZXfSUODvrMVuT1E4CaE=
+			</data>
+		</dict>
+		<key>Headers/taiwan_hole_detection.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			BBCPuLLZLGiBosn3zq07zQBIeR8vAfY2T2gSJ87Aj38=
+			</data>
+		</dict>
+		<key>Headers/taiwan_hole_detection.hpp</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			0LdleCeZ7STR/te8ygV3/HopU0d3O5iveyp8CsWbNGk=
+			</data>
+		</dict>
+		<key>Headers/utility.hpp</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			SDqeJyndpGty5Ch1hFGNSVhj+H/pJQc3NcCn9YxHENE=
+			</data>
+		</dict>
+		<key>Headers/utility_define.hpp</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			i8hHL2KQJokMJPUtA3Su69vQmfaiONseKD7SBuvGGD4=
+			</data>
+		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			gIhkMYuh5nejnbOlC6HhpMaAZpb9sMXphTx2zqqaQCs=
+			JhJI29Wa7Oqlbqsj+feBpAVU0pcVTUZ9Xu5i9fqqFe0=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			V5eG33QYT/0e7wB+dkii93ixSuodnoTQCBVd+dMBBuo=
+			jxT8/TRK0zAFmWSAJtr2pJUlFXu8vYPegJf0t4MKClY=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			zWzDe1JLZ2N5t7o3ClphpBfuHnBcMw+qK017BksroFs=
+			/xQzm5vXymtxaWjrD4ppPhkSkRoTRJxdkaC9xQtGbIY=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			gIhkMYuh5nejnbOlC6HhpMaAZpb9sMXphTx2zqqaQCs=
+			JhJI29Wa7Oqlbqsj+feBpAVU0pcVTUZ9Xu5i9fqqFe0=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			V5eG33QYT/0e7wB+dkii93ixSuodnoTQCBVd+dMBBuo=
+			jxT8/TRK0zAFmWSAJtr2pJUlFXu8vYPegJf0t4MKClY=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			zWzDe1JLZ2N5t7o3ClphpBfuHnBcMw+qK017BksroFs=
+			/xQzm5vXymtxaWjrD4ppPhkSkRoTRJxdkaC9xQtGbIY=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -195,6 +717,13 @@
 			<key>hash2</key>
 			<data>
 			o/fy3pvk5iClJ5zoE11DRvm+oGpbixrtfrsUNXqmCYA=
+			</data>
+		</dict>
+		<key>RFB-S-with-Mask2_sim.quant.onnx</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			T9/uQ3OqYGBNXrz9w24u7Ko3EmP5Xyeipr7yjpBwQOk=
 			</data>
 		</dict>
 		<key>blink_20210119.mnn</key>
@@ -209,6 +738,13 @@
 			<key>hash2</key>
 			<data>
 			r2+4JbdQL8jxCS/805/1Eia5uz6C4fw6YBecFvL49ZM=
+			</data>
+		</dict>
+		<key>laser_tag_model_fp32.onnx</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			UaLVN1IqRELzMgSiOqRJ0Z94bp1aAvNpsJ41RT21bE4=
 			</data>
 		</dict>
 		<key>mask_detection_sim_v1.mnn</key>
@@ -246,11 +782,25 @@
 			4SuUYMcFaKhaQDwNiyWfyif5v6C/g3ZumIAo/LVsLRo=
 			</data>
 		</dict>
+		<key>taiwan_hole_model_fp32.onnx</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			byNIx6wC6bV2j82k++BgvFK5Zc5YavFf8BUxRlNX9/Q=
+			</data>
+		</dict>
 		<key>tddfav2_mobile_mb05_fp32.mnn</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			V24qQKsICdXKp3cTRh/Q+cRF2i71uE53T2ieofyHyBk=
+			</data>
+		</dict>
+		<key>triplet_align_fit_int8.onnx</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			E7YsC2ZGKxoLT5dC01dFGX/Df8vpPrdOyN01mnsaoJM=
 			</data>
 		</dict>
 	</dict>

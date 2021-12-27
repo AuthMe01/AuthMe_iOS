@@ -2,6 +2,7 @@
 // swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
 // swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AuthMe
 @_exported import AuthMe
+import CoreNFC
 import Dispatch
 import Foundation
 import Swift
@@ -14,12 +15,12 @@ public class LivenessFlow {
   public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, Swift.Error>) -> Swift.Void)
   public func onGetPhotoData(image: UIKit.UIImage) -> UIKit.UIImage?
   public init(isPassive: Swift.Bool = false, timeout: Foundation.TimeInterval)
+  @objc deinit
   public func start(completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
   public func stop()
   public func restart(completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
   public func switchMode(isAuto: Swift.Bool)
   public func processManual(image: UIKit.UIImage, frameNo: Swift.Int) -> UIKit.UIImage?
-  @objc deinit
 }
 extension LivenessFlow {
   public func recordResult(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
@@ -403,6 +404,13 @@ public enum BinaryEncodingError : Swift.Error {
     get
   }
 }
+@_inheritsConvenienceInitializers public class TWLicenseFlow : OCRMainFlow {
+  override public func start(needConfirm: Swift.Bool, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
+  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  override public func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  override public init(ocrcard: OCRCard)
+  @objc deinit
+}
 extension AntiForgeryFlow {
   public func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   public func confirmScan(ocrResult: OCRResult, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
@@ -443,6 +451,54 @@ public enum BinaryDelimited {
   public static func parse<M>(messageType: M.Type, from stream: Foundation.InputStream, extensions: ExtensionMap? = nil, partial: Swift.Bool = false, options: BinaryDecodingOptions = BinaryDecodingOptions()) throws -> M where M : Message
   public static func merge<M>(into message: inout M, from stream: Foundation.InputStream, extensions: ExtensionMap? = nil, partial: Swift.Bool = false, options: BinaryDecodingOptions = BinaryDecodingOptions()) throws where M : Message
 }
+@objc @_inheritsConvenienceInitializers @available(iOS 13.0, *)
+public class AuthMeNfc : ObjectiveC.NSObject {
+  public enum AuthMeNFCError : Swift.Error {
+    case IllegalStateError
+    case UnsupportedCardError
+    case NFCNotAvailable
+    public static func == (a: AuthMeNfc.AuthMeNFCError, b: AuthMeNfc.AuthMeNFCError) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum AuthMeNFCProgress {
+    case Scanning
+    case Processing
+    case Done
+    public static func == (a: AuthMeNfc.AuthMeNFCProgress, b: AuthMeNfc.AuthMeNFCProgress) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public static func checkNFCEnable() -> Swift.Bool
+  public static func checkNFCSupport() -> Swift.Bool
+  public func checkCommunication(result: @escaping (Swift.Result<Swift.Float, Swift.Error>) -> (), progressText: @escaping (AuthMeNfc.AuthMeNFCProgress) -> (Swift.String) = { _ in "" })
+  public func close(error: Swift.String? = nil)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@available(iOS 13.0, *)
+extension AuthMeNfc : CoreNFC.NFCTagReaderSessionDelegate {
+  public func tagReaderSessionDidBecomeActive(_ session: CoreNFC.NFCTagReaderSession)
+  public func tagReaderSession(_ session: CoreNFC.NFCTagReaderSession, didInvalidateWithError error: Swift.Error)
+  public func tagReaderSession(_ session: CoreNFC.NFCTagReaderSession, didDetect tags: [CoreNFC.NFCTag])
+  public func checkCardType(checkRID: AuthMeNfc.NfcRid, result: @escaping (Swift.Result<Swift.Bool, Swift.Error>) -> (), progressText: @escaping (AuthMeNfc.AuthMeNFCProgress) -> (Swift.String) = {_ in ""})
+  public enum NfcRid : Swift.String {
+    case visa
+    case jcb
+    case master
+    case moica
+    case twSmartCard
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
 public protocol ExtensibleMessage : Message {
   var _protobuf_extensionFieldValues: ExtensionFieldValueSet { get set }
 }
@@ -463,6 +519,44 @@ extension ExtensibleMessage {
 public struct LivenessModelsRequest {
 }
 public struct OCRModelsRequest {
+}
+@_hasMissingDesignatedInitializers public class PKCS11Error : Swift.Error {
+  final public let code: Swift.UInt
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class AuthMeMoica : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  public func open()
+  public func close()
+  public func destory()
+  public func signData(data: Foundation.Data, pin: Swift.String, type: SignType, algorithm: DigestAlgorithm, progressCallback: @escaping (Swift.Float) -> (), resultCallback: @escaping (Swift.Result<Foundation.Data, PKCS11Error>) -> (Swift.String))
+  public func getCardNumber(resultCallback: @escaping (Swift.Result<Swift.String, PKCS11Error>) -> ())
+  public func getCertificate(resultCallback: @escaping (Swift.Result<MoicaCertificate, Swift.Error>) -> ())
+  @objc deinit
+}
+public struct MoicaCertificate {
+  public let notBefore: Swift.String
+  public let notAfter: Swift.String
+  public let issuer: Swift.String
+  public let subject: Swift.String
+}
+public enum SignType : Swift.Int32 {
+  case PKCS1
+  case PKCS7
+  public init?(rawValue: Swift.Int32)
+  public typealias RawValue = Swift.Int32
+  public var rawValue: Swift.Int32 {
+    get
+  }
+}
+public enum DigestAlgorithm : Swift.Int32 {
+  case SHA1
+  case SHA256
+  public init?(rawValue: Swift.Int32)
+  public typealias RawValue = Swift.Int32
+  public var rawValue: Swift.Int32 {
+    get
+  }
 }
 public protocol FlowDelegate : AnyObject {
   func notifyTitle(title: Swift.String)
@@ -789,6 +883,13 @@ extension Google_Protobuf_Value {
   public init(structValue: Google_Protobuf_Struct)
   public init(listValue: Google_Protobuf_ListValue)
 }
+@_inheritsConvenienceInitializers public class TWIDFlow : OCRMainFlow {
+  override public func start(needConfirm: Swift.Bool, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
+  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  override public func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  override public init(ocrcard: OCRCard)
+  @objc deinit
+}
 extension Google_Protobuf_ListValue : Swift.ExpressibleByArrayLiteral {
   public typealias Element = Google_Protobuf_Value
   public init(arrayLiteral elements: Google_Protobuf_ListValue.Element...)
@@ -800,6 +901,12 @@ extension Google_Protobuf_ListValue {
     get
     set(newValue)
   }
+}
+@available(iOS 13.0, *)
+public class MyDataFlow {
+  public init()
+  public func startGetData(pin: Swift.String, idNumber: Swift.String, birth: Swift.String, resultCallback: @escaping (Swift.Result<UIKit.UIImage, Swift.Error>) -> Swift.Void)
+  @objc deinit
 }
 extension Google_Protobuf_FieldMask {
   public init(protoPaths: [Swift.String])
@@ -827,6 +934,32 @@ extension Google_Protobuf_Any {
   public init(textFormatString: Swift.String, options: TextFormatDecodingOptions, extensions: ExtensionMap? = nil) throws
   public func isA<M>(_ type: M.Type) -> Swift.Bool where M : Message
   public func hash(into hasher: inout Swift.Hasher)
+}
+public protocol OCRFlowProtocol {
+  func setDelegate(delegate: FlowDelegate)
+  func start(needConfirm: Swift.Bool, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
+  func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  func restart()
+  func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+}
+public protocol OCRFlowAntiSpoofingProtocol {
+  func setDelegate(delegate: FlowDelegate)
+  func start(needConfirm: Swift.Bool, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
+  func onGetPreviewData(image: UIKit.UIImage, rotateReverse: (() -> ())?, rotateHandler: ((AntiForgeryRotate) -> Swift.Void)?, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  func restartOCR() -> Swift.Bool
+  func enterRotateLeft()
+  func enterRotateUp()
+  func enterRotateFront()
+  func enterReverse() -> Swift.Bool
+}
+public class OCRFactory {
+  public init()
+  public func prepare(ocrcard: OCRCard) -> OCRFlowProtocol?
+  public func prepareAntiSpoofing(ocrcard: OCRCard) -> OCRFlowAntiSpoofingProtocol?
+  @objc deinit
 }
 public protocol OCRResult : AuthMeResult {
   var fileID: Swift.String { get }
@@ -959,6 +1092,30 @@ public protocol OCRResult : AuthMeResult {
   }
   @objc deinit
 }
+public class QKMRZParser {
+  public init(ocrCorrection: Swift.Bool = false)
+  public func parse(mrzLines: [Swift.String]) -> QKMRZResult?
+  public func parse(mrzString: Swift.String) -> QKMRZResult?
+  @objc deinit
+}
+public struct QKMRZResult {
+  public let documentType: Swift.String
+  public let countryCode: Swift.String
+  public let surnames: Swift.String
+  public let givenNames: Swift.String
+  public let documentNumber: Swift.String
+  public let nationality: Swift.String
+  public let birthDate: Foundation.Date?
+  public let sex: Swift.String?
+  public let expiryDate: Foundation.Date?
+  public let personalNumber: Swift.String
+  public let personalNumber2: Swift.String?
+  public let isDocumentNumberValid: Swift.Bool
+  public let isBirthDateValid: Swift.Bool
+  public let isExpiryDateValid: Swift.Bool
+  public let isPersonalNumberValid: Swift.Bool?
+  public let allCheckDigitsValid: Swift.Bool
+}
 public struct JSONEncodingOptions {
   public var alwaysPrintEnumsAsInts: Swift.Bool
   public var preserveProtoFieldNames: Swift.Bool
@@ -967,16 +1124,16 @@ public struct JSONEncodingOptions {
 @_hasMissingDesignatedInitializers public class UploadLivenessRequest {
   @objc deinit
 }
-public enum Facing {
+public enum Facing : Swift.String, Swift.Codable {
   case front
   case back
-  public static func == (a: Facing, b: Facing) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public var hashValue: Swift.Int {
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
     get
   }
 }
-public enum OCRCardType : Swift.String {
+public enum OCRCardType : Swift.String, Swift.Codable {
   case TWID
   case TWLicense
   case TWHealth
@@ -987,10 +1144,12 @@ public enum OCRCardType : Swift.String {
     get
   }
 }
-public struct OCRCard {
+public struct OCRCard : Swift.Codable {
   public let facing: Facing
   public let type: OCRCardType
   public init(facing: Facing, type: OCRCardType)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 public protocol _ProtoNameProviding {
   static var _protobuf_nameMap: _NameMap { get }
@@ -1119,6 +1278,11 @@ public enum JSONDecodingError : Swift.Error {
   case conflictingOneOf
   case messageDepthLimit
   case unknownField(Swift.String)
+}
+public class AbstractOCRFlow {
+  public init(ocrcard: OCRCard)
+  public func restart()
+  @objc deinit
 }
 public enum Google_Protobuf_NullValue : Enum {
   public typealias RawValue = Swift.Int
@@ -3044,29 +3208,17 @@ public struct ProtobufBytes : FieldType, MapValueType {
   public static func visitRepeated<V>(value: [ProtobufBytes.BaseType], fieldNumber: Swift.Int, with visitor: inout V) throws where V : Visitor
   public static func visitPacked<V>(value: [ProtobufBytes.BaseType], fieldNumber: Swift.Int, with visitor: inout V) throws where V : Visitor
 }
-public class QKMRZParser {
-  public init(ocrCorrection: Swift.Bool = false)
-  public func parse(mrzLines: [Swift.String]) -> QKMRZResult?
-  public func parse(mrzString: Swift.String) -> QKMRZResult?
+@_inheritsConvenienceInitializers public class AntiSpoofingFlow : TWIDFlow {
+  public func onGetPreviewData(image: UIKit.UIImage, rotateReverse: (() -> ())? = nil, rotateHandler: ((AntiForgeryRotate) -> Swift.Void)? = nil, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  override public init(ocrcard: OCRCard)
   @objc deinit
 }
-public struct QKMRZResult {
-  public let documentType: Swift.String
-  public let countryCode: Swift.String
-  public let surnames: Swift.String
-  public let givenNames: Swift.String
-  public let documentNumber: Swift.String
-  public let nationality: Swift.String
-  public let birthDate: Foundation.Date?
-  public let sex: Swift.String?
-  public let expiryDate: Foundation.Date?
-  public let personalNumber: Swift.String
-  public let personalNumber2: Swift.String?
-  public let isDocumentNumberValid: Swift.Bool
-  public let isBirthDateValid: Swift.Bool
-  public let isExpiryDateValid: Swift.Bool
-  public let isPersonalNumberValid: Swift.Bool?
-  public let allCheckDigitsValid: Swift.Bool
+extension AntiSpoofingFlow : OCRFlowAntiSpoofingProtocol {
+  public func restartOCR() -> Swift.Bool
+  public func enterRotateLeft()
+  public func enterRotateUp()
+  public func enterRotateFront()
+  public func enterReverse() -> Swift.Bool
 }
 public struct ExtensionFieldValueSet : Swift.Hashable {
   public static func == (lhs: ExtensionFieldValueSet, rhs: ExtensionFieldValueSet) -> Swift.Bool
@@ -3458,6 +3610,16 @@ public struct UnknownStorage : Swift.Equatable {
   public func traverse<V>(visitor: inout V) throws where V : Visitor
   public static func == (a: UnknownStorage, b: UnknownStorage) -> Swift.Bool
 }
+@_inheritsConvenienceInitializers public class OCRMainFlow : AbstractOCRFlow, OCRFlowProtocol {
+  public func setDelegate(delegate: FlowDelegate)
+  public func start(needConfirm: Swift.Bool, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
+  public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  public func onGetPreviewDataAntiSpoofing(image: UIKit.UIImage, rotateReverse: (() -> ())?, rotateHandler: ((AntiForgeryRotate) -> Swift.Void)?, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  public func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  public func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  override public init(ocrcard: OCRCard)
+  @objc deinit
+}
 extension UploadInfoRequestBody : Swift.Encodable {}
 extension UploadInfoRequestBody : Swift.Decodable {}
 extension AntiForgeryRotate : Swift.Equatable {}
@@ -3477,6 +3639,26 @@ extension BinaryEncodingError : Swift.Equatable {}
 extension BinaryEncodingError : Swift.Hashable {}
 extension BinaryDelimited.Error : Swift.Equatable {}
 extension BinaryDelimited.Error : Swift.Hashable {}
+@available(iOS 13.0, *)
+extension AuthMeNfc.AuthMeNFCError : Swift.Equatable {}
+@available(iOS 13.0, *)
+extension AuthMeNfc.AuthMeNFCError : Swift.Hashable {}
+@available(iOS 13.0, *)
+extension AuthMeNfc.AuthMeNFCProgress : Swift.Equatable {}
+@available(iOS 13.0, *)
+extension AuthMeNfc.AuthMeNFCProgress : Swift.Hashable {}
+@available(iOS 13.0, *)
+extension AuthMeNfc.NfcRid : Swift.Equatable {}
+@available(iOS 13.0, *)
+extension AuthMeNfc.NfcRid : Swift.Hashable {}
+@available(iOS 13.0, *)
+extension AuthMeNfc.NfcRid : Swift.RawRepresentable {}
+extension SignType : Swift.Equatable {}
+extension SignType : Swift.Hashable {}
+extension SignType : Swift.RawRepresentable {}
+extension DigestAlgorithm : Swift.Equatable {}
+extension DigestAlgorithm : Swift.Hashable {}
+extension DigestAlgorithm : Swift.RawRepresentable {}
 extension BinaryDecodingError : Swift.Equatable {}
 extension BinaryDecodingError : Swift.Hashable {}
 extension MRZResult.DataType : Swift.Equatable {}
@@ -3493,6 +3675,7 @@ extension TWHealthResult.DataType : Swift.Hashable {}
 extension TWHealthResult.DataType : Swift.RawRepresentable {}
 extension Facing : Swift.Equatable {}
 extension Facing : Swift.Hashable {}
+extension Facing : Swift.RawRepresentable {}
 extension OCRCardType : Swift.Equatable {}
 extension OCRCardType : Swift.Hashable {}
 extension OCRCardType : Swift.RawRepresentable {}

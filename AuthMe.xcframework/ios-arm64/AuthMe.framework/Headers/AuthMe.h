@@ -20,4 +20,15 @@ FOUNDATION_EXPORT const unsigned char AuthMeVersionString[];
 #include "MNNModel.hpp"
 
 #include "EngineWrapper.h"
+
+#import "MoicaFuncion.h"
+#import "pkcs11.h"
+
+#import "laser_tag_detection.h"
+#import "taiwan_hole_detection.h"
+#import "engine_base.h"
+#import "engine_type.h"
+#import "face_detection.h"
+#import "face_anti_spoofing.h"
+#import "image_assessment.h"
 //#include "engine.hpp"

@@ -14,16 +14,6 @@ extern "C" {
 
 #import <UIKit/UIKit.h>
 
-long engine_initModel(const char *path);
-
-void engine_releaseModel(long model_);
-
-long engine_createSession(long model_);
-
-void engine_releaseSession(long model_, long session_);
-
-int engine_laserTagDetection(long model_, long session_, UIImage* image);
-
 void getTransformedLeftPoint(float w,
                              float h,
                              float degree,
