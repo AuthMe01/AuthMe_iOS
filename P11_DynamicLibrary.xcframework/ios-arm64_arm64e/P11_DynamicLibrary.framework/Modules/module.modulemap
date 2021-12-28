@@ -1,0 +1,6 @@
+framework module P11_DynamicLibrary {
+  umbrella header "P11_DynamicLibrary.h"
+
+  export *
+  module * { export * }
+}
