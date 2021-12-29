@@ -31,4 +31,5 @@ FOUNDATION_EXPORT const unsigned char AuthMeVersionString[];
 #import "face_detection.h"
 #import "face_anti_spoofing.h"
 #import "image_assessment.h"
+#import "card_detection.h"
 //#include "engine.hpp"

@@ -172,3 +172,17 @@ T* ToArray(const std::vector<cv::Point_<T>>& vecPoints)
 
     return pArray;
 }
+
+template<typename T>
+std::vector<T> ToValueVector(const std::vector<cv::Point_<T>>& vecPoints)
+{
+    std::vector<T> vecValues(vecPoints.size() * 2);
+
+    for (size_t i = 0; i < vecPoints.size(); i++)
+    {
+        vecValues[i * 2] = vecPoints[i].x;
+        vecValues[i * 2 + 1] = vecPoints[i].y;
+    }
+
+    return vecValues;
+}

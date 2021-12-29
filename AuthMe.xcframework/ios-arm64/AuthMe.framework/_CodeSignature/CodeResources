@@ -22,7 +22,7 @@
 		</data>
 		<key>Headers/AuthMe.h</key>
 		<data>
-		l9zEKj7KbPuchBXf6k8T4Wk+oYY=
+		ajfXSc0i3ln9HzOhS/ZUkwT3tVA=
 		</data>
 		<key>Headers/EngineWrapper.h</key>
 		<data>
@@ -82,7 +82,7 @@
 		</data>
 		<key>Headers/cv_template_extention.hpp</key>
 		<data>
-		QrZcRgQDdlHOai96IFm3zCE+bDI=
+		Aqi9L9nPPOnAJPe4vl/Dtcn8jOg=
 		</data>
 		<key>Headers/engine_base.h</key>
 		<data>
@@ -230,7 +230,7 @@
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		S4pdDuOObCxyR8oxlyN+L8ytxpA=
+		02LTdpNRQJOhs2qKdbmj5zZd4vY=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -242,7 +242,7 @@
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		S4pdDuOObCxyR8oxlyN+L8ytxpA=
+		02LTdpNRQJOhs2qKdbmj5zZd4vY=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -259,6 +259,10 @@
 		<key>card_classifier_v1_fp32.mnn</key>
 		<data>
 		WJOg8dJ72/gkX18Izg9WuQsUmbE=
+		</data>
+		<key>card_det_20211225_fp32.onnx</key>
+		<data>
+		1uZCMg93WTyJ+eMmcyWVjzJHZAQ=
 		</data>
 		<key>laser_tag_model_fp32.onnx</key>
 		<data>
@@ -331,7 +335,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			QJEOCDfN+h9c6nHFcOe81OBOZ2cjQMz5+zaufyUuxtY=
+			eZbL9Asaz7U3jRxHLBAGLGAhBVht4dBxvMdIdFbfCCg=
 			</data>
 		</dict>
 		<key>Headers/EngineWrapper.h</key>
@@ -436,7 +440,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			CleL66vTo/0oDuLy1If4tDJ8GUDwY0zZzukd0Gt2jCk=
+			9gmVgWNN6x3g/UxwRKk3k8Cej9feIeUqnpec/hn1frM=
 			</data>
 		</dict>
 		<key>Headers/engine_base.h</key>
@@ -688,7 +692,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			NYhVwOyXYZsxgE1uAL1Zp4a4Q+HGC72CaCZQtsd84oM=
+			NYPaBlMWYZNCbClw4IDXS5XPfeXKLJzu3s2/lWJEQcs=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/arm64.swiftdoc</key>
@@ -709,7 +713,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			NYhVwOyXYZsxgE1uAL1Zp4a4Q+HGC72CaCZQtsd84oM=
+			NYPaBlMWYZNCbClw4IDXS5XPfeXKLJzu3s2/lWJEQcs=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -738,6 +742,13 @@
 			<key>hash2</key>
 			<data>
 			r2+4JbdQL8jxCS/805/1Eia5uz6C4fw6YBecFvL49ZM=
+			</data>
+		</dict>
+		<key>card_det_20211225_fp32.onnx</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			rF6xmyWD1s3ejVCVRBxgjd3ROcnM55b2z722gsBP8dA=
 			</data>
 		</dict>
 		<key>laser_tag_model_fp32.onnx</key>
