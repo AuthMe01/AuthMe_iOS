@@ -14,6 +14,8 @@ const char* AuthMe_FaceDetection_GetModelInfo(long handle);
 
 EAuthMeEngineReturnCode AuthMe_FaceDetection_SetThreshold(long handle, float fThreshold);
 
+float AuthMe_FaceDetection_GetThreshold(long handle);
+
 // need to delete *ppFaceInfo after use
 EAuthMeEngineReturnCode AuthMe_FaceDetection_Detect(long handle, AuthMeImage* pImage, AuthMeFaceInfo **ppFaceInfo, int* piLength, AuthMeEngineDebugInfo* pDebugInfo);
 

@@ -11,6 +11,8 @@ float ImageSharpness(const cv::Mat& image, const cv::Size size = cv::Size(256, 2
 
 float ImageReflective(const cv::Mat& image, cv::Mat *pDebugImage = nullptr);
 
+float ImageReflective_v2(const cv::Mat& image, int iLightTh = 237, cv::Mat *pDebugImage = nullptr);
+
 float CheckIDCardFrontColor(const cv::Mat& image);
 
 float CheckIDCardFrontColor(const cv::Mat& image, const std::vector<cv::Point>& vecPolygon);

@@ -14,7 +14,11 @@ const char* AuthMe_FaceAntiSpoofing_GetModelInfo(long handle);
 
 EAuthMeEngineReturnCode AuthMe_FaceAntiSpoofing_SetThreshold(long handle, float fThreshold);
 
+float AuthMe_FaceAntiSpoofing_GetThreshold(long handle);
+
 EAuthMeEngineReturnCode AuthMe_FaceAntiSpoofing_SetMinFrameNum(long handle, int iLength);
+
+int AuthMe_FaceAntiSpoofing_GetMinFrameNum(long handle);
 
 EAuthMeEngineReturnCode AuthMe_FaceAntiSpoofing_Reset(long handle);
 

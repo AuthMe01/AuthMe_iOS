@@ -14,6 +14,8 @@ const char* AuthMe_LaserTagDetection_GetModelInfo(long handle);
 
 EAuthMeEngineReturnCode AuthMe_LaserTagDetection_SetThreshold(long handle, float fThreshold);
 
+float AuthMe_LaserTagDetection_GetThreshold(long handle);
+
 EAuthMeEngineReturnCode AuthMe_LaserTagDetection_Detect(long handle, AuthMeImage* pImage, int *pPoints, int iLength, EAuthMeLaserTagStatus* peStatus, AuthMeEngineDebugInfo* pDebugInfo);
 
 #ifdef __cplusplus

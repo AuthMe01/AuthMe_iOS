@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include <map>
 #include "engine_type.hpp"
 
 namespace AuthMe
@@ -21,6 +22,9 @@ class IInferenceEngine
         // strHWAcceleration: "cpu", "cuda", "tensorrt"
         virtual bool Initial(const std::string &strModelName, const std::string &strHWAcceleration = "cpu") = 0;
         virtual bool Initial(const void *pData, size_t uiLength, const std::string &strHWAcceleration = "cpu") = 0;
+        virtual std::map<std::string, std::string> GetModelMetadata() const = 0;
+        virtual std::map<std::string, std::vector<int64_t>> GetInputShape() const = 0;
+        virtual std::map<std::string, std::vector<int64_t>> GetOutputShape() const = 0;
         virtual void SetIOShape(const std::vector<std::pair<std::string, std::vector<int64_t>>>& vecInputShape,
                                 const std::vector<std::pair<std::string, std::vector<int64_t>>>& vecOutputShape) = 0;
         virtual std::string GetModelInfo() const = 0;

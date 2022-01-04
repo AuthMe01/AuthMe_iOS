@@ -14,6 +14,8 @@ const char* AuthMe_TaiwanHoleDetection_GetModelInfo(long handle);
 
 EAuthMeEngineReturnCode AuthMe_TaiwanHoleDetection_SetThreshold(long handle, float fThreshold);
 
+float AuthMe_TaiwanHoleDetection_GetThreshold(long handle);
+
 EAuthMeEngineReturnCode AuthMe_TaiwanHoleDetection_Detect(long handle,
         AuthMeImage* pImage,
         const int *pPoints,

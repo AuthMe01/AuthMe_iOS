@@ -34,7 +34,7 @@
 		</data>
 		<key>Headers/ImageConverter.h</key>
 		<data>
-		jc2ftFFFOZVnZLeFpkHxMKgiBlo=
+		mQwqQkOj1O34CBAHUO99S9YQIMQ=
 		</data>
 		<key>Headers/MNNModel.hpp</key>
 		<data>
@@ -54,11 +54,11 @@
 		</data>
 		<key>Headers/card_classification.h</key>
 		<data>
-		tW3yYmkwj+ZfWyDb+5uqlFaYups=
+		vS8PTDvTigNjq8nt3Fp4oR7Fgrg=
 		</data>
 		<key>Headers/card_classification.hpp</key>
 		<data>
-		/lM/UWsfRv8DU+7nQezQIvNauWw=
+		a9qpcf5pnD+adnENoumNAqflfIg=
 		</data>
 		<key>Headers/card_detection.h</key>
 		<data>
@@ -110,27 +110,27 @@
 		</data>
 		<key>Headers/face_anti_spoofing.h</key>
 		<data>
-		1VeYf9NRcmOQpqS0gdtMy8qMLfw=
+		WMsHHK9PoJi6oRlqqDcHAbD+iZo=
 		</data>
 		<key>Headers/face_anti_spoofing.hpp</key>
 		<data>
-		qMaGNvEm+y4SINqV6o93jCoFeWU=
+		D3qAC/40zlrqJsxp/GM04sR+ADE=
 		</data>
 		<key>Headers/face_detection.h</key>
 		<data>
-		vcfnB19mCmidXJbrDXEZwaXvGx4=
+		puP6cS9QieMieUMebOJMJGouUpA=
 		</data>
 		<key>Headers/face_detection.hpp</key>
 		<data>
-		iQnD4CjJ0zVna/0fPeJ95FKQNuI=
+		EYQngde1UOWMi+gb7/DxIpK7AcA=
 		</data>
 		<key>Headers/image_assessment.h</key>
 		<data>
-		HwE3ByGqJfH8jiSS91R72VMSdv0=
+		fGCLxBJlEnwCqeQbigrgYZrnbQ0=
 		</data>
 		<key>Headers/image_assessment.hpp</key>
 		<data>
-		en8BWB3uKQqZt1E2TtHLEC25t70=
+		NUiOHHXyfor0YpR4obYAldob0RA=
 		</data>
 		<key>Headers/ios_chtse.h</key>
 		<data>
@@ -146,11 +146,11 @@
 		</data>
 		<key>Headers/laser_tag_detection.h</key>
 		<data>
-		9a7mCisZDLURddzORLMVisBicdg=
+		y5oX+quXsavXE5yCf5InnlGd7no=
 		</data>
 		<key>Headers/laser_tag_detection.hpp</key>
 		<data>
-		uKLt2wYwmqcxv8uhYwwj1rTGkEY=
+		/QEUhxKstro5hin5NsMLtegt1Nc=
 		</data>
 		<key>Headers/model_cryption.hpp</key>
 		<data>
@@ -182,7 +182,7 @@
 		</data>
 		<key>Headers/nn_inference.hpp</key>
 		<data>
-		eJN1pwawnNprabJ/tFM24v/nCnA=
+		Ay+6ERUwElVwwR0L+Li5qTRxI7g=
 		</data>
 		<key>Headers/onnxruntime_c_api.h</key>
 		<data>
@@ -202,15 +202,15 @@
 		</data>
 		<key>Headers/taiwan_hole_detection.h</key>
 		<data>
-		kK+nGdi6ydK/fvNcYjlDFQJgOLk=
+		M1j4VcsgbbF2kww0Ji1B155wmtw=
 		</data>
 		<key>Headers/taiwan_hole_detection.hpp</key>
 		<data>
-		92SCZId0wI0wRPz8NX1LpAPZvRE=
+		iEJP1mZPcbZ9WLaw74dmXFsb6n0=
 		</data>
 		<key>Headers/utility.hpp</key>
 		<data>
-		fX3SgGu/1wI0mbH/uZn0ejsp9FE=
+		/MRDmsCanCG/O0+16i3fFYfYStA=
 		</data>
 		<key>Headers/utility_define.hpp</key>
 		<data>
@@ -226,11 +226,11 @@
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		LXnqAkZ72d+L3UOFGQgO6NXUpFE=
+		RyBiHTYPytXDN3Gqdb6kfxXC9Ug=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		NMee+ysImQqaeiz1uYQuUK3Iwc8=
+		QHRlCSrhVaE+W93nSsmKIlwDDbM=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -238,11 +238,11 @@
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		LXnqAkZ72d+L3UOFGQgO6NXUpFE=
+		RyBiHTYPytXDN3Gqdb6kfxXC9Ug=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		NMee+ysImQqaeiz1uYQuUK3Iwc8=
+		QHRlCSrhVaE+W93nSsmKIlwDDbM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -266,7 +266,7 @@
 		</data>
 		<key>laser_tag_model_fp32.onnx</key>
 		<data>
-		VK6svnEITIFLTQVJvdCKJ0IFTlM=
+		J7Oljd8HyMUhHB5pEBuL9qzAs74=
 		</data>
 		<key>mask_detection_sim_v1.mnn</key>
 		<data>
@@ -356,7 +356,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			FDzgmp+/TY7cBjVngrev+Q5svVrMDLV5tJXFc8TveyI=
+			Yd0CRZsBajpSMPr++JQnNKftja5CiJrJIKrZcSRPHGI=
 			</data>
 		</dict>
 		<key>Headers/MNNModel.hpp</key>
@@ -391,14 +391,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			3bqh2hsOHu/hCNETGFNpLeh7w1+hz8yxREgmdL907Ic=
+			SvWFAlHjXyJaGbA+olAotavRz34xgCgaZLK5usKkGeo=
 			</data>
 		</dict>
 		<key>Headers/card_classification.hpp</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			tNnEKUITddnXUrojQw76ptL9jpSILS4E5J7p62S0zQA=
+			iwwuKzgZ8TtrKC0a/JmfoeyfwfOjXNCpcsEnBB1hZ6c=
 			</data>
 		</dict>
 		<key>Headers/card_detection.h</key>
@@ -489,42 +489,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			1lXJuX6Lrix38xh3X0ZtnWP4l1pYKNcAqH4QWGRT6sg=
+			X3aBFcCECxsPzPmITjwffOQFW4VdxVZ62wvexE/hL1U=
 			</data>
 		</dict>
 		<key>Headers/face_anti_spoofing.hpp</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			dEo45+rwqOB/LaNX7bVO1EOGUChL9iBEngJWvqdOZ34=
+			NCQctndJY1KYojF5FLTCulXM6HYZO/uYN0G78PlqJtE=
 			</data>
 		</dict>
 		<key>Headers/face_detection.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			rihks+StfJ7n2BRWj/EKIA30sCmOT3K2kw3Qczx2Cbs=
+			ySaXg9SaPssxd4OzkETi3qa6dgFOeLdcrnzeymAOMFY=
 			</data>
 		</dict>
 		<key>Headers/face_detection.hpp</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			bD2o24ZVYzHqWRYCaQ+1fgSReVg3OLCBpBEbfik3bU4=
+			5PBlXR6sfQA6clysXQNrilsM6isD9eiLXNkz/nkrM6E=
 			</data>
 		</dict>
 		<key>Headers/image_assessment.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DsUmdkgtbRPa/oKuFjGOl/KRFLUoaDsTfuZUYopAR1A=
+			ueyU0PdO2B45YokW0rRxooVyTpD5bhXetyEyXYEDQdI=
 			</data>
 		</dict>
 		<key>Headers/image_assessment.hpp</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			UqoHMToaUSKBvfEjQMTafIknP/KmoKrYXtr+dPqdm8I=
+			wXosd26JZHsijWQxvmHE+YJmyGEsqWJhiqC9STKNHfg=
 			</data>
 		</dict>
 		<key>Headers/ios_chtse.h</key>
@@ -552,14 +552,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			z3PJYR+nciwLAuU6u5u7q4gBIR5tgBTDYcH/GrhYpR8=
+			8qWtXuAWJaVJ9CuQxkBXuHv7phINkcitK6gS8ekoXZA=
 			</data>
 		</dict>
 		<key>Headers/laser_tag_detection.hpp</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1FRkFbiFQxxdcG1WQdOvP3fmc5Hvx7DYcTc/FhgI08A=
+			nEDFQFzvk8Z1co3Q7EfNrhsRR8OWgw53nHcb7Hgg5n8=
 			</data>
 		</dict>
 		<key>Headers/model_cryption.hpp</key>
@@ -615,7 +615,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			NbuI5Hzqn7LjW4N63L3b2k1muFLEixzIU6bC3fjRiiQ=
+			KBtUDMg3AKqjaeAg/xirubNqbNmvwf2zmcuECwAcTno=
 			</data>
 		</dict>
 		<key>Headers/onnxruntime_c_api.h</key>
@@ -650,21 +650,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			BBCPuLLZLGiBosn3zq07zQBIeR8vAfY2T2gSJ87Aj38=
+			gmAFQnJU79oeYnzHtIKVAlqMHpy2XBH9SEj6dx1/8FM=
 			</data>
 		</dict>
 		<key>Headers/taiwan_hole_detection.hpp</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			0LdleCeZ7STR/te8ygV3/HopU0d3O5iveyp8CsWbNGk=
+			p00ILGSwx9rddLKJSM9g8uADUNXD/TGDrweeHxs+f6U=
 			</data>
 		</dict>
 		<key>Headers/utility.hpp</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			SDqeJyndpGty5Ch1hFGNSVhj+H/pJQc3NcCn9YxHENE=
+			NBdmw4CzFJiJY6/jV4fDAk8AuENXqRRYYLrZoVpAx8k=
 			</data>
 		</dict>
 		<key>Headers/utility_define.hpp</key>
@@ -685,14 +685,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			jxT8/TRK0zAFmWSAJtr2pJUlFXu8vYPegJf0t4MKClY=
+			6ZDOv29hG3WrufRJCEhxiichGYt5ZE4+ByxSi5CtXvk=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			4JvyMg2Si/uOuRKQsIPMpQOBMYKJErJDJHKHXbyqLWo=
+			QePYHa89i7gFfjYM5IOcWYU7/DllcpjVlz1YHFGXpA0=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftdoc</key>
@@ -706,14 +706,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			jxT8/TRK0zAFmWSAJtr2pJUlFXu8vYPegJf0t4MKClY=
+			6ZDOv29hG3WrufRJCEhxiichGYt5ZE4+ByxSi5CtXvk=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			4JvyMg2Si/uOuRKQsIPMpQOBMYKJErJDJHKHXbyqLWo=
+			QePYHa89i7gFfjYM5IOcWYU7/DllcpjVlz1YHFGXpA0=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -755,7 +755,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			UaLVN1IqRELzMgSiOqRJ0Z94bp1aAvNpsJ41RT21bE4=
+			Lqi9zvXtczA4rk0fUCwCxxsuFteo6QHZfgxZ3IwUK5w=
 			</data>
 		</dict>
 		<key>mask_detection_sim_v1.mnn</key>

@@ -25,6 +25,8 @@ class IFaceDetection : public IEngineBase
 
         virtual void SetThreshold(float fThreshold) = 0;
 
+        virtual float GetThreshold() const = 0;
+
         // input image for mat should be BGR
         virtual std::vector<TFaceInfo> Detect(const cv::Mat& inputImage, cv::Mat* pResultImage = nullptr, TEngineDebugInfo* pInfo = nullptr) = 0;
 

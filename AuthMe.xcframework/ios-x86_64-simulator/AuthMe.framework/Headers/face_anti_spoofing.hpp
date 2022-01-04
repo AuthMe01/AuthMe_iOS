@@ -31,7 +31,11 @@ class IFaceAntiSpoofing : public IEngineBase
 
         virtual void SetThreshold(float fThreshold) = 0;
 
+        virtual float GetThreshold() const = 0;
+
         virtual void SetMinFrameNum(size_t uiLength) = 0;
+
+        virtual size_t GetMinFrameNum() const = 0;
 
         virtual void Reset() = 0;
 

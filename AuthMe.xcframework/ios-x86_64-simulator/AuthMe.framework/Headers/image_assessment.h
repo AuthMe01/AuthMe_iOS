@@ -11,6 +11,9 @@ float AuthMe_ImageSharpness(const AuthMeImage *pImage, int iAnalyzeWidth, int iA
 
 float AuthMe_ImageReflective(const AuthMeImage *pImage);
 
+#define DEFAULT_IMAGE_REFLECTIVE_LIGHT_TH 237
+float AuthMe_ImageReflective_v2(const AuthMeImage *pImage, const int iLightTh);
+
 float AuthMe_CheckIDCardFrontColor(AuthMeImage* pImage);
 
 float AuthMe_CheckIDCardFrontColor_Polygon(AuthMeImage* pImage, int *pPoints, int iLength);

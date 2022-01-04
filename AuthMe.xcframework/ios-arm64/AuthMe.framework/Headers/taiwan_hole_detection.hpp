@@ -25,6 +25,8 @@ class ITaiwanHoleDetection : public IEngineBase
 
         virtual void SetThreshold(float fThreshold) = 0;
 
+        virtual float GetThreshold() const = 0;
+
         // input image for mat should be BGR
         virtual ETaiwanHoleStatus Detect(const cv::Mat& matImage, const std::vector<cv::Point>& vecVertice, TEngineDebugInfo* pInfo = nullptr) = 0;
 

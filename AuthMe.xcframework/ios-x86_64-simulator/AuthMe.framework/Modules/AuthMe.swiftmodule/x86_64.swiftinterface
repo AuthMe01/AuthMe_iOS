@@ -368,8 +368,7 @@ public protocol AuthMeResult : FaceImageComparable {
     get
     set
   }
-  public static func initial(isLiveness: Swift.Bool = false, accessToken: Swift.String, languageProvider: @escaping () -> (Swift.String), completion: @escaping (Swift.Result<Swift.Void, AuthMeError>) -> Swift.Void)
-  public static func initialize(accessToken: Swift.String, languageProvider: @escaping () -> (Swift.String), completion: @escaping (Swift.Result<Swift.Void, AuthMeError>) -> Swift.Void)
+  public static func initialize(isLiveness: Swift.Bool = false, accessToken: Swift.String, languageProvider: @escaping () -> (Swift.String), completion: @escaping (Swift.Result<Swift.Void, AuthMeError>) -> Swift.Void)
   public static func compareFace(image1: UIKit.UIImage, image2: UIKit.UIImage, completion: @escaping (CompareResult) -> ())
   public static func compareFace(image1: FaceImageComparable, image2: FaceImageComparable, completion: @escaping (CompareResult) -> ())
   public static func comfirmResult(result: OCRResult, complete: @escaping () -> ())

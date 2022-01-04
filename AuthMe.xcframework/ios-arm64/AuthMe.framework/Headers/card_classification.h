@@ -12,6 +12,10 @@ EAuthMeEngineReturnCode AuthMe_CardClassification_Initial(long handle, const cha
 
 const char* AuthMe_CardClassification_GetModelInfo(long handle);
 
+EAuthMeEngineReturnCode AuthMe_CardClassification_SetThreshold(long handle, const float fThreshold);
+
+float AuthMe_CardClassification_GetThreshold(long handle);
+
 EAuthMeEngineReturnCode AuthMe_CardClassification_Run(long handle, AuthMeImage* pImage, int* pPoints, int iLength, EAuthMeCardClass* peClass, AuthMeEngineDebugInfo* pDebugInfo);
 
 #ifdef __cplusplus

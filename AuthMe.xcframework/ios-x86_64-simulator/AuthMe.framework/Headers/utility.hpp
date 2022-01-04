@@ -3,6 +3,7 @@
 #include <fstream>
 #include <memory>
 #include <vector>
+#include <map>
 #include <numeric>
 #include <algorithm>
 #include "engine_type.hpp"
@@ -12,6 +13,13 @@
 template<typename T> inline std::unique_ptr<T> MakeUnique(T* ptr)
 {
     return std::unique_ptr<T>(ptr);
+}
+
+template <typename K, typename T>
+std::ostream &operator<<(std::ostream &os, const std::pair<K, T> &pair)
+{
+    os << "[" << pair.first << ", " << pair.second << "]";
+    return os;
 }
 
 template <typename T>
@@ -26,6 +34,16 @@ std::ostream &operator<<(std::ostream &os, const std::vector<T> &vecValue)
             os << ", " << *it;
         }
         os << "]";
+    }
+    return os;
+}
+
+template <typename K, typename T>
+std::ostream &operator<<(std::ostream &os, const std::map<K, T> &map)
+{
+    for (auto it = map.begin(); it != map.end(); it++)
+    {
+        os << "'" << it->first << "': '" << it->second << "'" << std::endl;
     }
     return os;
 }
@@ -118,6 +136,7 @@ class CMovingAverage
 {
     public:
         void SetMaxLength(size_t uiMaxLength);
+        size_t GetMaxLength() const;
         size_t GetCurrentLength();
         bool ReachMaxLength();
         T Update(T value);
@@ -137,6 +156,12 @@ void CMovingAverage<T>::SetMaxLength(size_t uiMaxLength)
     m_uiMaxLength = uiMaxLength;
     m_vecValue.clear();
     m_vecValue.reserve(m_uiMaxLength);
+}
+
+template<typename T>
+size_t CMovingAverage<T>::GetMaxLength() const
+{
+    return m_uiMaxLength;
 }
 
 template<typename T>
@@ -197,7 +222,7 @@ std::vector<T> ReadValues(const std::string& strFilePath)
 }
 
 template<typename T>
-T LinearInterpolation(const std::vector<T>& vecSrc, const std::vector<T>& vecDst, const T value)
+T LinearInterpolation(const std::vector<T>& vecSrc, const std::vector<T>& vecDst, const T value, bool bClip = true)
 {
     if (vecSrc.size() != vecDst.size())
     {
@@ -216,7 +241,15 @@ T LinearInterpolation(const std::vector<T>& vecSrc, const std::vector<T>& vecDst
         idx -= 1;
     }
 
-    return ((value - vecSrc[idx - 1]) * vecDst[idx] + (vecSrc[idx] - value) * vecDst[idx - 1]) / (vecSrc[idx] - vecSrc[idx - 1]);
+    T interpValue = ((value - vecSrc[idx - 1]) * vecDst[idx] + (vecSrc[idx] - value) * vecDst[idx - 1]) / (vecSrc[idx] - vecSrc[idx - 1]);
+
+    if (bClip)
+    {
+        interpValue = std::min(interpValue, vecDst.back());
+        interpValue = std::max(interpValue, vecDst.front());
+    }
+
+    return interpValue;
 }
 
 template <class T>

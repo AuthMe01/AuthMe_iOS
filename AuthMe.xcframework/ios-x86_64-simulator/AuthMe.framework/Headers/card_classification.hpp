@@ -39,6 +39,10 @@ class ICardClassification : public IEngineBase
         // for plaintext model
         virtual bool Initial(const void *pData, size_t uiLength, EEngineFrameworkType eFramework, const std::string strHWAcceleration = "cpu") = 0;
 
+        virtual void SetThreshold(const float fThreshold) = 0;
+
+        virtual float GetThreshold() const = 0;
+
         // input image for mat should be BGR
         virtual ECardClass Run(const cv::Mat& matImage, const std::vector<cv::Point2i>& vecPolygon, TEngineDebugInfo* pInfo = nullptr) = 0;
 
