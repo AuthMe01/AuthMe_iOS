@@ -230,7 +230,7 @@
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		0/tTCTiKfKYCC6D4Ue9f4YvyNb8=
+		UZSY+CVkPeZot785zqD86tuUafA=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -242,7 +242,7 @@
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		0/tTCTiKfKYCC6D4Ue9f4YvyNb8=
+		UZSY+CVkPeZot785zqD86tuUafA=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -692,7 +692,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			KezGuKHB8RWJztjMiiNEBwYl2rvk6HsHhCyL2PsBVHM=
+			ai2wJxwNK+h6F8/mbB3HXzMrYnWK2+Yt2dUUUbNn80U=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/arm64.swiftdoc</key>
@@ -713,7 +713,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			KezGuKHB8RWJztjMiiNEBwYl2rvk6HsHhCyL2PsBVHM=
+			ai2wJxwNK+h6F8/mbB3HXzMrYnWK2+Yt2dUUUbNn80U=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
