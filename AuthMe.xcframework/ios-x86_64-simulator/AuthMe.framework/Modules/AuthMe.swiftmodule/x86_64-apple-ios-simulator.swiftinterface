@@ -130,12 +130,13 @@ public class AntiForgeryFlow {
   public func start(needConfirm: Swift.Bool, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
   public func restart()
   public func restartOCR() -> Swift.Bool
-  public func onGetPreviewData(image: UIKit.UIImage, rotateReverse: (() -> ())? = nil, rotateHandler: ((AntiForgeryRotate) -> Swift.Void)? = nil, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  public func onGetPreviewData(image: UIKit.UIImage, rotateReverse: ((Swift.Bool) -> ())? = nil, rotateAbort: (() -> ())? = nil, rotateHandler: ((AntiForgeryRotate) -> Swift.Void)? = nil, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
   public func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   public func enterRotateLeft()
   public func enterRotateUp()
   public func enterRotateFront()
   public func enterReverse() -> Swift.Bool
+  public func reenterRotate()
 }
 @_hasMissingDesignatedInitializers public class UploadImageRequest {
   @objc deinit
@@ -3477,6 +3478,7 @@ public enum OCRError : Swift.String, Foundation.LocalizedError {
   case ERROR_NETWORK
   case ERROR_RESPONSE
   case ERROR_SYSTEM_BUSY
+  case ERROR_401
   case NO_DETECTED
   case UNEXPECTED_CARD
   case CARD_TOO_SMALL
@@ -3487,6 +3489,8 @@ public enum OCRError : Swift.String, Foundation.LocalizedError {
   case CARD_NOT_IN_REGION
   case CARD_NOT_ALIGN
   case PROCESS_FAIL
+  case FRONT_FIELD_MISSING
+  case BACK_FIELD_MISSING
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
