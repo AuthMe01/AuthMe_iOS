@@ -1,13 +1,15 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
 // swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AuthMe
 @_exported import AuthMe
+import CoreMotion
 import CoreNFC
 import Dispatch
 import Foundation
 import Swift
 import UIKit
 import Vision
+import _Concurrency
 import simd
 public class LivenessFlow {
   public var delegate: FlowDelegate?
@@ -130,13 +132,16 @@ public class AntiForgeryFlow {
   public func start(needConfirm: Swift.Bool, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
   public func restart()
   public func restartOCR() -> Swift.Bool
-  public func onGetPreviewData(image: UIKit.UIImage, rotateReverse: ((Swift.Bool) -> ())? = nil, rotateAbort: (() -> ())? = nil, rotateHandler: ((AntiForgeryRotate) -> Swift.Void)? = nil, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  public func onGetPreviewData(image: UIKit.UIImage, verticalError: ((OCRError) -> ())? = nil, rotateReverse: ((Swift.Bool) -> ())? = nil, rotateAbort: (() -> ())? = nil, rotateHandler: ((AntiForgeryRotate) -> Swift.Void)? = nil, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
   public func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   public func enterRotateLeft()
   public func enterRotateUp()
   public func enterRotateFront()
   public func enterReverse() -> Swift.Bool
   public func reenterRotate()
+  public func enterPrepare(active: Swift.Bool)
+  public func enterR(active: Swift.Bool)
+  public func isMotionPass() -> MotionCondiction
 }
 @_hasMissingDesignatedInitializers public class UploadImageRequest {
   @objc deinit
@@ -177,8 +182,6 @@ extension Message {
   public init(jsonUTF8Data: Foundation.Data, options: JSONDecodingOptions = JSONDecodingOptions()) throws
   public init(jsonUTF8Data: Foundation.Data, extensions: ExtensionMap? = nil, options: JSONDecodingOptions = JSONDecodingOptions()) throws
 }
-extension UnsafeMutableRawPointer {
-}
 public struct _NameMap : Swift.ExpressibleByDictionaryLiteral {
   public enum NameDescription {
     case same(proto: Swift.StaticString)
@@ -191,15 +194,15 @@ public struct _NameMap : Swift.ExpressibleByDictionaryLiteral {
   public typealias Key = Swift.Int
   public typealias Value = _NameMap.NameDescription
 }
-extension CGRect {
+extension CoreGraphics.CGRect {
   public var center: CoreGraphics.CGPoint {
     get
   }
 }
-extension CGRect {
+extension CoreGraphics.CGRect {
   public init(center: CoreGraphics.CGPoint, size: CoreGraphics.CGSize)
 }
-extension CGRect {
+extension CoreGraphics.CGRect {
   public func resizing(to size: CoreGraphics.CGSize, anchor: CoreGraphics.CGPoint = CGPoint(x: 0.5, y: 0.5)) -> CoreGraphics.CGRect
 }
 public enum AnyUnpackError : Swift.Error {
@@ -277,10 +280,6 @@ extension Google_Protobuf_SourceContext : Message, _MessageImplementationBase, _
   public var hashValue: Swift.Int {
     get
   }
-}
-extension UnsafeMutableBufferPointer {
-}
-extension UnsafeMutableRawBufferPointer {
 }
 extension Message {
   public func textFormatString() -> Swift.String
@@ -393,7 +392,7 @@ public struct CompareResult {
     }
   }
 }
-extension Array where Element : Swift.Equatable {
+extension Swift.Array where Element : Swift.Equatable {
   public mutating func mergeElements<C>(newElements: C) where Element == C.Element, C : Swift.Collection
 }
 public enum BinaryEncodingError : Swift.Error {
@@ -1280,6 +1279,17 @@ public enum JSONDecodingError : Swift.Error {
   case messageDepthLimit
   case unknownField(Swift.String)
 }
+public enum MotionCondiction {
+  case none
+  case pass
+  case vertical
+  case horizontal
+  public static func == (a: MotionCondiction, b: MotionCondiction) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
 public class AbstractOCRFlow {
   public init(ocrcard: OCRCard)
   public func restart()
@@ -1380,20 +1390,20 @@ extension Google_Protobuf_ListValue : Message, _MessageImplementationBase, _Prot
     get
   }
 }
-extension Collection {
+extension Swift.Collection {
   public subscript(safe index: Self.Index) -> Self.Element? {
     get
   }
   public func group(by size: Swift.Int) -> [[Self.Element]]?
 }
-extension Collection where Self.Element : Swift.BinaryInteger {
+extension Swift.Collection where Self.Element : Swift.BinaryInteger {
   public func average() -> Swift.Double
 }
-extension Collection where Self.Element : Swift.FloatingPoint {
+extension Swift.Collection where Self.Element : Swift.FloatingPoint {
   public func average() -> Self.Element
 }
-extension UIDevice {
-  public static let modelName: Swift.String
+extension UIKit.UIDevice {
+  @_Concurrency.MainActor(unsafe) public static let modelName: Swift.String
 }
 extension Google_Protobuf_Duration {
   public init(seconds: Swift.Int64 = 0, nanos: Swift.Int32 = 0)
@@ -3262,7 +3272,7 @@ extension Message {
   @usableFromInline
   internal mutating func _merge(rawBuffer body: Swift.UnsafeRawBufferPointer, extensions: ExtensionMap?, partial: Swift.Bool, options: BinaryDecodingOptions) throws
 }
-extension Dictionary {
+extension Swift.Dictionary {
   public mutating func removeAll<S>(keys: S) where Key == S.Element, S : Swift.Sequence
   public func has(key: Key) -> Swift.Bool
   public static func + (lhs: [Key : Value], rhs: [Key : Value]) -> [Key : Value]
@@ -3491,6 +3501,9 @@ public enum OCRError : Swift.String, Foundation.LocalizedError {
   case PROCESS_FAIL
   case FRONT_FIELD_MISSING
   case BACK_FIELD_MISSING
+  case ERROR_VERCIAL
+  case ERROR_HORIZONTAL
+  case ERROR_ANGLE
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -3683,6 +3696,8 @@ extension Facing : Swift.RawRepresentable {}
 extension OCRCardType : Swift.Equatable {}
 extension OCRCardType : Swift.Hashable {}
 extension OCRCardType : Swift.RawRepresentable {}
+extension MotionCondiction : Swift.Equatable {}
+extension MotionCondiction : Swift.Hashable {}
 extension TextFormatDecodingError : Swift.Equatable {}
 extension TextFormatDecodingError : Swift.Hashable {}
 extension JSONEncodingError : Swift.Equatable {}
