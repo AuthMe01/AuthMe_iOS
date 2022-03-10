@@ -8,6 +8,12 @@ cv::Point_<T> operator * (const cv::Point_<T>& point, const cv::Size_<T>& scale)
 }
 
 template <typename T> inline static
+cv::Point_<T> operator / (const cv::Point_<T>& point, const cv::Size_<T>& factor)
+{
+    return cv::Point_<T>(point.x / factor.width, point.y / factor.height);
+}
+
+template <typename T> inline static
 cv::Rect_<T> operator * (const cv::Rect_<T>& rect, T scale)
 {
     return cv::Rect_<T>(rect.tl() * scale, rect.br() * scale);
@@ -17,6 +23,12 @@ template <typename T> inline static
 cv::Rect_<T> operator * (const cv::Rect_<T>& rect, const cv::Size_<T>& scale)
 {
     return cv::Rect_<T>(rect.tl() * scale, rect.br() * scale);
+}
+
+template <typename T> inline static
+cv::Rect_<T> operator / (const cv::Rect_<T>& rect, const cv::Size_<T>& factor)
+{
+    return cv::Rect_<T>(cv::Point_<T>(rect.tl() / factor), cv::Point_<T>(rect.br() / factor));
 }
 
 template <typename T> inline static
@@ -45,6 +57,7 @@ cv::Point_<T> operator * (const cv::Mat& mat, const cv::Point_<T>& p)
 {
     return p * mat;
 }
+
 template <typename T> inline static
 void Scale(cv::Rect_<T>& rect, const cv::Size_<T>& scale, const cv::Point_<T> shift = cv::Point_<T>())
 {
@@ -160,6 +173,12 @@ std::vector<cv::Point_<T>> ToCvPoint(const std::vector<T>& vecValues)
     return ToCvPoint(vecValues.data(), vecValues.size());
 }
 
+template<typename T, int N>
+std::vector<cv::Point_<T>> ToCvPoint(const T(&pValue)[N])
+{
+    return ToCvPoint(pValue, N);
+}
+
 template<typename T>
 T* ToArray(const std::vector<cv::Point_<T>>& vecPoints)
 {
@@ -174,6 +193,16 @@ T* ToArray(const std::vector<cv::Point_<T>>& vecPoints)
 }
 
 template<typename T>
+void ToArray(const std::vector<cv::Point_<T>>& vecPoints, T* pArray)
+{
+    for (size_t i = 0; i < vecPoints.size(); i++)
+    {
+        pArray[i * 2] = vecPoints[i].x;
+        pArray[i * 2 + 1] = vecPoints[i].y;
+    }
+}
+
+template<typename T>
 std::vector<T> ToValueVector(const std::vector<cv::Point_<T>>& vecPoints)
 {
     std::vector<T> vecValues(vecPoints.size() * 2);
@@ -185,4 +214,17 @@ std::vector<T> ToValueVector(const std::vector<cv::Point_<T>>& vecPoints)
     }
 
     return vecValues;
+}
+
+template<typename T>
+cv::Point_<T> Center(const cv::Rect_<T>& rect)
+{
+    return (rect.tl() + rect.br()) / T(2);
+}
+
+template<typename T>
+cv::Rect_<T> GetRectFromCenter(const cv::Point_<T>& center, const cv::Size_<T>& size)
+{
+    auto halfSize = size / T(2);
+    return cv::Rect_<T>(cv::Point_<T>(center - halfSize), cv::Point_<T>(center + halfSize));
 }

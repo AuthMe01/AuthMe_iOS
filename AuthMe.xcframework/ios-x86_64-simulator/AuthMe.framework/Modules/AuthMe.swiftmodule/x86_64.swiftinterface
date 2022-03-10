@@ -2,6 +2,7 @@
 // swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
 // swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AuthMe
 @_exported import AuthMe
+import CoreAudio
 import CoreMotion
 import CoreNFC
 import Dispatch
@@ -946,7 +947,7 @@ public protocol OCRFlowProtocol {
 public protocol OCRFlowAntiSpoofingProtocol {
   func setDelegate(delegate: FlowDelegate)
   func start(needConfirm: Swift.Bool, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
-  func onGetPreviewData(image: UIKit.UIImage, rotateReverse: (() -> ())?, rotateHandler: ((AntiForgeryRotate) -> Swift.Void)?, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  func onGetPreviewData(image: UIKit.UIImage, verticalError: ((OCRError) -> ())?, rotateReverse: ((Swift.Bool) -> ())?, rotateHandler: ((AntiForgeryRotate) -> Swift.Void)?, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
   func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   func restartOCR() -> Swift.Bool
@@ -954,6 +955,8 @@ public protocol OCRFlowAntiSpoofingProtocol {
   func enterRotateUp()
   func enterRotateFront()
   func enterReverse() -> Swift.Bool
+  func reenterRotate()
+  func enterPrepare(active: Swift.Bool)
 }
 public class OCRFactory {
   public init()
@@ -1115,6 +1118,31 @@ public struct QKMRZResult {
   public let isExpiryDateValid: Swift.Bool
   public let isPersonalNumberValid: Swift.Bool?
   public let allCheckDigitsValid: Swift.Bool
+}
+public protocol OCRFlowDelegate : AnyObject {
+  func notifyTitle(title: Swift.String)
+  func notifyMessage(message: Swift.String)
+}
+public enum OCRNotifyMessage : Swift.String {
+  case SUCCESS_SEGMENTATION
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol DebugOCRFlowDelegate : AnyObject {
+  func debugMessage(channel: DebugMessageChannel, message: Swift.String)
+}
+public enum DebugMessageChannel {
+  case text
+  case value
+  case fail
+  public static func == (a: DebugMessageChannel, b: DebugMessageChannel) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
 }
 public struct JSONEncodingOptions {
   public var alwaysPrintEnumsAsInts: Swift.Bool
@@ -3220,7 +3248,7 @@ public struct ProtobufBytes : FieldType, MapValueType {
   public static func visitPacked<V>(value: [ProtobufBytes.BaseType], fieldNumber: Swift.Int, with visitor: inout V) throws where V : Visitor
 }
 @_inheritsConvenienceInitializers public class AntiSpoofingFlow : TWIDFlow {
-  public func onGetPreviewData(image: UIKit.UIImage, rotateReverse: (() -> ())? = nil, rotateHandler: ((AntiForgeryRotate) -> Swift.Void)? = nil, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  public func onGetPreviewData(image: UIKit.UIImage, verticalError: ((OCRError) -> ())? = nil, rotateReverse: ((Swift.Bool) -> ())? = nil, rotateHandler: ((AntiForgeryRotate) -> Swift.Void)? = nil, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
   override public init(ocrcard: OCRCard)
   @objc deinit
 }
@@ -3230,6 +3258,8 @@ extension AntiSpoofingFlow : OCRFlowAntiSpoofingProtocol {
   public func enterRotateUp()
   public func enterRotateFront()
   public func enterReverse() -> Swift.Bool
+  public func reenterRotate()
+  public func enterPrepare(active: Swift.Bool)
 }
 public struct ExtensionFieldValueSet : Swift.Hashable {
   public static func == (lhs: ExtensionFieldValueSet, rhs: ExtensionFieldValueSet) -> Swift.Bool
@@ -3690,6 +3720,11 @@ extension TWLicenseResult.DataType : Swift.RawRepresentable {}
 extension TWHealthResult.DataType : Swift.Equatable {}
 extension TWHealthResult.DataType : Swift.Hashable {}
 extension TWHealthResult.DataType : Swift.RawRepresentable {}
+extension OCRNotifyMessage : Swift.Equatable {}
+extension OCRNotifyMessage : Swift.Hashable {}
+extension OCRNotifyMessage : Swift.RawRepresentable {}
+extension DebugMessageChannel : Swift.Equatable {}
+extension DebugMessageChannel : Swift.Hashable {}
 extension Facing : Swift.Equatable {}
 extension Facing : Swift.Hashable {}
 extension Facing : Swift.RawRepresentable {}

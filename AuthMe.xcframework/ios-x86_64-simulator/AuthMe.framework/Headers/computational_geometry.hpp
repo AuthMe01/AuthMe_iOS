@@ -5,6 +5,29 @@
 namespace AuthMe
 {
 
+typedef enum E_POINT_CONVEX_POLYGON_RELATION
+{
+    eRelation_None,
+    eRelation_PointOutside,
+    eRelation_PointOnEdge,
+    eRelation_PointInside
+} EPointConvexPolygonRelation;
+
+template<typename T>
+double ConvexPolygonArea(const std::vector<cv::Point_<T>>& vecPolygon);
+
+template<typename T>
+cv::Point_<T> PolygonCenter(const std::vector<cv::Point_<T>>& vecPolygon)
+{
+    cv::Point_<T> sum;
+    for (auto&p : vecPolygon)
+    {
+        sum += p;
+    }
+
+    return sum / static_cast<T>(vecPolygon.size());
+}
+
 template<typename T> bool IsZero(T val)
 {
     if (std::is_integral<T>::value)
@@ -59,6 +82,22 @@ bool HasIntersection(const std::pair<cv::Point_<T>, cv::Point_<T>>& edge1, const
 {
     return HasIntersection(edge1.first, edge1.second, edge2.first, edge2.second);
 }
+
+// return true if segment has exact one intersection
+template<typename T>
+bool HasSegmentIntersection(const cv::Point_<T>& a1, const cv::Point_<T>& a2, const cv::Point_<T>& b1, const cv::Point_<T>& b2);
+
+template<typename T>
+cv::Point_<T> SegmentIntersection(const cv::Point_<T>& a1, const cv::Point_<T>& a2, const cv::Point_<T>& b1, const cv::Point_<T>& b2);
+
+template<typename T>
+EPointConvexPolygonRelation GetPointConvexPolygonRelation(const std::vector<cv::Point_<T>>& vecVertices, const cv::Point_<T>& p);
+
+template<typename T>
+std::vector<cv::Point_<T>> ConvexPolygonIntersection(const std::vector<cv::Point_<T>>& polygonA, const std::vector<cv::Point_<T>>& polygonB);
+
+template<typename T>
+float CalcDIOU(const std::vector<cv::Point_<T>>& polygonA, const std::vector<cv::Point_<T>>& polygonB);
 
 template<typename T>
 cv::Point_<T> ProjectPoint(const cv::Point_<T>& p, const cv::Point_<T>& a1, const cv::Point_<T>& a2)

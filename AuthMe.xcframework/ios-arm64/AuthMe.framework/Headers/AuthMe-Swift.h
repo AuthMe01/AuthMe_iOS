@@ -222,6 +222,7 @@ SWIFT_CLASS("_TtC6AuthMe9AuthMeNfc") SWIFT_AVAILABILITY(ios,introduced=13.0)
 
 
 
+
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop
 #endif

@@ -6,9 +6,36 @@
 #include <map>
 #include <numeric>
 #include <algorithm>
+#include <tuple>
 #include "engine_type.hpp"
 #include "opencv2/imgproc.hpp"
 #include "opencv2/core.hpp"
+
+template<typename T, size_t size>
+std::size_t ArraySize(T(&)[size])
+{
+    return size;
+}
+
+template<typename T>
+bool ContentEquals(const T& a, const T& b)
+{
+    return a == b;
+}
+
+template<typename T, size_t size>
+bool ContentEquals(const T(&A)[size], const T(&B)[size])
+{
+    for (size_t i = 0 ; i < size; i++)
+    {
+        if (!ContentEquals(A[i], B[i]))
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
 
 template<typename T> inline std::unique_ptr<T> MakeUnique(T* ptr)
 {
@@ -86,6 +113,21 @@ std::vector<int> SortIndex(const std::vector<T>& vecValue)
     return vecIndex;
 }
 
+template <typename T, typename K>
+void Reorder(std::vector<T>& vecValue, const std::vector<K>& vecIndex)
+{
+    if constexpr(std::is_integral<K>::value)
+    {
+        std::vector<T> vecTmp(vecIndex.size());
+        for (size_t i = 0; i < vecIndex.size(); i++)
+        {
+            vecTmp[i] = vecValue[vecIndex[i]];
+        }
+
+        vecValue = vecTmp;
+    }
+}
+
 template <typename T>
 void CominationLoop(std::vector<std::vector<T>>& vecConbimations,
                     const std::vector<T>& vecElements,
@@ -132,14 +174,18 @@ void ExtractTopK(std::vector<T>& vecIndex, size_t K)
 }
 
 template<typename T>
-class CMovingAverage
+class CMovingWindow
 {
     public:
         void SetMaxLength(size_t uiMaxLength);
         size_t GetMaxLength() const;
-        size_t GetCurrentLength();
-        bool ReachMaxLength();
-        T Update(T value);
+        size_t GetCurrentLength() const;
+        bool ReachMaxLength() const;
+        void Update(T value);
+        T Last() const;
+        T Mean() const;
+        T Variance() const;
+        T Stddev() const;
         void Clear();
 
     private:
@@ -150,7 +196,7 @@ class CMovingAverage
 };
 
 template<typename T>
-void CMovingAverage<T>::SetMaxLength(size_t uiMaxLength)
+void CMovingWindow<T>::SetMaxLength(size_t uiMaxLength)
 {
     m_sum = T(0);
     m_uiMaxLength = uiMaxLength;
@@ -159,25 +205,25 @@ void CMovingAverage<T>::SetMaxLength(size_t uiMaxLength)
 }
 
 template<typename T>
-size_t CMovingAverage<T>::GetMaxLength() const
+size_t CMovingWindow<T>::GetMaxLength() const
 {
     return m_uiMaxLength;
 }
 
 template<typename T>
-size_t CMovingAverage<T>::GetCurrentLength()
+size_t CMovingWindow<T>::GetCurrentLength() const
 {
     return m_vecValue.size();
 }
 
 template<typename T>
-bool CMovingAverage<T>::ReachMaxLength()
+bool CMovingWindow<T>::ReachMaxLength() const
 {
     return m_vecValue.size() == m_uiMaxLength;
 }
 
 template<typename T>
-T CMovingAverage<T>::Update(T value)
+void CMovingWindow<T>::Update(T value)
 {
     m_sum += value;
 
@@ -191,12 +237,57 @@ T CMovingAverage<T>::Update(T value)
         m_vecValue[m_iLastElementIdx] = value;
         m_iLastElementIdx = (m_iLastElementIdx + 1) % m_vecValue.size();
     }
+}
 
+template<typename T>
+T CMovingWindow<T>::Last() const
+{
+    if (m_vecValue.size() != 0)
+    {
+        return m_vecValue.back();
+    }
+
+    return T();
+}
+
+template<typename T>
+T CMovingWindow<T>::Mean() const
+{
     return m_sum / static_cast<T>(m_vecValue.size());
 }
 
 template<typename T>
-void CMovingAverage<T>::Clear()
+T CMovingWindow<T>::Variance() const
+{
+    if (m_vecValue.size() == 0)
+    {
+        return T();
+    }
+
+    auto mean = Mean();
+    auto sumSqrDiff = T();
+    for (auto value : m_vecValue)
+    {
+        sumSqrDiff += (value - mean) * (value - mean);
+    }
+
+    return sumSqrDiff / static_cast<T>(m_vecValue.size());
+}
+
+
+template<typename T>
+T CMovingWindow<T>::Stddev() const
+{
+    if (m_vecValue.size() == 0)
+    {
+        return T();
+    }
+
+    return static_cast<T>(std::sqrt(Variance()));
+}
+
+template<typename T>
+void CMovingWindow<T>::Clear()
 {
     SetMaxLength(m_uiMaxLength);
 }
@@ -252,22 +343,40 @@ T LinearInterpolation(const std::vector<T>& vecSrc, const std::vector<T>& vecDst
     return interpValue;
 }
 
-template <class T>
-cv::Mat WarpPerspective(const cv::Mat& image, const std::vector<cv::Point_<T>>& vecVertices, const cv::Size targetSize)
+template<typename T>
+std::vector<cv::Point_<T>> GetBoundPolygon(cv::Size targetSize)
 {
-    const std::vector<cv::Point2f> vecRefPoints =
+    const std::vector<cv::Point_<T>> vecRefPoints =
     {
-        {0.0f, 0.0f},
-        {static_cast<float>(targetSize.width - 1), 0.0f},
-        {static_cast<float>(targetSize.width - 1), static_cast<float>(targetSize.height - 1)},
-        {0.0f, static_cast<float>(targetSize.height - 1)}
+        {T(0), T(0)},
+        {static_cast<T>(targetSize.width - 1), T(0)},
+        {static_cast<T>(targetSize.width - 1), static_cast<T>(targetSize.height - 1)},
+        {T(0), static_cast<T>(targetSize.height - 1)}
     };
+
+    return vecRefPoints;
+}
+
+// return [warppedimage, matrix]
+template <class T>
+std::pair<cv::Mat, cv::Mat> WarpPerspectiveWithMatrix(const cv::Mat& image, const std::vector<cv::Point_<T>>& vecVertices, const cv::Size targetSize)
+{
+    auto vecRefPoints = GetBoundPolygon<float>(targetSize);
 
     cv::Mat matTmp;
     cv::Mat matrix = cv::getPerspectiveTransform(Convert<cv::Point2f>(vecVertices), vecRefPoints);
     cv::warpPerspective(image, matTmp, matrix, targetSize);
 
-    return matTmp;
+    return {matTmp, matrix};
+}
+
+// return warppedimage
+template <class T>
+cv::Mat WarpPerspective(const cv::Mat& image, const std::vector<cv::Point_<T>>& vecVertices, const cv::Size targetSize)
+{
+    cv::Mat warppedImage;
+    std::tie(warppedImage, std::ignore) = WarpPerspectiveWithMatrix(image, vecVertices, targetSize);
+    return warppedImage;
 }
 
 template<typename T>
@@ -282,6 +391,34 @@ T Sum(const std::vector<T>& vecValue)
     return sum;
 }
 
+template<typename T>
+T Clip(const T& value, const T& minValue, const T& maxValue)
+{
+    return std::max(std::min(value, maxValue), minValue);
+}
+
+// remove duplicates form a sorted vector
+template<typename T>
+void RemoveDuplicates(std::vector<T>& vecValue)
+{
+    if (vecValue.size() < 2)
+    {
+        return;
+    }
+
+    auto p = vecValue[0];
+    int idx = 0;
+    for (size_t i = 1; i < vecValue.size(); i++)
+    {
+        if (vecValue[i] != vecValue[idx])
+        {
+            vecValue[++idx] = vecValue[i];
+        }
+    }
+
+    vecValue.resize(idx + 1);
+}
+
 std::string GetExtension(const std::string& strPath);
 
 std::string ReplaceExtension(const std::string& strPath, const std::string& strExtension);
@@ -289,6 +426,8 @@ std::string ReplaceExtension(const std::string& strPath, const std::string& strE
 std::vector<std::string> Split(const std::string& str, const std::string& delim);
 
 size_t FileSize(const std::string& strFilePath);
+
+bool IsFileExist(const char* szFilePath);
 
 bool IsFileExist(const std::string& strFilePath);
 

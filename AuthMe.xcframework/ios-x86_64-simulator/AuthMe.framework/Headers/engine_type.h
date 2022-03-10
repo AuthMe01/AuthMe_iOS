@@ -108,12 +108,24 @@ typedef struct _AUTHME_RECT_FLOAT
     float fBottom;
 } AuthMeRectFloat;
 
+typedef struct _AUTHME_SIZE
+{
+    int iWidth;
+    int iHeight;
+} AuthMeSize;
+
+typedef struct _AUTHME_POINT_FLOAT
+{
+    float fX;
+    float fY;
+} AuthMePointFloat;
+
 typedef struct _AUTHME_FACE_INFO
 {
     float fScore;
     float fMask;
     AuthMeRectFloat box;
-    float afLandmark[10];
+    float afLandmark[10]; //x1, y1, x2, y2, ...
 } AuthMeFaceInfo;
 
 typedef struct _AUTHME_T_MRZ_FIELD
