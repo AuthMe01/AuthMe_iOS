@@ -9,6 +9,7 @@ import Dispatch
 import Foundation
 import Swift
 import UIKit
+import UIKit/*.UIImage*/
 import Vision
 import _Concurrency
 import simd
@@ -362,7 +363,7 @@ public protocol FaceImageComparable {
 public protocol AuthMeResult : FaceImageComparable {
 }
 @_hasMissingDesignatedInitializers public class AuthMe {
-  public static var version: Swift.Double {
+  public static var version: Swift.String {
     get
   }
   public static var baseUrl: Swift.String {
@@ -903,6 +904,19 @@ extension Google_Protobuf_ListValue {
     set(newValue)
   }
 }
+@_inheritsConvenienceInitializers public class TWIDAntiSpoofingFlow : TWIDFlow {
+  public func release()
+  public func onGetPreviewData(image: UIKit.UIImage, verticalError: ((OCRError) -> ())? = nil, rotateReverse: ((Swift.Bool) -> ())? = nil, rotateHandler: ((AntiForgeryRotate) -> Swift.Void)? = nil, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  override public init(ocrcard: OCRCard)
+  @objc deinit
+}
+extension TWIDAntiSpoofingFlow : OCRFlowAntiSpoofingProtocol {
+  public func restartOCR() -> Swift.Bool
+  public func enterRotate(status: AntiForgeryRotate)
+  public func enterReverse() -> Swift.Bool
+  public func reenterRotate()
+  public func enterPrepare(active: Swift.Bool)
+}
 @available(iOS 13.0, *)
 public class MyDataFlow {
   public init()
@@ -937,7 +951,7 @@ extension Google_Protobuf_Any {
   public func hash(into hasher: inout Swift.Hasher)
 }
 public protocol OCRFlowProtocol {
-  func setDelegate(delegate: FlowDelegate)
+  func setDelegate(delegate: OCRFlowDelegate)
   func start(needConfirm: Swift.Bool, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
   func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
   func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
@@ -945,15 +959,13 @@ public protocol OCRFlowProtocol {
   func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
 }
 public protocol OCRFlowAntiSpoofingProtocol {
-  func setDelegate(delegate: FlowDelegate)
+  func setDelegate(delegate: OCRFlowDelegate)
   func start(needConfirm: Swift.Bool, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
   func onGetPreviewData(image: UIKit.UIImage, verticalError: ((OCRError) -> ())?, rotateReverse: ((Swift.Bool) -> ())?, rotateHandler: ((AntiForgeryRotate) -> Swift.Void)?, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
   func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   func restartOCR() -> Swift.Bool
-  func enterRotateLeft()
-  func enterRotateUp()
-  func enterRotateFront()
+  func enterRotate(status: AntiForgeryRotate)
   func enterReverse() -> Swift.Bool
   func reenterRotate()
   func enterPrepare(active: Swift.Bool)
@@ -1306,6 +1318,9 @@ public enum JSONDecodingError : Swift.Error {
   case conflictingOneOf
   case messageDepthLimit
   case unknownField(Swift.String)
+}
+@_hasMissingDesignatedInitializers open class EngineService {
+  @objc deinit
 }
 public enum MotionCondiction {
   case none
@@ -3248,15 +3263,14 @@ public struct ProtobufBytes : FieldType, MapValueType {
   public static func visitPacked<V>(value: [ProtobufBytes.BaseType], fieldNumber: Swift.Int, with visitor: inout V) throws where V : Visitor
 }
 @_inheritsConvenienceInitializers public class AntiSpoofingFlow : TWIDFlow {
+  public func release()
   public func onGetPreviewData(image: UIKit.UIImage, verticalError: ((OCRError) -> ())? = nil, rotateReverse: ((Swift.Bool) -> ())? = nil, rotateHandler: ((AntiForgeryRotate) -> Swift.Void)? = nil, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
   override public init(ocrcard: OCRCard)
   @objc deinit
 }
 extension AntiSpoofingFlow : OCRFlowAntiSpoofingProtocol {
   public func restartOCR() -> Swift.Bool
-  public func enterRotateLeft()
-  public func enterRotateUp()
-  public func enterRotateFront()
+  public func enterRotate(status: AntiForgeryRotate)
   public func enterReverse() -> Swift.Bool
   public func reenterRotate()
   public func enterPrepare(active: Swift.Bool)
@@ -3658,7 +3672,7 @@ public struct UnknownStorage : Swift.Equatable {
   public static func == (a: UnknownStorage, b: UnknownStorage) -> Swift.Bool
 }
 @_inheritsConvenienceInitializers public class OCRMainFlow : AbstractOCRFlow, OCRFlowProtocol {
-  public func setDelegate(delegate: FlowDelegate)
+  public func setDelegate(delegate: OCRFlowDelegate)
   public func start(needConfirm: Swift.Bool, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
   public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
   public func onGetPreviewDataAntiSpoofing(image: UIKit.UIImage, rotateReverse: (() -> ())?, rotateHandler: ((AntiForgeryRotate) -> Swift.Void)?, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
