@@ -21,6 +21,12 @@ typedef struct AUTHME_MODEL_INIT_INFO
     AuthMeBufferInfo buffer;
 } AuthMeModelInitInfo;
 
+typedef struct AUTHME_MODEL_VERSION
+{
+    char szName[32];
+    char szVersion[8];
+} AuthMeModelVersion;
+
 typedef struct AUTHME_FAS_SERVICE_MODELS
 {
     AuthMeModelInitInfo faceDetectModel;
@@ -102,6 +108,7 @@ typedef enum E_AUTHME_FAS_SERVICE_STATUS
     eAuthMe_FASService_Error,
 } EAuthMeFASServiceStatus;
 
+const int FAS_SERVICE_STAGE_START_LINE = __LINE__;
 typedef enum E_AUTHME_FAS_SERVICE_STAGE
 {
     eAuthMe_FASService_Stage_Passive,
@@ -109,6 +116,7 @@ typedef enum E_AUTHME_FAS_SERVICE_STAGE
     eAuthMe_FASService_Stage_CloseMouth,
     eAuthMe_FASService_Stage_Done,
 } EAuthMeFASServiceStage;
+const int iAuthMeFASServiceStageCount = __LINE__ - FAS_SERVICE_STAGE_START_LINE - 4;
 
 typedef struct AUTHME_FAS_RESULT
 {

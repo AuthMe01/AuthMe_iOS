@@ -91,5 +91,6 @@ typedef struct T_MRZ_FIELD_TD3
     std::string nationality;
     std::string personalNumber;
 } TMRZFieldTD3;
-
 }
+
+

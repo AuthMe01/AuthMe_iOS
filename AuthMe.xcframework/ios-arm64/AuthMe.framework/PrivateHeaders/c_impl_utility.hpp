@@ -1,28 +1,17 @@
 #pragma once
 #include "engine_type.h"
+#include "engine_type_v3.h"
 #include "engine_error_code.h"
 #include "utility_define.hpp"
 #include "opencv2/core.hpp"
+
 #include <iostream>
+#include "utility.hpp"
+#include "utility_algorithm.hpp"
+#include "utility_format_adapter.hpp"
 
 namespace AuthMe
 {
-
-inline cv::Rect2f GetCvRect(const AuthMeRectFloat& rect)
-{
-    return cv::Rect2f(cv::Point2f(rect.fLeft, rect.fTop), cv::Point2f(rect.fRight, rect.fBottom));
-}
-
-inline AuthMeRectFloat ToAuthMeRectFloat(const cv::Rect2f& rect)
-{
-    return AuthMeRectFloat
-    {
-        .fLeft = rect.tl().x,
-        .fTop = rect.tl().y,
-        .fRight = rect.br().x,
-        .fBottom = rect.br().y
-    };
-}
 
 template<typename T>
 EAuthMeEngineReturnCode CreateDetector(long* pHandle, T CreatFunc())
@@ -136,6 +125,33 @@ float GetThreshold(long handle)
     }
 
     return 0.0f;
+}
+
+template<typename ServiceType>
+EAuthMeEngineReturnCode GetModelVersion(AuthMeModelVersion** ppVersion, int *piModelNum)
+{
+    try
+    {
+        if (ppVersion == NULL || piModelNum == NULL)
+        {
+            return eAuthMe_Engine_Failed;
+        }
+
+        auto vecVersion = ServiceType::GetModelVersion();
+
+        *piModelNum = static_cast<int>(vecVersion.size());
+        *ppVersion = new AuthMeModelVersion[vecVersion.size()];
+
+        memcpy(*ppVersion, vecVersion.data(), vecVersion.size() * sizeof(AuthMeModelVersion));
+
+        return eAuthMe_Engine_Success;
+    }
+    catch (const std::exception& e)
+    {
+        DBG_CERR << e.what() << '\n';
+    }
+
+    return eAuthMe_Engine_Failed;
 }
 
 cv::Mat GetCvMat_BGR(const AuthMeImage& image);

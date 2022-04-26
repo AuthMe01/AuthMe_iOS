@@ -1,37 +1,56 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-compiler-version: Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)
 // swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AuthMe
+import AVFoundation
 @_exported import AuthMe
 import CoreAudio
+import CoreGraphics/*.CGFloat*/
+import CoreGraphics/*.CGRect*/
+import CoreGraphics/*.CGSize*/
 import CoreMotion
 import CoreNFC
 import Dispatch
 import Foundation
+import MobileCoreServices
+import Photos
 import Swift
 import UIKit
 import UIKit/*.UIImage*/
+import VideoToolbox
 import Vision
 import _Concurrency
 import simd
+public protocol LivenessFlowDelegate : AnyObject {
+  func livenessFlow(_ livenessFlow: LivenessFlow, didNotifyTitle title: Swift.String)
+  func livenessFlow(_ livenessFlow: LivenessFlow, didNotifyMessage message: Swift.String)
+  func livenessFlow(_ livenessFlow: LivenessFlow, didFailureWith error: LivenessFlow.FlowError, retryHandler: @escaping (() -> Swift.Void))
+  func livenessFlow(_ livenessFlow: LivenessFlow, didRecognize image: UIKit.UIImage)
+}
 public class LivenessFlow {
-  public var delegate: FlowDelegate?
-  public func getResult() -> LivenessResult
-  public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, Swift.Error>) -> Swift.Void)
-  public func onGetPhotoData(image: UIKit.UIImage) -> UIKit.UIImage?
-  public init(isPassive: Swift.Bool = false, timeout: Foundation.TimeInterval)
+  weak public var delegate: LivenessFlowDelegate?
+  public var isDetecting: Swift.Bool {
+    get
+  }
+  public init(isPassive: Swift.Bool)
+  public func start()
+  public func recognize(image: UIKit.UIImage)
+  public func upload(progressHandler: @escaping ((Foundation.Progress) -> Swift.Void), completion: @escaping (() -> Swift.Void))
   @objc deinit
-  public func start(completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
-  public func stop()
-  public func restart(completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
-  public func switchMode(isAuto: Swift.Bool)
-  public func processManual(image: UIKit.UIImage, frameNo: Swift.Int) -> UIKit.UIImage?
 }
 extension LivenessFlow {
-  public func recordResult(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
+  public enum FlowError : Swift.Error {
+    case start
+    case recognize
+    case upload(isExpired: Swift.Bool)
+  }
 }
-public struct UploadInfoRequestBody {
+extension E_AUTHME_FAS_SERVICE_STATUS {
+  public var hintMessage: Swift.String {
+    get
+  }
+}
+public struct UploadInfoRequestBody : Swift.Encodable {
   public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
 }
 public struct UploadInfoRequest {
 }
@@ -111,39 +130,75 @@ extension Google_Protobuf_Struct {
     set(newValue)
   }
 }
-public enum AntiForgeryRotate {
-  case left
-  case up
-  case front
-  public static func == (a: AntiForgeryRotate, b: AntiForgeryRotate) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public var hashValue: Swift.Int {
-    get
+final public class URLEncodedFormEncoder {
+  public enum ArrayEncoding {
+    case brackets
+    case noBrackets
+    case indexInBrackets
+    public static func == (a: URLEncodedFormEncoder.ArrayEncoding, b: URLEncodedFormEncoder.ArrayEncoding) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
   }
-}
-public struct RotatePoints {
-  public init(leftUp: CoreGraphics.CGPoint, leftDown: CoreGraphics.CGPoint, rightUp: CoreGraphics.CGPoint, rightDown: CoreGraphics.CGPoint)
-}
-public class AntiForgeryFlow {
-  public static func transformedLeftPoint(w: Swift.Float, h: Swift.Float, degree: Swift.Float, x: inout Swift.Float, y: inout Swift.Float)
-  public static func transformedTopPoint(w: Swift.Float, h: Swift.Float, degree: Swift.Float, x: inout Swift.Float, y: inout Swift.Float)
-  public var viewRotatePoints: RotatePoints?
-  public var delegate: FlowDelegate?
-  public init(enableSpoofing: Swift.Bool)
+  public enum BoolEncoding {
+    case numeric
+    case literal
+    public static func == (a: URLEncodedFormEncoder.BoolEncoding, b: URLEncodedFormEncoder.BoolEncoding) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum DataEncoding {
+    case deferredToData
+    case base64
+    case custom((Foundation.Data) throws -> Swift.String)
+  }
+  public enum DateEncoding {
+    case deferredToDate
+    case secondsSince1970
+    case millisecondsSince1970
+    case iso8601
+    case formatted(Foundation.DateFormatter)
+    case custom((Foundation.Date) throws -> Swift.String)
+  }
+  public enum KeyEncoding {
+    case useDefaultKeys
+    case convertToSnakeCase
+    case convertToKebabCase
+    case capitalized
+    case uppercased
+    case lowercased
+    case custom((Swift.String) -> Swift.String)
+  }
+  public enum SpaceEncoding {
+    case percentEscaped
+    case plusReplaced
+    public static func == (a: URLEncodedFormEncoder.SpaceEncoding, b: URLEncodedFormEncoder.SpaceEncoding) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum Error : Swift.Error {
+    case invalidRootObject(Swift.String)
+  }
+  final public let alphabetizeKeyValuePairs: Swift.Bool
+  final public let arrayEncoding: URLEncodedFormEncoder.ArrayEncoding
+  final public let boolEncoding: URLEncodedFormEncoder.BoolEncoding
+  final public let dataEncoding: URLEncodedFormEncoder.DataEncoding
+  final public let dateEncoding: URLEncodedFormEncoder.DateEncoding
+  final public let keyEncoding: URLEncodedFormEncoder.KeyEncoding
+  final public let spaceEncoding: URLEncodedFormEncoder.SpaceEncoding
+  final public var allowedCharacters: Foundation.CharacterSet
+  public init(alphabetizeKeyValuePairs: Swift.Bool = true, arrayEncoding: URLEncodedFormEncoder.ArrayEncoding = .brackets, boolEncoding: URLEncodedFormEncoder.BoolEncoding = .numeric, dataEncoding: URLEncodedFormEncoder.DataEncoding = .base64, dateEncoding: URLEncodedFormEncoder.DateEncoding = .deferredToDate, keyEncoding: URLEncodedFormEncoder.KeyEncoding = .useDefaultKeys, spaceEncoding: URLEncodedFormEncoder.SpaceEncoding = .percentEscaped, allowedCharacters: Foundation.CharacterSet = .afURLQueryAllowed)
+  final public func encode(_ value: Swift.Encodable) throws -> Swift.String
+  final public func encode(_ value: Swift.Encodable) throws -> Foundation.Data
   @objc deinit
-  public func start(needConfirm: Swift.Bool, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
-  public func restart()
-  public func restartOCR() -> Swift.Bool
-  public func onGetPreviewData(image: UIKit.UIImage, verticalError: ((OCRError) -> ())? = nil, rotateReverse: ((Swift.Bool) -> ())? = nil, rotateAbort: (() -> ())? = nil, rotateHandler: ((AntiForgeryRotate) -> Swift.Void)? = nil, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
-  public func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
-  public func enterRotateLeft()
-  public func enterRotateUp()
-  public func enterRotateFront()
-  public func enterReverse() -> Swift.Bool
-  public func reenterRotate()
-  public func enterPrepare(active: Swift.Bool)
-  public func enterR(active: Swift.Bool)
-  public func isMotionPass() -> MotionCondiction
+}
+extension Foundation.CharacterSet {
+  public static let afURLQueryAllowed: Foundation.CharacterSet
 }
 @_hasMissingDesignatedInitializers public class UploadImageRequest {
   @objc deinit
@@ -250,24 +305,6 @@ extension _MessageImplementationBase {
   public static func == (lhs: Self, rhs: Self) -> Swift.Bool
   public func _protobuf_generated_isEqualTo(other: Self) -> Swift.Bool
 }
-public struct LivenessResult : AuthMeResult {
-  public let confidence: LivenessResult.Confidence
-  public let image: UIKit.UIImage?
-  public let isAuto: Swift.Bool
-  public let fileID: Swift.String
-  public enum Confidence : Swift.String {
-    case Low
-    case Medium
-    case High
-    case Unknown
-    public init?(rawValue: Swift.String)
-    public typealias RawValue = Swift.String
-    public var rawValue: Swift.String {
-      get
-    }
-  }
-  public static let failed: LivenessResult
-}
 public struct Google_Protobuf_SourceContext {
   public var fileName: Swift.String
   public var unknownFields: UnknownStorage
@@ -307,24 +344,29 @@ extension Google_Protobuf_Timestamp : Message, _MessageImplementationBase, _Prot
     get
   }
 }
-public protocol LivenessVideoDelegate : AnyObject {
-  func notifyTitle(title: Swift.String)
-  func notifyMessage(message: Swift.String)
+@dynamicMemberLookup public struct Fluent<Subject> {
+  public let subject: Subject
+  public subscript<Value>(dynamicMember keyPath: Swift.WritableKeyPath<Subject, Value>) -> ((Value) -> Fluent<Subject>) {
+    get
+  }
+  public func set<Value>(_ keyPath: Swift.WritableKeyPath<Subject, Value>, _ value: Value) -> Fluent<Subject>
 }
-public class LivenessVideoFlow {
-  public var delegate: LivenessVideoDelegate?
-  final public let customerId: Swift.String
-  public func getResult() -> LivenessResult
-  public init(isPassive: Swift.Bool = false, customerId: Swift.String)
-  public func start(complation: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
-  public func stop()
-  public func switchMode(isAuto: Swift.Bool)
-  public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, Swift.Error>) -> Swift.Void)
-  public func onGetPhotoData(image: UIKit.UIImage) -> UIKit.UIImage?
-  public func recordResult(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
-  public func uploadVideo(file: Foundation.Data, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
-  @objc deinit
+@dynamicMemberLookup public struct ObjectFluent<Subject> where Subject : AnyObject {
+  public let subject: Subject
+  public subscript<Value>(dynamicMember keyPath: Swift.ReferenceWritableKeyPath<Subject, Value>) -> ((Value) -> ObjectFluent<Subject>) {
+    get
+  }
+  @discardableResult
+  public func set<Value>(_ keyPath: Swift.ReferenceWritableKeyPath<Subject, Value>, _ value: Value) -> ObjectFluent<Subject>
+  public func cauterize()
 }
+postfix operator +
+postfix public func + <T>(lhs: T) -> Fluent<T>
+postfix public func + <T>(lhs: T) -> ObjectFluent<T> where T : AnyObject
+postfix operator -
+postfix public func - <T>(lhs: Fluent<T>) -> T
+@discardableResult
+postfix public func - <T>(lhs: ObjectFluent<T>) -> T where T : AnyObject
 public protocol Enum : Swift.Hashable, Swift.RawRepresentable {
   init()
   init?(rawValue: Swift.Int)
@@ -337,6 +379,10 @@ public struct OCRInitScanDocRequest {
 }
 extension Message {
   public init(unpackingAny: Google_Protobuf_Any, extensions: ExtensionMap? = nil, options: BinaryDecodingOptions = BinaryDecodingOptions()) throws
+}
+public protocol Cancellable : AnyObject {
+  var isCancelled: Swift.Bool { get }
+  func cancel()
 }
 public protocol ProtobufAPIVersion_2 {
 }
@@ -371,7 +417,7 @@ public protocol AuthMeResult : FaceImageComparable {
     set
   }
   public static func replace(accessToken: Swift.String)
-  public static func initialize(isLiveness: Swift.Bool = false, accessToken: Swift.String, languageProvider: @escaping () -> (Swift.String), completion: @escaping (Swift.Result<Swift.Void, AuthMeError>) -> Swift.Void)
+  public static func initialize(accessToken: Swift.String, languageProvider: @escaping () -> (Swift.String), completion: @escaping (Swift.Result<Swift.Void, AuthMeError>) -> Swift.Void)
   public static func compareFace(image1: UIKit.UIImage, image2: UIKit.UIImage, completion: @escaping (CompareResult) -> ())
   public static func compareFace(image1: FaceImageComparable, image2: FaceImageComparable, completion: @escaping (CompareResult) -> ())
   public static func comfirmResult(result: OCRResult, complete: @escaping () -> ())
@@ -406,18 +452,10 @@ public enum BinaryEncodingError : Swift.Error {
     get
   }
 }
-@_inheritsConvenienceInitializers public class TWLicenseFlow : OCRMainFlow {
-  override public func start(needConfirm: Swift.Bool, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
+@_inheritsConvenienceInitializers public class TWDriverLicenseFlow : OCRMainFlow {
   override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
-  override public func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   override public init(ocrcard: OCRCard)
   @objc deinit
-}
-extension AntiForgeryFlow {
-  public func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
-  public func confirmScan(ocrResult: OCRResult, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
-  public func recordResult(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
-  public func confirm(ocrResult: OCRResult, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> ())
 }
 extension Google_Protobuf_Timestamp {
   public init(seconds: Swift.Int64 = 0, nanos: Swift.Int32 = 0)
@@ -559,22 +597,6 @@ public enum DigestAlgorithm : Swift.Int32 {
   public var rawValue: Swift.Int32 {
     get
   }
-}
-public protocol FlowDelegate : AnyObject {
-  func notifyTitle(title: Swift.String)
-  func notifyMessage(message: Swift.String)
-}
-public class OCRFlow {
-  public var delegate: FlowDelegate?
-  final public let enableManualUpload: Swift.Bool
-  public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, Swift.Error>) -> Swift.Void)
-  public func onGetPhotoData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, Swift.Error>) -> Swift.Void)
-  public init(card: OCRCard)
-  public func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
-  public func start(handler: ((Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)?)
-  public func restart()
-  public func switchMode(isAuto: Swift.Bool)
-  @objc deinit
 }
 public struct TextFormatEncodingOptions {
   public var printUnknownFields: Swift.Bool
@@ -783,30 +805,8 @@ extension ErrorDescription : Swift.ExpressibleByStringLiteral {
   public typealias StringLiteralType = Swift.String
   public typealias UnicodeScalarLiteralType = Swift.String
 }
-public struct SomeError : Swift.Error, Swift.Equatable {
-  public static func == (lhs: SomeError, rhs: SomeError) -> Swift.Bool
-}
-public enum SDKError {
-  case network(NetworkError)
-  case parse(ParseError)
-  case NSError(Swift.Error)
-}
-extension SDKError : Swift.Error {
-  public var localizedDescription: Swift.String {
-    get
-  }
-}
-public struct NetworkError : Swift.Error {
-  public var localizedDescription: Swift.String {
-    get
-  }
-}
-public enum ParseError : Foundation.LocalizedError {
-  case emptyData
-  case parseJSONError(Swift.Error)
-  public var localizedDescription: Swift.String {
-    get
-  }
+public struct StatusCodeError : Swift.Error {
+  public let localizedDescription: Swift.String
 }
 public struct SimpleExtensionMap : ExtensionMap, Swift.ExpressibleByArrayLiteral, Swift.CustomDebugStringConvertible {
   public typealias Element = AnyMessageExtension
@@ -855,6 +855,8 @@ public struct _ProtobufEnumMap<KeyType, ValueType> where KeyType : MapKeyType, V
   public typealias Value = ValueType
   public typealias BaseType = Swift.Dictionary<_ProtobufEnumMap<KeyType, ValueType>.Key, _ProtobufEnumMap<KeyType, ValueType>.Value>
 }
+public struct RenderSettings {
+}
 extension Google_Protobuf_Value : Swift.ExpressibleByIntegerLiteral {
   public typealias IntegerLiteralType = Swift.Int64
   public init(integerLiteral value: Swift.Int64)
@@ -888,7 +890,6 @@ extension Google_Protobuf_Value {
 @_inheritsConvenienceInitializers public class TWIDFlow : OCRMainFlow {
   override public func start(needConfirm: Swift.Bool, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
   override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
-  override public func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   override public init(ocrcard: OCRCard)
   @objc deinit
 }
@@ -904,18 +905,38 @@ extension Google_Protobuf_ListValue {
     set(newValue)
   }
 }
-@_inheritsConvenienceInitializers public class TWIDAntiSpoofingFlow : TWIDFlow {
-  public func release()
-  public func onGetPreviewData(image: UIKit.UIImage, verticalError: ((OCRError) -> ())? = nil, rotateReverse: ((Swift.Bool) -> ())? = nil, rotateHandler: ((AntiForgeryRotate) -> Swift.Void)? = nil, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+public class VideoRecorder {
+  public typealias Frame = (Foundation.Date, UIKit.UIImage)
+  public init(renderSettings: RenderSettings, frames: [VideoRecorder.Frame])
+  @objc deinit
+}
+public enum AntiFraudRotate {
+  case left
+  case up
+  case front
+  public static func == (a: AntiFraudRotate, b: AntiFraudRotate) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct RotatePoints {
+  public init(leftUp: CoreGraphics.CGPoint, leftDown: CoreGraphics.CGPoint, rightUp: CoreGraphics.CGPoint, rightDown: CoreGraphics.CGPoint)
+}
+@_inheritsConvenienceInitializers public class TWIDAntiFraudFlow : TWIDFlow {
+  public static func transformedLeftPoint(w: Swift.Float, h: Swift.Float, degree: Swift.Float, x: inout Swift.Float, y: inout Swift.Float)
+  public static func transformedTopPoint(w: Swift.Float, h: Swift.Float, degree: Swift.Float, x: inout Swift.Float, y: inout Swift.Float)
+  public func onGetPreviewData(image: UIKit.UIImage, verticalError: ((OCRError) -> ())? = nil, rotateReverse: ((Swift.Bool) -> ())? = nil, rotateHandler: ((AntiFraudRotate) -> Swift.Void)? = nil, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
   override public init(ocrcard: OCRCard)
   @objc deinit
 }
-extension TWIDAntiSpoofingFlow : OCRFlowAntiSpoofingProtocol {
+extension TWIDAntiFraudFlow : OCRFlowAntiFraudProtocol {
   public func restartOCR() -> Swift.Bool
-  public func enterRotate(status: AntiForgeryRotate)
+  public func enterRotate(status: AntiFraudRotate)
   public func enterReverse() -> Swift.Bool
   public func reenterRotate()
   public func enterPrepare(active: Swift.Bool)
+  public func stop()
 }
 @available(iOS 13.0, *)
 public class MyDataFlow {
@@ -958,22 +979,23 @@ public protocol OCRFlowProtocol {
   func restart()
   func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
 }
-public protocol OCRFlowAntiSpoofingProtocol {
+public protocol OCRFlowAntiFraudProtocol {
   func setDelegate(delegate: OCRFlowDelegate)
   func start(needConfirm: Swift.Bool, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
-  func onGetPreviewData(image: UIKit.UIImage, verticalError: ((OCRError) -> ())?, rotateReverse: ((Swift.Bool) -> ())?, rotateHandler: ((AntiForgeryRotate) -> Swift.Void)?, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  func onGetPreviewData(image: UIKit.UIImage, verticalError: ((OCRError) -> ())?, rotateReverse: ((Swift.Bool) -> ())?, rotateHandler: ((AntiFraudRotate) -> Swift.Void)?, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
   func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   func restartOCR() -> Swift.Bool
-  func enterRotate(status: AntiForgeryRotate)
+  func enterRotate(status: AntiFraudRotate)
   func enterReverse() -> Swift.Bool
   func reenterRotate()
   func enterPrepare(active: Swift.Bool)
+  func stop()
 }
 public class OCRFactory {
   public init()
   public func prepare(ocrcard: OCRCard) -> OCRFlowProtocol?
-  public func prepareAntiSpoofing(ocrcard: OCRCard) -> OCRFlowAntiSpoofingProtocol?
+  public func prepareAntiFraud(ocrcard: OCRCard) -> OCRFlowAntiFraudProtocol?
   @objc deinit
 }
 public protocol OCRResult : AuthMeResult {
@@ -1156,6 +1178,42 @@ public enum DebugMessageChannel {
     get
   }
 }
+public class FasService {
+  public typealias Params = AuthMeFASParams
+  public typealias UIParams = AuthMeV3ServiceUIParams
+  public var normalizedFaceROI: AuthMeRectFloat {
+    get
+  }
+  public init(type: FasService.`Type`, params: FasService.Params = Params(), analyzeSize: CoreGraphics.CGSize = .zero, previewRect: CoreGraphics.CGRect = .zero) throws
+  @objc deinit
+}
+extension FasService {
+  public enum `Type` {
+    case passive
+    case active
+    public static func == (a: FasService.`Type`, b: FasService.`Type`) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum Error : Swift.Error {
+    case setParam(_E_AUTHME_ENGINE_RETUEN_CODE)
+    case setUIParam(_E_AUTHME_ENGINE_RETUEN_CODE)
+    case start(_E_AUTHME_ENGINE_RETUEN_CODE)
+    case run(_E_AUTHME_ENGINE_RETUEN_CODE)
+  }
+}
+extension E_AUTHME_FAS_SERVICE_STATUS : Swift.CustomDebugStringConvertible {
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+extension E_AUTHME_FAS_SERVICE_STAGE : Swift.CustomDebugStringConvertible {
+  public var debugDescription: Swift.String {
+    get
+  }
+}
 public struct JSONEncodingOptions {
   public var alwaysPrintEnumsAsInts: Swift.Bool
   public var preserveProtoFieldNames: Swift.Bool
@@ -1178,6 +1236,7 @@ public enum OCRCardType : Swift.String, Swift.Codable {
   case TWLicense
   case TWHealth
   case Passport
+  public func getMaskRect() -> CoreGraphics.CGRect
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -1280,9 +1339,6 @@ extension Google_Protobuf_Mixin : Message, _MessageImplementationBase, _ProtoNam
   public var hashValue: Swift.Int {
     get
   }
-}
-public struct OCRUploadError : Foundation.LocalizedError {
-  public static func getError(code: Swift.String) -> OCRUploadError
 }
 extension Message {
   public static func jsonString<C>(from collection: C, options: JSONEncodingOptions = JSONEncodingOptions()) throws -> Swift.String where Self == C.Element, C : Swift.Collection
@@ -3262,19 +3318,6 @@ public struct ProtobufBytes : FieldType, MapValueType {
   public static func visitRepeated<V>(value: [ProtobufBytes.BaseType], fieldNumber: Swift.Int, with visitor: inout V) throws where V : Visitor
   public static func visitPacked<V>(value: [ProtobufBytes.BaseType], fieldNumber: Swift.Int, with visitor: inout V) throws where V : Visitor
 }
-@_inheritsConvenienceInitializers public class AntiSpoofingFlow : TWIDFlow {
-  public func release()
-  public func onGetPreviewData(image: UIKit.UIImage, verticalError: ((OCRError) -> ())? = nil, rotateReverse: ((Swift.Bool) -> ())? = nil, rotateHandler: ((AntiForgeryRotate) -> Swift.Void)? = nil, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
-  override public init(ocrcard: OCRCard)
-  @objc deinit
-}
-extension AntiSpoofingFlow : OCRFlowAntiSpoofingProtocol {
-  public func restartOCR() -> Swift.Bool
-  public func enterRotate(status: AntiForgeryRotate)
-  public func enterReverse() -> Swift.Bool
-  public func reenterRotate()
-  public func enterPrepare(active: Swift.Bool)
-}
 public struct ExtensionFieldValueSet : Swift.Hashable {
   public static func == (lhs: ExtensionFieldValueSet, rhs: ExtensionFieldValueSet) -> Swift.Bool
   public init()
@@ -3290,10 +3333,6 @@ public struct ExtensionFieldValueSet : Swift.Hashable {
   public var hashValue: Swift.Int {
     get
   }
-}
-extension OCRFlow {
-  public func recordResult(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
-  public func confirm(ocrResult: OCRResult, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> ())
 }
 extension Message {
   public func serializedData(partial: Swift.Bool = false) throws -> Foundation.Data
@@ -3556,7 +3595,10 @@ public enum OCRError : Swift.String, Foundation.LocalizedError {
 }
 @_hasMissingDesignatedInitializers public class APIURL {
   public static let shared: APIURL
-  public func baseURL() -> Swift.String
+  public var baseURL: Swift.String {
+    get
+    set
+  }
   @objc deinit
 }
 public protocol Visitor {
@@ -3675,21 +3717,20 @@ public struct UnknownStorage : Swift.Equatable {
   public func setDelegate(delegate: OCRFlowDelegate)
   public func start(needConfirm: Swift.Bool, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
   public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
-  public func onGetPreviewDataAntiSpoofing(image: UIKit.UIImage, rotateReverse: (() -> ())?, rotateHandler: ((AntiForgeryRotate) -> Swift.Void)?, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
   public func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   public func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  public func release()
   override public init(ocrcard: OCRCard)
   @objc deinit
 }
-extension UploadInfoRequestBody : Swift.Encodable {}
-extension UploadInfoRequestBody : Swift.Decodable {}
-extension AntiForgeryRotate : Swift.Equatable {}
-extension AntiForgeryRotate : Swift.Hashable {}
+extension URLEncodedFormEncoder.ArrayEncoding : Swift.Equatable {}
+extension URLEncodedFormEncoder.ArrayEncoding : Swift.Hashable {}
+extension URLEncodedFormEncoder.BoolEncoding : Swift.Equatable {}
+extension URLEncodedFormEncoder.BoolEncoding : Swift.Hashable {}
+extension URLEncodedFormEncoder.SpaceEncoding : Swift.Equatable {}
+extension URLEncodedFormEncoder.SpaceEncoding : Swift.Hashable {}
 extension AnyUnpackError : Swift.Equatable {}
 extension AnyUnpackError : Swift.Hashable {}
-extension LivenessResult.Confidence : Swift.Equatable {}
-extension LivenessResult.Confidence : Swift.Hashable {}
-extension LivenessResult.Confidence : Swift.RawRepresentable {}
 extension AuthMeError : Swift.Equatable {}
 extension AuthMeError : Swift.Hashable {}
 extension AuthMeError : Swift.RawRepresentable {}
@@ -3720,6 +3761,8 @@ extension SignType : Swift.RawRepresentable {}
 extension DigestAlgorithm : Swift.Equatable {}
 extension DigestAlgorithm : Swift.Hashable {}
 extension DigestAlgorithm : Swift.RawRepresentable {}
+extension AntiFraudRotate : Swift.Equatable {}
+extension AntiFraudRotate : Swift.Hashable {}
 extension BinaryDecodingError : Swift.Equatable {}
 extension BinaryDecodingError : Swift.Hashable {}
 extension MRZResult.DataType : Swift.Equatable {}
@@ -3739,6 +3782,8 @@ extension OCRNotifyMessage : Swift.Hashable {}
 extension OCRNotifyMessage : Swift.RawRepresentable {}
 extension DebugMessageChannel : Swift.Equatable {}
 extension DebugMessageChannel : Swift.Hashable {}
+extension FasService.`Type` : Swift.Equatable {}
+extension FasService.`Type` : Swift.Hashable {}
 extension Facing : Swift.Equatable {}
 extension Facing : Swift.Hashable {}
 extension Facing : Swift.RawRepresentable {}

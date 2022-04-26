@@ -13,6 +13,8 @@ class IFASService : public IEngineBase
     public:
         virtual ~IFASService() {}
 
+        static std::vector<AuthMeModelVersion> GetModelVersion();
+
         virtual bool Initial(const AuthMeFASServiceModels& params) = 0;
 
         virtual void SetUIParams(const AuthMeV3ServiceUIParams& params) = 0;

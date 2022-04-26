@@ -13,6 +13,8 @@ class IIDCardAntiFraudService : public IEngineBase
     public:
         virtual ~IIDCardAntiFraudService() {}
 
+        static std::vector<AuthMeModelVersion> GetModelVersion();
+
         virtual bool Initial(const AuthMeIDCardAntiFraudServiceModels& params) = 0;
 
         virtual void SetUIParams(const AuthMeV3ServiceUIParams& params) = 0;

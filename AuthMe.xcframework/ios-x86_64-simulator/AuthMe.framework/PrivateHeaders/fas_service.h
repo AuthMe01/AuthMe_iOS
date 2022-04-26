@@ -6,6 +6,8 @@ extern "C" {
 #include "engine_type_v3.h"
 #include "engine_error_code.h"
 
+EAuthMeEngineReturnCode AuthMe_FASService_GetModelVersion(AuthMeModelVersion** ppVersion, int *piModelNum);
+
 EAuthMeEngineReturnCode AuthMe_FASServicePassive_Create(long* pHandle);
 
 EAuthMeEngineReturnCode AuthMe_FASServiceActive_Create(long* pHandle);

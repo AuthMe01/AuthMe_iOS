@@ -27,6 +27,8 @@ class IFaceDetection : public IEngineBase
 
         virtual float GetThreshold() const = 0;
 
+        virtual void SetInferenceSize(const cv::Size& inferSize) = 0;
+
         // input image for mat should be BGR
         virtual std::vector<TFaceInfo> Detect(const cv::Mat& inputImage, cv::Mat* pResultImage = nullptr, TEngineDebugInfo* pInfo = nullptr) = 0;
 
@@ -34,6 +36,8 @@ class IFaceDetection : public IEngineBase
 };
 
 EFacePose GetFacePose(const std::vector<cv::Point2f>& vecLandmarks);
+
+float GetDistanceToPose(const std::vector<cv::Point2f>& vecLandmarks, EFacePose ePose);
 
 IFaceDetection* CreateFaceDetection();
 

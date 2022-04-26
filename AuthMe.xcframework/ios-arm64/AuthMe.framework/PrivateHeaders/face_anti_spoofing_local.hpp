@@ -1,7 +1,7 @@
 #pragma once
 #include "face_anti_spoofing.hpp"
 #include "nn_inference.hpp"
-#include "utility.hpp"
+#include "utility_moving_window.hpp"
 
 #define MOVING_AVG_DEFAULT_WINDOW_LENGTH 3
 

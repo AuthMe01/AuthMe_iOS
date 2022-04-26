@@ -6,6 +6,8 @@ extern "C" {
 #include "engine_type_v3.h"
 #include "engine_error_code.h"
 
+EAuthMeEngineReturnCode AuthMe_IDCardAntiFraudService_GetModelVersion(AuthMeModelVersion** ppVersion, int *piModelNum);
+
 EAuthMeEngineReturnCode AuthMe_IDCardAntiFraudService_Create(long* pHandle);
 
 EAuthMeEngineReturnCode AuthMe_IDCardAntiFraudService_Initial(long handle, const AuthMeIDCardAntiFraudServiceModels* pParams);

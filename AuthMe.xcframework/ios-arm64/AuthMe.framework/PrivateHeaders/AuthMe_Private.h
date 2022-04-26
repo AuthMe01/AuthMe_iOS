@@ -28,5 +28,9 @@
 #import "fas_service.h"
 #import "id_card_anti_fraud_service.h"
 #import "reflection_detection.h"
+#import "engine_type_v3.h"
+#import "utility_v3.h"
+#import "card_ocr.h"
+
 
 #endif /* AuthMe_Private_h */
