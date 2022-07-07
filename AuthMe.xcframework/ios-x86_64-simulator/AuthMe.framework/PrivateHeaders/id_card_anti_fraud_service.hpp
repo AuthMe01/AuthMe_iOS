@@ -1,9 +1,15 @@
 #pragma once
 #include <string>
 #include <vector>
-#include "engine_type_v3.h"
+#include "engine_service_type.h"
 #include "opencv2/core.hpp"
 #include "engine_base.hpp"
+#include "card_detection.hpp"
+#include "card_classification.hpp"
+#include "laser_tag_detection.hpp"
+#include "taiwan_hole_detection.hpp"
+#include "metal_tag_detection.hpp"
+#include "reflection_detection.hpp"
 
 namespace AuthMe
 {
@@ -15,7 +21,9 @@ class IIDCardAntiFraudService : public IEngineBase
 
         static std::vector<AuthMeModelVersion> GetModelVersion();
 
-        virtual bool Initial(const AuthMeIDCardAntiFraudServiceModels& params) = 0;
+        virtual const std::vector<AuthMeEngineDebugInfo> &GetDeBugInfo() = 0;
+
+        virtual bool Initial(const AuthMeIDCardAntiFraudServiceModels& models) = 0;
 
         virtual void SetUIParams(const AuthMeV3ServiceUIParams& params) = 0;
 

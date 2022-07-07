@@ -1,4 +1,12 @@
 #pragma once
+
+#if __cplusplus >= 202002L
+// C++20 (and later) code
+#define DEFAULT_COMPARISON(typeName) bool operator==(const typeName&) const = default;
+#else
+#define DEFAULT_COMPARISON(typeName)
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -91,15 +99,23 @@ typedef struct _AUTHME_IMAGE
     int iHeight;
     unsigned long ulStride;
     void* pData;
+    DEFAULT_COMPARISON(_AUTHME_IMAGE)
 } AuthMeImage;
 
 typedef struct _AUTHME_ENGINE_DEBUG_INFO
 {
     // ms
+    char moduleName[64];
     float fPreProcTime;
     float fInferenceTime;
     float fPostProcTime;
 } AuthMeEngineDebugInfo;
+
+typedef struct _AUTHME_ENGINE_DEBUG_INFO_LIST
+{
+    const AuthMeEngineDebugInfo *vecDbgInfo;
+    int len;
+} AuthMeEngineDebugInfoList;
 
 typedef struct _AUTHME_RECT_FLOAT
 {
@@ -107,18 +123,21 @@ typedef struct _AUTHME_RECT_FLOAT
     float fTop;
     float fRight;
     float fBottom;
+    DEFAULT_COMPARISON(_AUTHME_RECT_FLOAT)
 } AuthMeRectFloat;
 
 typedef struct _AUTHME_SIZE
 {
     int iWidth;
     int iHeight;
+    DEFAULT_COMPARISON(_AUTHME_SIZE)
 } AuthMeSize;
 
 typedef struct _AUTHME_POINT_FLOAT
 {
     float fX;
     float fY;
+    DEFAULT_COMPARISON(_AUTHME_POINT_FLOAT)
 } AuthMePointFloat;
 
 typedef struct _AUTHME_FACE_INFO
@@ -127,6 +146,7 @@ typedef struct _AUTHME_FACE_INFO
     float fMask;
     AuthMeRectFloat box;
     float afLandmark[10]; //x1, y1, x2, y2, ...
+    DEFAULT_COMPARISON(_AUTHME_FACE_INFO)
 } AuthMeFaceInfo;
 
 typedef struct _AUTHME_T_MRZ_FIELD
@@ -142,8 +162,6 @@ typedef struct _AUTHME_T_MRZ_FIELD
     char nationality[4];
     char personalNumber[16];
 } AuthMeMRZFieldTD3;
-
-
 
 #ifdef __cplusplus
 }

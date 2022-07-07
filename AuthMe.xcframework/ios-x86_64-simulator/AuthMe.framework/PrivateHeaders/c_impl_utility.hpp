@@ -1,6 +1,6 @@
 #pragma once
 #include "engine_type.h"
-#include "engine_type_v3.h"
+#include "engine_service_type.h"
 #include "engine_error_code.h"
 #include "utility_define.hpp"
 #include "opencv2/core.hpp"
@@ -44,7 +44,7 @@ EAuthMeEngineReturnCode InitialDetector(long handle, const char* szModelPath)
     try
     {
         auto pDetector = reinterpret_cast<T*>(handle);
-        return pDetector->Initial(szModelPath) ? eAuthMe_Engine_Success : eAuthMe_Engine_Failed;
+        return pDetector->Initial(szModelPath);
     }
     catch (const std::exception& e)
     {
@@ -53,6 +53,7 @@ EAuthMeEngineReturnCode InitialDetector(long handle, const char* szModelPath)
 
     return eAuthMe_Engine_Failed;
 }
+
 template<typename T>
 const char* GetModelInfo(long handle)
 {
@@ -140,8 +141,7 @@ EAuthMeEngineReturnCode GetModelVersion(AuthMeModelVersion** ppVersion, int *piM
         auto vecVersion = ServiceType::GetModelVersion();
 
         *piModelNum = static_cast<int>(vecVersion.size());
-        *ppVersion = new AuthMeModelVersion[vecVersion.size()];
-
+        *ppVersion = (AuthMeModelVersion*)malloc(sizeof(AuthMeModelVersion) * vecVersion.size());
         memcpy(*ppVersion, vecVersion.data(), vecVersion.size() * sizeof(AuthMeModelVersion));
 
         return eAuthMe_Engine_Success;
@@ -154,9 +154,9 @@ EAuthMeEngineReturnCode GetModelVersion(AuthMeModelVersion** ppVersion, int *piM
     return eAuthMe_Engine_Failed;
 }
 
-cv::Mat GetCvMat_BGR(const AuthMeImage& image);
+cv::Mat ToCv_BGR(const AuthMeImage& image);
 
-cv::Mat GetCvMat_RGB(const AuthMeImage& image);
+cv::Mat ToCv_RGB(const AuthMeImage& image);
 
 cv::Size ToCv(const AuthMeSize& auSize);
 

@@ -1,54 +1,38 @@
 #pragma once
 #include "face_anti_spoofing.hpp"
-#include "nn_inference.hpp"
+#include "face_anti_spoofing_model.hpp"
 #include "utility_moving_window.hpp"
-
-#define MOVING_AVG_DEFAULT_WINDOW_LENGTH 3
 
 namespace AuthMe
 {
 
+#define MOVING_AVG_DEFAULT_WINDOW_LENGTH 3
+
 class CFaceAntiSpoofing : public IFaceAntiSpoofing
 {
     public:
-        CFaceAntiSpoofing();
-        bool Initial(const std::string& strModelPath, const std::string strHWAcceleration) override;
-        bool Initial(const void *pData, size_t uiLength, const std::string strHWAcceleration = "cpu") override;
-        bool Initial(const void *pData, size_t uiLength, EEngineFrameworkType eFramework, const std::string strHWAcceleration = "cpu") override;
-        void SetThreshold(float fThreshold) override;
-        float GetThreshold() const override;
-        void SetMinFrameNum(size_t uiLength) override;
-        size_t GetMinFrameNum() const override;
-        void Reset() override;
-        EFaceAntiSpoofingStatus Detect(const cv::Mat& matImage, const std::vector<cv::Point2f>& vecLandmark, float& fScore, TEngineDebugInfo* pInfo = nullptr) override;
-        std::string GetModelInfo() const override;
+        CFaceAntiSpoofing(IFaceAntiSpoofing* pObj, bool bHold);
+        virtual ~CFaceAntiSpoofing();
+        virtual EAuthMeEngineReturnCode Initial(const std::string& strModelPath, const std::string strHWAcceleration) override;
+        virtual EAuthMeEngineReturnCode Initial(const void *pData, size_t uiLength, const std::string strHWAcceleration) override;
+        virtual EAuthMeEngineReturnCode Initial(const void *pData, size_t uiLength, EEngineFrameworkType eFramework, const std::string strHWAcceleration) override;
+        virtual void SetThreshold(float fThreshold) override;
+        virtual float GetThreshold() const override;
+        virtual void SetMinFrameNum(size_t uiLength) override;
+        virtual size_t GetMinFrameNum() const override;
+        virtual void Reset() override;
+        virtual std::pair<EFaceAntiSpoofingStatus, float> Detect(const cv::Mat& inputImage, const std::vector<cv::Point2f>& vecLandmark, AuthMeEngineDebugInfo* pInfo = nullptr) override;
+        virtual std::string GetModelInfo() const override;
+        virtual double TableMapping(double dValue) const override;
 
     private:
-        void InitialSetup();
-        void GetParamsFromModel();
-        void SetupModel();
-        void SetupRuntimeParams();
-        void Preprocess(const cv::Mat& inputImage, const std::vector<cv::Point2f>& vecLandmark, const cv::Size& modelInputSize, cv::Mat& imgBGR, cv::Mat& bufferBGR, cv::Mat& bufferHSV);
-        float Postprocess(const cv::Mat& matOutput);
-        double TableMapping(double fScore);
-        bool HasImageDiff(const cv::Mat& preGray, const cv::Mat& currGray);
+        EAuthMeEngineReturnCode InitialSetup();
 
+        CFaceAntiSpoofingModel* m_pObj = nullptr;
+        bool m_bHold = false;
 
-        std::unique_ptr<IInferenceEngine> m_pEngine = nullptr;
-        CMovingWindow<double> m_ScoreWindow;
-        CMovingWindow<double> m_DiffMeanWindow;
-        std::vector<double> m_vecTableSrc;
-        std::vector<double> m_vecTableDst;
-        cv::Size m_modelInputSize;
-        cv::Size m_modelOutputSize;
-        cv::Mat m_eyeMask;
-        cv::Mat m_prevWarppedGray;
-        int m_iEyeMaskArea = 0;
-
-        float m_fScoreTh = 0.8f;
-        const double m_dBBandScale = 1.6;
-        const size_t m_uiBBandMaxLength = 5;
-        const size_t m_uiBBandMinLengthNeeded = 3;
+        float m_fScoreTh = 0.0f;
+        CMovingWindow<float> m_ScoreWindow;
 };
 
 }

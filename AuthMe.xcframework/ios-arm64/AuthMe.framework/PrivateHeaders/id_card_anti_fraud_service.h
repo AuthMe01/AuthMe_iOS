@@ -3,8 +3,14 @@
 extern "C" {
 #endif
 
-#include "engine_type_v3.h"
+#include "engine_service_type.h"
 #include "engine_error_code.h"
+#include "card_detection.h"
+#include "card_classification.h"
+#include "laser_tag_detection.h"
+#include "taiwan_hole_detection.h"
+#include "metal_tag_detection.h"
+#include "reflection_detection.h"
 
 EAuthMeEngineReturnCode AuthMe_IDCardAntiFraudService_GetModelVersion(AuthMeModelVersion** ppVersion, int *piModelNum);
 
@@ -27,6 +33,8 @@ EAuthMeEngineReturnCode AuthMe_IDCardAntiFraudService_SetCardMatchNormalizedROI(
 EAuthMeEngineReturnCode AuthMe_IDCardAntiFraudService_Start(long handle);
 
 EAuthMeEngineReturnCode AuthMe_IDCardAntiFraudService_Run(long handle, AuthMeImage* pImage, AuthMeIDCardAntiFraudResult* pResult);
+
+AuthMeEngineDebugInfoList AuthMe_IDCardAntiFraudService_GetDebugInfo(long handle);
 
 #ifdef __cplusplus
 }

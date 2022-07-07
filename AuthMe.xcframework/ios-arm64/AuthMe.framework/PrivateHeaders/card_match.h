@@ -3,7 +3,7 @@
 extern "C" {
 #endif
 
-#include "engine_type_v3.h"
+#include "engine_service_type.h"
 #include "engine_error_code.h"
 
 // set pStatus, pfScore to nullptr if you don't need

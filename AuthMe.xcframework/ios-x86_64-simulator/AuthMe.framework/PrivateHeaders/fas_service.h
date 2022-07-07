@@ -3,14 +3,16 @@
 extern "C" {
 #endif
 
-#include "engine_type_v3.h"
+#include "engine_service_type.h"
 #include "engine_error_code.h"
+#include "face_detection.h"
+#include "face_alignment.h"
+#include "face_anti_spoofing.h"
+#include "mini_fas.h"
 
 EAuthMeEngineReturnCode AuthMe_FASService_GetModelVersion(AuthMeModelVersion** ppVersion, int *piModelNum);
 
-EAuthMeEngineReturnCode AuthMe_FASServicePassive_Create(long* pHandle);
-
-EAuthMeEngineReturnCode AuthMe_FASServiceActive_Create(long* pHandle);
+EAuthMeEngineReturnCode AuthMe_FASService_Create(long* pHandle);
 
 EAuthMeEngineReturnCode AuthMe_FASService_Initial(long handle, const AuthMeFASServiceModels* pParams);
 
@@ -24,9 +26,19 @@ AuthMeFASParams AuthMe_FASService_GetParams(long handle);
 
 AuthMeRectFloat AuthMe_FASService_GetNormalizedFaceROI(long handle);
 
+EAuthMeEngineReturnCode AuthMe_FASService_SetStage(long handle, const EAuthMeFASServiceStage* pStage, int iStageNum);
+
+EAuthMeEngineReturnCode AuthMe_FASService_GetStage(long handle, EAuthMeFASServiceStage** ppStage, int* piStageNum);
+
+EAuthMeEngineReturnCode AuthMe_FASService_SetStageParams(long handle, const AuthMeFASStageParams* pParams, int iIndex);
+
+AuthMeFASStageParams AuthMe_FASService_GetStageParams(long handle, int iIndex);
+
 EAuthMeEngineReturnCode AuthMe_FASService_Start(long handle);
 
 EAuthMeEngineReturnCode AuthMe_FASService_Run(long handle, AuthMeImage* pImage, AuthMeFASResult* pResult);
+
+AuthMeEngineDebugInfoList AuthMe_FASService_GetDebugInfo(long handle);
 
 #ifdef __cplusplus
 }

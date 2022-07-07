@@ -1,5 +1,5 @@
 #pragma once
-#include "v3/card_ocr.hpp"
+#include "card_ocr_service.hpp"
 #include "card_detection.hpp"
 #include "card_classification.hpp"
 #include "reflection_detection.hpp"
@@ -7,12 +7,13 @@
 namespace AuthMe
 {
 
-class CCardOCR : public ICardOCR
+class CCardOCR : public ICardOCRService
 {
     public:
         CCardOCR();
         virtual ~CCardOCR();
-        bool Initial(const AuthMeCardOCRModels& params) override;
+        const std::vector<AuthMeEngineDebugInfo> &GetDeBugInfo() override;
+        bool Initial(const AuthMeCardOCRModels& models) override;
         void SetUIParams(const AuthMeV3ServiceUIParams& params) override;
         AuthMeV3ServiceUIParams GetUIParams() const override;
         void SetParams(const AuthMeCardOCRParams& params) override;
@@ -28,9 +29,9 @@ class CCardOCR : public ICardOCR
         void CalcROI();
         cv::Mat CenterCrop(const cv::Mat& image, float fRatio);
 
-        std::unique_ptr<ICardDetection> m_pCardDetect;
-        std::unique_ptr<ICardClassification> m_pCardClassify;
-        std::unique_ptr<IReflectionDetection> m_pReflectDetect;
+        ICardDetection* m_pCardDetect = nullptr;
+        ICardClassification* m_pCardClassify = nullptr;
+        IReflectionDetection* m_pReflectDetect = nullptr;
 
         AuthMeV3ServiceUIParams m_uiParams;
         AuthMeCardOCRParams m_params;
@@ -40,6 +41,7 @@ class CCardOCR : public ICardOCR
         cv::Rect2f m_normalizedROI;
         std::vector<cv::Point2f> m_vecCardMatchVertices;
         std::vector<cv::Rect2f> m_vecReflectiveROI;
+        std::vector<AuthMeEngineDebugInfo> m_vecDebugInfo;
 };
 
 }

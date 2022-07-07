@@ -5,17 +5,19 @@
 #include "laser_tag_detection.hpp"
 #include "taiwan_hole_detection.hpp"
 #include "metal_tag_detection.hpp"
-#include "v3_base.hpp"
+#include "service_base.hpp"
+#include "reflection_detection.hpp"
 
 namespace AuthMe
 {
 
-class CIDCardAntiFraudService : public IIDCardAntiFraudService, protected CBaseV3
+class CIDCardAntiFraudService : public IIDCardAntiFraudService, protected CServiceBase
 {
     public:
         CIDCardAntiFraudService();
         virtual ~CIDCardAntiFraudService();
-        bool Initial(const AuthMeIDCardAntiFraudServiceModels& params) override;
+        const std::vector<AuthMeEngineDebugInfo>& GetDeBugInfo() override;
+        bool Initial(const AuthMeIDCardAntiFraudServiceModels& models) override;
         void SetUIParams(const AuthMeV3ServiceUIParams& params) override;
         AuthMeV3ServiceUIParams GetUIParams() const override;
         void SetParams(const AuthMeIDCardAntiFraudParams& params) override;
@@ -34,12 +36,12 @@ class CIDCardAntiFraudService : public IIDCardAntiFraudService, protected CBaseV
         cv::Mat CenterCrop(const cv::Mat& image, float fRatio);
         void SetMetalTagInfo(AuthMeMetalTagInfo& info, const std::vector<MetalTagReturnType>& vecResult, const cv::Point& shift, const cv::Mat& matrix);
 
-
-        std::unique_ptr<ICardDetection> m_pCardDetect;
-        std::unique_ptr<ICardClassification> m_pCardClassify;
-        std::unique_ptr<ILaserTagDetection> m_pLaserTagDetect;
-        std::unique_ptr<ITaiwanHoleDetection> m_pTaiwanHoleDetect;
-        std::unique_ptr<IMetalTagDetection> m_pMetalTagDetect;
+        ICardDetection* m_pCardDetect = nullptr;
+        ICardClassification* m_pCardClassify = nullptr;
+        ILaserTagDetection* m_pLaserTagDetect = nullptr;
+        ITaiwanHoleDetection* m_pTaiwanHoleDetect = nullptr;
+        IMetalTagDetection* m_pMetalTagDetect = nullptr;
+        IReflectionDetection* m_pReflectDetect = nullptr;
 
         AuthMeV3ServiceUIParams m_uiParams;
         AuthMeIDCardAntiFraudParams m_params;
@@ -53,6 +55,7 @@ class CIDCardAntiFraudService : public IIDCardAntiFraudService, protected CBaseV
         int iCardMatchCount = 0;
         AuthMeIDCardAntiFraudStatistics m_statistics;
         std::vector<int> m_vecMetalTagStatus;
+        std::vector<AuthMeEngineDebugInfo> m_vecDebugInfo;
 };
 
 }

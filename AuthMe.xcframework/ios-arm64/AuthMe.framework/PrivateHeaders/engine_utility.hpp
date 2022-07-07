@@ -1,5 +1,6 @@
 #pragma once
 #include "nn_inference.hpp"
+#include <unordered_map>
 
 namespace AuthMe
 {
@@ -10,12 +11,26 @@ typedef struct T_MAPPING_SCORE
     std::vector<double> vecDst;
 } TMappingScore;
 
+typedef struct T_VERSION_INFO
+{
+    std::string full;
+    std::string major;
+    std::string minor;
+} TVersionInfo;
+
 typedef struct T_MODEL_METADATA
 {
-    std::unique_ptr<float> pfThreshold;
-    std::string strDate;
-    std::string strUDF;
+    std::string name;
+    TVersionInfo version;
+    std::string date;
+    std::string MACsG;
+    std::string ParamsM;
     TMappingScore tMappingScore;
+    std::unordered_map<std::string, float> mapTH;
+    std::vector<int> ancStrides;
+    std::vector<std::vector<std::vector<int>>> ancSizes;
+    std::vector<float> padValue;
+    std::string distMethod;
 } TModelMetadata;
 
 // for encrypted and plaintext model

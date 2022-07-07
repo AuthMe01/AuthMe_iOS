@@ -16,7 +16,7 @@ EAuthMeEngineReturnCode AuthMe_FaceDetection_SetThreshold(long handle, float fTh
 
 float AuthMe_FaceDetection_GetThreshold(long handle);
 
-float AuthMe_FaceDetection_SetInferenceSize(long handle, AuthMeSize size);
+EAuthMeEngineReturnCode AuthMe_FaceDetection_SetInferenceSize(long handle, AuthMeSize size);
 
 // need to delete *ppFaceInfo after use
 EAuthMeEngineReturnCode AuthMe_FaceDetection_Detect(long handle, AuthMeImage* pImage, AuthMeFaceInfo **ppFaceInfo, int* piLength, AuthMeEngineDebugInfo* pDebugInfo);

@@ -1,3 +1,4 @@
+#ifdef _WITH_MNN
 #pragma once
 #include "nn_inference.hpp"
 #include "MNN/Interpreter.hpp"
@@ -31,3 +32,4 @@ class CInference_MNN : public IInferenceEngine
         std::vector<TTensorInfo> m_vecOutput;
 };
 }
+#endif
