@@ -29,6 +29,7 @@ class CFASService : public IFASService, protected CServiceBase
         AuthMeFASStageParams GetStageParams(int iIndex) const override;
         void Start() override;
         AuthMeFASResult Run(const cv::Mat& inputImage) override;
+        EAuthMeEngineReturnCode GetDebugImage(cv::Mat& image) override;
 
     protected:
         std::shared_ptr<IFASService_Stage> GetStageModule(EAuthMeFASServiceStage eStage);
@@ -53,6 +54,7 @@ class CFASService : public IFASService, protected CServiceBase
         cv::Size m_analyzeSize;
         cv::Rect2f m_normalizedFaceRoi;
         cv::Rect2f m_faceRoi;
+        cv::Rect2f m_previewRoi;
         AuthMeV3ServiceUIParams m_uiParams;
         AuthMeFASParams m_params;
         std::vector<AuthMeEngineDebugInfo> m_vecDebugInfo;

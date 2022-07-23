@@ -18,8 +18,11 @@ class CMRZ : public IMRZService
         void SetParams(const AuthMeMRZParams& params) override;
         AuthMeMRZParams GetParams() const override;
         AuthMeMRZResult Run(const cv::Mat& srcImage) override;
+        EAuthMeEngineReturnCode GetDebugImage(cv::Mat& image) override;
 
     private:
+        void CalcROI();
+
         IMRZDetection* m_pMRZDetect = nullptr;
         IMRZRecognition* m_pMRZRecog = nullptr;
 
@@ -27,6 +30,7 @@ class CMRZ : public IMRZService
         AuthMeMRZParams m_params;
 
         std::vector<AuthMeEngineDebugInfo> m_vecDebugInfo;
+        cv::Rect2f m_previewROI;
 
 };
 

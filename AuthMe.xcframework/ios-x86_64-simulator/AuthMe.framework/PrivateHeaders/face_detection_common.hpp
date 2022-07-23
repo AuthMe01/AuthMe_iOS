@@ -19,6 +19,7 @@ typedef struct T_ANCHOR_BOX
 {
     cv::Point2f center;
     cv::Size2f size;
+    float stride;
 } TAnchorBox;
 
 }

@@ -30,6 +30,7 @@ class IMRZService : public IEngineBase
 
         virtual AuthMeMRZResult Run(const cv::Mat& srcImage) = 0;
 
+        virtual EAuthMeEngineReturnCode GetDebugImage(cv::Mat& image) = 0;
 };
 
 

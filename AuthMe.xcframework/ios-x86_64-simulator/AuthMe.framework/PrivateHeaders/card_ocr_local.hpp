@@ -22,6 +22,7 @@ class CCardOCR : public ICardOCRService
         void SetCardMatchNormalizedROI(const std::vector<cv::Point2f>& vecVertices) override;
         void SetCustomReflectiveROI(const std::vector<cv::Rect2f>& vecROI) override;
         AuthMeCardOCRResult Run(const cv::Mat& srcImage) override;
+        EAuthMeEngineReturnCode GetDebugImage(cv::Mat& image) override;
 
     private:
         void LoadModelDefaultParams();
@@ -42,6 +43,8 @@ class CCardOCR : public ICardOCRService
         std::vector<cv::Point2f> m_vecCardMatchVertices;
         std::vector<cv::Rect2f> m_vecReflectiveROI;
         std::vector<AuthMeEngineDebugInfo> m_vecDebugInfo;
+        std::vector<cv::Point2f> m_vecCardVertices;
+        AuthMeCardOCRInfo m_info = {};
 };
 
 }

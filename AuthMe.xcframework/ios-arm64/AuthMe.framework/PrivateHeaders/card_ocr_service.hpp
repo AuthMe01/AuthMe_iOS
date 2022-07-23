@@ -42,6 +42,8 @@ class ICardOCRService : public IEngineBase
 
         virtual AuthMeCardOCRResult Run(const cv::Mat& srcImage) = 0;
 
+        virtual EAuthMeEngineReturnCode GetDebugImage(cv::Mat& image) = 0;
+
 };
 
 

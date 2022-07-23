@@ -343,6 +343,7 @@ typedef struct AUTHME_MRZ_INFO
 typedef struct AUTHME_MRZ_PARAMS
 {
     int dummy;
+    DEFAULT_COMPARISON(AUTHME_MRZ_PARAMS)
 } AuthMeMRZParams;
 
 typedef struct AUTHME_MRZ_RESULT

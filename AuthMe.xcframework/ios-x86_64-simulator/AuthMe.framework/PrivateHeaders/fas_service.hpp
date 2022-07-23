@@ -45,6 +45,8 @@ class IFASService : public IEngineBase
         virtual void Start() = 0;
 
         virtual AuthMeFASResult Run(const cv::Mat& inputImage) = 0;
+
+        virtual EAuthMeEngineReturnCode GetDebugImage(cv::Mat& image) = 0;
 };
 
 IFASService* CreateFASService();

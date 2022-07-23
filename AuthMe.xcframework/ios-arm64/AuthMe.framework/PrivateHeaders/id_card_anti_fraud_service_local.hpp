@@ -26,6 +26,7 @@ class CIDCardAntiFraudService : public IIDCardAntiFraudService, protected CServi
         void SetCardMatchNormalizedROI(const std::vector<cv::Point2f>& vecVertices) override;
         void Start() override;
         AuthMeIDCardAntiFraudResult Run(const cv::Mat& srcImage) override;
+        EAuthMeEngineReturnCode GetDebugImage(cv::Mat& image) override;
 
     private:
         void LoadModelDefaultParams();
@@ -56,6 +57,8 @@ class CIDCardAntiFraudService : public IIDCardAntiFraudService, protected CServi
         AuthMeIDCardAntiFraudStatistics m_statistics;
         std::vector<int> m_vecMetalTagStatus;
         std::vector<AuthMeEngineDebugInfo> m_vecDebugInfo;
+        std::vector<cv::Point2f> m_vecCardVertices;
+        AuthMeIDCardAntiFraudInfo m_info;
 };
 
 }

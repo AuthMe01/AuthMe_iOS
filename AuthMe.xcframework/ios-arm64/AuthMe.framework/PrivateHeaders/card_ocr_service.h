@@ -36,6 +36,8 @@ EAuthMeEngineReturnCode AuthMe_CardOCRService_Run(long handle, const AuthMeImage
 
 AuthMeEngineDebugInfoList AuthMe_CardOCRService_GetDebugInfo(long handle);
 
+EAuthMeEngineReturnCode AuthMe_CardOCRService_GetDebugImage(long handle, AuthMeImage* pImage);
+
 #ifdef __cplusplus
 }
 #endif

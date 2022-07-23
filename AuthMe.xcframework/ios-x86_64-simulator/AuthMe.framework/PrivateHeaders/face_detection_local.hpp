@@ -22,11 +22,12 @@ class CFaceDetection : public IFaceDetection
     private:
         EAuthMeEngineReturnCode InitialSetup();
         EAuthMeEngineReturnCode GetParamsFromModel();
-        void InitModelParams(const cv::Size& inputSize);
-        std::pair<cv::Mat, float> Preprocess(const cv::Mat &inputImage);
-        std::vector<TFaceInfo> Postprocess(cv::Mat& matBoxes, cv::Mat& matScores, cv::Mat& matLandmarks, cv::Mat& matMasks, float fScale);
+        void SetParamByModelInputSize(const cv::Size& inputSize);
 
-        std::vector<TAnchorBox> GenAnchor(const std::vector<std::pair<float, std::vector<float>>>& vecFeatureMap, const cv::Size2f& inputSize);
+        void InitModelParams(const cv::Size& inputSize);
+  
+        std::pair<cv::Mat, float> Preprocess(const cv::Mat &inputImage);
+        std::vector<TFaceInfo> Postprocess(cv::Mat& matBoxes, cv::Mat& matScores, cv::Mat& matLandmarks, cv::Mat& matMasks, cv::Mat &matCls, float fScale);
 
         std::unique_ptr<IInferenceEngine> m_pEngine = nullptr;
         std::vector<TAnchorBox> m_vecAnchor;
@@ -36,6 +37,8 @@ class CFaceDetection : public IFaceDetection
         cv::Size m_outputScoreSize;
         cv::Size m_outputLandmarkSize;
         cv::Size m_outputMasksSize;
+        cv::Size m_outputClsSize;
+
         std::vector<std::pair<std::string, std::vector<int64_t>>> m_inputShape;
         std::vector<std::pair<std::string, std::vector<int64_t>>> m_outputShape;
 

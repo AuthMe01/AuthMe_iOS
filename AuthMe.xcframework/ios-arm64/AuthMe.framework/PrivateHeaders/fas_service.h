@@ -40,6 +40,8 @@ EAuthMeEngineReturnCode AuthMe_FASService_Run(long handle, AuthMeImage* pImage, 
 
 AuthMeEngineDebugInfoList AuthMe_FASService_GetDebugInfo(long handle);
 
+EAuthMeEngineReturnCode AuthMe_FASService_GetDebugImage(long handle, AuthMeImage* pImage);
+
 #ifdef __cplusplus
 }
 #endif

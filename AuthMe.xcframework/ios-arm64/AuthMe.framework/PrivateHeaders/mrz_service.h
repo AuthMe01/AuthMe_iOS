@@ -26,6 +26,8 @@ EAuthMeEngineReturnCode AuthMe_MRZService_Run(long handle, const AuthMeImage* pI
 
 AuthMeEngineDebugInfoList AuthMe_MRZService_GetDebugInfo(long handle);
 
+EAuthMeEngineReturnCode AuthMe_MRZService_GetDebugImage(long handle, AuthMeImage* pImage);
+
 #ifdef __cplusplus
 }
 #endif

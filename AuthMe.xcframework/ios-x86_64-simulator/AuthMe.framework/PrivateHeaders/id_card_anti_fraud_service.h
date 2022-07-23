@@ -36,6 +36,8 @@ EAuthMeEngineReturnCode AuthMe_IDCardAntiFraudService_Run(long handle, AuthMeIma
 
 AuthMeEngineDebugInfoList AuthMe_IDCardAntiFraudService_GetDebugInfo(long handle);
 
+EAuthMeEngineReturnCode AuthMe_IDCardAntiFraudService_GetDebugImage(long handle, AuthMeImage* pImage);
+
 #ifdef __cplusplus
 }
 #endif

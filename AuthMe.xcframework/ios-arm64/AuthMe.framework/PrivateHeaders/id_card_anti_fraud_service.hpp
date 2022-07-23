@@ -44,6 +44,8 @@ class IIDCardAntiFraudService : public IEngineBase
         virtual void Start() = 0;
 
         virtual AuthMeIDCardAntiFraudResult Run(const cv::Mat& srcImage) = 0;
+
+        virtual EAuthMeEngineReturnCode GetDebugImage(cv::Mat& image) = 0;
 };
 
 IIDCardAntiFraudService* CreateIDCardAntiFraudService();
