@@ -42,9 +42,13 @@ class IFASService : public IEngineBase
 
         virtual AuthMeFASStageParams GetStageParams(int iIndex) const = 0;
 
-        virtual void Start() = 0;
+        virtual EAuthMeEngineReturnCode Start() = 0;
 
         virtual AuthMeFASResult Run(const cv::Mat& inputImage) = 0;
+
+        virtual EAuthMeEngineReturnCode Stop() = 0;
+
+        virtual const std::string& GetJsonReport() = 0;
 
         virtual EAuthMeEngineReturnCode GetDebugImage(cv::Mat& image) = 0;
 };

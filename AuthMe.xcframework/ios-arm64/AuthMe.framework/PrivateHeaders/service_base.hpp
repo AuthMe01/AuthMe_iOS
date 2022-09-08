@@ -10,15 +10,18 @@ class CServiceBase
         CServiceBase();
         virtual ~CServiceBase();
 
-        virtual void SetTimeoutTime(int iSec);
-        virtual void Start();
-        virtual bool IsAlreadyPass();
-        virtual void SetPass();
-        virtual void SetFail();
-        virtual bool IsFail();
-        virtual bool IsTimeout();
+        void SetTimeoutTime(int iSec);
+        bool Start();
+        bool Stop();
+        bool IsRunning() const;
+        bool IsAlreadyPass() const;
+        void SetPass();
+        void SetFail();
+        bool IsFail() const;
+        bool IsTimeout() const;
 
     private:
+        bool m_bIsRunning = false;
         bool m_bPass = false;
         bool m_bFail = false;
         int m_iTimeoutSec = 0;

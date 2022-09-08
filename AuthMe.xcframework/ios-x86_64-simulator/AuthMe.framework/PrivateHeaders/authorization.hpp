@@ -7,4 +7,6 @@ namespace AuthMe
 
 EAuthMeSDKAuthStatus VerifySDK(const std::string& serviceCrt, const std::string& strJWTToken);
 
+EAuthMeSDKAuthStatus GetAuthStatus();
+
 }

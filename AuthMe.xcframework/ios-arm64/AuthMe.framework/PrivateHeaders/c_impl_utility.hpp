@@ -13,6 +13,24 @@
 namespace AuthMe
 {
 
+static inline EAuthMeEngineReturnCode CheckNotZero()
+{
+    return eAuthMe_Engine_Success;
+}
+
+template<typename T, typename ...Args>
+EAuthMeEngineReturnCode CheckNotZero(const T& param, Args... args)
+{
+    if (param == 0)
+    {
+        return eAuthMe_Engine_Failed;
+    }
+
+    return CheckNotZero(args...);
+}
+
+#define CheckParamsNoneZero(...) do {if (CheckNotZero(__VA_ARGS__) == eAuthMe_Engine_Failed) return eAuthMe_Engine_Failed;} while(0)
+
 template<typename T>
 EAuthMeEngineReturnCode CreateDetector(long* pHandle, T CreatFunc())
 {
@@ -54,6 +72,27 @@ EAuthMeEngineReturnCode InitialDetector(long handle, const char* szModelPath)
     return eAuthMe_Engine_Failed;
 }
 
+template<class ObjectType, typename T>
+EAuthMeEngineReturnCode InitialService(long handle, const T* pParams)
+{
+    if (handle == 0 || pParams == NULL)
+    {
+        return eAuthMe_Engine_Failed;
+    }
+
+    try
+    {
+        auto pDetector = reinterpret_cast<ObjectType*>(handle);
+        return pDetector->Initial(*pParams) ? eAuthMe_Engine_Success : eAuthMe_Engine_Failed;
+    }
+    catch (const std::exception& e)
+    {
+        DBG_CERR << e.what() << '\n';
+    }
+
+    return eAuthMe_Engine_Failed;
+}
+
 template<typename T>
 const char* GetModelInfo(long handle)
 {
@@ -85,8 +124,8 @@ EAuthMeEngineReturnCode ReleaseDetector(long handle)
     return eAuthMe_Engine_Failed;
 }
 
-template<typename T>
-EAuthMeEngineReturnCode SetThreshold(long handle, float fThreshold)
+template<class ObjectType, typename ...FuncArgs, typename ...Args>
+EAuthMeEngineReturnCode CallNoReturn(long handle, void (ObjectType::*Func)(FuncArgs...), Args... args)
 {
     if (handle == 0)
     {
@@ -95,8 +134,9 @@ EAuthMeEngineReturnCode SetThreshold(long handle, float fThreshold)
 
     try
     {
-        auto pDetector = reinterpret_cast<T*>(handle);
-        pDetector->SetThreshold(fThreshold);
+        auto pObj = reinterpret_cast<ObjectType*>(handle);
+        (pObj->*Func)(args...);
+
         return eAuthMe_Engine_Success;
     }
     catch (const std::exception& e)
@@ -107,25 +147,106 @@ EAuthMeEngineReturnCode SetThreshold(long handle, float fThreshold)
     return eAuthMe_Engine_Failed;
 }
 
-template<typename T>
-float GetThreshold(long handle)
+template<class ObjectType, typename ReturnType, typename ...FuncArgs, typename ...Args>
+ReturnType CallWithReturn(long handle, ReturnType(ObjectType::*Func)(FuncArgs...)const, ReturnType defaultValue, Args... args)
 {
     if (handle == 0)
     {
-        return 0.0f;
+        return defaultValue;
     }
 
     try
     {
-        auto pDetector = reinterpret_cast<T*>(handle);
-        return pDetector->GetThreshold();
+        auto pObj = reinterpret_cast<ObjectType*>(handle);
+        return (pObj->*Func)(args...);
     }
     catch (const std::exception& e)
     {
         DBG_CERR << e.what() << '\n';
     }
 
-    return 0.0f;
+    return defaultValue;
+}
+
+template<class ObjectType, typename ReturnType>
+ReturnType CallWithReturn(long handle, ReturnType(ObjectType::*Func)()const)
+{
+    return CallWithReturn(handle, Func, ReturnType{});
+}
+
+template<class ObjectType, typename ReturnType, typename ...FuncArgs, typename ...Args>
+ReturnType CallWithReturn(long handle, ReturnType(ObjectType::*Func)(FuncArgs...), ReturnType defaultValue, Args... args)
+{
+    if (handle == 0)
+    {
+        return defaultValue;
+    }
+
+    try
+    {
+        auto pObj = reinterpret_cast<ObjectType*>(handle);
+        return (pObj->*Func)(args...);
+    }
+    catch (const std::exception& e)
+    {
+        DBG_CERR << e.what() << '\n';
+    }
+
+    return defaultValue;
+}
+
+template<class ObjectType, typename ReturnType>
+ReturnType CallWithReturn(long handle, ReturnType(ObjectType::*Func)())
+{
+    return CallWithReturn(handle, Func, ReturnType{});
+}
+
+template<typename ObjectType, typename T, typename sizeType>
+EAuthMeEngineReturnCode CallGetArray(long handle, std::vector<T>(ObjectType::*Func)()const, T **ppBuffer, sizeType *pNum)
+{
+    if (handle == 0 || ppBuffer == NULL || pNum == NULL)
+    {
+        return eAuthMe_Engine_Failed;
+    }
+
+    try
+    {
+        auto pObj = reinterpret_cast<ObjectType*>(handle);
+        auto vec = (pObj->*Func)();
+
+        *ppBuffer = static_cast<T*>(malloc(vec.size() * sizeof(T)));
+        *pNum = static_cast<sizeType>(vec.size());
+        memcpy(*ppBuffer, vec.data(), vec.size() * sizeof(T));
+
+        return eAuthMe_Engine_Success;
+    }
+    catch (const std::exception& e)
+    {
+        DBG_CERR << e.what() << '\n';
+    }
+
+    return eAuthMe_Engine_Failed;
+}
+
+template<typename ServiceType, typename ServiceResult>
+EAuthMeEngineReturnCode ServiceRun(long handle, const AuthMeImage* pImage, ServiceResult* pResult)
+{
+    CheckParamsNoneZero(handle, pImage, pResult);
+
+    try
+    {
+        auto pService = reinterpret_cast<ServiceType*>(handle);
+        auto inputImage = ToCv_BGR(*pImage);
+        *pResult = pService->Run(inputImage);
+
+        return eAuthMe_Engine_Success;
+    }
+    catch (const std::exception& e)
+    {
+        DBG_CERR << e.what() << '\n';
+    }
+
+    return eAuthMe_Engine_Failed;
 }
 
 template<typename ServiceType>
@@ -154,12 +275,66 @@ EAuthMeEngineReturnCode GetModelVersion(AuthMeModelVersion** ppVersion, int *piM
     return eAuthMe_Engine_Failed;
 }
 
-cv::Mat ToCv_BGR(const AuthMeImage& image);
+template<class ServiceType>
+AuthMeEngineDebugInfoList GetDebugInfo(long handle)
+{
+    if (handle == 0)
+    {
+        return {};
+    }
 
-cv::Mat ToCv_RGB(const AuthMeImage& image);
+    try
+    {
+        auto pObj = reinterpret_cast<ServiceType*>(handle);
+        auto &vecDbgInfo = pObj->GetDeBugInfo();
 
-cv::Size ToCv(const AuthMeSize& auSize);
+        AuthMeEngineDebugInfoList infoList;
+        infoList.len = vecDbgInfo.size();
+        infoList.vecDbgInfo = &vecDbgInfo[0];
+        return infoList;
+    }
+    catch (const std::exception& e)
+    {
+        DBG_CERR << e.what() << '\n';
+    }
 
-cv::Rect2f ToCv(const AuthMeRectFloat& auRect);
+    return {};
+}
+
+template<class ServiceType>
+const char* GetJsonReport(long handle)
+{
+    if (handle == 0)
+    {
+        return NULL;
+    }
+
+    try
+    {
+        auto pObj = reinterpret_cast<ServiceType*>(handle);
+        const auto& strJson = pObj->GetJsonReport();
+        return strJson.c_str();
+    }
+    catch (const std::exception& e)
+    {
+        DBG_CERR << e.what() << '\n';
+    }
+
+    return NULL;
+}
+
+
+template<class ServiceType>
+EAuthMeEngineReturnCode GetDebugImage(long handle, AuthMeImage* pImage)
+{
+    if (handle == 0 || pImage == NULL)
+    {
+        return eAuthMe_Engine_Failed;
+    }
+
+    auto pService = reinterpret_cast<ServiceType*>(handle);
+    auto inputImage = ToCv_BGR(*pImage);
+    return pService->GetDebugImage(inputImage);
+}
 
 }

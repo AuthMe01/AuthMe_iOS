@@ -15,53 +15,53 @@ class ICapacity_FaceDetection
     public:
         virtual ~ICapacity_FaceDetection() {};
 
-        virtual void GetDefaultParam(cv::Size &modelInputSize, bool &m_bDecode, float &m_fScoreTh, float &m_fNMSTh, size_t &m_uiOutputTopK, size_t &m_uiNMSTopK) = 0;
+        virtual void GetDefaultParam(cv::Size &modelInputSize, float &m_fScoreTh, float &m_fNMSTh, size_t &m_uiOutputTopK, size_t &m_uiNMSTopK, bool &m_bDecode) = 0;
 
-        virtual std::vector<std::pair<std::string, std::vector<int64_t>>> GetEngineInputShape(const cv::Size &modelInputSize) = 0;
+        virtual void SetOutputSize(bool m_bDecode, cv::Size2i inputSize) = 0;
 
-        virtual std::vector<std::pair<std::string, std::vector<int64_t>>> GetEngineOutputShape(const int iAnchorNum) = 0;
+        virtual std::vector<std::pair<std::string, std::vector<int64_t>>> GetEngineInputShape() = 0;
 
-        virtual void SetOutputSize(const int iAnchorNum, cv::Size &BoxSize, cv::Size &ScoreSize, cv::Size &LandmarkSize, cv::Size &markSize, cv::Size &ClsSize) = 0;
+        virtual std::vector<std::pair<std::string, std::vector<int64_t>>> GetEngineOutputShape() = 0;
 
         virtual std::vector<TTensorInfo> SetEngineInput(cv::Mat &matModelInput) = 0;
 
-        virtual std::vector<TTensorInfo> SetEngineOutput(cv::Mat &matBoxes, cv::Mat &matScores, cv::Mat &matLandmarks, cv::Mat &matMasks, cv::Mat &matCls) = 0;
+        virtual std::vector<TTensorInfo> SetEngineOutput() = 0;
 
-        virtual std::vector<TFaceInfo>  Postprocess(cv::Mat& matBoxes, cv::Mat& matScores, cv::Mat& matLandmarks, cv::Mat& matMasks, cv::Mat &matCls,
-                float fScale, cv::Size m_modelInputSize,
-                float m_fScoreTh, float m_fNMSTh, size_t m_uiOutputTopK, size_t m_uiNMSTopK,
-                bool m_bDecode, std::vector<TAnchorBox> &m_vecAnchor) = 0;
+        virtual std::pair<cv::Mat, float> Preprocess(const cv::Mat & inputImage) = 0;
 
-        virtual std::pair<cv::Mat, float> Preprocess(const cv::Mat & inputImage, cv::Size m_modelInputSize) = 0;
-
-        virtual std::vector<TAnchorBox> GenAnchor(const cv::Size2f & inputSize) = 0;
+        virtual std::vector<TFaceInfo> Postprocess(float fScale, float m_fScoreTh, float m_fNMSTh, size_t m_uiOutputTopK, size_t m_uiNMSTopK, bool m_bDecode) = 0;
 };
 
 class Capacity_FaceDetection_V0 : public ICapacity_FaceDetection
 {
     public:
-        void GetDefaultParam(cv::Size &modelInputSize, bool &m_bDecode, float &m_fScoreTh, float &m_fNMSTh, size_t &m_uiOutputTopK, size_t &m_uiNMSTopK);
+        void GetDefaultParam(cv::Size &modelInputSize, float &m_fScoreTh, float &m_fNMSTh, size_t &m_uiOutputTopK, size_t &m_uiNMSTopK, bool &m_bDecode);
 
-        std::vector<std::pair<std::string, std::vector<int64_t>>> GetEngineInputShape(const cv::Size &modelInputSize);
+        void SetOutputSize(bool m_bDecode, cv::Size2i inputSize);
 
-        std::vector<std::pair<std::string, std::vector<int64_t>>> GetEngineOutputShape(const int iAnchorNum);
+        std::vector<std::pair<std::string, std::vector<int64_t>>> GetEngineInputShape();
 
-        void SetOutputSize(const int iAnchorNum, cv::Size &BoxSize, cv::Size &ScoreSize, cv::Size &LandmarkSize, cv::Size &markSize, cv::Size &ClsSize);
+        std::vector<std::pair<std::string, std::vector<int64_t>>> GetEngineOutputShape();
 
         std::vector<TTensorInfo> SetEngineInput(cv::Mat &matModelInput);
-        
-        std::vector<TTensorInfo> SetEngineOutput(cv::Mat &matBoxes, cv::Mat &matScores, cv::Mat &matLandmarks, cv::Mat &matMasks, cv::Mat &matCls);
 
-        std::vector<TFaceInfo> Postprocess(cv::Mat& matBoxes, cv::Mat& matScores, cv::Mat& matLandmarks, cv::Mat& matMasks, cv::Mat &matCls,
-                                           float fScale, cv::Size m_modelInputSize,
-                                           float m_fScoreTh, float m_fNMSTh, size_t m_uiOutputTopK, size_t m_uiNMSTopK,
-                                           bool m_bDecode, std::vector<TAnchorBox> &m_vecAnchor);
+        std::vector<TTensorInfo> SetEngineOutput();
 
-        std::pair<cv::Mat, float> Preprocess(const cv::Mat & inputImage, cv::Size m_modelInputSize);
+        std::pair<cv::Mat, float> Preprocess(const cv::Mat & inputImage);
+
+        std::vector<TFaceInfo> Postprocess(float fScale, float m_fScoreTh, float m_fNMSTh, size_t m_uiOutputTopK, size_t m_uiNMSTopK, bool m_bDecode);
+
+    private:
+        void DecodeAndScaleBox(cv::Mat matBoxes, const std::vector<int> vecIndex, const cv::Size2f& scale, const cv::Point2f& shift, bool m_bDecode, std::vector<TAnchorBox> &m_vecAnchor, const float variances[2]);
+
+        void DecodeAndScaleLandmark(cv::Mat matLandmarks, const std::vector<int> vecIndex, const cv::Size2f& scale, const cv::Point2f& shift, bool m_bDecode, std::vector<TAnchorBox> &m_vecAnchor, const float variances[2]);
+
+        std::vector<TFaceInfo> GenResult(const std::vector<int>& vecIndex,
+                                         cv::Size m_modelInputSize,
+                                         float fScale);
 
         std::vector<TAnchorBox> GenAnchor(const cv::Size2f & inputSize);
 
-    private:
         const std::vector<std::pair<float, std::vector<float>>> vecFeatureMap =
         {
             {8, {10, 16, 24}},
@@ -71,49 +71,52 @@ class Capacity_FaceDetection_V0 : public ICapacity_FaceDetection
         };
 
         const float variances[2] = {0.1f, 0.2f};
-        
+
+        cv::Size m_modelInputSize = cv::Size(192, 320);
+
         cv::Scalar m_paddingValue = cv::Scalar(104, 117, 123);
 
-        void DecodeAndScaleBox(cv::Mat matBoxes, const std::vector<int> vecIndex, const cv::Size2f& scale, const cv::Point2f& shift, bool m_bDecode, std::vector<TAnchorBox> &m_vecAnchor, const float variances[2]);
+        cv::Size m_outputBoxSize;
+        cv::Size m_outputScoreSize;
+        cv::Size m_outputLandmarkSize;
+        cv::Size m_outputMasksSize;
 
-        void DecodeAndScaleLandmark(cv::Mat matLandmarks, const std::vector<int> vecIndex, const cv::Size2f& scale, const cv::Point2f& shift, bool m_bDecode, std::vector<TAnchorBox> &m_vecAnchor, const float variances[2]);
+        cv::Mat m_matBoxes;
+        cv::Mat m_matScores;
+        cv::Mat m_matLandmarks;
+        cv::Mat m_matMasks;
 
-        std::vector<TFaceInfo> GenResult(const cv::Mat& matBoxes,
-                                        const cv::Mat& matScores,
-                                        const cv::Mat matLandmarks,
-                                        const cv::Mat& matMasks,
-                                        const std::vector<int>& vecIndex,
-                                        cv::Size m_modelInputSize,
-                                        float fScale);
-
+        std::vector<TAnchorBox> m_vecAnchor;
 };
 
 class Capacity_FaceDetection_V1 : public ICapacity_FaceDetection
 {
     public:
-        void GetDefaultParam(cv::Size &modelInputSize, bool &m_bDecode, float &m_fScoreTh, float &m_fNMSTh, size_t &m_uiOutputTopK, size_t &m_uiNMSTopK);
+        void GetDefaultParam(cv::Size &modelInputSize, float &m_fScoreTh, float &m_fNMSTh, size_t &m_uiOutputTopK, size_t &m_uiNMSTopK, bool &m_bDecode);
 
-        std::vector<std::pair<std::string, std::vector<int64_t>>> GetEngineInputShape(const cv::Size &modelInputSize);
+        void SetOutputSize(bool m_bDecode, cv::Size2i inputSize);
 
-        std::vector<std::pair<std::string, std::vector<int64_t>>> GetEngineOutputShape(const int iAnchorNum);
+        std::vector<std::pair<std::string, std::vector<int64_t>>> GetEngineInputShape();
 
-        void SetOutputSize(const int iAnchorNum, cv::Size &BoxSize, cv::Size &ScoreSize, cv::Size &LandmarkSize, cv::Size &markSize, cv::Size &ClsSize);
+        std::vector<std::pair<std::string, std::vector<int64_t>>> GetEngineOutputShape();
 
         std::vector<TTensorInfo> SetEngineInput(cv::Mat &matModelInput);
-        
-        std::vector<TTensorInfo> SetEngineOutput(cv::Mat &matBoxes, cv::Mat &matScores, cv::Mat &matLandmarks, cv::Mat &matMasks, cv::Mat &matCls);
 
-        std::vector<TFaceInfo> Postprocess(cv::Mat& matBoxes, cv::Mat& matScores, cv::Mat& matLandmarks, cv::Mat& matMasks, cv::Mat &matCls,
-                                           float fScale, cv::Size m_modelInputSize,
-                                           float m_fScoreTh, float m_fNMSTh, size_t m_uiOutputTopK, size_t m_uiNMSTopK,
-                                           bool m_bDecode, std::vector<TAnchorBox> &m_vecAnchor);
+        std::vector<TTensorInfo> SetEngineOutput();
 
-        std::pair<cv::Mat, float> Preprocess(const cv::Mat & inputImage, cv::Size m_modelInputSize);
+        std::pair<cv::Mat, float> Preprocess(const cv::Mat &inputImage);
+
+        std::vector<TFaceInfo> Postprocess(float fScale, float m_fScoreTh, float m_fNMSTh, size_t m_uiOutputTopK, size_t m_uiNMSTopK, bool m_bDecode);
+
+    private:
+        void DecodeAndScaleBox(cv::Mat matBoxes, const std::vector<int> vecIndex, const cv::Size2f& scale, const cv::Point2f& shift, std::vector<TAnchorBox> &m_vecAnchor);
+
+        void DecodeAndScaleLandmark(cv::Mat matLandmarks, const std::vector<int> vecIndex, const cv::Size2f& scale, const cv::Point2f& shift, std::vector<TAnchorBox> &m_vecAnchor);
+
+        std::vector<TFaceInfo> GenResult(const std::vector<int>& vecIndex);
 
         std::vector<TAnchorBox> GenAnchor(const cv::Size2f & inputSize);
 
-    private:
-        cv::Size m_modelInputSize = cv::Size(320, 320);
         const std::vector<std::pair<float, std::vector<float>>> vecFeatureMap =
         {
             {8, {16, 32}},
@@ -121,19 +124,23 @@ class Capacity_FaceDetection_V1 : public ICapacity_FaceDetection
             {32, {128, 256}},
         };
 
-        cv::Scalar m_paddingValue = cv::Scalar(103, 117, 123);                
+        cv::Size m_modelInputSize = cv::Size(320, 320);
 
-        void DecodeAndScaleBox(cv::Mat matBoxes, const std::vector<int> vecIndex, const cv::Size2f& scale, const cv::Point2f& shift, std::vector<TAnchorBox> &m_vecAnchor);
+        cv::Scalar m_paddingValue = cv::Scalar(103, 117, 123);
 
-        void DecodeAndScaleLandmark(cv::Mat matLandmarks, const std::vector<int> vecIndex, const cv::Size2f& scale, const cv::Point2f& shift, std::vector<TAnchorBox> &m_vecAnchor);
-        
-        std::vector<TFaceInfo> GenResult(const cv::Mat& matBoxes,
-                                        const cv::Mat& matScores,
-                                        const cv::Mat matLandmarks,
-                                        const cv::Mat& matMasks,
-                                        const cv::Mat& matCls,
-                                        const std::vector<int>& vecIndex);
+        cv::Size m_outputBoxSize;
+        cv::Size m_outputScoreSize;
+        cv::Size m_outputLandmarkSize;
+        cv::Size m_outputPoseSize;
+        cv::Size m_outputClsSize;
 
+        cv::Mat m_matBoxes;
+        cv::Mat m_matScores;
+        cv::Mat m_matLandmarks;
+        cv::Mat m_matPose;
+        cv::Mat m_matCls;
+
+        std::vector<TAnchorBox> m_vecAnchor;
 };
 
 std::unique_ptr<ICapacity_FaceDetection> CreateCapacity_FaceDetection(std::string strTypeName);

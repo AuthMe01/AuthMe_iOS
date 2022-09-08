@@ -35,4 +35,13 @@ bool RSAVerify_sha256(const unsigned char* data,
                       const unsigned char* sig,
                       unsigned int sig_len,
                       const char* x509_crt);
+
+std::vector<unsigned char> RSAEncrypt(const std::string& rsaPublicKey, const unsigned char *plaintext, int plaintextLen);
+
+std::vector<unsigned char> RSADecrypt(const std::string& rsaPrivateKey, const unsigned char *cipher, int cipherLen);
+
+void RandomByes(unsigned char* buffer, int size);
+
+int GetRSAPrivateKeySize(const std::string& rsaPrivateKey);
+
 }

@@ -33,17 +33,27 @@ class IIDCardAntiFraudService : public IEngineBase
 
         virtual AuthMeIDCardAntiFraudParams GetParams() const = 0;
 
+        virtual void SetStage(const std::vector<EAuthMeIDCardAntiFraudStage>& vecStage) = 0;
+
+        virtual std::vector<EAuthMeIDCardAntiFraudStage> GetStage() const = 0;
+
         // return ROI of image analysis, l,t,w,h in range [0~1], representing previewPosition
-        virtual cv::Rect2f GetNormalizedROI() const = 0;
+        virtual cv::Rect2f GetAnalysisROI() const = 0;
 
         // points in vecVertices should be clockwise or counterclockwise
         // point x,y range in [0~1], representing previewPosition
-        // will reset card match status in AuthMeIDCardAntiFraudResult after SetCardMatchROI()
-        virtual void SetCardMatchNormalizedROI(const std::vector<cv::Point2f>& vecVertices) = 0;
+        // will reset card match status in AuthMeIDCardAntiFraudResult after SetFrontalCardVertices()
+        virtual void SetFrontalCardVertices(const std::vector<cv::Point2f>& vecVertices) = 0;
 
-        virtual void Start() = 0;
+        virtual std::vector<cv::Point2f> GetCardMatchROI() = 0;
+
+        virtual EAuthMeEngineReturnCode Start() = 0;
 
         virtual AuthMeIDCardAntiFraudResult Run(const cv::Mat& srcImage) = 0;
+
+        virtual EAuthMeEngineReturnCode Stop() = 0;
+
+        virtual const std::string& GetJsonReport() = 0;
 
         virtual EAuthMeEngineReturnCode GetDebugImage(cv::Mat& image) = 0;
 };

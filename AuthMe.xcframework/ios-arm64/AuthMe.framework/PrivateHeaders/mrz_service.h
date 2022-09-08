@@ -22,11 +22,17 @@ EAuthMeEngineReturnCode AuthMe_MRZService_SetParams(long handle, const AuthMeMRZ
 
 AuthMeMRZParams AuthMe_MRZService_GetParams(long handle);
 
+EAuthMeEngineReturnCode AuthMe_MRZService_Start(long handle);
+
 EAuthMeEngineReturnCode AuthMe_MRZService_Run(long handle, const AuthMeImage* pImage, AuthMeMRZResult* pResult);
+
+EAuthMeEngineReturnCode AuthMe_MRZService_Stop(long handle);
 
 AuthMeEngineDebugInfoList AuthMe_MRZService_GetDebugInfo(long handle);
 
 EAuthMeEngineReturnCode AuthMe_MRZService_GetDebugImage(long handle, AuthMeImage* pImage);
+
+const char* AuthMe_MRZService_GetJsonReport(long handle);
 
 #ifdef __cplusplus
 }

@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
 // swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AuthMe
 @_exported import AuthMe
 import CoreAudio
@@ -174,17 +174,18 @@ public class LivenessFlow {
   public var isDetecting: Swift.Bool {
     get
   }
-  public init(action: LivenessFlow.Action = .register, isPassive: Swift.Bool, roiParam: LivenessFlow.RoiParam)
+  public init(action: LivenessFlow.Action = .register(true), isPassive: Swift.Bool, roiParam: LivenessFlow.RoiParam)
   public func start()
   public func recognize(image: UIKit.UIImage)
   public func roiRect(in previewSize: CoreGraphics.CGSize) -> CoreGraphics.CGRect
   public func upload(progressHandler: @escaping ((Foundation.Progress) -> Swift.Void), completion: @escaping (() -> Swift.Void))
+  public func getResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
   public func getVerifyResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
   @objc deinit
 }
 extension LivenessFlow {
   public enum Action {
-    case register
+    case register(_: Swift.Bool)
     case verify(_: Swift.Bool)
   }
   public enum FlowError : Swift.Error {
@@ -203,19 +204,10 @@ extension LivenessFlow {
     }
   }
 }
-extension E_AUTHME_FAS_SERVICE_STATUS {
-  public var hintMessage: Swift.String {
-    get
-  }
-}
 extension LivenessFlow {
   public struct RoiParam {
     public init(preview: EnginePreview, ratio: CoreGraphics.CGFloat, widthRatio: CoreGraphics.CGFloat, offset: UIKit.UIOffset)
   }
-}
-public struct LivenessModelsRequest {
-}
-public struct OCRModelsRequest {
 }
 public class QKMRZParser {
   public init(ocrCorrection: Swift.Bool = false)
@@ -275,20 +267,14 @@ public enum OCRError : Swift.String, Foundation.LocalizedError {
   case ERROR_SYSTEM_BUSY
   case ERROR_401
   case NO_DETECTED
-  case UNEXPECTED_CARD
-  case CARD_TOO_SMALL
   case CARD_REFLECTIVE
   case LOW_SHARPNESS
-  case CARD_SKEWED
   case WORNG_CARD_TYPE
   case CARD_NOT_IN_REGION
-  case CARD_NOT_ALIGN
   case PROCESS_FAIL
   case FRONT_FIELD_MISSING
   case BACK_FIELD_MISSING
   case ERROR_VERCIAL
-  case ERROR_HORIZONTAL
-  case ERROR_ANGLE
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -318,7 +304,7 @@ public protocol OCRFlowAntiFraudProtocol {
   func enterReverse() -> Swift.Bool
   func reenterRotate()
   func enterPrepare(active: Swift.Bool)
-  func stop()
+  func stopBarcodeDetection()
 }
 public class OCRFactory {
   public init()
@@ -362,6 +348,7 @@ public struct OCRInitScanDocRequest {
   public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
   public func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   public func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  override public func restart()
   override public init(ocrcard: OCRCard)
   @objc deinit
 }
@@ -529,7 +516,7 @@ extension TWIDAntiFraudFlow : OCRFlowAntiFraudProtocol {
   public func enterReverse() -> Swift.Bool
   public func reenterRotate()
   public func enterPrepare(active: Swift.Bool)
-  public func stop()
+  public func stopBarcodeDetection()
 }
 @_inheritsConvenienceInitializers public class TWIDFlow : OCRMainFlow {
   override public func start(needConfirm: Swift.Bool, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
@@ -539,17 +526,6 @@ extension TWIDAntiFraudFlow : OCRFlowAntiFraudProtocol {
 }
 extension UIKit.UIDevice {
   @_Concurrency.MainActor(unsafe) public static let modelName: Swift.String
-}
-@_hasMissingDesignatedInitializers public class UploadImageRequest {
-  @objc deinit
-}
-public struct UploadInfoRequestBody : Swift.Encodable {
-  public func encode(to encoder: Swift.Encoder) throws
-}
-public struct UploadInfoRequest {
-}
-@_hasMissingDesignatedInitializers public class UploadLivenessRequest {
-  @objc deinit
 }
 final public class URLEncodedFormEncoder {
   public enum ArrayEncoding {

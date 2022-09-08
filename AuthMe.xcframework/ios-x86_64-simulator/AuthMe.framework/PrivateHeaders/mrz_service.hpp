@@ -28,7 +28,13 @@ class IMRZService : public IEngineBase
 
         virtual AuthMeMRZParams GetParams() const = 0;
 
+        virtual EAuthMeEngineReturnCode Start() = 0;
+
         virtual AuthMeMRZResult Run(const cv::Mat& srcImage) = 0;
+
+        virtual EAuthMeEngineReturnCode Stop() = 0;
+
+        virtual const std::string& GetJsonReport() = 0;
 
         virtual EAuthMeEngineReturnCode GetDebugImage(cv::Mat& image) = 0;
 };

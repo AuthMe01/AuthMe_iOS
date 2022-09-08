@@ -38,20 +38,26 @@ typedef enum _E_AUTHME_FACE_POSE : int
     eAuthMe_FacePose_DownFrontal,
 } EAuthMeFacePose;
 
+
+#define CARD_CLASS_TAG(decorate) \
+    decorate(Invalid, = -1) \
+    decorate(Background) \
+    decorate(Unknown) \
+    decorate(Passport) \
+    decorate(TWN_IDCard_Front) \
+    decorate(TWN_IDCard_Back) \
+    decorate(TWN_DriverLicense_Front) \
+    decorate(TWN_DriverLicense_Back) \
+    decorate(TWN_Resident_Front) \
+    decorate(TWN_Resident_Back) \
+    decorate(TWN_Health_Front) \
+    decorate(TWN_VehiclesLicense_Front)
+
+
+#define CARD_CLASS_PREFIX(name, ...) eAuthMe_Card_##name __VA_ARGS__,
 typedef enum _E_AUTHME_CARD_CLASS : int
 {
-    eAuthMe_Card_Invalid = -1,
-    eAuthMe_Card_Background = 0,
-    eAuthMe_Card_Unknown,
-    eAuthMe_Card_Passport,
-    eAuthMe_Card_TWN_IDCard_Front,
-    eAuthMe_Card_TWN_IDCard_Back,
-    eAuthMe_Card_TWN_DriverLicense_Front,
-    eAuthMe_Card_TWN_DriverLicense_Back,
-    eAuthMe_Card_TWN_Resident_Front,
-    eAuthMe_Card_TWN_Resident_Back,
-    eAuthMe_Card_TWN_Health_Front,
-    eAuthMe_Card_TWN_VehiclesLicense_Front,
+    CARD_CLASS_TAG(CARD_CLASS_PREFIX)
 } EAuthMeCardClass;
 
 typedef enum _E_AUTHME_LASER_TAG_STATUS : int
@@ -91,6 +97,17 @@ typedef enum _AUTHME_ID_CARD_METAL_TAG_STATUS : int
     eAuthMe_IDCardMetalTag_Bright,
     eAuthMe_IDCardMetalTag_Dark,
 } EAuthMeIDCardMetalTagStatus;
+
+typedef enum
+{
+    eFaceClass_Glass,
+    eFaceClass_SunGlass,
+    eFaceClass_HairCover,
+    eFaceClass_MaskCover,
+    eFaceClass_OtherCover,
+    eFaceClass_HardToRecog,
+    eFaceClass_TotalNum,
+} EFaceClassStatus;
 
 typedef struct _AUTHME_IMAGE
 {
@@ -143,25 +160,33 @@ typedef struct _AUTHME_POINT_FLOAT
 typedef struct _AUTHME_FACE_INFO
 {
     float fScore;
-    float fMask;
     AuthMeRectFloat box;
     float afLandmark[10]; //x1, y1, x2, y2, ...
+    float afClasses[6];
     DEFAULT_COMPARISON(_AUTHME_FACE_INFO)
 } AuthMeFaceInfo;
 
+
+#define MRZ_FILED_TD3_CONTENT(decorate) \
+    decorate(char, surname, 40) \
+    decorate(char, givenName, 40) \
+    decorate(char, birthDate, 12) \
+    decorate(char, expiryDate, 12) \
+    decorate(char, country, 4) \
+    decorate(char, documentNumber, 12) \
+    decorate(char, documentType, 4) \
+    decorate(char, sex, 4) \
+    decorate(char, nationality, 4) \
+    decorate(char, personalNumber, 16)
+
+#define IMPL_FIELD_TD3(type, name, size) type name[size];
+
 typedef struct _AUTHME_T_MRZ_FIELD
 {
-    char surname[40];
-    char givenName[40];
-    char birthDate[12];
-    char expiryDate[12];
-    char country[4];
-    char documentNumber[12];
-    char documentType[4];
-    char sex[4];
-    char nationality[4];
-    char personalNumber[16];
-} AuthMeMRZFieldTD3;
+    MRZ_FILED_TD3_CONTENT(IMPL_FIELD_TD3)
+    DEFAULT_COMPARISON(_AUTHME_T_MRZ_FIELD)
+}
+AuthMeMRZFieldTD3;
 
 #ifdef __cplusplus
 }

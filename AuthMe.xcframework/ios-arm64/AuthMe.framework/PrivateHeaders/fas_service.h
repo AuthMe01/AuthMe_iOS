@@ -38,9 +38,13 @@ EAuthMeEngineReturnCode AuthMe_FASService_Start(long handle);
 
 EAuthMeEngineReturnCode AuthMe_FASService_Run(long handle, AuthMeImage* pImage, AuthMeFASResult* pResult);
 
+EAuthMeEngineReturnCode AuthMe_FASService_Stop(long handle);
+
 AuthMeEngineDebugInfoList AuthMe_FASService_GetDebugInfo(long handle);
 
 EAuthMeEngineReturnCode AuthMe_FASService_GetDebugImage(long handle, AuthMeImage* pImage);
+
+const char* AuthMe_FASService_GetJsonReport(long handle);
 
 #ifdef __cplusplus
 }

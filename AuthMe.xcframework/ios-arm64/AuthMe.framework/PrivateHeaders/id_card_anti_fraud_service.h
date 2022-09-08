@@ -24,19 +24,30 @@ AuthMeV3ServiceUIParams AuthMe_IDCardAntiFraudService_GetUIParams(long handle);
 
 EAuthMeEngineReturnCode AuthMe_IDCardAntiFraudService_SetParams(long handle, const AuthMeIDCardAntiFraudParams* pParams);
 
+EAuthMeEngineReturnCode AuthMe_IDCardAntiFraudService_SetStage(long handle, const EAuthMeIDCardAntiFraudStage* pStage, int iStageNum);
+
+EAuthMeEngineReturnCode AuthMe_IDCardAntiFraudService_GetStage(long handle, EAuthMeIDCardAntiFraudStage** ppStage, int* piStageNum);
+
 AuthMeIDCardAntiFraudParams AuthMe_IDCardAntiFraudService_GetParams(long handle);
 
-AuthMeRectFloat AuthMe_IDCardAntiFraudService_GetNormalizedROI(long handle);
+AuthMeRectFloat AuthMe_IDCardAntiFraudService_GetAnalysisROI(long handle);
 
-EAuthMeEngineReturnCode AuthMe_IDCardAntiFraudService_SetCardMatchNormalizedROI(long handle, const float* pPoints, int iLength);
+EAuthMeEngineReturnCode AuthMe_IDCardAntiFraudService_SetFrontalCardVertices(long handle, const float* pPoints, int iLength);
+
+// returns a float[8] array pointer
+const float* AuthMe_IDCardAntiFraudService_GetCardMatchROI(long handle);
 
 EAuthMeEngineReturnCode AuthMe_IDCardAntiFraudService_Start(long handle);
 
 EAuthMeEngineReturnCode AuthMe_IDCardAntiFraudService_Run(long handle, AuthMeImage* pImage, AuthMeIDCardAntiFraudResult* pResult);
 
+EAuthMeEngineReturnCode AuthMe_IDCardAntiFraudService_Stop(long handle);
+
 AuthMeEngineDebugInfoList AuthMe_IDCardAntiFraudService_GetDebugInfo(long handle);
 
 EAuthMeEngineReturnCode AuthMe_IDCardAntiFraudService_GetDebugImage(long handle, AuthMeImage* pImage);
+
+const char* AuthMe_IDCardAntiFraudService_GetJsonReport(long handle);
 
 #ifdef __cplusplus
 }

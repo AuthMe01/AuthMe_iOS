@@ -1,5 +1,6 @@
 #pragma once
 #include "card_ocr_service.hpp"
+#include "service_base.hpp"
 #include "card_detection.hpp"
 #include "card_classification.hpp"
 #include "reflection_detection.hpp"
@@ -7,7 +8,18 @@
 namespace AuthMe
 {
 
-class CCardOCR : public ICardOCRService
+typedef struct CARD_OCR_FRAME_REPORT_OBJECT
+{
+    EAuthMeCardOCRStatus eStatus;
+} CardOCRFrameReportObject;
+
+typedef struct CARD_OCR_SERVICE_RECORD
+{
+    std::string strJson;
+    std::vector<CardOCRFrameReportObject> vecFrameRecord;
+} CardOCRServiceRecord;
+
+class CCardOCR : public ICardOCRService, protected CServiceBase
 {
     public:
         CCardOCR();
@@ -18,13 +30,17 @@ class CCardOCR : public ICardOCRService
         AuthMeV3ServiceUIParams GetUIParams() const override;
         void SetParams(const AuthMeCardOCRParams& params) override;
         AuthMeCardOCRParams GetParams() const override;
-        cv::Rect2f GetNormalizedROI() const override;
-        void SetCardMatchNormalizedROI(const std::vector<cv::Point2f>& vecVertices) override;
+        cv::Rect2f GetAnalysisROI() const override;
+        void SetCardMatchROI(const std::vector<cv::Point2f>& vecVertices) override;
         void SetCustomReflectiveROI(const std::vector<cv::Rect2f>& vecROI) override;
+        EAuthMeEngineReturnCode Start() override;
         AuthMeCardOCRResult Run(const cv::Mat& srcImage) override;
+        EAuthMeEngineReturnCode Stop() override;
+        const std::string& GetJsonReport() override;
         EAuthMeEngineReturnCode GetDebugImage(cv::Mat& image) override;
 
     private:
+        AuthMeCardOCRResult RunImpl(const cv::Mat& srcImage);
         void LoadModelDefaultParams();
         std::vector<cv::Rect2f> LoadDefaultReflectiveROI(EAuthMeCardClass eCardClass);
         void CalcROI();
@@ -43,6 +59,8 @@ class CCardOCR : public ICardOCRService
         std::vector<cv::Point2f> m_vecCardMatchVertices;
         std::vector<cv::Rect2f> m_vecReflectiveROI;
         std::vector<AuthMeEngineDebugInfo> m_vecDebugInfo;
+
+        CardOCRServiceRecord m_record;
         std::vector<cv::Point2f> m_vecCardVertices;
         AuthMeCardOCRInfo m_info = {};
 };

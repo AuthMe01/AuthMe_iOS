@@ -23,20 +23,26 @@ EAuthMeEngineReturnCode AuthMe_CardOCRService_SetParams(long handle, const AuthM
 
 AuthMeCardOCRParams AuthMe_CardOCRService_GetParams(long handle);
 
-AuthMeRectFloat AuthMe_CardOCRService_GetNormalizedROI(long handle);
+AuthMeRectFloat AuthMe_CardOCRService_GetAnalysisROI(long handle);
 
-EAuthMeEngineReturnCode AuthMe_CardOCRService_SetCardMatchNormalizedROI(long handle, const float* pPoints, int iLength);
+EAuthMeEngineReturnCode AuthMe_CardOCRService_SetCardMatchROI(long handle, const float* pPoints, int iLength);
 
 // set customized roi for reflection detection, ROI t,l,b,r range [0~1]
 // restore to default by setting empty array
 EAuthMeEngineReturnCode AuthMe_CardOCRService_SetCustomReflectiveROI(long handle, const AuthMeRectFloat* pRect, int iLength);
 
+EAuthMeEngineReturnCode AuthMe_CardOCRService_Start(long handle);
+
 // need to call AuthMe_ReleaseImage in service_utility.h for pResult->image after use
 EAuthMeEngineReturnCode AuthMe_CardOCRService_Run(long handle, const AuthMeImage* pImage, AuthMeCardOCRResult* pResult);
+
+EAuthMeEngineReturnCode AuthMe_CardOCRService_Stop(long handle);
 
 AuthMeEngineDebugInfoList AuthMe_CardOCRService_GetDebugInfo(long handle);
 
 EAuthMeEngineReturnCode AuthMe_CardOCRService_GetDebugImage(long handle, AuthMeImage* pImage);
+
+const char* AuthMe_CardOCRService_GetJsonReport(long handle);
 
 #ifdef __cplusplus
 }

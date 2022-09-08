@@ -9,6 +9,28 @@
 namespace AuthMe
 {
 
+typedef struct FAS_FRAME_REPORT_OBJECT
+{
+    EAuthMeFASServiceStage eStage;
+    EAuthMeFASServiceStatus eStatus;
+} FASFrameReportObject;
+
+typedef struct FAS_STAGE_REPORT_OBJECT
+{
+    EAuthMeFASServiceStage eStage;
+    EAuthMeFASServiceStatus eStatus;
+    int iFrameIndex = 0;
+} FASStageReportObject;
+
+typedef struct FAS_SERVICE_RECORD
+{
+    std::string strJson;
+    int iFrameIndex = 0;
+    float fMaxFASScore = 0.0f;
+    std::vector<FASFrameReportObject> vecFrameRecord;
+    std::vector<FASStageReportObject> vecStageRecord;
+} FASServiceRecord;
+
 class IFASService_Stage;
 
 class CFASService : public IFASService, protected CServiceBase
@@ -27,11 +49,15 @@ class CFASService : public IFASService, protected CServiceBase
         std::vector<EAuthMeFASServiceStage> GetStage() const override;
         void SetStageParams(const AuthMeFASStageParams& params, int iIndex) override;
         AuthMeFASStageParams GetStageParams(int iIndex) const override;
-        void Start() override;
+        EAuthMeEngineReturnCode Start() override;
         AuthMeFASResult Run(const cv::Mat& inputImage) override;
+        EAuthMeEngineReturnCode Stop() override;
+        const std::string& GetJsonReport() override;
         EAuthMeEngineReturnCode GetDebugImage(cv::Mat& image) override;
 
     protected:
+        AuthMeFASResult RunImpl(const cv::Mat& inputImage);
+        void UpdateRecord(const AuthMeFASResult& result);
         std::shared_ptr<IFASService_Stage> GetStageModule(EAuthMeFASServiceStage eStage);
         void CalcFaceROI(const AuthMeV3ServiceUIParams& uiParams,
                          const float fFaceROIRatioW,
@@ -58,6 +84,8 @@ class CFASService : public IFASService, protected CServiceBase
         AuthMeV3ServiceUIParams m_uiParams;
         AuthMeFASParams m_params;
         std::vector<AuthMeEngineDebugInfo> m_vecDebugInfo;
+
+        FASServiceRecord m_record;
 };
 
 AuthMeRectFloat Convert(const cv::Rect2f& input);
