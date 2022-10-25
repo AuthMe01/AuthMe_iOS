@@ -26,31 +26,35 @@ typedef enum _E_AUTHME_FACE_ANTI_SPOOFING_STATUS
     eAuthMe_FaceAntiSpoofing_Spoof,
 } EAuthMeFaceAntiSpoofingStatus;
 
+
+#define AUTHME_FACE_POSE_TAG(decorate) \
+    decorate(Unknown, =-1) \
+    decorate(LeftProfile, =0) \
+    decorate(LeftFrontal) \
+    decorate(Frontal) \
+    decorate(RightFrontal) \
+    decorate(RightProfile) \
+    decorate(UpFrontal) \
+    decorate(DownFrontal)
+
+#define AUTHME_FACE_POSE_PREFIX(name, ...) eAuthMe_FacePose_##name __VA_ARGS__,
 typedef enum _E_AUTHME_FACE_POSE : int
 {
-    eAuthMe_FacePose_Unknown = -1,
-    eAuthMe_FacePose_LeftProfile = 0,
-    eAuthMe_FacePose_LeftFrontal,
-    eAuthMe_FacePose_Frontal,
-    eAuthMe_FacePose_RightFrontal,
-    eAuthMe_FacePose_RightProfile,
-    eAuthMe_FacePose_UpFrontal,
-    eAuthMe_FacePose_DownFrontal,
+    AUTHME_FACE_POSE_TAG(AUTHME_FACE_POSE_PREFIX)
 } EAuthMeFacePose;
 
 
 #define CARD_CLASS_TAG(decorate) \
-    decorate(Invalid, = -1) \
-    decorate(Background) \
-    decorate(Unknown) \
+    decorate(Invalid) \
+    decorate(UnknownCard) \
     decorate(Passport) \
     decorate(TWN_IDCard_Front) \
     decorate(TWN_IDCard_Back) \
     decorate(TWN_DriverLicense_Front) \
     decorate(TWN_DriverLicense_Back) \
-    decorate(TWN_Resident_Front) \
-    decorate(TWN_Resident_Back) \
-    decorate(TWN_Health_Front) \
+    decorate(TWN_ResidentCard_Front) \
+    decorate(TWN_ResidentCard_Back) \
+    decorate(TWN_HealthCard_Front) \
     decorate(TWN_VehiclesLicense_Front)
 
 
@@ -162,7 +166,7 @@ typedef struct _AUTHME_FACE_INFO
     float fScore;
     AuthMeRectFloat box;
     float afLandmark[10]; //x1, y1, x2, y2, ...
-    float afClasses[6];
+    float afClasses[50];
     DEFAULT_COMPARISON(_AUTHME_FACE_INFO)
 } AuthMeFaceInfo;
 

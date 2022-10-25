@@ -7,7 +7,9 @@ extern "C" {
 
 void AuthMe_ReleaseImage(AuthMeImage* pImage);
 
-void GetFASStageName(EAuthMeFASServiceStage eStage, char* pBuffer, int iSize);
+long AuthMe_CreateModel(const char* modelName, const char* modelPath);
+
+void AuthMe_ReleaseModel(long model);
 
 #ifdef __cplusplus
 }

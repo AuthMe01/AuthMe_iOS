@@ -17,6 +17,7 @@ typedef struct CARD_OCR_SERVICE_RECORD
 {
     std::string strJson;
     std::vector<CardOCRFrameReportObject> vecFrameRecord;
+    std::vector<AuthMeCardOCRInfo> vecInfo;
 } CardOCRServiceRecord;
 
 class CCardOCR : public ICardOCRService, protected CServiceBase
@@ -26,13 +27,13 @@ class CCardOCR : public ICardOCRService, protected CServiceBase
         virtual ~CCardOCR();
         const std::vector<AuthMeEngineDebugInfo> &GetDeBugInfo() override;
         bool Initial(const AuthMeCardOCRModels& models) override;
-        void SetUIParams(const AuthMeV3ServiceUIParams& params) override;
-        AuthMeV3ServiceUIParams GetUIParams() const override;
+        void SetUIParams(const AuthMeServiceUIParams& params) override;
+        AuthMeServiceUIParams GetUIParams() const override;
         void SetParams(const AuthMeCardOCRParams& params) override;
         AuthMeCardOCRParams GetParams() const override;
         cv::Rect2f GetAnalysisROI() const override;
         void SetCardMatchROI(const std::vector<cv::Point2f>& vecVertices) override;
-        void SetCustomReflectiveROI(const std::vector<cv::Rect2f>& vecROI) override;
+        void EnableAlgoLog(bool enable) override;
         EAuthMeEngineReturnCode Start() override;
         AuthMeCardOCRResult Run(const cv::Mat& srcImage) override;
         EAuthMeEngineReturnCode Stop() override;
@@ -43,19 +44,13 @@ class CCardOCR : public ICardOCRService, protected CServiceBase
         AuthMeCardOCRResult RunImpl(const cv::Mat& srcImage);
         void LoadModelDefaultParams();
         std::vector<cv::Rect2f> LoadDefaultReflectiveROI(EAuthMeCardClass eCardClass);
-        void CalcROI();
-        cv::Mat CenterCrop(const cv::Mat& image, float fRatio);
 
         ICardDetection* m_pCardDetect = nullptr;
         ICardClassification* m_pCardClassify = nullptr;
         IReflectionDetection* m_pReflectDetect = nullptr;
 
-        AuthMeV3ServiceUIParams m_uiParams;
         AuthMeCardOCRParams m_params;
-
-        cv::Rect m_analyzeROI;
-        cv::Rect m_previewROI;
-        cv::Rect2f m_normalizedROI;
+        cv::Size m_outputImageSize = {760, 480};
         std::vector<cv::Point2f> m_vecCardMatchVertices;
         std::vector<cv::Rect2f> m_vecReflectiveROI;
         std::vector<AuthMeEngineDebugInfo> m_vecDebugInfo;

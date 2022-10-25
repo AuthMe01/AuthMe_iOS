@@ -323,7 +323,6 @@ const char* GetJsonReport(long handle)
     return NULL;
 }
 
-
 template<class ServiceType>
 EAuthMeEngineReturnCode GetDebugImage(long handle, AuthMeImage* pImage)
 {

@@ -29,6 +29,7 @@ typedef struct FAS_SERVICE_RECORD
     float fMaxFASScore = 0.0f;
     std::vector<FASFrameReportObject> vecFrameRecord;
     std::vector<FASStageReportObject> vecStageRecord;
+    std::vector<AuthMeFASServiceInfo> vecInfo;
 } FASServiceRecord;
 
 class IFASService_Stage;
@@ -40,8 +41,8 @@ class CFASService : public IFASService, protected CServiceBase
         virtual ~CFASService() {}
         std::vector<AuthMeEngineDebugInfo> &GetDeBugInfo() override;
         bool Initial(const AuthMeFASServiceModels& models) override;
-        void SetUIParams(const AuthMeV3ServiceUIParams& params) override;
-        AuthMeV3ServiceUIParams GetUIParams() const override;
+        void SetUIParams(const AuthMeServiceUIParams& params) override;
+        AuthMeServiceUIParams GetUIParams() const override;
         void SetParams(const AuthMeFASParams& param) override;
         AuthMeFASParams GetParams() const override;
         cv::Rect2f GetNormalizedFaceROI() const override;
@@ -49,6 +50,7 @@ class CFASService : public IFASService, protected CServiceBase
         std::vector<EAuthMeFASServiceStage> GetStage() const override;
         void SetStageParams(const AuthMeFASStageParams& params, int iIndex) override;
         AuthMeFASStageParams GetStageParams(int iIndex) const override;
+        void EnableAlgoLog(bool enable) override;
         EAuthMeEngineReturnCode Start() override;
         AuthMeFASResult Run(const cv::Mat& inputImage) override;
         EAuthMeEngineReturnCode Stop() override;
@@ -59,13 +61,11 @@ class CFASService : public IFASService, protected CServiceBase
         AuthMeFASResult RunImpl(const cv::Mat& inputImage);
         void UpdateRecord(const AuthMeFASResult& result);
         std::shared_ptr<IFASService_Stage> GetStageModule(EAuthMeFASServiceStage eStage);
-        void CalcFaceROI(const AuthMeV3ServiceUIParams& uiParams,
-                         const float fFaceROIRatioW,
-                         const float fFaceROIRatioH,
-                         const AuthMePointFloat& shift);
+        void CalcFaceROI(const AuthMeRectFloat& faceROI);
         void GetModelDefaultParams();
         void ResetStage();
         void GenFaceInfo(const cv::Mat& inputImage, AuthMeFASResult& result, std::vector<cv::Point2f>& vecLandmark106);
+        void CoordinateCorrection(AuthMeFASResult& result);
 
         friend class CStageBase;
 
@@ -77,11 +77,8 @@ class CFASService : public IFASService, protected CServiceBase
         std::vector<std::pair<EAuthMeFASServiceStage, std::shared_ptr<IFASService_Stage>>> m_vecStageSet;
         std::vector<std::pair<EAuthMeFASServiceStage, std::shared_ptr<IFASService_Stage>>>::iterator m_pStage;
         std::vector<AuthMeFASStageParams> m_vecStageParams;
-        cv::Size m_analyzeSize;
         cv::Rect2f m_normalizedFaceRoi;
         cv::Rect2f m_faceRoi;
-        cv::Rect2f m_previewRoi;
-        AuthMeV3ServiceUIParams m_uiParams;
         AuthMeFASParams m_params;
         std::vector<AuthMeEngineDebugInfo> m_vecDebugInfo;
 

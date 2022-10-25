@@ -2,9 +2,6 @@
 #include "engine_service_type.h"
 #include "opencv2/core.hpp"
 #include "engine_base.hpp"
-#include "card_detection.hpp"
-#include "card_classification.hpp"
-#include "reflection_detection.hpp"
 
 namespace AuthMe
 {
@@ -20,9 +17,9 @@ class ICardOCRService : public IEngineBase
 
         virtual bool Initial(const AuthMeCardOCRModels& models) = 0;
 
-        virtual void SetUIParams(const AuthMeV3ServiceUIParams& params) = 0;
+        virtual void SetUIParams(const AuthMeServiceUIParams& params) = 0;
 
-        virtual AuthMeV3ServiceUIParams GetUIParams() const = 0;
+        virtual AuthMeServiceUIParams GetUIParams() const = 0;
 
         virtual void SetParams(const AuthMeCardOCRParams& params) = 0;
 
@@ -31,14 +28,12 @@ class ICardOCRService : public IEngineBase
         // return ROI of image analysis, l,t,w,h in range [0~1], representing previewPosition
         virtual cv::Rect2f GetAnalysisROI() const = 0;
 
-        // set customized roi for reflection detection, ROI x,y,w,h range [0~1]
-        // restore to default by setting empty vector
-        virtual void SetCustomReflectiveROI(const std::vector<cv::Rect2f>& vecROI) = 0;
-
         // points in vecVertices should be clockwise or counterclockwise
         // point x,y range in [0~1], representing previewPosition
         // will reset card match status in AuthMeIDCardAntiFraudResult after SetCardMatchROI()
         virtual void SetCardMatchROI(const std::vector<cv::Point2f>& vecVertices) = 0;
+
+        virtual void EnableAlgoLog(bool enable) = 0;
 
         virtual EAuthMeEngineReturnCode Start() = 0;
 

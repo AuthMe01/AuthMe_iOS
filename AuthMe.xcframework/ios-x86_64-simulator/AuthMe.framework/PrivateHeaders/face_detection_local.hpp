@@ -21,27 +21,12 @@ class CFaceDetection : public IFaceDetection
 
     private:
         EAuthMeEngineReturnCode InitialSetup();
-        EAuthMeEngineReturnCode GetParamsFromModel();
-        void SetParamByModelInputSize(const cv::Size& inputSize);
-
-        void InitModelParams(const cv::Size& inputSize);
-
-        std::pair<cv::Mat, float> Preprocess(const cv::Mat &inputImage);
-        std::vector<TFaceInfo> Postprocess(float fScale);
+        EAuthMeEngineReturnCode CreateCapacityByModelVersion(std::unique_ptr<ICapacity_FaceDetection>& pCapacityProcess);
 
         std::unique_ptr<IInferenceEngine> m_pEngine = nullptr;
 
-        cv::Size m_modelInputSize = cv::Size(192, 320);
-
-        std::vector<std::pair<std::string, std::vector<int64_t>>> m_inputShape;
-        std::vector<std::pair<std::string, std::vector<int64_t>>> m_outputShape;
-
-        bool m_bDecode = true;
         float m_fScoreTh = 0.95f;
-        float m_fNMSTh = 0.4f;
-        size_t m_uiOutputTopK = 500;
-        size_t m_uiNMSTopK = 50;
-        std::unique_ptr <ICapacity_FaceDetection> m_pCapacityProcess = nullptr;
+        std::unique_ptr<ICapacity_FaceDetection> m_pCapacityProcess = nullptr;
 
         cv::Mat m_blobImage;
 };

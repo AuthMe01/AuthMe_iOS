@@ -4,10 +4,6 @@
 #include "engine_service_type.h"
 #include "opencv2/core.hpp"
 #include "engine_base.hpp"
-#include "face_detection.hpp"
-#include "face_alignment.hpp"
-#include "face_anti_spoofing.hpp"
-#include "mini_fas.hpp"
 
 namespace AuthMe
 {
@@ -23,9 +19,9 @@ class IFASService : public IEngineBase
 
         virtual bool Initial(const AuthMeFASServiceModels& models) = 0;
 
-        virtual void SetUIParams(const AuthMeV3ServiceUIParams& params) = 0;
+        virtual void SetUIParams(const AuthMeServiceUIParams& params) = 0;
 
-        virtual AuthMeV3ServiceUIParams GetUIParams() const = 0;
+        virtual AuthMeServiceUIParams GetUIParams() const = 0;
 
         virtual void SetParams(const AuthMeFASParams& params) = 0;
 
@@ -41,6 +37,8 @@ class IFASService : public IEngineBase
         virtual void SetStageParams(const AuthMeFASStageParams& params, int iIndex) = 0;
 
         virtual AuthMeFASStageParams GetStageParams(int iIndex) const = 0;
+
+        virtual void EnableAlgoLog(bool enable) = 0;
 
         virtual EAuthMeEngineReturnCode Start() = 0;
 

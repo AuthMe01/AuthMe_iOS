@@ -9,8 +9,7 @@ namespace AuthMe
 class CFaceRecognition : public IFaceRecognition
 {
     public:
-        CFaceRecognition();
-        virtual ~CFaceRecognition();
+        virtual ~CFaceRecognition() = default;
         EAuthMeEngineReturnCode Initial(const std::string& strModelPath, const std::string strHWAcceleration = "cpu") override;
         EAuthMeEngineReturnCode Initial(const void *pData, size_t uiLength, const std::string strHWAcceleration = "cpu") override;
         EAuthMeEngineReturnCode Initial(const void *pData, size_t uiLength, EEngineFrameworkType eFramework, const std::string strHWAcceleration = "cpu") override;
@@ -21,9 +20,7 @@ class CFaceRecognition : public IFaceRecognition
 
     private:
         EAuthMeEngineReturnCode InitialSetup();
-        EAuthMeEngineReturnCode GetParamsFromModel();
-        cv::Mat Preprocess(const cv::Mat &inputImage, const std::vector<cv::Point2f>& vecLandmark);
-        void Postprocess(std::vector<float>& vecTemplate);
+        EAuthMeEngineReturnCode CreateCapacity();
 
         std::unique_ptr<IInferenceEngine> m_pEngine = nullptr;
         std::unique_ptr<ICapacity_FaceRecognition> m_pCapacityProcess = nullptr;

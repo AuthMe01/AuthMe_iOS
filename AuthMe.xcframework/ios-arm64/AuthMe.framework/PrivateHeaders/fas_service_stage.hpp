@@ -8,7 +8,7 @@ namespace AuthMe
 class IFASService_Stage
 {
     public:
-        virtual ~IFASService_Stage() {}
+        virtual ~IFASService_Stage() = default;
 
         virtual void SetParams(const AuthMeFASStageParams& params) = 0;
 

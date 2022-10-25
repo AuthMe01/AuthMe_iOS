@@ -14,14 +14,14 @@ class CCardClassification : public ICardClassification
         EAuthMeEngineReturnCode Initial(const void *pData, size_t uiLength, EEngineFrameworkType eFramework, const std::string strHWAcceleration) override;
         void SetThreshold(const float fThreshold) override;
         float GetThreshold() const override;
-        ECardClass Run(const cv::Mat& matInputImage, const std::vector<cv::Point2i>& vecPolygon, AuthMeEngineDebugInfo* pInfo = nullptr) override;
+        EAuthMeCardClass Run(const cv::Mat& matInputImage, const std::vector<cv::Point2i>& vecPolygon, AuthMeEngineDebugInfo* pInfo = nullptr) override;
         std::string GetModelInfo() const override;
 
     private:
         EAuthMeEngineReturnCode InitialSetup();
         EAuthMeEngineReturnCode GetParamsFromModel();
         cv::Mat Preprocess(const cv::Mat &inputImage, const std::vector<cv::Point2i>& vecPolygon);
-        ECardClass GetCardClass(const std::vector<float>& vecOutput);
+        EAuthMeCardClass GetCardClass(const std::vector<float>& vecOutput);
 
         std::unique_ptr<IInferenceEngine> m_pEngine = nullptr;
         std::unique_ptr <ICapacity_CardClassification> m_pCapacityProcess = nullptr;

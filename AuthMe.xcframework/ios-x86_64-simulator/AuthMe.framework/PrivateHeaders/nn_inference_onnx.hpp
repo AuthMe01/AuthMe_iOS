@@ -20,6 +20,7 @@ class CInference_ONNX : public IInferenceEngine
         std::string GetModelInfo() const override;
         void SetInput(const std::vector<TTensorInfo> &vecInfo) override;
         void SetOutput(const std::vector<TTensorInfo>& vecInfo) override;
+        std::map<std::string, TTensorData> GetOutputData() override;
         void Run() override;
 
     private:

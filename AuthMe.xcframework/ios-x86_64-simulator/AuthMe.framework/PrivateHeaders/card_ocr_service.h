@@ -5,9 +5,6 @@ extern "C" {
 
 #include "engine_service_type.h"
 #include "engine_error_code.h"
-#include "card_detection.h"
-#include "card_classification.h"
-#include "reflection_detection.h"
 
 EAuthMeEngineReturnCode AuthMe_CardOCRService_GetModelVersion(AuthMeModelVersion** ppVersion, int *piModelNum);
 
@@ -15,9 +12,9 @@ EAuthMeEngineReturnCode AuthMe_CardOCRService_Create(long* pHandle);
 
 EAuthMeEngineReturnCode AuthMe_CardOCRService_Initial(long handle, const AuthMeCardOCRModels* pParams);
 
-EAuthMeEngineReturnCode AuthMe_CardOCRService_SetUIParams(long handle, const AuthMeV3ServiceUIParams* pParams);
+EAuthMeEngineReturnCode AuthMe_CardOCRService_SetUIParams(long handle, const AuthMeServiceUIParams* pParams);
 
-AuthMeV3ServiceUIParams AuthMe_CardOCRService_GetUIParams(long handle);
+AuthMeServiceUIParams AuthMe_CardOCRService_GetUIParams(long handle);
 
 EAuthMeEngineReturnCode AuthMe_CardOCRService_SetParams(long handle, const AuthMeCardOCRParams* pParams);
 
@@ -27,9 +24,7 @@ AuthMeRectFloat AuthMe_CardOCRService_GetAnalysisROI(long handle);
 
 EAuthMeEngineReturnCode AuthMe_CardOCRService_SetCardMatchROI(long handle, const float* pPoints, int iLength);
 
-// set customized roi for reflection detection, ROI t,l,b,r range [0~1]
-// restore to default by setting empty array
-EAuthMeEngineReturnCode AuthMe_CardOCRService_SetCustomReflectiveROI(long handle, const AuthMeRectFloat* pRect, int iLength);
+EAuthMeEngineReturnCode AuthMe_CardOCRService_EnableAlgoLog(long handle, int enable);
 
 EAuthMeEngineReturnCode AuthMe_CardOCRService_Start(long handle);
 

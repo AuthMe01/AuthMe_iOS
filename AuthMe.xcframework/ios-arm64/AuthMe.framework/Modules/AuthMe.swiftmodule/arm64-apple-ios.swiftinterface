@@ -68,9 +68,10 @@ extension AuthMeConfig {
   }
   public static func configure(_ config: AuthMeConfig)
   public static func replace(accessToken: Swift.String) throws
-  public static func initialize(accessToken: Swift.String, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
+  public static func initialize(accessToken: Swift.String, progressHandler: ((Swift.Double) -> Swift.Void)? = nil, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
   public static func comfirmResult(result: OCRResult, complete: @escaping () -> Swift.Void)
   public static func personalInfo(consent: Swift.Bool, url: Swift.String, completion: @escaping (Swift.Result<Foundation.Data, Swift.Error>) -> Swift.Void)
+  public static func verificationState(completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
   @objc deinit
 }
 public protocol Cancellable : AnyObject {
@@ -135,11 +136,6 @@ extension E_AUTHME_FAS_SERVICE_STATUS : Swift.CustomDebugStringConvertible {
     get
   }
 }
-extension E_AUTHME_FAS_SERVICE_STAGE : Swift.CustomDebugStringConvertible {
-  public var debugDescription: Swift.String {
-    get
-  }
-}
 @dynamicMemberLookup public struct Fluent<Subject> {
   public let subject: Subject
   public subscript<Value>(dynamicMember keyPath: Swift.WritableKeyPath<Subject, Value>) -> ((Value) -> Fluent<Subject>) {
@@ -166,15 +162,18 @@ postfix public func - <T>(lhs: ObjectFluent<T>) -> T where T : AnyObject
 public protocol LivenessFlowDelegate : AnyObject {
   func livenessFlow(_ livenessFlow: LivenessFlow, didNotifyMessage message: Swift.String)
   func livenessFlow(_ livenessFlow: LivenessFlow, didUpdateReconize result: Swift.Bool)
-  func livenessFlow(_ livenessFlow: LivenessFlow, didFailureWith error: LivenessFlow.FlowError, retryHandler: @escaping (() -> Swift.Void))
+  func livenessFlow(_ livenessFlow: LivenessFlow, didFailureWith error: FlowError, retryHandler: @escaping (() -> Swift.Void))
   func livenessFlow(_ livenessFlow: LivenessFlow, didRecognize image: UIKit.UIImage)
 }
-public class LivenessFlow {
+public class LivenessFlow : LivenessFlowProtocol {
+  public func setDelegate(_ delegate: LivenessFlowDelegate)
   weak public var delegate: LivenessFlowDelegate?
   public var isDetecting: Swift.Bool {
     get
   }
-  public init(action: LivenessFlow.Action = .register(true), isPassive: Swift.Bool, roiParam: LivenessFlow.RoiParam)
+  public init(action: Action = .register(true))
+  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)? = nil, handler: ((Swift.Result<Swift.Void, FlowError>) -> Swift.Void)?)
+  public func setPreviewSize(previewSize: CoreGraphics.CGSize)
   public func start()
   public func recognize(image: UIKit.UIImage)
   public func roiRect(in previewSize: CoreGraphics.CGSize) -> CoreGraphics.CGRect
@@ -184,29 +183,42 @@ public class LivenessFlow {
   @objc deinit
 }
 extension LivenessFlow {
-  public enum Action {
-    case register(_: Swift.Bool)
-    case verify(_: Swift.Bool)
-  }
-  public enum FlowError : Swift.Error {
-    case start
-    case recognize
-    case service(LivenessFlow.FlowError.Endpoint, code: Swift.String?)
-    public enum Endpoint {
-      case `init`
-      case detect
-      case verify
-      public static func == (a: LivenessFlow.FlowError.Endpoint, b: LivenessFlow.FlowError.Endpoint) -> Swift.Bool
-      public func hash(into hasher: inout Swift.Hasher)
-      public var hashValue: Swift.Int {
-        get
-      }
-    }
-  }
-}
-extension LivenessFlow {
   public struct RoiParam {
     public init(preview: EnginePreview, ratio: CoreGraphics.CGFloat, widthRatio: CoreGraphics.CGFloat, offset: UIKit.UIOffset)
+  }
+}
+public protocol LivenessFlowProtocol {
+  func setDelegate(_ delegate: LivenessFlowDelegate)
+  func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, FlowError>) -> Swift.Void)?)
+  func setPreviewSize(previewSize: CoreGraphics.CGSize)
+  func start()
+  func roiRect(in previewSize: CoreGraphics.CGSize) -> CoreGraphics.CGRect
+  func recognize(image: UIKit.UIImage)
+  func getResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
+}
+public class LivenessFactory {
+  public init()
+  public func prepare(with action: Action = .register(true)) -> LivenessFlowProtocol
+  @objc deinit
+}
+public enum Action {
+  case register(_: Swift.Bool)
+  case verify(_: Swift.Bool)
+}
+public enum FlowError : Swift.Error {
+  case checkModel
+  case start
+  case recognize
+  case service(FlowError.Endpoint, code: Swift.String?)
+  public enum Endpoint {
+    case `init`
+    case detect
+    case verify
+    public static func == (a: FlowError.Endpoint, b: FlowError.Endpoint) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
   }
 }
 public class QKMRZParser {
@@ -272,8 +284,6 @@ public enum OCRError : Swift.String, Foundation.LocalizedError {
   case WORNG_CARD_TYPE
   case CARD_NOT_IN_REGION
   case PROCESS_FAIL
-  case FRONT_FIELD_MISSING
-  case BACK_FIELD_MISSING
   case ERROR_VERCIAL
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
@@ -282,9 +292,9 @@ public enum OCRError : Swift.String, Foundation.LocalizedError {
   }
 }
 public protocol OCRFlowProtocol {
-  func setDelegate(delegate: OCRFlowDelegate)
-  func setUIParam(imageSize: CoreGraphics.CGSize, previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
-  func setCardMatchROI(previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
+  func setDelegate(_ delegate: OCRFlowDelegate)
+  func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
+  func setPreviewSize(_ previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
   func start(needConfirm: Swift.Bool, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
   func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
   func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
@@ -292,7 +302,9 @@ public protocol OCRFlowProtocol {
   func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
 }
 public protocol OCRFlowAntiFraudProtocol {
-  func setDelegate(delegate: OCRFlowDelegate)
+  func setDelegate(_ delegate: OCRFlowDelegate)
+  func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
+  func setPreviewSize(_ previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
   func setUIParam(imageSize: CoreGraphics.CGSize, previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
   func setCardMatchROI(previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
   func start(needConfirm: Swift.Bool, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
@@ -341,9 +353,11 @@ public enum DebugMessageChannel {
 public struct OCRInitScanDocRequest {
 }
 @_inheritsConvenienceInitializers public class OCRMainFlow : AbstractOCRFlow, OCRFlowProtocol {
-  public func setDelegate(delegate: OCRFlowDelegate)
+  public func setDelegate(_ delegate: OCRFlowDelegate)
+  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
   public func setUIParam(imageSize: CoreGraphics.CGSize, previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
   public func setCardMatchROI(previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
+  public func setPreviewSize(_ previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
   public func start(needConfirm: Swift.Bool, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
   public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
   public func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
@@ -385,16 +399,15 @@ public protocol OCRResult {
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class MRZResult : OCRBaseResult<MRZResult.DataType> {
   public enum DataType : Swift.String, Swift.CaseIterable {
     case surname
-    case givenname
+    case givenName
     case country
     case nationality
-    case birthDate
+    case dateOfBirth
     case expiryDate
-    case sex
+    case gender
     case documentType
     case documentNumber
-    case personalNumber
-    case optionalData
+    case idNumber
     public init?(rawValue: Swift.String)
     public typealias AllCases = [MRZResult.DataType]
     public typealias RawValue = Swift.String
@@ -467,10 +480,10 @@ public protocol OCRResult {
   override public func get(type: TWHealthResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case name
-    case birth
+    case dateOfBirth
     case idNumber
     case nationality
-    case cardNumber
+    case documentNumber
     public init?(rawValue: Swift.String)
     public typealias AllCases = [TWHealthResult.DataType]
     public typealias RawValue = Swift.String
@@ -504,8 +517,10 @@ public struct RotatePoints {
 @_inheritsConvenienceInitializers public class TWIDAntiFraudFlow : TWIDFlow {
   public static func transformedLeftPoint(w: Swift.Float, h: Swift.Float, degree: Swift.Float, x: inout Swift.Float, y: inout Swift.Float)
   public static func transformedTopPoint(w: Swift.Float, h: Swift.Float, degree: Swift.Float, x: inout Swift.Float, y: inout Swift.Float)
+  override public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
   override public func setUIParam(imageSize: CoreGraphics.CGSize, previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
   override public func setCardMatchROI(previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
+  override public func setPreviewSize(_ previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
   public func onGetPreviewData(image: UIKit.UIImage, verticalError: ((OCRError) -> Swift.Void)? = nil, rotateReverse: ((Swift.Bool) -> Swift.Void)? = nil, rotateHandler: ((AntiFraudRotate) -> Swift.Void)? = nil, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
   override public init(ocrcard: OCRCard)
   @objc deinit
@@ -602,8 +617,8 @@ extension MotionCondiction : Swift.Hashable {}
 extension AuthMeConfig.Language : Swift.Equatable {}
 extension AuthMeConfig.Language : Swift.Hashable {}
 extension AuthMeConfig.Language : Swift.RawRepresentable {}
-extension LivenessFlow.FlowError.Endpoint : Swift.Equatable {}
-extension LivenessFlow.FlowError.Endpoint : Swift.Hashable {}
+extension FlowError.Endpoint : Swift.Equatable {}
+extension FlowError.Endpoint : Swift.Hashable {}
 extension Facing : Swift.Equatable {}
 extension Facing : Swift.Hashable {}
 extension Facing : Swift.RawRepresentable {}

@@ -12,8 +12,9 @@ EAuthMeEngineReturnCode AuthMe_MRZDetection_Initial(long handle, const char* szM
 
 const char* AuthMe_MRZDetection_GetModelInfo(long handle);
 
+// pPosition should be a pointer to array with length = 8 (x1, y1, x2, y2, ...), or NULL if use whole image
 // need to delete *ppPoints after use
-EAuthMeEngineReturnCode AuthMe_MRZDetection_Detect(long handle, AuthMeImage* pImage, float** ppPoints, int* piLength, AuthMeEngineDebugInfo* pDebugInfo);
+EAuthMeEngineReturnCode AuthMe_MRZDetection_Detect(long handle, AuthMeImage* pImage, const int* pPosition, int iPosLength, float** ppPoints, int* piLength, AuthMeEngineDebugInfo* pDebugInfo);
 
 #ifdef __cplusplus
 }

@@ -16,8 +16,8 @@ EAuthMeEngineReturnCode AuthMe_MRZRecognition_Run(long handle,
         AuthMeImage* pImage,
         float* pPoints,
         int iLength,
-        EAuthMeMRZRecogStatus *peStatus,
-        AuthMeMRZFieldTD3 *pField,
+        char ***pStrs,
+        int* pNumStrings,
         AuthMeEngineDebugInfo* pDebugInfo);
 
 #ifdef __cplusplus

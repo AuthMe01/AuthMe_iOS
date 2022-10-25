@@ -7,6 +7,8 @@ extern "C" {
 
 EAuthMeSDKAuthStatus AuthMe_VerifySDK(const char* pServiceCrt, const char* pToken);
 
+void AuthMe_SetPublicKeyForJson(const char* publicKey);
+
 #ifdef __cplusplus
 }
 #endif

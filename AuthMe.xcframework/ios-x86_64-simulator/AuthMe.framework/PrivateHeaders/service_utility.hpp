@@ -9,6 +9,10 @@ void ReleaseImage(AuthMeImage& image);
 
 AuthMeImage AllocateImage(const cv::Mat& matImage, EAuthMeColorFormat eFormat);
 
+long CreateModel(std::string modelName, std:: string modelPath);
+
+void ReleaseModel(long model);
+
 std::string GetEnumName(EAuthMeFASServiceStage eStage);
 
 std::string GetEnumName(EAuthMeFASServiceStatus eStatus);
@@ -23,6 +27,6 @@ std::string GetEnumName(EAuthMeIDCardAntiFraudStatus eStatus);
 
 std::string GetEnumName(EAuthMeCardMatchStatus eStatus);
 
-std::string GetEnumName(EAuthMeMRZServiceStatus eStatus);
+std::string GetEnumName(EAuthMePassportServiceStatus eStatus);
 
 }

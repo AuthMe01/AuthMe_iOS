@@ -4,12 +4,6 @@
 #include "engine_service_type.h"
 #include "opencv2/core.hpp"
 #include "engine_base.hpp"
-#include "card_detection.hpp"
-#include "card_classification.hpp"
-#include "laser_tag_detection.hpp"
-#include "taiwan_hole_detection.hpp"
-#include "metal_tag_detection.hpp"
-#include "reflection_detection.hpp"
 
 namespace AuthMe
 {
@@ -25,9 +19,9 @@ class IIDCardAntiFraudService : public IEngineBase
 
         virtual bool Initial(const AuthMeIDCardAntiFraudServiceModels& models) = 0;
 
-        virtual void SetUIParams(const AuthMeV3ServiceUIParams& params) = 0;
+        virtual void SetUIParams(const AuthMeServiceUIParams& params) = 0;
 
-        virtual AuthMeV3ServiceUIParams GetUIParams() const = 0;
+        virtual AuthMeServiceUIParams GetUIParams() const = 0;
 
         virtual void SetParams(const AuthMeIDCardAntiFraudParams& params) = 0;
 
@@ -46,6 +40,8 @@ class IIDCardAntiFraudService : public IEngineBase
         virtual void SetFrontalCardVertices(const std::vector<cv::Point2f>& vecVertices) = 0;
 
         virtual std::vector<cv::Point2f> GetCardMatchROI() = 0;
+
+        virtual void EnableAlgoLog(bool enable) = 0;
 
         virtual EAuthMeEngineReturnCode Start() = 0;
 

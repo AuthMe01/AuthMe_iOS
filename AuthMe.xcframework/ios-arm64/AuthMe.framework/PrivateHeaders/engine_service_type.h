@@ -8,6 +8,8 @@ extern "C" {
 
 // c an c++ shared structures and types
 
+#define IMPL_VAR(type, name) type name;
+
 typedef enum
 {
     eAuthMe_SDKAuth_JsonFormatError,
@@ -41,18 +43,22 @@ typedef enum E_AUTHME_CARD_MTACH_STATUS
 
 typedef struct AUTHME_FAS_SERVICE_MODELS
 {
-    long faceDetectModel;
-    long faceAlignmentModel;
-    long fasModel;
-    long miniFASModel;
+    long FACE_00;
+    long FACE_01;
+    long FACE_02;
+    long FACE_03;
 } AuthMeFASServiceModels;
 
-typedef struct AUTHME_FAS_SERVICE_UI_PARAMS
+#define SERVICE_UI_PARAMS_CONTENT(decorate) \
+    decorate(int, mirrorDisplay) /* 0: disabled, 1: enabled */ \
+    decorate(AuthMeSize, analyzeSize) /* pixel */ \
+    decorate(AuthMeRectFloat, previewPosition) /* l, t, r, b in range [0~1] */
+
+typedef struct AUTHME_SERVICE_UI_PARAMS
 {
-    AuthMeSize analyzeSize; // pixel
-    AuthMeRectFloat previewPosition; // l, t, r, b in range [0~1]
-    DEFAULT_COMPARISON(AUTHME_FAS_SERVICE_UI_PARAMS)
-} AuthMeV3ServiceUIParams;
+    SERVICE_UI_PARAMS_CONTENT(IMPL_VAR)
+    DEFAULT_COMPARISON(AUTHME_SERVICE_UI_PARAMS)
+} AuthMeServiceUIParams;
 
 typedef struct AUTHME_EYE_INFO
 {
@@ -96,8 +102,6 @@ typedef struct AUTHME_FAS_STAGE_PARAMS
     DEFAULT_COMPARISON(AUTHME_FAS_STAGE_PARAMS)
 } AuthMeFASStageParams;
 
-#define IMPL_VAR(type, name) type name;
-
 #define FAS_SERVICE_PARAMS_CONTENT(decorate) \
     /* algo params */ \
     decorate(float, fFaceDetectTh) \
@@ -110,9 +114,7 @@ typedef struct AUTHME_FAS_STAGE_PARAMS
     /* other params */ \
     decorate(int, timeoutSec) \
     decorate(int, fasTimeoutSec) \
-    decorate(float, fFaceRoiPreviewRatioW) \
-    decorate(float, fFaceRoiAspectRatioH) \
-    decorate(AuthMePointFloat, faceRoiShift) \
+    decorate(AuthMeRectFloat, faceROI) \
     decorate(float, fNotAtCenterTh) \
     decorate(float, fFaceTooSmallTh) \
     decorate(float, fFaceTooLargeTh)
@@ -183,28 +185,21 @@ typedef struct AUTHME_FAS_RESULT
 
 typedef struct AUTHME_ID_CARD_ANTI_FRAUD_SERVICE_MODELS
 {
-    long cardDetectionModel;
-    long cardClassificationModel;
-    long laserTagDetectionModel;
-    long taiwanHoleDetectionModel;
-    long metalTagDetectionModel;
-    long reflectionDetectionModel;
+    long OCR_00;
+    long OCR_01;
+    long IDCardAntiFraud_00;
+    long OCR_02;
 } AuthMeIDCardAntiFraudServiceModels;
 
 #define ID_CARD_ANTI_FRAUD_SERVICE_PARAMS_CONTENT(decorate) \
     /* algo params */ \
     decorate(float, fCardClassificationTh) \
-    decorate(float, fLaserTagDetectionTh) \
-    decorate(float, fTaiwanHoleDetectionTh) \
     decorate(float, fMetalTagDetectionTh) \
     decorate(float, fImageReflectiveTh) \
     decorate(float, fImageBlurTh) \
     decorate(float, fIDCardColorTh) \
     /* other params */ \
     decorate(int, timeoutSec) \
-    decorate(int, iHasLaserTagCountTh) \
-    decorate(int, iNoLaserTagCountTh) \
-    decorate(int, iTaiwanHoleCountTh) \
     decorate(int, iMetalTagValidCountTh) \
     decorate(int, iCardMatchFrameNum) \
     decorate(float, fCardMatchTh) \
@@ -232,23 +227,15 @@ typedef struct AUTHME_IMAGE_BLUR_INFO
 typedef struct AUTHME_ID_CARD_COLOR_INFO
 {
     float fScore;
+    DEFAULT_COMPARISON(AUTHME_ID_CARD_COLOR_INFO)
 } AuthMeIDCardColorInfo;
 
 typedef struct AUTHME_METAL_TAL_INFO
 {
     EAuthMeIDCardMetalTagStatus aeStatus[3];
     int aiPosition[3][4];
+    DEFAULT_COMPARISON(AUTHME_METAL_TAL_INFO)
 } AuthMeMetalTagInfo;
-
-typedef struct AUTHME_LASER_TAL_INFO
-{
-    EAuthMeLaserTagStatus eStatus;
-} AuthMeLaserTagInfo;
-
-typedef struct AUTHME_TAIWAN_HOLE_INFO
-{
-    EAuthMeTaiwanHoleStatus eStatus;
-} AuthMeTaiwanHoleInfo;
 
 typedef struct AUTHME_CARD_CLASS_INFO
 {
@@ -266,17 +253,14 @@ typedef struct AUTHME_ID_CARD_ANTI_FRAUD_INFO
     AuthMeIDCardColorInfo colorDetect;
     AuthMeMetalTagInfo metalTag;
     AuthMeImageReflectiveInfo metalTagReflection;
-    AuthMeLaserTagInfo laserTag;
-    AuthMeTaiwanHoleInfo taiwanHole;
     AuthMeCardClassInfo cardClass;
+    DEFAULT_COMPARISON(AUTHME_ID_CARD_ANTI_FRAUD_INFO)
 } AuthMeIDCardAntiFraudInfo;
 
 typedef struct AUTHME_ID_CARD_ANTI_FRAUD_SERVICE_STATISTICS
 {
-    int iHasLaserTagCount;
-    int iNoLaserTagCount;
-    int iTaiwanHoleCount;
     int iValidMetalTagCount;
+    DEFAULT_COMPARISON(AUTHME_ID_CARD_ANTI_FRAUD_SERVICE_STATISTICS)
 } AuthMeIDCardAntiFraudStatistics;
 
 
@@ -321,13 +305,14 @@ typedef struct AUTHME_ID_CARD_ANTI_FRAUD_SERVICE_RESULT
     AuthMeIDCardAntiFraudStatistics statistics;
     EAuthMeIDCardAntiFraudStage eStage;
     EAuthMeIDCardAntiFraudStatus eStatus;
+    DEFAULT_COMPARISON(AUTHME_ID_CARD_ANTI_FRAUD_SERVICE_RESULT)
 } AuthMeIDCardAntiFraudResult;
 
 typedef struct AUTHME_CARD_OCR_MODELS
 {
-    long cardDetectionModel;
-    long cardClassificationModel;
-    long reflectionDetectionModel;
+    long OCR_00;
+    long OCR_01;
+    long OCR_02;
 } AuthMeCardOCRModels;
 
 
@@ -339,8 +324,7 @@ typedef struct AUTHME_CARD_OCR_MODELS
     decorate(float, fImageBlurTh) \
     /* other params */ \
     decorate(float, fCardMatchTh) \
-    decorate(EAuthMeCardClass, eTargetCardType) \
-    decorate(AuthMeSize, outputSize)
+    decorate(EAuthMeCardClass, eTargetCardType)
 
 typedef struct AUTHME_CARD_OCR_PARAMS
 {
@@ -382,46 +366,59 @@ typedef struct AUTHME_CARD_OCR_RESULT
     DEFAULT_COMPARISON(AUTHME_CARD_OCR_RESULT)
 } AuthMeCardOCRResult;
 
-typedef struct AUTHME_MRZ_MODELS
+typedef struct AUTHME_PASSPORT_SERVICE_MODELS
 {
-    long mrzDetectionModel;
-    long mrzRecognitionModel;
-} AuthMeMRZModels;
+    long OCR_00;
+    long OCR_02;
+    long MRZ_00;
+    long MRZ_01;
+} AuthMePassportServiceModels;
 
-typedef struct AUTHME_MRZ_INFO
+typedef struct AUTHME_PASSPORT_SERVICE_INFO
 {
-    float afVertices[8];
+    float fPositionMatchScore;
+    int aiPassoportVertices[8];
+    int aiMRZVertices[2][8];
+    AuthMeImageReflectiveInfo reflective;
+    AuthMeImageBlurInfo blur;
     EAuthMeMRZRecogStatus eRecogStatus;
-    DEFAULT_COMPARISON(AUTHME_MRZ_INFO)
-} AuthMeMRZInfo;
+    DEFAULT_COMPARISON(AUTHME_PASSPORT_SERVICE_INFO)
+} AuthMePassportServiceInfo;
 
-#define MRZ_SERVICE_PARAMS_CONTENT(decorate) \
-    decorate(int, dummy)
+#define PASSPORT_SERVICE_PARAMS_CONTENT(decorate) \
+    decorate(float, fImageReflectiveMaskTh) \
+    decorate(float, fImageReflectiveTriggerTh) \
+    decorate(float, fImageBlurTh) \
+    decorate(float, fPositionMatchTh)
 
-typedef struct AUTHME_MRZ_SERVICE_PARAMS
+typedef struct AUTHME_PASSPORT_SERVICE_PARAMS
 {
-    MRZ_SERVICE_PARAMS_CONTENT(IMPL_VAR)
-    DEFAULT_COMPARISON(AUTHME_MRZ_SERVICE_PARAMS)
-} AuthMeMRZParams;
+    PASSPORT_SERVICE_PARAMS_CONTENT(IMPL_VAR)
+    DEFAULT_COMPARISON(AUTHME_PASSPORT_SERVICE_PARAMS)
+} AuthMePassportServiceParams;
 
-#define MRZ_SERVICE_STATUS_TAG(decorate) \
+#define PASSPORT_SERVICE_STATUS_TAG(decorate) \
     decorate(NotFound) \
+    decorate(NotAligned) \
+    decorate(Reflective) \
+    decorate(Blur) \
+    decorate(MRZNotFound) \
     decorate(RecogFailed) \
     decorate(Success) \
     decorate(Error)
 
-#define MRZ_SERVICE_STATUS_PREFIX(name) eAuthMe_MRZService_##name,
-typedef enum E_AUTHME_MRZ_SERVICE_STATUS
+#define PASSPORT_SERVICE_STATUS_PREFIX(name) eAuthMe_PassportService_##name,
+typedef enum E_AUTHME_PASSPORT_SERVICE_STATUS
 {
-    MRZ_SERVICE_STATUS_TAG(MRZ_SERVICE_STATUS_PREFIX)
-} EAuthMeMRZServiceStatus;
+    PASSPORT_SERVICE_STATUS_TAG(PASSPORT_SERVICE_STATUS_PREFIX)
+} EAuthMePassportServiceStatus;
 
-typedef struct AUTHME_MRZ_RESULT
+typedef struct AUTHME_PASSPORT_SERVICE_RESULT
 {
-    AuthMeMRZInfo info;
-    EAuthMeMRZServiceStatus eStatus;
+    AuthMePassportServiceInfo info;
+    EAuthMePassportServiceStatus eStatus;
     AuthMeMRZFieldTD3 tField;
-} AuthMeMRZResult;
+} AuthMePassportServiceResult;
 
 
 #ifdef __cplusplus

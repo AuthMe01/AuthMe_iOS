@@ -15,15 +15,13 @@ class CMRZDetection : public IMRZDetection
         EAuthMeEngineReturnCode Initial(const void *pData, size_t uiLength, EEngineFrameworkType eFramework, const std::string strHWAcceleration = "cpu") override;
 
         // input image for mat should be BGR
-        std::vector<cv::Point2f>  Detect(const cv::Mat& inputImage, cv::Mat* pResultImage = nullptr, AuthMeEngineDebugInfo* pInfo = nullptr) override;
+        std::vector<std::vector<cv::Point2f>> Detect(const cv::Mat& inputImage, const std::vector<cv::Point>& vertices = {}, cv::Mat* pResultImage = nullptr, AuthMeEngineDebugInfo* pInfo = nullptr) override;
 
         std::string GetModelInfo() const override;
 
     private:
         EAuthMeEngineReturnCode InitialSetup();
         EAuthMeEngineReturnCode GetParamsFromModel();
-        cv::Mat Preprocess(const cv::Mat& inputImage);
-        std::vector<cv::Point2f> Postprocess(const cv::Mat& matOutput, const cv::Size& targetSize);
 
         std::unique_ptr<IInferenceEngine> m_pEngine = nullptr;
         std::unique_ptr<ICapacity_MRZDetection> m_pCapacityProcess = nullptr;

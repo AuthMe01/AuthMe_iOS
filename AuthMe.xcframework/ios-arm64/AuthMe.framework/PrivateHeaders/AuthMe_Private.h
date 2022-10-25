@@ -28,6 +28,6 @@
 #import "reflection_detection.h"
 #import "engine_error_code.h"
 #import "service_utility.h"
-#import "mrz_service.h"
+#import "passport_service.h"
 
 #endif /* AuthMe_Private_h */

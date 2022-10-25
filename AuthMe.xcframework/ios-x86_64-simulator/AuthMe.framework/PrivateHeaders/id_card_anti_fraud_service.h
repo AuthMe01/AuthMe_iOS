@@ -5,12 +5,6 @@ extern "C" {
 
 #include "engine_service_type.h"
 #include "engine_error_code.h"
-#include "card_detection.h"
-#include "card_classification.h"
-#include "laser_tag_detection.h"
-#include "taiwan_hole_detection.h"
-#include "metal_tag_detection.h"
-#include "reflection_detection.h"
 
 EAuthMeEngineReturnCode AuthMe_IDCardAntiFraudService_GetModelVersion(AuthMeModelVersion** ppVersion, int *piModelNum);
 
@@ -18,9 +12,9 @@ EAuthMeEngineReturnCode AuthMe_IDCardAntiFraudService_Create(long* pHandle);
 
 EAuthMeEngineReturnCode AuthMe_IDCardAntiFraudService_Initial(long handle, const AuthMeIDCardAntiFraudServiceModels* pParams);
 
-EAuthMeEngineReturnCode AuthMe_IDCardAntiFraudService_SetUIParams(long handle, const AuthMeV3ServiceUIParams* pParams);
+EAuthMeEngineReturnCode AuthMe_IDCardAntiFraudService_SetUIParams(long handle, const AuthMeServiceUIParams* pParams);
 
-AuthMeV3ServiceUIParams AuthMe_IDCardAntiFraudService_GetUIParams(long handle);
+AuthMeServiceUIParams AuthMe_IDCardAntiFraudService_GetUIParams(long handle);
 
 EAuthMeEngineReturnCode AuthMe_IDCardAntiFraudService_SetParams(long handle, const AuthMeIDCardAntiFraudParams* pParams);
 
@@ -36,6 +30,8 @@ EAuthMeEngineReturnCode AuthMe_IDCardAntiFraudService_SetFrontalCardVertices(lon
 
 // returns a float[8] array pointer
 const float* AuthMe_IDCardAntiFraudService_GetCardMatchROI(long handle);
+
+EAuthMeEngineReturnCode AuthMe_IDCardAntiFraudService_EnableAlgoLog(long handle, int enable);
 
 EAuthMeEngineReturnCode AuthMe_IDCardAntiFraudService_Start(long handle);
 
