@@ -172,6 +172,7 @@ public class LivenessFlow : LivenessFlowProtocol {
     get
   }
   public init(action: Action = .register(true))
+  @objc deinit
   public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)? = nil, handler: ((Swift.Result<Swift.Void, FlowError>) -> Swift.Void)?)
   public func setPreviewSize(previewSize: CoreGraphics.CGSize)
   public func start()
@@ -180,7 +181,6 @@ public class LivenessFlow : LivenessFlowProtocol {
   public func upload(progressHandler: @escaping ((Foundation.Progress) -> Swift.Void), completion: @escaping (() -> Swift.Void))
   public func getResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
   public func getVerifyResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
-  @objc deinit
 }
 extension LivenessFlow {
   public struct RoiParam {
