@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
 // swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AuthMe
 @_exported import AuthMe
 import CoreAudio
@@ -13,7 +13,7 @@ import UIKit/*.UIImage*/
 import Vision
 import _Concurrency
 import simd
-public class LivenessFlow {
+@objc public class LivenessFlow : ObjectiveC.NSObject {
   public var delegate: FlowDelegate?
   public func getResult() -> LivenessResult
   public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, Swift.Error>) -> Swift.Void)
@@ -28,6 +28,9 @@ public class LivenessFlow {
 }
 extension LivenessFlow {
   public func recordResult(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
+}
+extension LivenessFlow : Foundation.URLSessionDelegate {
+  @objc dynamic public func urlSession(_ session: Foundation.URLSession, didReceive challenge: Foundation.URLAuthenticationChallenge, completionHandler: @escaping (Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?) -> Swift.Void)
 }
 public struct UploadInfoRequestBody {
   public func encode(to encoder: Swift.Encoder) throws
@@ -145,8 +148,12 @@ public class AntiForgeryFlow {
   public func enterR(active: Swift.Bool)
   public func isMotionPass() -> MotionCondiction
 }
-@_hasMissingDesignatedInitializers public class UploadImageRequest {
+@objc @_inheritsConvenienceInitializers public class UploadImageRequest : ObjectiveC.NSObject {
+  @objc override dynamic public init()
   @objc deinit
+}
+extension UploadImageRequest : Foundation.URLSessionDelegate {
+  @objc dynamic public func urlSession(_ session: Foundation.URLSession, didReceive challenge: Foundation.URLAuthenticationChallenge, completionHandler: @escaping (Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?) -> Swift.Void)
 }
 extension Google_Protobuf_Any {
   @discardableResult
@@ -988,7 +995,7 @@ public protocol OCRResult : AuthMeResult {
   func orderedData() -> [(Swift.String, Swift.String)]
   func set(key: Swift.String, value: Swift.String)
 }
-@_hasMissingDesignatedInitializers public class OCRBaseResult<DataType> : OCRResult where DataType : Swift.RawRepresentable, DataType.RawValue == Swift.String {
+@_hasMissingDesignatedInitializers public class OCRBaseResult<DataType> : ObjectiveC.NSObject, Foundation.URLSessionDelegate, OCRResult where DataType : Swift.RawRepresentable, DataType.RawValue == Swift.String {
   final public let data: [Swift.String : Swift.String]
   public var confirmedData: [Swift.String : Swift.String]
   final public let frontImage: UIKit.UIImage?
@@ -1004,6 +1011,7 @@ public protocol OCRResult : AuthMeResult {
   public func set(key: Swift.String, value: Swift.String)
   public func confirm(complete: @escaping (Swift.Error?) -> ())
   public func confirmScan(complete: @escaping (Swift.Error?) -> ())
+  @objc public func urlSession(_ session: Foundation.URLSession, didReceive challenge: Foundation.URLAuthenticationChallenge, completionHandler: @escaping (Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?) -> Swift.Void)
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class MRZResult : OCRBaseResult<MRZResult.DataType> {
@@ -1161,8 +1169,12 @@ public struct JSONEncodingOptions {
   public var preserveProtoFieldNames: Swift.Bool
   public init()
 }
-@_hasMissingDesignatedInitializers public class UploadLivenessRequest {
+@objc @_inheritsConvenienceInitializers public class UploadLivenessRequest : ObjectiveC.NSObject {
+  @objc override dynamic public init()
   @objc deinit
+}
+extension UploadLivenessRequest : Foundation.URLSessionDelegate {
+  @objc dynamic public func urlSession(_ session: Foundation.URLSession, didReceive challenge: Foundation.URLAuthenticationChallenge, completionHandler: @escaping (Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?) -> Swift.Void)
 }
 public enum Facing : Swift.String, Swift.Codable {
   case front
