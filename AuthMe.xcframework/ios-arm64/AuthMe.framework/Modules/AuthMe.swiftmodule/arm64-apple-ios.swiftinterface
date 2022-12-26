@@ -42,18 +42,6 @@ public struct AuthMeConfig {
   public var activateCertificate: Swift.String
   public var activateToken: Swift.String
   public var serverURL: Foundation.URL
-  public var language: AuthMeConfig.Language
-}
-extension AuthMeConfig {
-  public enum Language : Swift.String {
-    case zhHant
-    case en
-    public init?(rawValue: Swift.String)
-    public typealias RawValue = Swift.String
-    public var rawValue: Swift.String {
-      get
-    }
-  }
 }
 @_hasMissingDesignatedInitializers public class AuthMe {
   public typealias Config = AuthMeConfig
@@ -73,6 +61,28 @@ extension AuthMeConfig {
   public static func personalInfo(consent: Swift.Bool, url: Swift.String, completion: @escaping (Swift.Result<Foundation.Data, Swift.Error>) -> Swift.Void)
   public static func verificationState(completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
   @objc deinit
+}
+public protocol LivenessPlaygroundFlowDelegate : LivenessFlowDelegate {
+  func livenessDidNotifyMessage(message: Swift.String)
+  func livenessDidUpdateReconize(result: Swift.Bool)
+  func livenessDidFailureWith(error: FlowError, retryHandler: @escaping (() -> Swift.Void))
+  func livenessDidRecognize(image: UIKit.UIImage)
+  func livenessQueueDidUpload(currentCount: Swift.Int)
+}
+public class LivenessPlaygroundFlow {
+  weak public var delegate: LivenessPlaygroundFlowDelegate?
+  public init()
+  @objc deinit
+}
+extension LivenessPlaygroundFlow : LivenessFlowProtocol {
+  public func setDelegate(_ delegate: LivenessFlowDelegate)
+  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)? = nil, handler: ((Swift.Result<Swift.Void, FlowError>) -> Swift.Void)?)
+  public func setPreviewSize(previewSize: CoreGraphics.CGSize)
+  public func start()
+  public func recognize(image: UIKit.UIImage)
+  public func roiRect(in previewSize: CoreGraphics.CGSize) -> CoreGraphics.CGRect
+  public func getResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
+  public func isExpired() -> Swift.Bool
 }
 public protocol Cancellable : AnyObject {
   var isCancelled: Swift.Bool { get }
@@ -160,10 +170,10 @@ postfix public func - <T>(lhs: Fluent<T>) -> T
 @discardableResult
 postfix public func - <T>(lhs: ObjectFluent<T>) -> T where T : AnyObject
 public protocol LivenessFlowDelegate : AnyObject {
-  func livenessFlow(_ livenessFlow: LivenessFlow, didNotifyMessage message: Swift.String)
-  func livenessFlow(_ livenessFlow: LivenessFlow, didUpdateReconize result: Swift.Bool)
-  func livenessFlow(_ livenessFlow: LivenessFlow, didFailureWith error: FlowError, retryHandler: @escaping (() -> Swift.Void))
-  func livenessFlow(_ livenessFlow: LivenessFlow, didRecognize image: UIKit.UIImage)
+  func livenessDidNotifyMessage(message: Swift.String)
+  func livenessDidUpdateReconize(result: Swift.Bool)
+  func livenessDidFailureWith(error: FlowError, retryHandler: @escaping (() -> Swift.Void))
+  func livenessDidRecognize(image: UIKit.UIImage)
 }
 public class LivenessFlow : LivenessFlowProtocol {
   public func setDelegate(_ delegate: LivenessFlowDelegate)
@@ -171,7 +181,7 @@ public class LivenessFlow : LivenessFlowProtocol {
   public var isDetecting: Swift.Bool {
     get
   }
-  public init(action: Action = .register(true))
+  public init(action: Action = .register(waitResult: true))
   @objc deinit
   public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)? = nil, handler: ((Swift.Result<Swift.Void, FlowError>) -> Swift.Void)?)
   public func setPreviewSize(previewSize: CoreGraphics.CGSize)
@@ -180,6 +190,7 @@ public class LivenessFlow : LivenessFlowProtocol {
   public func roiRect(in previewSize: CoreGraphics.CGSize) -> CoreGraphics.CGRect
   public func upload(progressHandler: @escaping ((Foundation.Progress) -> Swift.Void), completion: @escaping (() -> Swift.Void))
   public func getResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
+  public func isExpired() -> Swift.Bool
   public func getVerifyResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
 }
 extension LivenessFlow {
@@ -195,14 +206,16 @@ public protocol LivenessFlowProtocol {
   func roiRect(in previewSize: CoreGraphics.CGSize) -> CoreGraphics.CGRect
   func recognize(image: UIKit.UIImage)
   func getResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
+  func isExpired() -> Swift.Bool
 }
 public class LivenessFactory {
   public init()
-  public func prepare(with action: Action = .register(true)) -> LivenessFlowProtocol
+  public func prepare(with action: Action = .register(waitResult: true)) -> LivenessFlowProtocol
+  public func preparePlayground() -> LivenessFlowProtocol
   @objc deinit
 }
 public enum Action {
-  case register(_: Swift.Bool)
+  case register(waitResult: Swift.Bool)
   case verify(_: Swift.Bool)
 }
 public enum FlowError : Swift.Error {
@@ -210,6 +223,7 @@ public enum FlowError : Swift.Error {
   case start
   case recognize
   case service(FlowError.Endpoint, code: Swift.String?)
+  case expiredIn
   public enum Endpoint {
     case `init`
     case detect
@@ -285,6 +299,7 @@ public enum OCRError : Swift.String, Foundation.LocalizedError {
   case CARD_NOT_IN_REGION
   case PROCESS_FAIL
   case ERROR_VERCIAL
+  case EXPIRED
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -300,6 +315,9 @@ public protocol OCRFlowProtocol {
   func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   func restart()
   func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  func stopBarcodeDetection()
+  func cancelExpired()
+  func getExpiredStart() -> Foundation.TimeInterval
 }
 public protocol OCRFlowAntiFraudProtocol {
   func setDelegate(_ delegate: OCRFlowDelegate)
@@ -317,6 +335,8 @@ public protocol OCRFlowAntiFraudProtocol {
   func reenterRotate()
   func enterPrepare(active: Swift.Bool)
   func stopBarcodeDetection()
+  func cancelExpired()
+  func getExpiredStart() -> Foundation.TimeInterval
 }
 public class OCRFactory {
   public init()
@@ -362,6 +382,9 @@ public struct OCRInitScanDocRequest {
   public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
   public func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   public func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  public func stopBarcodeDetection()
+  public func cancelExpired()
+  public func getExpiredStart() -> Foundation.TimeInterval
   override public func restart()
   override public init(ocrcard: OCRCard)
   @objc deinit
@@ -522,6 +545,7 @@ public struct RotatePoints {
   override public func setCardMatchROI(previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
   override public func setPreviewSize(_ previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
   public func onGetPreviewData(image: UIKit.UIImage, verticalError: ((OCRError) -> Swift.Void)? = nil, rotateReverse: ((Swift.Bool) -> Swift.Void)? = nil, rotateHandler: ((AntiFraudRotate) -> Swift.Void)? = nil, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  override public func stopBarcodeDetection()
   override public init(ocrcard: OCRCard)
   @objc deinit
 }
@@ -531,7 +555,6 @@ extension TWIDAntiFraudFlow : OCRFlowAntiFraudProtocol {
   public func enterReverse() -> Swift.Bool
   public func reenterRotate()
   public func enterPrepare(active: Swift.Bool)
-  public func stopBarcodeDetection()
 }
 @_inheritsConvenienceInitializers public class TWIDFlow : OCRMainFlow {
   override public func start(needConfirm: Swift.Bool, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
@@ -614,9 +637,6 @@ extension Foundation.CharacterSet {
 }
 extension MotionCondiction : Swift.Equatable {}
 extension MotionCondiction : Swift.Hashable {}
-extension AuthMeConfig.Language : Swift.Equatable {}
-extension AuthMeConfig.Language : Swift.Hashable {}
-extension AuthMeConfig.Language : Swift.RawRepresentable {}
 extension FlowError.Endpoint : Swift.Equatable {}
 extension FlowError.Endpoint : Swift.Hashable {}
 extension Facing : Swift.Equatable {}
