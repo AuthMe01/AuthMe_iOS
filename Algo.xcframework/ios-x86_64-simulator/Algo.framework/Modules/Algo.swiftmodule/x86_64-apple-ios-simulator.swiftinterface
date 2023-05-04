@@ -1,0 +1,139 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Algo
+@_exported import Algo
+import EngineLib
+import Foundation
+import Swift
+import UIKit
+import _Concurrency
+@_inheritsConvenienceInitializers public class FasService : Algo.CoreService {
+  public typealias Params = Algo.AuthMeFASParams
+  public typealias UIParams = Algo.AuthMeServiceUIParams
+  public var defaultParam: Algo.FasService.Params {
+    get
+  }
+  public var defaultUIParam: Algo.FasService.UIParams {
+    get
+  }
+  public var params: Algo.FasService.Params {
+    get
+  }
+  public var isDetecting: Swift.Bool {
+    get
+  }
+  public var normalizedFaceROI: Algo.AuthMeRectFloat {
+    get
+  }
+  @objc deinit
+  public func create() throws
+  public func create(serviceModel: Algo.FASServiceModel) throws
+  public func setParam(_ params: Algo.FasService.Params) throws
+  public func setUIParam(uiParams: Algo.FasService.UIParams) throws
+  public func setStage(stages: [Algo.EAuthMeFASServiceStage]) throws
+  public func setPubkey(key: Swift.String) throws
+  public func start() throws
+  public func stop()
+  public func run(_ image: UIKit.UIImage) throws -> Algo.AuthMeFASResult
+  public func getJsonReport() -> Swift.String
+  override public init()
+}
+extension Algo.E_AUTHME_FAS_SERVICE_STATUS : Swift.CustomDebugStringConvertible {
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+public class AuthorizationService {
+  public init()
+  public enum Error : Swift.Error {
+    case verifyFail(Algo.EAuthMeEngineReturnCode)
+  }
+  public func verifySDK(cert: Swift.String, token: Swift.String) throws
+  public func setPublicKey(_ key: Swift.String)
+  @objc deinit
+}
+public struct OCRServiceModel {
+  public init(OCR_00: Swift.String, OCR_01: Swift.String, OCR_02: Swift.String)
+}
+public struct IDCardFraudServiceModel {
+  public init(OCR_00: Swift.String, OCR_01: Swift.String, OCR_02: Swift.String, IDCardAntiFraud_00: Swift.String)
+}
+public struct FASServiceModel {
+  public init(FACE_00: Swift.String, FACE_01: Swift.String, FACE_02: Swift.String, FACE_03: Swift.String)
+}
+public class CoreService {
+  public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers public class OCRService : Algo.CoreService {
+  public var ocrType: Algo._E_AUTHME_CARD_CLASS
+  public var params: Algo.AuthMeCardOCRParams {
+    get
+  }
+  @objc deinit
+  public func create(ocrType: Algo.EAuthMeCardClass) throws
+  public func create(ocrType: Algo.EAuthMeCardClass, serviceModel: Algo.OCRServiceModel) throws
+  public func start() throws
+  public func stop()
+  public func run(image: UIKit.UIImage) -> (result: Algo.AuthMeCardOCRResult?, image: UIKit.UIImage?)?
+  public func setParam() throws
+  public func setParam(_ param: Algo.AuthMeCardOCRParams) throws
+  public func setUIParam(param: Algo.AuthMeServiceUIParams) throws
+  public func setCardMatchROI(_ cardMatchROI: [Swift.Float]) throws
+  public func setOption() throws
+  override public init()
+}
+@_inheritsConvenienceInitializers public class IDCardFraudService : Algo.CoreService {
+  @objc deinit
+  public func create() throws
+  public func create(serviceModel: Algo.IDCardFraudServiceModel) throws
+  public func start() throws
+  public func stop()
+  public func run(image: UIKit.UIImage) -> Algo.AuthMeIDCardAntiFraudResult?
+  public func setUIParam(param: Algo.AuthMeServiceUIParams) throws
+  public func setCardMatchROI(_ cardMatchROI: [Swift.Float]) throws
+  override public init()
+}
+@_inheritsConvenienceInitializers public class MRZService : Algo.CoreService {
+  public var params: Algo.AuthMeMRZServiceParams {
+    get
+  }
+  @objc deinit
+  public func create() throws
+  public func create(mrzModel: Algo.MRZServiceModel, ocrModel: Algo.OCRServiceModel) throws
+  public func create(mrzModel: Algo.MRZTD1ServiceModel, ocrModel: Algo.OCRServiceModel) throws
+  public func start() throws
+  public func stop()
+  public func run(image: UIKit.UIImage) -> (result: Algo.AuthMeMRZServiceResult, image: UIKit.UIImage?)?
+  public func setParam(param: Algo.AuthMeMRZServiceParams) throws
+  public func setUIParam(param: Algo.AuthMeServiceUIParams) throws
+  public func setMatchROI(_ cardMatchROI: [Swift.Float]) throws
+  public func getJsonResult(result: Algo.AuthMeMRZServiceResult) -> [Swift.String : Swift.String]?
+  override public init()
+}
+public struct MRZServiceModel {
+  public init(MRZ_00: Swift.String, MRZ_01: Swift.String)
+}
+public struct MRZTD1ServiceModel {
+  public init(TD1_00: Swift.String, TD1_01: Swift.String)
+}
+public enum OCRServiceType {
+  case UnknownCard
+  case Passport
+  case TWN_IDCard_Front
+  case TWN_IDCard_Back
+  case TWN_DriverLicense_Front
+  case TWN_DriverLicense_Back
+  case TWN_ResidentCard_Front
+  case TWN_ResidentCard_Back
+  case TWN_HealthCard_Front
+  case TWN_VehiclesLicense_Front
+  public func getCardClass() -> Algo.EAuthMeCardClass
+  public static func == (a: Algo.OCRServiceType, b: Algo.OCRServiceType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension Algo.OCRServiceType : Swift.Equatable {}
+extension Algo.OCRServiceType : Swift.Hashable {}
