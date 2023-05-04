@@ -13,7 +13,7 @@ extern "C" {
 #endif
 
 #import <UIKit/UIKit.h>
-#import "engine_type.h"
+//#import "engine_type.h"
 
 void getTransformedLeftPoint(float w,
                              float h,
@@ -29,7 +29,7 @@ void getTransformedTopPoint(float w,
 
 float mse(float *squaredDistances, int count);
 
-UIImage* convertAuthMeImage(AuthMeImage *image);
+//UIImage* convertAuthMeImage(AuthMeImage *image);
 
 #ifdef __cplusplus
 }

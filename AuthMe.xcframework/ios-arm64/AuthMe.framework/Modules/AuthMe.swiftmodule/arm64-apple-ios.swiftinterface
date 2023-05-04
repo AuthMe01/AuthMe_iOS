@@ -1,16 +1,17 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
 // swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AuthMe
+import Algo
 @_exported import AuthMe
-import CoreAudio
 import CoreGraphics/*.CGFloat*/
-import CoreGraphics/*.CGPoint*/
-import CoreGraphics/*.CGRect*/
 import CoreGraphics/*.CGSize*/
 import CoreMotion
+import CryptoKit
 import Foundation
 import MobileCoreServices
+import Security
 import Swift
+import UIKit.UIImage
 import UIKit
 import UIKit/*.UIEdgeInsets*/
 import UIKit/*.UIImage*/
@@ -42,6 +43,12 @@ public struct AuthMeConfig {
   public var activateCertificate: Swift.String
   public var activateToken: Swift.String
   public var serverURL: Foundation.URL
+  public var sslCredentials: [AuthMeConfig.SSLCredential]?
+  public struct SSLCredential {
+    public let host: Swift.String
+    public let credentialURL: Foundation.URL
+    public init(host: Swift.String, credentialURL: Foundation.URL)
+  }
 }
 @_hasMissingDesignatedInitializers public class AuthMe {
   public typealias Config = AuthMeConfig
@@ -62,27 +69,103 @@ public struct AuthMeConfig {
   public static func verificationState(completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
   @objc deinit
 }
-public protocol LivenessPlaygroundFlowDelegate : LivenessFlowDelegate {
+public struct LogFAS {
+  public enum LogStage {
+    case Passive
+    case OpenMouth
+    case CloseMouth
+    case Smile
+    case Scale
+    case Done
+    public static func == (a: LogFAS.LogStage, b: LogFAS.LogStage) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum LogFASResult {
+    case Failed
+    case NoFace
+    case FaceNotAtCenter
+    case FaceTooSmall
+    case FaceTooLarge
+    case NeedFaceToCamera
+    case FaceMasked
+    case NeedOpenMouth
+    case NeedCloseMouth
+    case NeedSmile
+    case NeedOpenEyes
+    case NeedMoreFrame
+    case Error
+    case Pass
+    public static func == (a: LogFAS.LogFASResult, b: LogFAS.LogFASResult) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let logStage: LogFAS.LogStage
+  public let logFASResult: LogFAS.LogFASResult
+  public init(logStage: LogFAS.LogStage, logFASResult: LogFAS.LogFASResult)
+}
+public struct LogUpload {
+  public enum Event {
+    case start
+    case end
+    public static func == (a: LogUpload.Event, b: LogUpload.Event) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let duration: Swift.String
+  public let event: LogUpload.Event
+  public let frameNo: Swift.String
+  public init(duration: Swift.String = "0", event: LogUpload.Event, frameNo: Swift.String)
+}
+public protocol LivenessFlowDelegate : AnyObject {
   func livenessDidNotifyMessage(message: Swift.String)
   func livenessDidUpdateReconize(result: Swift.Bool)
   func livenessDidFailureWith(error: FlowError, retryHandler: @escaping (() -> Swift.Void))
   func livenessDidRecognize(image: UIKit.UIImage)
-  func livenessQueueDidUpload(currentCount: Swift.Int)
+  func livenessDidFaceScale(direction: LivenessFlow.FaceScaleDirection.Direction)
+  func livenessNotifyStage(log: LogFAS)
+  func livenessNotifyUpload(log: LogUpload)
 }
-public class LivenessPlaygroundFlow {
-  weak public var delegate: LivenessPlaygroundFlowDelegate?
-  public init()
-  @objc deinit
-}
-extension LivenessPlaygroundFlow : LivenessFlowProtocol {
+public class LivenessFlow : LivenessFlowProtocol {
   public func setDelegate(_ delegate: LivenessFlowDelegate)
+  weak public var delegate: LivenessFlowDelegate?
+  public var isDetecting: Swift.Bool {
+    get
+  }
+  public init(action: Action = .register(waitResult: true))
+  @objc deinit
   public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)? = nil, handler: ((Swift.Result<Swift.Void, FlowError>) -> Swift.Void)?)
   public func setPreviewSize(previewSize: CoreGraphics.CGSize)
-  public func start()
+  public func start(encrypt: Swift.Bool)
   public func recognize(image: UIKit.UIImage)
   public func roiRect(in previewSize: CoreGraphics.CGSize) -> CoreGraphics.CGRect
+  public func cancelExpired()
   public func getResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
   public func isExpired() -> Swift.Bool
+  public func getVerifyResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
+  public func enableUploadFullFrame()
+}
+extension LivenessFlow {
+  public struct RoiParam {
+    public init(preview: EnginePreview, ratio: CoreGraphics.CGFloat, widthRatio: CoreGraphics.CGFloat, offset: UIKit.UIOffset)
+  }
+  public struct FaceScaleDirection {
+    public enum Direction {
+      case small
+      case normal
+      public static func == (a: LivenessFlow.FaceScaleDirection.Direction, b: LivenessFlow.FaceScaleDirection.Direction) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
+      public var hashValue: Swift.Int {
+        get
+      }
+    }
+  }
 }
 public protocol Cancellable : AnyObject {
   var isCancelled: Swift.Bool { get }
@@ -122,9 +205,6 @@ extension Swift.Dictionary {
 public struct EnginePreview {
   public init(imageSize: CoreGraphics.CGSize, previewSize: CoreGraphics.CGSize, previewInsets: UIKit.UIEdgeInsets = .zero)
 }
-@_hasMissingDesignatedInitializers open class EngineService {
-  @objc deinit
-}
 public struct ErrorDescription : Foundation.LocalizedError, Swift.Equatable {
   public init(description: Swift.String)
   public var localizedDescription: Swift.String {
@@ -141,8 +221,27 @@ extension ErrorDescription : Swift.ExpressibleByStringLiteral {
 public struct StatusCodeError : Swift.Error {
   public let localizedDescription: Swift.String
 }
-extension E_AUTHME_FAS_SERVICE_STATUS : Swift.CustomDebugStringConvertible {
-  public var debugDescription: Swift.String {
+public func decode(jwt: Swift.String) throws -> JWT
+public struct Claim {
+  public var rawValue: Any? {
+    get
+  }
+  public var string: Swift.String? {
+    get
+  }
+  public var boolean: Swift.Bool? {
+    get
+  }
+  public var double: Swift.Double? {
+    get
+  }
+  public var integer: Swift.Int? {
+    get
+  }
+  public var date: Foundation.Date? {
+    get
+  }
+  public var array: [Swift.String]? {
     get
   }
 }
@@ -169,71 +268,29 @@ postfix operator -
 postfix public func - <T>(lhs: Fluent<T>) -> T
 @discardableResult
 postfix public func - <T>(lhs: ObjectFluent<T>) -> T where T : AnyObject
-public protocol LivenessFlowDelegate : AnyObject {
-  func livenessDidNotifyMessage(message: Swift.String)
-  func livenessDidUpdateReconize(result: Swift.Bool)
-  func livenessDidFailureWith(error: FlowError, retryHandler: @escaping (() -> Swift.Void))
-  func livenessDidRecognize(image: UIKit.UIImage)
-}
-public class LivenessFlow : LivenessFlowProtocol {
-  public func setDelegate(_ delegate: LivenessFlowDelegate)
-  weak public var delegate: LivenessFlowDelegate?
-  public var isDetecting: Swift.Bool {
+public enum LogAntiFraud : Swift.String {
+  case Failed
+  case NoCard
+  case WrongCardType
+  case Reflective
+  case Blur
+  case Gray
+  case PositionNotMatch
+  case NeedMoreFrame
+  case Pass
+  case Error
+  case none
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
     get
   }
-  public init(action: Action = .register(waitResult: true))
+}
+@_inheritsConvenienceInitializers public class TWIDFlow : OCRMainFlow {
+  override public func start(needConfirm: Swift.Bool, handler: ((Swift.Result<SessionInfo, OCRError>) -> Swift.Void)?)
+  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  override public init(ocrcard: OCRCard)
   @objc deinit
-  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)? = nil, handler: ((Swift.Result<Swift.Void, FlowError>) -> Swift.Void)?)
-  public func setPreviewSize(previewSize: CoreGraphics.CGSize)
-  public func start()
-  public func recognize(image: UIKit.UIImage)
-  public func roiRect(in previewSize: CoreGraphics.CGSize) -> CoreGraphics.CGRect
-  public func upload(progressHandler: @escaping ((Foundation.Progress) -> Swift.Void), completion: @escaping (() -> Swift.Void))
-  public func getResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
-  public func isExpired() -> Swift.Bool
-  public func getVerifyResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
-}
-extension LivenessFlow {
-  public struct RoiParam {
-    public init(preview: EnginePreview, ratio: CoreGraphics.CGFloat, widthRatio: CoreGraphics.CGFloat, offset: UIKit.UIOffset)
-  }
-}
-public protocol LivenessFlowProtocol {
-  func setDelegate(_ delegate: LivenessFlowDelegate)
-  func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, FlowError>) -> Swift.Void)?)
-  func setPreviewSize(previewSize: CoreGraphics.CGSize)
-  func start()
-  func roiRect(in previewSize: CoreGraphics.CGSize) -> CoreGraphics.CGRect
-  func recognize(image: UIKit.UIImage)
-  func getResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
-  func isExpired() -> Swift.Bool
-}
-public class LivenessFactory {
-  public init()
-  public func prepare(with action: Action = .register(waitResult: true)) -> LivenessFlowProtocol
-  public func preparePlayground() -> LivenessFlowProtocol
-  @objc deinit
-}
-public enum Action {
-  case register(waitResult: Swift.Bool)
-  case verify(_: Swift.Bool)
-}
-public enum FlowError : Swift.Error {
-  case checkModel
-  case start
-  case recognize
-  case service(FlowError.Endpoint, code: Swift.String?)
-  case expiredIn
-  public enum Endpoint {
-    case `init`
-    case detect
-    case verify
-    public static func == (a: FlowError.Endpoint, b: FlowError.Endpoint) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
-    public var hashValue: Swift.Int {
-      get
-    }
-  }
 }
 public class QKMRZParser {
   public init(ocrCorrection: Swift.Bool = false)
@@ -273,6 +330,9 @@ public enum OCRCardType : Swift.String, Swift.Codable {
   case TWLicense
   case TWHealth
   case Passport
+  case TWResident
+  case JPID
+  case JPDriverLicense
   public func getMaskRect(frame: CoreGraphics.CGRect) -> CoreGraphics.CGRect
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
@@ -300,6 +360,7 @@ public enum OCRError : Swift.String, Foundation.LocalizedError {
   case PROCESS_FAIL
   case ERROR_VERCIAL
   case EXPIRED
+  case EngineError
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -310,7 +371,7 @@ public protocol OCRFlowProtocol {
   func setDelegate(_ delegate: OCRFlowDelegate)
   func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
   func setPreviewSize(_ previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
-  func start(needConfirm: Swift.Bool, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
+  func start(needConfirm: Swift.Bool, handler: ((Swift.Result<SessionInfo, OCRError>) -> Swift.Void)?)
   func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
   func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   func restart()
@@ -318,6 +379,7 @@ public protocol OCRFlowProtocol {
   func stopBarcodeDetection()
   func cancelExpired()
   func getExpiredStart() -> Foundation.TimeInterval
+  func setIgnoreCard() -> Swift.Result<Swift.Void, OCRError>
 }
 public protocol OCRFlowAntiFraudProtocol {
   func setDelegate(_ delegate: OCRFlowDelegate)
@@ -325,7 +387,7 @@ public protocol OCRFlowAntiFraudProtocol {
   func setPreviewSize(_ previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
   func setUIParam(imageSize: CoreGraphics.CGSize, previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
   func setCardMatchROI(previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
-  func start(needConfirm: Swift.Bool, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
+  func start(needConfirm: Swift.Bool, handler: ((Swift.Result<SessionInfo, OCRError>) -> Swift.Void)?)
   func onGetPreviewData(image: UIKit.UIImage, verticalError: ((OCRError) -> Swift.Void)?, rotateReverse: ((Swift.Bool) -> Swift.Void)?, rotateHandler: ((AntiFraudRotate) -> Swift.Void)?, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
   func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
@@ -344,10 +406,13 @@ public class OCRFactory {
   public func prepareAntiFraud(ocrcard: OCRCard) -> OCRFlowAntiFraudProtocol?
   @objc deinit
 }
+public struct SessionInfo {
+}
 public struct OCRFinishScanDocRequest {
 }
 public protocol OCRFlowDelegate : AnyObject {
   func didFailureWith(error: OCRError, retryHandler: @escaping (() -> Swift.Void))
+  func notifyAntiFraudWith(status: LogAntiFraud)
 }
 public enum OCRNotifyMessage : Swift.String {
   case SUCCESS_SEGMENTATION
@@ -370,24 +435,17 @@ public enum DebugMessageChannel {
     get
   }
 }
-public struct OCRInitScanDocRequest {
-}
-@_inheritsConvenienceInitializers public class OCRMainFlow : AbstractOCRFlow, OCRFlowProtocol {
-  public func setDelegate(_ delegate: OCRFlowDelegate)
-  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
-  public func setUIParam(imageSize: CoreGraphics.CGSize, previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
-  public func setCardMatchROI(previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
-  public func setPreviewSize(_ previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
-  public func start(needConfirm: Swift.Bool, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
-  public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
-  public func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
-  public func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
-  public func stopBarcodeDetection()
-  public func cancelExpired()
-  public func getExpiredStart() -> Foundation.TimeInterval
-  override public func restart()
+@_inheritsConvenienceInitializers public class JPIDCardFlow : OCRMainFlow {
+  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
   override public init(ocrcard: OCRCard)
   @objc deinit
+}
+@_inheritsConvenienceInitializers public class JPDriverLicenseFlow : OCRMainFlow {
+  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  override public init(ocrcard: OCRCard)
+  @objc deinit
+}
+public struct OCRInitScanDocRequest {
 }
 public protocol OCRResult {
   var fileID: Swift.String { get }
@@ -431,6 +489,11 @@ public protocol OCRResult {
     case documentType
     case documentNumber
     case idNumber
+    case placeOfBirth
+    case authority
+    case dateOfIssue
+    case fullName
+    case otherName
     public init?(rawValue: Swift.String)
     public typealias AllCases = [MRZResult.DataType]
     public typealias RawValue = Swift.String
@@ -441,6 +504,41 @@ public protocol OCRResult {
       get
     }
   }
+  convenience public init(data: [Swift.String : Swift.String], image: UIKit.UIImage?)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class TWResidentResult : OCRBaseResult<TWResidentResult.DataType> {
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case authority
+    case country
+    case dateOfBirth
+    case dateOfIssue
+    case documentNumber
+    case documentType
+    case expiryDate
+    case fullName
+    case gender
+    case givenName
+    case idNumber
+    case middleName
+    case name
+    case nationality
+    case otherName
+    case passportNumber
+    case placeOfBirth
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [TWResidentResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [TWResidentResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  convenience public init(data: [Swift.String : Swift.String], image: UIKit.UIImage?)
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class TWIDResult : OCRBaseResult<TWIDResult.DataType> {
@@ -519,10 +617,157 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers public class TWDriverLicenseFlow : OCRMainFlow {
-  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class JPIDCardResult : OCRBaseResult<JPIDCardResult.DataType> {
+  override public func get(type: JPIDCardResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case country
+    case gender
+    case idNumber
+    case name
+    case nationality
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [JPIDCardResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [JPIDCardResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class JPDriverLicenseResult : OCRBaseResult<JPDriverLicenseResult.DataType> {
+  override public func get(type: JPDriverLicenseResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case country
+    case dateOfBirth
+    case dateOfIssue
+    case documentNumber
+    case expiryDate
+    case name
+    case nationality
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [JPDriverLicenseResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [JPDriverLicenseResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+public enum JWTDecodeError : Foundation.LocalizedError, Swift.CustomDebugStringConvertible {
+  case invalidBase64URL(Swift.String)
+  case invalidJSON(Swift.String)
+  case invalidPartCount(Swift.String, Swift.Int)
+  public var localizedDescription: Swift.String {
+    get
+  }
+  public var errorDescription: Swift.String? {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+public protocol LivenessFlowProtocol {
+  func setDelegate(_ delegate: LivenessFlowDelegate)
+  func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, FlowError>) -> Swift.Void)?)
+  func setPreviewSize(previewSize: CoreGraphics.CGSize)
+  func start(encrypt: Swift.Bool)
+  func roiRect(in previewSize: CoreGraphics.CGSize) -> CoreGraphics.CGRect
+  func recognize(image: UIKit.UIImage)
+  func getResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
+  func isExpired() -> Swift.Bool
+  func cancelExpired()
+  func enableUploadFullFrame()
+}
+public class LivenessFactory {
+  public init()
+  public func prepare(with action: Action = .register(waitResult: true)) -> LivenessFlowProtocol
+  public func preparePlayground() -> LivenessFlowProtocol
+  public func prepareRecordPlayground() -> LivenessFlowProtocol
+  @objc deinit
+}
+public enum Action {
+  case register(waitResult: Swift.Bool)
+  case verify(_: Swift.Bool)
+}
+public enum FlowError : Swift.Error {
+  case checkModel
+  case start
+  case recognize
+  case service(FlowError.Endpoint, code: Swift.String?)
+  case expiredIn
+  public enum Endpoint {
+    case `init`
+    case detect
+    case verify
+    public static func == (a: FlowError.Endpoint, b: FlowError.Endpoint) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+public protocol LivenessPlaygroundRecordFlowDelegate : LivenessFlowDelegate {
+  func livenessDidNotifyMessage(message: Swift.String)
+  func livenessDidUpdateReconize(result: Swift.Bool)
+  func livenessDidFailureWith(error: FlowError, retryHandler: @escaping (() -> Swift.Void))
+  func livenessDidRecognize(image: UIKit.UIImage)
+  func livenessDidFaceScale(direction: LivenessFlow.FaceScaleDirection.Direction)
+  func livenessDidProcessed(jsonString: Swift.String)
+}
+@_inheritsConvenienceInitializers public class OCRMainFlow : AbstractOCRFlow, OCRFlowProtocol {
+  public func setDelegate(_ delegate: OCRFlowDelegate)
+  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
+  public func _checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
+  public func setUIParam(imageSize: CoreGraphics.CGSize, previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
+  public func setCardMatchROI(previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
+  public func setPreviewSize(_ previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
+  public func setIgnoreCard() -> Swift.Result<Swift.Void, OCRError>
+  public func start(needConfirm: Swift.Bool, handler: ((Swift.Result<SessionInfo, OCRError>) -> Swift.Void)?)
+  public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  public func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  public func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  public func stopBarcodeDetection()
+  public func cancelExpired()
+  public func getExpiredStart() -> Foundation.TimeInterval
+  override public func restart()
   override public init(ocrcard: OCRCard)
   @objc deinit
+}
+extension UIKit.UIDevice {
+  @_Concurrency.MainActor(unsafe) public static let modelName: Swift.String
+}
+public protocol LivenessPlaygroundFlowDelegate : LivenessFlowDelegate {
+  func livenessDidNotifyMessage(message: Swift.String)
+  func livenessDidUpdateReconize(result: Swift.Bool)
+  func livenessDidFailureWith(error: FlowError, retryHandler: @escaping (() -> Swift.Void))
+  func livenessDidRecognize(image: UIKit.UIImage)
+  func livenessQueueDidUpload(currentCount: Swift.Int)
+}
+public class LivenessPlaygroundFlow {
+  weak public var delegate: LivenessPlaygroundFlowDelegate?
+  public init()
+  @objc deinit
+}
+extension LivenessPlaygroundFlow : LivenessFlowProtocol {
+  public func setDelegate(_ delegate: LivenessFlowDelegate)
+  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)? = nil, handler: ((Swift.Result<Swift.Void, FlowError>) -> Swift.Void)?)
+  public func setPreviewSize(previewSize: CoreGraphics.CGSize)
+  public func start(encrypt: Swift.Bool)
+  public func recognize(image: UIKit.UIImage)
+  public func roiRect(in previewSize: CoreGraphics.CGSize) -> CoreGraphics.CGRect
+  public func getResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
+  public func isExpired() -> Swift.Bool
+  public func cancelExpired()
+  public func enableUploadFullFrame()
 }
 public enum AntiFraudRotate {
   case left
@@ -555,15 +800,6 @@ extension TWIDAntiFraudFlow : OCRFlowAntiFraudProtocol {
   public func enterReverse() -> Swift.Bool
   public func reenterRotate()
   public func enterPrepare(active: Swift.Bool)
-}
-@_inheritsConvenienceInitializers public class TWIDFlow : OCRMainFlow {
-  override public func start(needConfirm: Swift.Bool, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
-  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
-  override public init(ocrcard: OCRCard)
-  @objc deinit
-}
-extension UIKit.UIDevice {
-  @_Concurrency.MainActor(unsafe) public static let modelName: Swift.String
 }
 final public class URLEncodedFormEncoder {
   public enum ArrayEncoding {
@@ -635,10 +871,55 @@ final public class URLEncodedFormEncoder {
 extension Foundation.CharacterSet {
   public static let afURLQueryAllowed: Foundation.CharacterSet
 }
+@_inheritsConvenienceInitializers public class TWDriverLicenseFlow : OCRMainFlow {
+  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  override public init(ocrcard: OCRCard)
+  @objc deinit
+}
+public protocol JWT {
+  var header: [Swift.String : Any] { get }
+  var body: [Swift.String : Any] { get }
+  var signature: Swift.String? { get }
+  var string: Swift.String { get }
+  var expiresAt: Foundation.Date? { get }
+  var issuer: Swift.String? { get }
+  var subject: Swift.String? { get }
+  var audience: [Swift.String]? { get }
+  var issuedAt: Foundation.Date? { get }
+  var notBefore: Foundation.Date? { get }
+  var identifier: Swift.String? { get }
+  var expired: Swift.Bool { get }
+}
+extension JWT {
+  public func claim(name: Swift.String) -> Claim
+  public subscript(claim: Swift.String) -> Claim {
+    get
+  }
+}
+public class EventHelper {
+  public init()
+  @objc deinit
+  public func stop()
+  public func saveLogWith(sessionInfo: SessionInfo? = nil, info: EventInfo, preEvent: EventInfo? = nil)
+  public func saveLogWithDuration(_ duration: Swift.String = "0", sessionInfo: SessionInfo? = nil, info: EventInfo)
+  public func saveLog(info: EventInfo, sessionId: Swift.String = "", tenantId: Swift.String = "", customerId: Swift.String = "", preEvent: EventInfo? = nil)
+}
+public struct EventInfo {
+  public init(eventID: Foundation.UUID = UUID(), log: Swift.String, language: Swift.String = "", description: Swift.String = "", extraInfo: Swift.String = "")
+}
 extension MotionCondiction : Swift.Equatable {}
 extension MotionCondiction : Swift.Hashable {}
-extension FlowError.Endpoint : Swift.Equatable {}
-extension FlowError.Endpoint : Swift.Hashable {}
+extension LogFAS.LogStage : Swift.Equatable {}
+extension LogFAS.LogStage : Swift.Hashable {}
+extension LogFAS.LogFASResult : Swift.Equatable {}
+extension LogFAS.LogFASResult : Swift.Hashable {}
+extension LogUpload.Event : Swift.Equatable {}
+extension LogUpload.Event : Swift.Hashable {}
+extension LivenessFlow.FaceScaleDirection.Direction : Swift.Equatable {}
+extension LivenessFlow.FaceScaleDirection.Direction : Swift.Hashable {}
+extension LogAntiFraud : Swift.Equatable {}
+extension LogAntiFraud : Swift.Hashable {}
+extension LogAntiFraud : Swift.RawRepresentable {}
 extension Facing : Swift.Equatable {}
 extension Facing : Swift.Hashable {}
 extension Facing : Swift.RawRepresentable {}
@@ -656,6 +937,9 @@ extension DebugMessageChannel : Swift.Hashable {}
 extension MRZResult.DataType : Swift.Equatable {}
 extension MRZResult.DataType : Swift.Hashable {}
 extension MRZResult.DataType : Swift.RawRepresentable {}
+extension TWResidentResult.DataType : Swift.Equatable {}
+extension TWResidentResult.DataType : Swift.Hashable {}
+extension TWResidentResult.DataType : Swift.RawRepresentable {}
 extension TWIDResult.DataType : Swift.Equatable {}
 extension TWIDResult.DataType : Swift.Hashable {}
 extension TWIDResult.DataType : Swift.RawRepresentable {}
@@ -665,6 +949,14 @@ extension TWLicenseResult.DataType : Swift.RawRepresentable {}
 extension TWHealthResult.DataType : Swift.Equatable {}
 extension TWHealthResult.DataType : Swift.Hashable {}
 extension TWHealthResult.DataType : Swift.RawRepresentable {}
+extension JPIDCardResult.DataType : Swift.Equatable {}
+extension JPIDCardResult.DataType : Swift.Hashable {}
+extension JPIDCardResult.DataType : Swift.RawRepresentable {}
+extension JPDriverLicenseResult.DataType : Swift.Equatable {}
+extension JPDriverLicenseResult.DataType : Swift.Hashable {}
+extension JPDriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension FlowError.Endpoint : Swift.Equatable {}
+extension FlowError.Endpoint : Swift.Hashable {}
 extension AntiFraudRotate : Swift.Equatable {}
 extension AntiFraudRotate : Swift.Hashable {}
 extension URLEncodedFormEncoder.ArrayEncoding : Swift.Equatable {}
