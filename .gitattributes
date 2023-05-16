@@ -1,2 +1,4 @@
 Algo.xcframework/ios-arm64/Algo.framework/Algo filter=lfs diff=lfs merge=lfs -text
 Algo.xcframework/ios-x86_64-simulator/Algo.framework/Algo filter=lfs diff=lfs merge=lfs -text
+onnxruntime.xcframework/ios-arm64/onnxruntime.framework/onnxruntime filter=lfs diff=lfs merge=lfs -text
+onnxruntime.xcframework/ios-x86_64-simulator/onnxruntime.framework/onnxruntime filter=lfs diff=lfs merge=lfs -text
