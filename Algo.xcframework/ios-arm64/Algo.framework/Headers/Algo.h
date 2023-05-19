@@ -3,7 +3,6 @@
 #import "laser_tag_detection.h"
 #import "card_detection.h"
 #import "face_anti_spoofing.h"
-#import "taiwan_hole_detection.h"
 #import "metal_tag_detection.h"
 #import "fas_service.h"
 #import "id_card_anti_fraud_service.h"
