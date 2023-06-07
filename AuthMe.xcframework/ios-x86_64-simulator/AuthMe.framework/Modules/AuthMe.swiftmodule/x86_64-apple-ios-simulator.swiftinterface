@@ -144,6 +144,7 @@ public class LivenessFlow : LivenessFlowProtocol {
   public func setPreviewSize(previewSize: CoreGraphics.CGSize)
   public func start(encrypt: Swift.Bool)
   public func recognize(image: UIKit.UIImage)
+  public func recognize(normal normalImage: UIKit.UIImage, depthImage: UIKit.UIImage)
   public func roiRect(in previewSize: CoreGraphics.CGSize) -> CoreGraphics.CGRect
   public func cancelExpired()
   public func getResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
@@ -286,6 +287,16 @@ public enum LogAntiFraud : Swift.String {
     get
   }
 }
+@_inheritsConvenienceInitializers public class IDNIDCardFlow : OCRMainFlow {
+  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  override public init(ocrcard: OCRCard)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers public class IDNDriverLicenseFlow : OCRMainFlow {
+  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  override public init(ocrcard: OCRCard)
+  @objc deinit
+}
 @_inheritsConvenienceInitializers public class TWIDFlow : OCRMainFlow {
   override public func start(needConfirm: Swift.Bool, handler: ((Swift.Result<SessionInfo, OCRError>) -> Swift.Void)?)
   override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
@@ -330,9 +341,14 @@ public enum OCRCardType : Swift.String, Swift.Codable {
   case TWLicense
   case TWHealth
   case Passport
-  case TWResident
-  case JPID
-  case JPDriverLicense
+  case TWNResident
+  case JPNID
+  case JPNDriverLicense
+  case USAID
+  case USADriverLicense
+  case USABordercrossingCard
+  case IDNID
+  case IDNDriverLicense
   public func getMaskRect(frame: CoreGraphics.CGRect) -> CoreGraphics.CGRect
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
@@ -435,12 +451,17 @@ public enum DebugMessageChannel {
     get
   }
 }
-@_inheritsConvenienceInitializers public class JPIDCardFlow : OCRMainFlow {
+@_inheritsConvenienceInitializers public class LowBlurCardFlow : OCRMainFlow {
+  override public func setPreviewSize(_ previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
+  override public init(ocrcard: OCRCard)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers public class JPIDCardFlow : LowBlurCardFlow {
   override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
   override public init(ocrcard: OCRCard)
   @objc deinit
 }
-@_inheritsConvenienceInitializers public class JPDriverLicenseFlow : OCRMainFlow {
+@_inheritsConvenienceInitializers public class JPDriverLicenseFlow : LowBlurCardFlow {
   override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
   override public init(ocrcard: OCRCard)
   @objc deinit
@@ -507,7 +528,7 @@ public protocol OCRResult {
   convenience public init(data: [Swift.String : Swift.String], image: UIKit.UIImage?)
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class TWResidentResult : OCRBaseResult<TWResidentResult.DataType> {
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class TWNResidentResult : OCRBaseResult<TWNResidentResult.DataType> {
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case authority
@@ -529,9 +550,9 @@ public protocol OCRResult {
     case placeOfBirth
     case surname
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [TWResidentResult.DataType]
+    public typealias AllCases = [TWNResidentResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [TWResidentResult.DataType] {
+    public static var allCases: [TWNResidentResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -617,8 +638,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class JPIDCardResult : OCRBaseResult<JPIDCardResult.DataType> {
-  override public func get(type: JPIDCardResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class JPNIDCardResult : OCRBaseResult<JPNIDCardResult.DataType> {
+  override public func get(type: JPNIDCardResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case country
@@ -627,9 +648,9 @@ public protocol OCRResult {
     case name
     case nationality
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [JPIDCardResult.DataType]
+    public typealias AllCases = [JPNIDCardResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [JPIDCardResult.DataType] {
+    public static var allCases: [JPNIDCardResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -638,8 +659,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class JPDriverLicenseResult : OCRBaseResult<JPDriverLicenseResult.DataType> {
-  override public func get(type: JPDriverLicenseResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class JPNDriverLicenseResult : OCRBaseResult<JPNDriverLicenseResult.DataType> {
+  override public func get(type: JPNDriverLicenseResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case country
@@ -650,9 +671,135 @@ public protocol OCRResult {
     case name
     case nationality
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [JPDriverLicenseResult.DataType]
+    public typealias AllCases = [JPNDriverLicenseResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [JPDriverLicenseResult.DataType] {
+    public static var allCases: [JPNDriverLicenseResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class USAIDCardResult : OCRBaseResult<USAIDCardResult.DataType> {
+  override public func get(type: USAIDCardResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case country
+    case dateOfBirth
+    case dateOfIssue
+    case gender
+    case givenName
+    case idNumber
+    case middleName
+    case name
+    case nationality
+    case region
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [USAIDCardResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [USAIDCardResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class USADriverLicenseResult : OCRBaseResult<USADriverLicenseResult.DataType> {
+  override public func get(type: USADriverLicenseResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case country
+    case dateOfBirth
+    case dateOfIssue
+    case documentNumber
+    case gender
+    case givenName
+    case middleName
+    case name
+    case nationality
+    case region
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [USADriverLicenseResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [USADriverLicenseResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class USABorderCrossingCardResult : OCRBaseResult<USABorderCrossingCardResult.DataType> {
+  override public func get(type: USABorderCrossingCardResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case country
+    case dateOfBirth
+    case expiryDate
+    case givenName
+    case middleName
+    case name
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [USABorderCrossingCardResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [USABorderCrossingCardResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class IDNIDCardResult : OCRBaseResult<IDNIDCardResult.DataType> {
+  override public func get(type: IDNIDCardResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case dateOfBirth
+    case dateOfIssue
+    case gender
+    case givenName
+    case idNumber
+    case middleName
+    case name
+    case placeOfBirth
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [IDNIDCardResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [IDNIDCardResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class IDNDriverLicenseResult : OCRBaseResult<IDNDriverLicenseResult.DataType> {
+  override public func get(type: IDNDriverLicenseResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case dateOfBirth
+    case documentNumber
+    case expiryDate
+    case givenName
+    case middleName
+    case name
+    case placeOfBirth
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [IDNDriverLicenseResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [IDNDriverLicenseResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -682,10 +829,14 @@ public protocol LivenessFlowProtocol {
   func start(encrypt: Swift.Bool)
   func roiRect(in previewSize: CoreGraphics.CGSize) -> CoreGraphics.CGRect
   func recognize(image: UIKit.UIImage)
+  func recognize(normal normalImage: UIKit.UIImage, depthImage: UIKit.UIImage)
   func getResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
   func isExpired() -> Swift.Bool
   func cancelExpired()
   func enableUploadFullFrame()
+}
+extension LivenessFlowProtocol {
+  public func recognize(normal normalImage: UIKit.UIImage, depthImage: UIKit.UIImage)
 }
 public class LivenessFactory {
   public init()
@@ -876,6 +1027,21 @@ extension Foundation.CharacterSet {
   override public init(ocrcard: OCRCard)
   @objc deinit
 }
+@_inheritsConvenienceInitializers public class USIDCardFlow : LowBlurCardFlow {
+  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  override public init(ocrcard: OCRCard)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers public class USDriverLicenseFlow : OCRMainFlow {
+  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  override public init(ocrcard: OCRCard)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers public class USBorderCrossingFlow : LowBlurCardFlow {
+  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  override public init(ocrcard: OCRCard)
+  @objc deinit
+}
 public protocol JWT {
   var header: [Swift.String : Any] { get }
   var body: [Swift.String : Any] { get }
@@ -937,9 +1103,9 @@ extension DebugMessageChannel : Swift.Hashable {}
 extension MRZResult.DataType : Swift.Equatable {}
 extension MRZResult.DataType : Swift.Hashable {}
 extension MRZResult.DataType : Swift.RawRepresentable {}
-extension TWResidentResult.DataType : Swift.Equatable {}
-extension TWResidentResult.DataType : Swift.Hashable {}
-extension TWResidentResult.DataType : Swift.RawRepresentable {}
+extension TWNResidentResult.DataType : Swift.Equatable {}
+extension TWNResidentResult.DataType : Swift.Hashable {}
+extension TWNResidentResult.DataType : Swift.RawRepresentable {}
 extension TWIDResult.DataType : Swift.Equatable {}
 extension TWIDResult.DataType : Swift.Hashable {}
 extension TWIDResult.DataType : Swift.RawRepresentable {}
@@ -949,12 +1115,27 @@ extension TWLicenseResult.DataType : Swift.RawRepresentable {}
 extension TWHealthResult.DataType : Swift.Equatable {}
 extension TWHealthResult.DataType : Swift.Hashable {}
 extension TWHealthResult.DataType : Swift.RawRepresentable {}
-extension JPIDCardResult.DataType : Swift.Equatable {}
-extension JPIDCardResult.DataType : Swift.Hashable {}
-extension JPIDCardResult.DataType : Swift.RawRepresentable {}
-extension JPDriverLicenseResult.DataType : Swift.Equatable {}
-extension JPDriverLicenseResult.DataType : Swift.Hashable {}
-extension JPDriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension JPNIDCardResult.DataType : Swift.Equatable {}
+extension JPNIDCardResult.DataType : Swift.Hashable {}
+extension JPNIDCardResult.DataType : Swift.RawRepresentable {}
+extension JPNDriverLicenseResult.DataType : Swift.Equatable {}
+extension JPNDriverLicenseResult.DataType : Swift.Hashable {}
+extension JPNDriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension USAIDCardResult.DataType : Swift.Equatable {}
+extension USAIDCardResult.DataType : Swift.Hashable {}
+extension USAIDCardResult.DataType : Swift.RawRepresentable {}
+extension USADriverLicenseResult.DataType : Swift.Equatable {}
+extension USADriverLicenseResult.DataType : Swift.Hashable {}
+extension USADriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension USABorderCrossingCardResult.DataType : Swift.Equatable {}
+extension USABorderCrossingCardResult.DataType : Swift.Hashable {}
+extension USABorderCrossingCardResult.DataType : Swift.RawRepresentable {}
+extension IDNIDCardResult.DataType : Swift.Equatable {}
+extension IDNIDCardResult.DataType : Swift.Hashable {}
+extension IDNIDCardResult.DataType : Swift.RawRepresentable {}
+extension IDNDriverLicenseResult.DataType : Swift.Equatable {}
+extension IDNDriverLicenseResult.DataType : Swift.Hashable {}
+extension IDNDriverLicenseResult.DataType : Swift.RawRepresentable {}
 extension FlowError.Endpoint : Swift.Equatable {}
 extension FlowError.Endpoint : Swift.Hashable {}
 extension AntiFraudRotate : Swift.Equatable {}
