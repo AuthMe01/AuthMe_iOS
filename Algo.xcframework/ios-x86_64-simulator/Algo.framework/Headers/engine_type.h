@@ -17,6 +17,7 @@ typedef enum _E_AUTHME_COLOR_FORMAT
     eAuthMe_ColorFormat_RGBA_8888 = 1,
     eAuthMe_ColorFormat_BGR,
     eAuthMe_ColorFormat_RGB,
+    eAuthMe_ColorFormat_GRAY,
 } EAuthMeColorFormat;
 
 typedef enum _E_AUTHME_FACE_ANTI_SPOOFING_STATUS
@@ -24,6 +25,8 @@ typedef enum _E_AUTHME_FACE_ANTI_SPOOFING_STATUS
     eAuthMe_FaceAntiSpoofing_FrameNotEnough,
     eAuthMe_FaceAntiSpoofing_Real,
     eAuthMe_FaceAntiSpoofing_Spoof,
+    eAuthMe_FaceAntiSpoofing_DepthFake,
+    eAuthMe_FaceAntiSpoofing_Error,
 } EAuthMeFaceAntiSpoofingStatus;
 
 typedef struct _AUTHME_FAS_MODULE_OUTPUT
@@ -32,6 +35,7 @@ typedef struct _AUTHME_FAS_MODULE_OUTPUT
     int iClassNum;
     float afScore[20];
     float afAccumulateScore[20];
+    float depthScore;
 } AuthMeFASModuleOutput;
 
 #define AUTHME_FACE_POSE_TAG(decorate) \

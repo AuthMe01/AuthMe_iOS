@@ -35,6 +35,7 @@ import _Concurrency
   public func start() throws
   public func stop()
   public func run(_ image: UIKit.UIImage) throws -> Algo.AuthMeFASResult
+  public func runWithDepthImage(normal normalImage: UIKit.UIImage, depth depthImage: UIKit.UIImage) throws -> Algo.AuthMeFASResult
   public func getJsonReport() -> Swift.String
   override public init()
 }
@@ -73,14 +74,18 @@ public class CoreService {
   @objc deinit
   public func create(ocrType: Algo.EAuthMeCardClass) throws
   public func create(ocrType: Algo.EAuthMeCardClass, serviceModel: Algo.OCRServiceModel) throws
+  public func create(serviceModel: Algo.OCRServiceModel) throws
   public func start() throws
   public func stop()
   public func run(image: UIKit.UIImage) -> (result: Algo.AuthMeCardOCRResult?, image: UIKit.UIImage?)?
   public func setParam() throws
+  public func setParam(ocrType: Algo.EAuthMeCardClass) throws
   public func setParam(_ param: Algo.AuthMeCardOCRParams) throws
   public func setUIParam(param: Algo.AuthMeServiceUIParams) throws
   public func setCardMatchROI(_ cardMatchROI: [Swift.Float]) throws
   public func setOption() throws
+  public func setPubkey(key: Swift.String) throws
+  public func getJsonReport() -> Swift.String
   override public init()
 }
 @_inheritsConvenienceInitializers public class IDCardFraudService : Algo.CoreService {
@@ -92,6 +97,8 @@ public class CoreService {
   public func run(image: UIKit.UIImage) -> Algo.AuthMeIDCardAntiFraudResult?
   public func setUIParam(param: Algo.AuthMeServiceUIParams) throws
   public func setCardMatchROI(_ cardMatchROI: [Swift.Float]) throws
+  public func setPubkey(key: Swift.String) throws
+  public func getJsonReport() -> Swift.String
   override public init()
 }
 @_inheritsConvenienceInitializers public class MRZService : Algo.CoreService {

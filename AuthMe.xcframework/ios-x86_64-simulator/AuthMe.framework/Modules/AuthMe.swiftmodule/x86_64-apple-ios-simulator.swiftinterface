@@ -392,6 +392,7 @@ public protocol OCRFlowProtocol {
   func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   func restart()
   func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  func recordImageWithNFCResult(_ nfcResult: [Swift.String : Swift.String], progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.String, OCRError>) -> Swift.Void)
   func stopBarcodeDetection()
   func cancelExpired()
   func getExpiredStart() -> Foundation.TimeInterval
@@ -415,6 +416,7 @@ public protocol OCRFlowAntiFraudProtocol {
   func stopBarcodeDetection()
   func cancelExpired()
   func getExpiredStart() -> Foundation.TimeInterval
+  func enableUploadFullFrame()
 }
 public class OCRFactory {
   public init()
@@ -490,7 +492,7 @@ public protocol OCRResult {
   public var backCropImage: UIKit.UIImage?
   final public let isAuto: Swift.Bool
   final public let fileID: Swift.String
-  final public let scanID: Swift.String
+  public var scanID: Swift.String
   public func orderedData() -> [(Swift.String, Swift.String)]
   public func get(type: DataType) -> Swift.String
   public func set(type: DataType, value: Swift.String)
@@ -526,6 +528,7 @@ public protocol OCRResult {
     }
   }
   convenience public init(data: [Swift.String : Swift.String], image: UIKit.UIImage?)
+  public func setScanID(_ scanID: Swift.String)
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class TWNResidentResult : OCRBaseResult<TWNResidentResult.DataType> {
@@ -886,6 +889,7 @@ public protocol LivenessPlaygroundRecordFlowDelegate : LivenessFlowDelegate {
   public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
   public func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   public func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  public func recordImageWithNFCResult(_ nfcResult: [Swift.String : Swift.String], progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.String, OCRError>) -> Swift.Void)
   public func stopBarcodeDetection()
   public func cancelExpired()
   public func getExpiredStart() -> Foundation.TimeInterval
@@ -940,8 +944,10 @@ public struct RotatePoints {
   override public func setUIParam(imageSize: CoreGraphics.CGSize, previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
   override public func setCardMatchROI(previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
   override public func setPreviewSize(_ previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
+  override public func start(needConfirm: Swift.Bool, handler: ((Swift.Result<SessionInfo, OCRError>) -> Swift.Void)?)
   public func onGetPreviewData(image: UIKit.UIImage, verticalError: ((OCRError) -> Swift.Void)? = nil, rotateReverse: ((Swift.Bool) -> Swift.Void)? = nil, rotateHandler: ((AntiFraudRotate) -> Swift.Void)? = nil, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
   override public func stopBarcodeDetection()
+  public func enableUploadFullFrame()
   override public init(ocrcard: OCRCard)
   @objc deinit
 }

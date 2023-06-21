@@ -46,11 +46,11 @@
 		</data>
 		<key>Headers/engine_service_type.h</key>
 		<data>
-		n+2q33ppuP9gxGMkAD7ZFQkKPzE=
+		N2x6qKmPQjcRjJEAZbtwOvCb9CU=
 		</data>
 		<key>Headers/engine_type.h</key>
 		<data>
-		z1A2vH2zo2QasQpx00I8T5U+pDk=
+		mUrgfv/HRrVDDJ6TgrH/2O/4iQE=
 		</data>
 		<key>Headers/face_alignment.h</key>
 		<data>
@@ -66,7 +66,7 @@
 		</data>
 		<key>Headers/fas_service.h</key>
 		<data>
-		uH/+bXvs/NC+JHNw2097+qNWIv8=
+		WDe4zWhUEwGJpwV2mDpz70pHajk=
 		</data>
 		<key>Headers/id_card_anti_fraud_service.h</key>
 		<data>
@@ -118,11 +118,11 @@
 		</data>
 		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		SMho4D7I3svsNicirz18XtDHMQs=
+		qeUfuyWI/PugyqcBDl3sJBe745M=
 		</data>
 		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		FDFu+p/Hd9Bd2dfCZI7F9/YHQdw=
+		DZle6V74i77L4e2ObxU5xlfKhHs=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -261,14 +261,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			zIhHylhQW3+Y7mV6PuZW4chD8vo0atRUcg1nePonttc=
+			jenix9e156f+KO7MG6/lLyOmp3vucws93BVv2z8GUJM=
 			</data>
 		</dict>
 		<key>Headers/engine_type.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			rOdmBqZ4IqPbVDmtA8mSJg9hfn8Iddbz/nKZzhYv454=
+			wGHb+/8pVUZssDKFR8IjDJ4jZghwL2YDh9CG41r/Ac0=
 			</data>
 		</dict>
 		<key>Headers/face_alignment.h</key>
@@ -296,7 +296,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			LOsE/SeTbiFdhk2JtprrNAr/EwG09QI3YdoCJk2XeHE=
+			bUU2oteg4deFJ+WN9oXNU1d3fqIFyjwdhXw9BHM7/Qs=
 			</data>
 		</dict>
 		<key>Headers/id_card_anti_fraud_service.h</key>
@@ -380,14 +380,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			KuUUY33SA+4m8KPYocnzLrqw51yq95cb7ojieAHInNY=
+			z75ti1XgxzwPSPdVWwMpKxUixhLMfLEMneh/V/YTvvk=
 			</data>
 		</dict>
 		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			UhKzf3RlOlEaWn1bQYKjbjh449hcnO/VpLj/1V9Ou8E=
+			b+8wOPxf4KiYJjzO3gamsNrXqEVvmqwsk/bBT7c2cEo=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

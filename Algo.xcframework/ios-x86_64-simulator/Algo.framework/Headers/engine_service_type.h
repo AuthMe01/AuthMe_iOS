@@ -83,6 +83,7 @@ typedef struct AUTHME_FAS_INFO
     int iClassNum;
     float afScore[20];
     float afAccumulateScore[20];
+    float fDepthScore;
     DEFAULT_COMPARISON(AUTHME_FAS_INFO)
 } AuthMeFASInfo;
 
@@ -101,6 +102,7 @@ typedef struct AUTHME_FAS_STAGE_PARAMS
     decorate(float, fEyeTh) \
     decorate(float, fMouthTh) \
     decorate(float, fFASTh) \
+    decorate(int, iDepthLevel) \
     decorate(float, fMiniFASTh) \
     decorate(int, iFASAccumulativeNum) \
     /* other params */ \
