@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
-// swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AuthMe
+// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AuthMe
 import Algo
 @_exported import AuthMe
 import CoreGraphics/*.CGFloat*/
@@ -63,8 +63,7 @@ public struct AuthMeConfig {
   }
   public static func configure(_ config: AuthMeConfig)
   public static func replace(accessToken: Swift.String) throws
-  public static func initialize(accessToken: Swift.String, progressHandler: ((Swift.Double) -> Swift.Void)? = nil, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
-  public static func comfirmResult(result: OCRResult, complete: @escaping () -> Swift.Void)
+  public static func initialize(accessToken: Swift.String) -> Swift.Result<Swift.Void, Swift.Error>
   public static func personalInfo(consent: Swift.Bool, url: Swift.String, completion: @escaping (Swift.Result<Foundation.Data, Swift.Error>) -> Swift.Void)
   public static func verificationState(completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
   @objc deinit
@@ -124,6 +123,7 @@ public struct LogUpload {
   public init(duration: Swift.String = "0", event: LogUpload.Event, frameNo: Swift.String)
 }
 public protocol LivenessFlowDelegate : AnyObject {
+  func livenessDidStart()
   func livenessDidNotifyMessage(message: Swift.String)
   func livenessDidUpdateReconize(result: Swift.Bool)
   func livenessDidFailureWith(error: FlowError, retryHandler: @escaping (() -> Swift.Void))
@@ -327,6 +327,8 @@ public struct QKMRZResult {
   public let isPersonalNumberValid: Swift.Bool?
   public let allCheckDigitsValid: Swift.Bool
 }
+public struct SessionInfo {
+}
 public enum Facing : Swift.String, Swift.Codable {
   case front
   case back
@@ -346,7 +348,7 @@ public enum OCRCardType : Swift.String, Swift.Codable {
   case JPNDriverLicense
   case USAID
   case USADriverLicense
-  case USABordercrossingCard
+  case USAVisitorVISA
   case IDNID
   case IDNDriverLicense
   public func getMaskRect(frame: CoreGraphics.CGRect) -> CoreGraphics.CGRect
@@ -377,6 +379,7 @@ public enum OCRError : Swift.String, Foundation.LocalizedError {
   case ERROR_VERCIAL
   case EXPIRED
   case EngineError
+  case ERROR_EVENTNAME
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -423,8 +426,6 @@ public class OCRFactory {
   public func prepare(ocrcard: OCRCard) -> OCRFlowProtocol?
   public func prepareAntiFraud(ocrcard: OCRCard) -> OCRFlowAntiFraudProtocol?
   @objc deinit
-}
-public struct SessionInfo {
 }
 public struct OCRFinishScanDocRequest {
 }
@@ -739,8 +740,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class USABorderCrossingCardResult : OCRBaseResult<USABorderCrossingCardResult.DataType> {
-  override public func get(type: USABorderCrossingCardResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class USAVisitorVISAResult : OCRBaseResult<USAVisitorVISAResult.DataType> {
+  override public func get(type: USAVisitorVISAResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case country
@@ -751,9 +752,9 @@ public protocol OCRResult {
     case name
     case surname
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [USABorderCrossingCardResult.DataType]
+    public typealias AllCases = [USAVisitorVISAResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [USABorderCrossingCardResult.DataType] {
+    public static var allCases: [USAVisitorVISAResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -811,6 +812,28 @@ public protocol OCRResult {
   }
   @objc deinit
 }
+public enum ScanType : Swift.String, Swift.Codable {
+  case TWIDFraud
+  case TWID
+  case TWDriverLicense
+  case TWHealth
+  case Passport
+  case NFCPassport
+  case TWNResident
+  case JPNID
+  case JPNDriverLicense
+  case USAID
+  case USADriverLicense
+  case USAVisitorVISA
+  case IDNID
+  case IDNDriverLicense
+  public func getOCRCardType() -> OCRCardType
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
 public enum JWTDecodeError : Foundation.LocalizedError, Swift.CustomDebugStringConvertible {
   case invalidBase64URL(Swift.String)
   case invalidJSON(Swift.String)
@@ -824,6 +847,11 @@ public enum JWTDecodeError : Foundation.LocalizedError, Swift.CustomDebugStringC
   public var debugDescription: Swift.String {
     get
   }
+}
+public class OCRScanDocFactory {
+  public init()
+  public func prepare(scanType: ScanType, eventName: Swift.String, needConfirm: Swift.Bool) -> ScanDocProtocol
+  @objc deinit
 }
 public protocol LivenessFlowProtocol {
   func setDelegate(_ delegate: LivenessFlowDelegate)
@@ -1068,6 +1096,76 @@ extension JWT {
     get
   }
 }
+public protocol ScanDocProtocol {
+  func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
+  func prepareScan(handler: @escaping (Swift.Result<(cardType: [ScanDocCardType], info: SessionInfo, expiredIn: Foundation.TimeInterval), OCRError>) -> Swift.Void)
+  func setPreviewSize(_ previewSize: CoreGraphics.CGSize)
+  func start(enableUploadFullFrame: Swift.Bool?, handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRScanResult, OCRError>) -> Swift.Void)
+  func onGetIDCardFraudPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRIDCardFraudStage, OCRError>) -> Swift.Void)
+  func restart() -> OCRError?
+  func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  func getStatus() -> (scanDocs: [ScanDocCardType], processing: ScanDocCardType)
+  func stopScan() -> OCRResult?
+}
+public struct OCRScanResult {
+  public let originalImage: UIKit.UIImage
+  public let cropImage: UIKit.UIImage
+  public let context: [Swift.String : Swift.String]
+}
+public enum OCRIDCardFraudStage {
+  case prepare
+  case rotate
+  case ocrscan
+  public static func == (a: OCRIDCardFraudStage, b: OCRIDCardFraudStage) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum ScanDocStatus {
+  case idle
+  case processing
+  case done
+  public static func == (a: ScanDocStatus, b: ScanDocStatus) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum ScanDocCardType : Swift.String, Swift.Codable {
+  case TWN_IDCard_Fraud_Front
+  case TWN_IDCard_Front
+  case TWN_IDCard_Back
+  case TWN_DriverLicense_Front
+  case TWN_DriverLicense_Back
+  case TWN_HealthCard_Front
+  case Passport
+  case NFCPassport
+  case TWN_ResidentCard_Front
+  case TWN_ResidentCard_Back
+  case JPN_IDCARD_Front
+  case JPN_DriverLicense_Front
+  case USA_IDCARD_Front
+  case USA_DriverLicense_Front
+  case USA_VisitorVISA_FRONT
+  case IDN_IDCARD_Front
+  case IDN_DriverLicense_Front
+  case UnknownCard
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension ScanDocCardType {
+  public func getMaskRect(frame: CoreGraphics.CGRect) -> CoreGraphics.CGRect
+}
+@_hasMissingDesignatedInitializers public class CVMath {
+  public static func transformedLeftPoint(w: Swift.Float, h: Swift.Float, degree: Swift.Float, x: inout Swift.Float, y: inout Swift.Float)
+  public static func transformedTopPoint(w: Swift.Float, h: Swift.Float, degree: Swift.Float, x: inout Swift.Float, y: inout Swift.Float)
+  @objc deinit
+}
 public class EventHelper {
   public init()
   @objc deinit
@@ -1133,15 +1231,18 @@ extension USAIDCardResult.DataType : Swift.RawRepresentable {}
 extension USADriverLicenseResult.DataType : Swift.Equatable {}
 extension USADriverLicenseResult.DataType : Swift.Hashable {}
 extension USADriverLicenseResult.DataType : Swift.RawRepresentable {}
-extension USABorderCrossingCardResult.DataType : Swift.Equatable {}
-extension USABorderCrossingCardResult.DataType : Swift.Hashable {}
-extension USABorderCrossingCardResult.DataType : Swift.RawRepresentable {}
+extension USAVisitorVISAResult.DataType : Swift.Equatable {}
+extension USAVisitorVISAResult.DataType : Swift.Hashable {}
+extension USAVisitorVISAResult.DataType : Swift.RawRepresentable {}
 extension IDNIDCardResult.DataType : Swift.Equatable {}
 extension IDNIDCardResult.DataType : Swift.Hashable {}
 extension IDNIDCardResult.DataType : Swift.RawRepresentable {}
 extension IDNDriverLicenseResult.DataType : Swift.Equatable {}
 extension IDNDriverLicenseResult.DataType : Swift.Hashable {}
 extension IDNDriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension ScanType : Swift.Equatable {}
+extension ScanType : Swift.Hashable {}
+extension ScanType : Swift.RawRepresentable {}
 extension FlowError.Endpoint : Swift.Equatable {}
 extension FlowError.Endpoint : Swift.Hashable {}
 extension AntiFraudRotate : Swift.Equatable {}
@@ -1152,3 +1253,10 @@ extension URLEncodedFormEncoder.BoolEncoding : Swift.Equatable {}
 extension URLEncodedFormEncoder.BoolEncoding : Swift.Hashable {}
 extension URLEncodedFormEncoder.SpaceEncoding : Swift.Equatable {}
 extension URLEncodedFormEncoder.SpaceEncoding : Swift.Hashable {}
+extension OCRIDCardFraudStage : Swift.Equatable {}
+extension OCRIDCardFraudStage : Swift.Hashable {}
+extension ScanDocStatus : Swift.Equatable {}
+extension ScanDocStatus : Swift.Hashable {}
+extension ScanDocCardType : Swift.Equatable {}
+extension ScanDocCardType : Swift.Hashable {}
+extension ScanDocCardType : Swift.RawRepresentable {}
