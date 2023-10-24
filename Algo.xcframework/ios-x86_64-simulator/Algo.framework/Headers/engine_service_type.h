@@ -286,6 +286,7 @@ typedef enum E_AUTHME_ID_CARD_ANTI_FRAUD_SERVICE_STATGE
     decorate(Gray) \
     decorate(PositionNotMatch) \
     decorate(NeedMoreFrame) \
+    decorate(AntiFraudFeatureDetect) \
     decorate(Pass) \
     decorate(Error)
 
