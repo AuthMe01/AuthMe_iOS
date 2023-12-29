@@ -1,6 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
-// swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AuthMe
+// swift-compiler-version: Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)
+// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AuthMe
+// swift-module-flags-ignorable: -enable-bare-slash-regex
 import Algo
 @_exported import AuthMe
 import CoreGraphics/*.CGFloat*/
@@ -17,6 +18,8 @@ import UIKit/*.UIEdgeInsets*/
 import UIKit/*.UIImage*/
 import Vision
 import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
 public class AbstractOCRFlow {
   public init(ocrcard: OCRCard)
   public func restart()
@@ -50,7 +53,7 @@ public struct AuthMeConfig {
     public init(host: Swift.String, credentialURL: Foundation.URL)
   }
 }
-@_hasMissingDesignatedInitializers public class AuthMe {
+@_hasMissingDesignatedInitializers public class AuthMeCore {
   public typealias Config = AuthMeConfig
   public static var initialized: Swift.Bool {
     get
@@ -63,10 +66,9 @@ public struct AuthMeConfig {
   }
   public static func configure(_ config: AuthMeConfig)
   public static func replace(accessToken: Swift.String) throws
-  public static func initialize(accessToken: Swift.String, progressHandler: ((Swift.Double) -> Swift.Void)? = nil, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
-  public static func comfirmResult(result: OCRResult, complete: @escaping () -> Swift.Void)
-  public static func personalInfo(consent: Swift.Bool, url: Swift.String, completion: @escaping (Swift.Result<Foundation.Data, Swift.Error>) -> Swift.Void)
-  public static func verificationState(completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
+  public static func initialize(accessToken: Swift.String) -> Swift.Result<Swift.Void, any Swift.Error>
+  public static func personalInfo(consent: Swift.Bool, url: Swift.String, completion: @escaping (Swift.Result<Foundation.Data, any Swift.Error>) -> Swift.Void)
+  public static func verificationState(completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
   @objc deinit
 }
 public struct LogFAS {
@@ -124,6 +126,7 @@ public struct LogUpload {
   public init(duration: Swift.String = "0", event: LogUpload.Event, frameNo: Swift.String)
 }
 public protocol LivenessFlowDelegate : AnyObject {
+  func livenessDidStart()
   func livenessDidNotifyMessage(message: Swift.String)
   func livenessDidUpdateReconize(result: Swift.Bool)
   func livenessDidFailureWith(error: FlowError, retryHandler: @escaping (() -> Swift.Void))
@@ -133,19 +136,19 @@ public protocol LivenessFlowDelegate : AnyObject {
   func livenessNotifyUpload(log: LogUpload)
 }
 public class LivenessFlow : LivenessFlowProtocol {
-  public func setDelegate(_ delegate: LivenessFlowDelegate)
-  weak public var delegate: LivenessFlowDelegate?
+  public func setDelegate(_ delegate: any LivenessFlowDelegate)
+  weak public var delegate: (any LivenessFlowDelegate)?
   public var isDetecting: Swift.Bool {
     get
   }
   public init(action: Action = .register(waitResult: true))
   @objc deinit
   public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)? = nil, handler: ((Swift.Result<Swift.Void, FlowError>) -> Swift.Void)?)
-  public func setPreviewSize(previewSize: CoreGraphics.CGSize)
+  public func setPreviewSize(previewSize: CoreFoundation.CGSize)
   public func start(encrypt: Swift.Bool)
   public func recognize(image: UIKit.UIImage)
   public func recognize(normal normalImage: UIKit.UIImage, depthImage: UIKit.UIImage)
-  public func roiRect(in previewSize: CoreGraphics.CGSize) -> CoreGraphics.CGRect
+  public func roiRect(in previewSize: CoreFoundation.CGSize) -> CoreFoundation.CGRect
   public func cancelExpired()
   public func getResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
   public func isExpired() -> Swift.Bool
@@ -154,7 +157,7 @@ public class LivenessFlow : LivenessFlowProtocol {
 }
 extension LivenessFlow {
   public struct RoiParam {
-    public init(preview: EnginePreview, ratio: CoreGraphics.CGFloat, widthRatio: CoreGraphics.CGFloat, offset: UIKit.UIOffset)
+    public init(preview: EnginePreview, ratio: CoreFoundation.CGFloat, widthRatio: CoreFoundation.CGFloat, offset: UIKit.UIOffset)
   }
   public struct FaceScaleDirection {
     public enum Direction {
@@ -172,16 +175,16 @@ public protocol Cancellable : AnyObject {
   var isCancelled: Swift.Bool { get }
   func cancel()
 }
-extension CoreGraphics.CGRect {
-  public var center: CoreGraphics.CGPoint {
+extension CoreFoundation.CGRect {
+  public var center: CoreFoundation.CGPoint {
     get
   }
 }
-extension CoreGraphics.CGRect {
-  public init(center: CoreGraphics.CGPoint, size: CoreGraphics.CGSize)
+extension CoreFoundation.CGRect {
+  public init(center: CoreFoundation.CGPoint, size: CoreFoundation.CGSize)
 }
-extension CoreGraphics.CGRect {
-  public func resizing(to size: CoreGraphics.CGSize, anchor: CoreGraphics.CGPoint = CGPoint(x: 0.5, y: 0.5)) -> CoreGraphics.CGRect
+extension CoreFoundation.CGRect {
+  public func resizing(to size: CoreFoundation.CGSize, anchor: CoreFoundation.CGPoint = CGPoint(x: 0.5, y: 0.5)) -> CoreFoundation.CGRect
 }
 extension Swift.Collection {
   public subscript(safe index: Self.Index) -> Self.Element? {
@@ -204,7 +207,7 @@ extension Swift.Dictionary {
   public static func -= <S>(lhs: inout [Key : Value], keys: S) where Key == S.Element, S : Swift.Sequence
 }
 public struct EnginePreview {
-  public init(imageSize: CoreGraphics.CGSize, previewSize: CoreGraphics.CGSize, previewInsets: UIKit.UIEdgeInsets = .zero)
+  public init(imageSize: CoreFoundation.CGSize, previewSize: CoreFoundation.CGSize, previewInsets: UIKit.UIEdgeInsets = .zero)
 }
 public struct ErrorDescription : Foundation.LocalizedError, Swift.Equatable {
   public init(description: Swift.String)
@@ -222,7 +225,7 @@ extension ErrorDescription : Swift.ExpressibleByStringLiteral {
 public struct StatusCodeError : Swift.Error {
   public let localizedDescription: Swift.String
 }
-public func decode(jwt: Swift.String) throws -> JWT
+public func decode(jwt: Swift.String) throws -> any JWT
 public struct Claim {
   public var rawValue: Any? {
     get
@@ -288,18 +291,18 @@ public enum LogAntiFraud : Swift.String {
   }
 }
 @_inheritsConvenienceInitializers public class IDNIDCardFlow : OCRMainFlow {
-  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<any OCRResult, OCRError>) -> Swift.Void)
   override public init(ocrcard: OCRCard)
   @objc deinit
 }
 @_inheritsConvenienceInitializers public class IDNDriverLicenseFlow : OCRMainFlow {
-  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<any OCRResult, OCRError>) -> Swift.Void)
   override public init(ocrcard: OCRCard)
   @objc deinit
 }
 @_inheritsConvenienceInitializers public class TWIDFlow : OCRMainFlow {
   override public func start(needConfirm: Swift.Bool, handler: ((Swift.Result<SessionInfo, OCRError>) -> Swift.Void)?)
-  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<any OCRResult, OCRError>) -> Swift.Void)
   override public init(ocrcard: OCRCard)
   @objc deinit
 }
@@ -327,6 +330,8 @@ public struct QKMRZResult {
   public let isPersonalNumberValid: Swift.Bool?
   public let allCheckDigitsValid: Swift.Bool
 }
+public struct SessionInfo {
+}
 public enum Facing : Swift.String, Swift.Codable {
   case front
   case back
@@ -346,10 +351,10 @@ public enum OCRCardType : Swift.String, Swift.Codable {
   case JPNDriverLicense
   case USAID
   case USADriverLicense
-  case USABordercrossingCard
+  case USAVisitorVISA
   case IDNID
   case IDNDriverLicense
-  public func getMaskRect(frame: CoreGraphics.CGRect) -> CoreGraphics.CGRect
+  public func getMaskRect(frame: CoreFoundation.CGRect) -> CoreFoundation.CGRect
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -360,8 +365,8 @@ public struct OCRCard : Swift.Codable {
   public let facing: Facing
   public let type: OCRCardType
   public init(facing: Facing, type: OCRCardType)
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 public enum OCRError : Swift.String, Foundation.LocalizedError {
   case ERROR_NETWORK
@@ -377,6 +382,7 @@ public enum OCRError : Swift.String, Foundation.LocalizedError {
   case ERROR_VERCIAL
   case EXPIRED
   case EngineError
+  case ERROR_EVENTNAME
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -384,11 +390,11 @@ public enum OCRError : Swift.String, Foundation.LocalizedError {
   }
 }
 public protocol OCRFlowProtocol {
-  func setDelegate(_ delegate: OCRFlowDelegate)
+  func setDelegate(_ delegate: any OCRFlowDelegate)
   func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
-  func setPreviewSize(_ previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
+  func setPreviewSize(_ previewSize: CoreFoundation.CGSize) -> Swift.Result<Swift.Void, OCRError>
   func start(needConfirm: Swift.Bool, handler: ((Swift.Result<SessionInfo, OCRError>) -> Swift.Void)?)
-  func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<any OCRResult, OCRError>) -> Swift.Void)
   func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   func restart()
   func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
@@ -399,13 +405,13 @@ public protocol OCRFlowProtocol {
   func setIgnoreCard() -> Swift.Result<Swift.Void, OCRError>
 }
 public protocol OCRFlowAntiFraudProtocol {
-  func setDelegate(_ delegate: OCRFlowDelegate)
+  func setDelegate(_ delegate: any OCRFlowDelegate)
   func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
-  func setPreviewSize(_ previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
-  func setUIParam(imageSize: CoreGraphics.CGSize, previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
-  func setCardMatchROI(previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
+  func setPreviewSize(_ previewSize: CoreFoundation.CGSize) -> Swift.Result<Swift.Void, OCRError>
+  func setUIParam(imageSize: CoreFoundation.CGSize, previewSize: CoreFoundation.CGSize) -> Swift.Result<Swift.Void, OCRError>
+  func setCardMatchROI(previewSize: CoreFoundation.CGSize) -> Swift.Result<Swift.Void, OCRError>
   func start(needConfirm: Swift.Bool, handler: ((Swift.Result<SessionInfo, OCRError>) -> Swift.Void)?)
-  func onGetPreviewData(image: UIKit.UIImage, verticalError: ((OCRError) -> Swift.Void)?, rotateReverse: ((Swift.Bool) -> Swift.Void)?, rotateHandler: ((AntiFraudRotate) -> Swift.Void)?, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  func onGetPreviewData(image: UIKit.UIImage, verticalError: ((OCRError) -> Swift.Void)?, rotateReverse: ((Swift.Bool) -> Swift.Void)?, rotateHandler: ((AntiFraudRotate) -> Swift.Void)?, handler: @escaping (Swift.Result<any OCRResult, OCRError>) -> Swift.Void)
   func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   func restartOCR() -> Swift.Bool
@@ -420,11 +426,9 @@ public protocol OCRFlowAntiFraudProtocol {
 }
 public class OCRFactory {
   public init()
-  public func prepare(ocrcard: OCRCard) -> OCRFlowProtocol?
-  public func prepareAntiFraud(ocrcard: OCRCard) -> OCRFlowAntiFraudProtocol?
+  public func prepare(ocrcard: OCRCard) -> (any OCRFlowProtocol)?
+  public func prepareAntiFraud(ocrcard: OCRCard) -> (any OCRFlowAntiFraudProtocol)?
   @objc deinit
-}
-public struct SessionInfo {
 }
 public struct OCRFinishScanDocRequest {
 }
@@ -454,17 +458,17 @@ public enum DebugMessageChannel {
   }
 }
 @_inheritsConvenienceInitializers public class LowBlurCardFlow : OCRMainFlow {
-  override public func setPreviewSize(_ previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
+  override public func setPreviewSize(_ previewSize: CoreFoundation.CGSize) -> Swift.Result<Swift.Void, OCRError>
   override public init(ocrcard: OCRCard)
   @objc deinit
 }
 @_inheritsConvenienceInitializers public class JPIDCardFlow : LowBlurCardFlow {
-  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<any OCRResult, OCRError>) -> Swift.Void)
   override public init(ocrcard: OCRCard)
   @objc deinit
 }
 @_inheritsConvenienceInitializers public class JPDriverLicenseFlow : LowBlurCardFlow {
-  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<any OCRResult, OCRError>) -> Swift.Void)
   override public init(ocrcard: OCRCard)
   @objc deinit
 }
@@ -479,7 +483,7 @@ public protocol OCRResult {
   var backImage: UIKit.UIImage? { get }
   var frontCropImage: UIKit.UIImage? { get }
   var backCropImage: UIKit.UIImage? { get }
-  func confirmScan(complete: @escaping (Swift.Error?) -> Swift.Void)
+  func confirmScan(complete: @escaping ((any Swift.Error)?) -> Swift.Void)
   func orderedData() -> [(Swift.String, Swift.String)]
   func set(key: Swift.String, value: Swift.String)
 }
@@ -497,7 +501,7 @@ public protocol OCRResult {
   public func get(type: DataType) -> Swift.String
   public func set(type: DataType, value: Swift.String)
   public func set(key: Swift.String, value: Swift.String)
-  public func confirmScan(complete: @escaping (Swift.Error?) -> Swift.Void)
+  public func confirmScan(complete: @escaping ((any Swift.Error)?) -> Swift.Void)
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class MRZResult : OCRBaseResult<MRZResult.DataType> {
@@ -739,8 +743,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class USABorderCrossingCardResult : OCRBaseResult<USABorderCrossingCardResult.DataType> {
-  override public func get(type: USABorderCrossingCardResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class USAVisitorVISAResult : OCRBaseResult<USAVisitorVISAResult.DataType> {
+  override public func get(type: USAVisitorVISAResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case country
@@ -751,9 +755,9 @@ public protocol OCRResult {
     case name
     case surname
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [USABorderCrossingCardResult.DataType]
+    public typealias AllCases = [USAVisitorVISAResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [USABorderCrossingCardResult.DataType] {
+    public static var allCases: [USAVisitorVISAResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -811,6 +815,28 @@ public protocol OCRResult {
   }
   @objc deinit
 }
+public enum ScanType : Swift.String, Swift.Codable {
+  case TWIDFraud
+  case TWID
+  case TWDriverLicense
+  case TWHealth
+  case Passport
+  case NFCPassport
+  case TWNResident
+  case JPNID
+  case JPNDriverLicense
+  case USAID
+  case USADriverLicense
+  case USAVisitorVISA
+  case IDNID
+  case IDNDriverLicense
+  public func getOCRCardType() -> OCRCardType
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
 public enum JWTDecodeError : Foundation.LocalizedError, Swift.CustomDebugStringConvertible {
   case invalidBase64URL(Swift.String)
   case invalidJSON(Swift.String)
@@ -825,12 +851,17 @@ public enum JWTDecodeError : Foundation.LocalizedError, Swift.CustomDebugStringC
     get
   }
 }
+public class OCRScanDocFactory {
+  public init()
+  public func prepare(scanType: ScanType, eventName: Swift.String, needConfirm: Swift.Bool) -> any ScanDocProtocol
+  @objc deinit
+}
 public protocol LivenessFlowProtocol {
-  func setDelegate(_ delegate: LivenessFlowDelegate)
+  func setDelegate(_ delegate: any LivenessFlowDelegate)
   func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, FlowError>) -> Swift.Void)?)
-  func setPreviewSize(previewSize: CoreGraphics.CGSize)
+  func setPreviewSize(previewSize: CoreFoundation.CGSize)
   func start(encrypt: Swift.Bool)
-  func roiRect(in previewSize: CoreGraphics.CGSize) -> CoreGraphics.CGRect
+  func roiRect(in previewSize: CoreFoundation.CGSize) -> CoreFoundation.CGRect
   func recognize(image: UIKit.UIImage)
   func recognize(normal normalImage: UIKit.UIImage, depthImage: UIKit.UIImage)
   func getResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
@@ -843,9 +874,9 @@ extension LivenessFlowProtocol {
 }
 public class LivenessFactory {
   public init()
-  public func prepare(with action: Action = .register(waitResult: true)) -> LivenessFlowProtocol
-  public func preparePlayground() -> LivenessFlowProtocol
-  public func prepareRecordPlayground() -> LivenessFlowProtocol
+  public func prepare(with action: Action = .register(waitResult: true)) -> any LivenessFlowProtocol
+  public func preparePlayground() -> any LivenessFlowProtocol
+  public func prepareRecordPlayground() -> any LivenessFlowProtocol
   @objc deinit
 }
 public enum Action {
@@ -878,15 +909,15 @@ public protocol LivenessPlaygroundRecordFlowDelegate : LivenessFlowDelegate {
   func livenessDidProcessed(jsonString: Swift.String)
 }
 @_inheritsConvenienceInitializers public class OCRMainFlow : AbstractOCRFlow, OCRFlowProtocol {
-  public func setDelegate(_ delegate: OCRFlowDelegate)
+  public func setDelegate(_ delegate: any OCRFlowDelegate)
   public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
   public func _checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
-  public func setUIParam(imageSize: CoreGraphics.CGSize, previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
-  public func setCardMatchROI(previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
-  public func setPreviewSize(_ previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
+  public func setUIParam(imageSize: CoreFoundation.CGSize, previewSize: CoreFoundation.CGSize) -> Swift.Result<Swift.Void, OCRError>
+  public func setCardMatchROI(previewSize: CoreFoundation.CGSize) -> Swift.Result<Swift.Void, OCRError>
+  public func setPreviewSize(_ previewSize: CoreFoundation.CGSize) -> Swift.Result<Swift.Void, OCRError>
   public func setIgnoreCard() -> Swift.Result<Swift.Void, OCRError>
   public func start(needConfirm: Swift.Bool, handler: ((Swift.Result<SessionInfo, OCRError>) -> Swift.Void)?)
-  public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<any OCRResult, OCRError>) -> Swift.Void)
   public func enterBackFlow(handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   public func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   public func recordImageWithNFCResult(_ nfcResult: [Swift.String : Swift.String], progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.String, OCRError>) -> Swift.Void)
@@ -908,17 +939,17 @@ public protocol LivenessPlaygroundFlowDelegate : LivenessFlowDelegate {
   func livenessQueueDidUpload(currentCount: Swift.Int)
 }
 public class LivenessPlaygroundFlow {
-  weak public var delegate: LivenessPlaygroundFlowDelegate?
+  weak public var delegate: (any LivenessPlaygroundFlowDelegate)?
   public init()
   @objc deinit
 }
 extension LivenessPlaygroundFlow : LivenessFlowProtocol {
-  public func setDelegate(_ delegate: LivenessFlowDelegate)
+  public func setDelegate(_ delegate: any LivenessFlowDelegate)
   public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)? = nil, handler: ((Swift.Result<Swift.Void, FlowError>) -> Swift.Void)?)
-  public func setPreviewSize(previewSize: CoreGraphics.CGSize)
+  public func setPreviewSize(previewSize: CoreFoundation.CGSize)
   public func start(encrypt: Swift.Bool)
   public func recognize(image: UIKit.UIImage)
-  public func roiRect(in previewSize: CoreGraphics.CGSize) -> CoreGraphics.CGRect
+  public func roiRect(in previewSize: CoreFoundation.CGSize) -> CoreFoundation.CGRect
   public func getResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
   public func isExpired() -> Swift.Bool
   public func cancelExpired()
@@ -935,17 +966,17 @@ public enum AntiFraudRotate {
   }
 }
 public struct RotatePoints {
-  public init(leftUp: CoreGraphics.CGPoint, leftDown: CoreGraphics.CGPoint, rightUp: CoreGraphics.CGPoint, rightDown: CoreGraphics.CGPoint)
+  public init(leftUp: CoreFoundation.CGPoint, leftDown: CoreFoundation.CGPoint, rightUp: CoreFoundation.CGPoint, rightDown: CoreFoundation.CGPoint)
 }
 @_inheritsConvenienceInitializers public class TWIDAntiFraudFlow : TWIDFlow {
   public static func transformedLeftPoint(w: Swift.Float, h: Swift.Float, degree: Swift.Float, x: inout Swift.Float, y: inout Swift.Float)
   public static func transformedTopPoint(w: Swift.Float, h: Swift.Float, degree: Swift.Float, x: inout Swift.Float, y: inout Swift.Float)
   override public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
-  override public func setUIParam(imageSize: CoreGraphics.CGSize, previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
-  override public func setCardMatchROI(previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
-  override public func setPreviewSize(_ previewSize: CoreGraphics.CGSize) -> Swift.Result<Swift.Void, OCRError>
+  override public func setUIParam(imageSize: CoreFoundation.CGSize, previewSize: CoreFoundation.CGSize) -> Swift.Result<Swift.Void, OCRError>
+  override public func setCardMatchROI(previewSize: CoreFoundation.CGSize) -> Swift.Result<Swift.Void, OCRError>
+  override public func setPreviewSize(_ previewSize: CoreFoundation.CGSize) -> Swift.Result<Swift.Void, OCRError>
   override public func start(needConfirm: Swift.Bool, handler: ((Swift.Result<SessionInfo, OCRError>) -> Swift.Void)?)
-  public func onGetPreviewData(image: UIKit.UIImage, verticalError: ((OCRError) -> Swift.Void)? = nil, rotateReverse: ((Swift.Bool) -> Swift.Void)? = nil, rotateHandler: ((AntiFraudRotate) -> Swift.Void)? = nil, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  public func onGetPreviewData(image: UIKit.UIImage, verticalError: ((OCRError) -> Swift.Void)? = nil, rotateReverse: ((Swift.Bool) -> Swift.Void)? = nil, rotateHandler: ((AntiFraudRotate) -> Swift.Void)? = nil, handler: @escaping (Swift.Result<any OCRResult, OCRError>) -> Swift.Void)
   override public func stopBarcodeDetection()
   public func enableUploadFullFrame()
   override public init(ocrcard: OCRCard)
@@ -1021,30 +1052,30 @@ final public class URLEncodedFormEncoder {
   final public let spaceEncoding: URLEncodedFormEncoder.SpaceEncoding
   final public var allowedCharacters: Foundation.CharacterSet
   public init(alphabetizeKeyValuePairs: Swift.Bool = true, arrayEncoding: URLEncodedFormEncoder.ArrayEncoding = .brackets, boolEncoding: URLEncodedFormEncoder.BoolEncoding = .numeric, dataEncoding: URLEncodedFormEncoder.DataEncoding = .base64, dateEncoding: URLEncodedFormEncoder.DateEncoding = .deferredToDate, keyEncoding: URLEncodedFormEncoder.KeyEncoding = .useDefaultKeys, spaceEncoding: URLEncodedFormEncoder.SpaceEncoding = .percentEscaped, allowedCharacters: Foundation.CharacterSet = .afURLQueryAllowed)
-  final public func encode(_ value: Swift.Encodable) throws -> Swift.String
-  final public func encode(_ value: Swift.Encodable) throws -> Foundation.Data
+  final public func encode(_ value: any Swift.Encodable) throws -> Swift.String
+  final public func encode(_ value: any Swift.Encodable) throws -> Foundation.Data
   @objc deinit
 }
 extension Foundation.CharacterSet {
   public static let afURLQueryAllowed: Foundation.CharacterSet
 }
 @_inheritsConvenienceInitializers public class TWDriverLicenseFlow : OCRMainFlow {
-  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<any OCRResult, OCRError>) -> Swift.Void)
   override public init(ocrcard: OCRCard)
   @objc deinit
 }
 @_inheritsConvenienceInitializers public class USIDCardFlow : LowBlurCardFlow {
-  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<any OCRResult, OCRError>) -> Swift.Void)
   override public init(ocrcard: OCRCard)
   @objc deinit
 }
 @_inheritsConvenienceInitializers public class USDriverLicenseFlow : OCRMainFlow {
-  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<any OCRResult, OCRError>) -> Swift.Void)
   override public init(ocrcard: OCRCard)
   @objc deinit
 }
 @_inheritsConvenienceInitializers public class USBorderCrossingFlow : LowBlurCardFlow {
-  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRResult, OCRError>) -> Swift.Void)
+  override public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<any OCRResult, OCRError>) -> Swift.Void)
   override public init(ocrcard: OCRCard)
   @objc deinit
 }
@@ -1067,6 +1098,76 @@ extension JWT {
   public subscript(claim: Swift.String) -> Claim {
     get
   }
+}
+public protocol ScanDocProtocol {
+  func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
+  func prepareScan(handler: @escaping (Swift.Result<(cardType: [ScanDocCardType], info: SessionInfo, expiredIn: Foundation.TimeInterval), OCRError>) -> Swift.Void)
+  func setPreviewSize(_ previewSize: CoreFoundation.CGSize)
+  func start(enableUploadFullFrame: Swift.Bool?, handler: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRScanResult, OCRError>) -> Swift.Void)
+  func onGetIDCardFraudPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRIDCardFraudStage, OCRError>) -> Swift.Void)
+  func restart() -> OCRError?
+  func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  func getStatus() -> (scanDocs: [ScanDocCardType], processing: ScanDocCardType)
+  func stopScan() -> (any OCRResult)?
+}
+public struct OCRScanResult {
+  public let originalImage: UIKit.UIImage
+  public let cropImage: UIKit.UIImage
+  public let context: [Swift.String : Swift.String]
+}
+public enum OCRIDCardFraudStage {
+  case prepare
+  case rotate
+  case ocrscan
+  public static func == (a: OCRIDCardFraudStage, b: OCRIDCardFraudStage) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum ScanDocStatus {
+  case idle
+  case processing
+  case done
+  public static func == (a: ScanDocStatus, b: ScanDocStatus) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum ScanDocCardType : Swift.String, Swift.Codable {
+  case TWN_IDCard_Fraud_Front
+  case TWN_IDCard_Front
+  case TWN_IDCard_Back
+  case TWN_DriverLicense_Front
+  case TWN_DriverLicense_Back
+  case TWN_HealthCard_Front
+  case Passport
+  case NFCPassport
+  case TWN_ResidentCard_Front
+  case TWN_ResidentCard_Back
+  case JPN_IDCARD_Front
+  case JPN_DriverLicense_Front
+  case USA_IDCARD_Front
+  case USA_DriverLicense_Front
+  case USA_VisitorVISA_FRONT
+  case IDN_IDCARD_Front
+  case IDN_DriverLicense_Front
+  case UnknownCard
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension ScanDocCardType {
+  public func getMaskRect(frame: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+}
+@_hasMissingDesignatedInitializers public class CVMath {
+  public static func transformedLeftPoint(w: Swift.Float, h: Swift.Float, degree: Swift.Float, x: inout Swift.Float, y: inout Swift.Float)
+  public static func transformedTopPoint(w: Swift.Float, h: Swift.Float, degree: Swift.Float, x: inout Swift.Float, y: inout Swift.Float)
+  @objc deinit
 }
 public class EventHelper {
   public init()
@@ -1133,15 +1234,18 @@ extension USAIDCardResult.DataType : Swift.RawRepresentable {}
 extension USADriverLicenseResult.DataType : Swift.Equatable {}
 extension USADriverLicenseResult.DataType : Swift.Hashable {}
 extension USADriverLicenseResult.DataType : Swift.RawRepresentable {}
-extension USABorderCrossingCardResult.DataType : Swift.Equatable {}
-extension USABorderCrossingCardResult.DataType : Swift.Hashable {}
-extension USABorderCrossingCardResult.DataType : Swift.RawRepresentable {}
+extension USAVisitorVISAResult.DataType : Swift.Equatable {}
+extension USAVisitorVISAResult.DataType : Swift.Hashable {}
+extension USAVisitorVISAResult.DataType : Swift.RawRepresentable {}
 extension IDNIDCardResult.DataType : Swift.Equatable {}
 extension IDNIDCardResult.DataType : Swift.Hashable {}
 extension IDNIDCardResult.DataType : Swift.RawRepresentable {}
 extension IDNDriverLicenseResult.DataType : Swift.Equatable {}
 extension IDNDriverLicenseResult.DataType : Swift.Hashable {}
 extension IDNDriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension ScanType : Swift.Equatable {}
+extension ScanType : Swift.Hashable {}
+extension ScanType : Swift.RawRepresentable {}
 extension FlowError.Endpoint : Swift.Equatable {}
 extension FlowError.Endpoint : Swift.Hashable {}
 extension AntiFraudRotate : Swift.Equatable {}
@@ -1152,3 +1256,10 @@ extension URLEncodedFormEncoder.BoolEncoding : Swift.Equatable {}
 extension URLEncodedFormEncoder.BoolEncoding : Swift.Hashable {}
 extension URLEncodedFormEncoder.SpaceEncoding : Swift.Equatable {}
 extension URLEncodedFormEncoder.SpaceEncoding : Swift.Hashable {}
+extension OCRIDCardFraudStage : Swift.Equatable {}
+extension OCRIDCardFraudStage : Swift.Hashable {}
+extension ScanDocStatus : Swift.Equatable {}
+extension ScanDocStatus : Swift.Hashable {}
+extension ScanDocCardType : Swift.Equatable {}
+extension ScanDocCardType : Swift.Hashable {}
+extension ScanDocCardType : Swift.RawRepresentable {}
