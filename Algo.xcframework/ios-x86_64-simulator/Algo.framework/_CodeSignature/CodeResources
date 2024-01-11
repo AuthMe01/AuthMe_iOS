@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/Algo-Swift.h</key>
 		<data>
-		EbXUb2bRdf70JCP0rFGpygy0hfs=
+		Bw4UI3pRHdCZogNKm9RbU3qTupE=
 		</data>
 		<key>Headers/Algo.h</key>
 		<data>
@@ -42,15 +42,15 @@
 		</data>
 		<key>Headers/engine_error_code.h</key>
 		<data>
-		7mUBFv0epApvTLD2MuPddiSHJiM=
+		wD9vE3QeuDjCZYW4R4iQe9dOalA=
 		</data>
 		<key>Headers/engine_service_type.h</key>
 		<data>
-		nmaDUQMV8NbLJ6/DB4eVXtj5MFo=
+		MX8sYpPYMbZRQVPn5FNgRV9nBPs=
 		</data>
 		<key>Headers/engine_type.h</key>
 		<data>
-		mUrgfv/HRrVDDJ6TgrH/2O/4iQE=
+		M7pdERPaxogy4HG2NlLA3vJS0Nk=
 		</data>
 		<key>Headers/face_alignment.h</key>
 		<data>
@@ -66,7 +66,7 @@
 		</data>
 		<key>Headers/fas_service.h</key>
 		<data>
-		WDe4zWhUEwGJpwV2mDpz70pHajk=
+		GF+nuVaE9WILp3fS75TV/BOQnNc=
 		</data>
 		<key>Headers/id_card_anti_fraud_service.h</key>
 		<data>
@@ -110,23 +110,31 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		KuJIxWFvs9xYTjn/pyyUw860v2Y=
+		3yGhJj04MZVs1If3k72diDn54RQ=
+		</data>
+		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
+		<data>
+		bQ9AAE3j/bhAaSPq0jyDH6HZ35o=
+		</data>
+		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
+		<data>
+		uEPzkFJ7WgMOOhGPpQY/0/KgDqQ=
 		</data>
 		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		NcYmXIwEDgjtifAGTTeUVQFHwr4=
+		A4JL2QRh9LbHaPQciaozNXz7aoI=
 		</data>
 		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		5Lz1xmEEGcTn6Pa9f1KuY4PT+v8=
+		uEPzkFJ7WgMOOhGPpQY/0/KgDqQ=
 		</data>
 		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		d98EvtzOxr9H8CQI95HpnZT5ijc=
+		mOITTIq9uSepsoilkNm81Cy8FB0=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		kCyg6h9gO/B6e2ij0CDKLvp3Jtk=
+		IAnQ+Hw00idd8hqtc1lAdCpxeKE=
 		</data>
 		<key>Modules/module.private.modulemap</key>
 		<data>
@@ -191,7 +199,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			qLozowFNTfCsk6ym5mS1sGoEByIv0cnmP01beuqLd+0=
+			pwRQWn92LmQNXr7MAXlpjLNzYPljSabAyRvK4S7VN6E=
 			</data>
 		</dict>
 		<key>Headers/Algo.h</key>
@@ -254,21 +262,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			k1F5hI1ZpozY6iRZBiBQUe/FeP/c4LrbCC0aRCfrcS0=
+			7bXHIUD8+SSOpWEkev8jp5v9AQo+85VzHITGXuaIMeE=
 			</data>
 		</dict>
 		<key>Headers/engine_service_type.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Pzkf7JgQpCApx70kvmqWafXq9HtR09QZ/OAsPyZ1Bbg=
+			xHd4es6JQ1LddsYpVBfTrcDAVHx9sRCRdxLgjUpboA8=
 			</data>
 		</dict>
 		<key>Headers/engine_type.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wGHb+/8pVUZssDKFR8IjDJ4jZghwL2YDh9CG41r/Ac0=
+			GvRRPmo6mjlnhzMkNvH57iw8HuB7CIgfGlNowsSsFsU=
 			</data>
 		</dict>
 		<key>Headers/face_alignment.h</key>
@@ -296,7 +304,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			bUU2oteg4deFJ+WN9oXNU1d3fqIFyjwdhXw9BHM7/Qs=
+			478VnOt1G7VYNMd/juc4ulb4O538ICxxQ+F/pnUfFSg=
 			</data>
 		</dict>
 		<key>Headers/id_card_anti_fraud_service.h</key>
@@ -369,32 +377,46 @@
 			nh56AVKay7xWq3fWts5pLQde7GiC/Xa9oXFB4y5hy/M=
 			</data>
 		</dict>
+		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			+/kodG0ersMHlp0DQUu29LKb5RfM4t1AaVzLVS4fo2U=
+			</data>
+		</dict>
+		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			za8yjlg7B8ZHSQ4hnQbX8wSMdzwxIlu0KtDw/BRbBZM=
+			</data>
+		</dict>
 		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			5h3Mgi2w1s39UIquuvuAuN6gEg/rfbVTrt9bimOXmzI=
+			Vl+jVxTZXS1Y/AJYYyJYnnEOvHXEij7H5tK0R9NzIeQ=
 			</data>
 		</dict>
 		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			fNf7mQARgsmyqf2a7F1hQRjMdHiZrlL/IScjQx08LwY=
+			za8yjlg7B8ZHSQ4hnQbX8wSMdzwxIlu0KtDw/BRbBZM=
 			</data>
 		</dict>
 		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1aVHOxJHIrBOAzo6jSkPqEaChWKdv1H8VScnEVT7qAA=
+			yFRJzbmQeGf0Vtm03G2FywTv8rXcMJQe24JtHxfJ05g=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			vLo0Go2rrZn5n6v7xI8u29YqAV7OnWn/MpIQ4gS8yMg=
+			DGtO5i9Fy0w01TtDeoyI8eTL0P4bNZ4gkB9mCN3gdig=
 			</data>
 		</dict>
 		<key>Modules/module.private.modulemap</key>

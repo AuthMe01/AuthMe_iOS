@@ -20,6 +20,14 @@ typedef enum _E_AUTHME_COLOR_FORMAT
     eAuthMe_ColorFormat_GRAY,
 } EAuthMeColorFormat;
 
+
+typedef enum _E_AUTHME_PLATFORM
+{
+    eAuthMe_Platform_iOS,
+    eAuthMe_Platform_Android,
+} EAuthMePlatform;
+
+
 typedef enum _E_AUTHME_FACE_ANTI_SPOOFING_STATUS
 {
     eAuthMe_FaceAntiSpoofing_FrameNotEnough,
