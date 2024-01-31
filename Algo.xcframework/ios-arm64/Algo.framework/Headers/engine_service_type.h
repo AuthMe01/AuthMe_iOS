@@ -5,6 +5,7 @@ extern "C" {
 
 #include "engine_type.h"
 #include "engine_base.h"
+#include <stdbool.h>
 
 // c an c++ shared structures and types
 
@@ -19,9 +20,14 @@ typedef struct AUTHME_MODEL_VERSION
 
 
 #define CARD_MATCH_STATUS_TAG(decorate) \
-    decorate(None) \
     decorate(Mismatch) \
     decorate(NeedMoreFrame) \
+    decorate(CardNotInAnalysisROI) \
+    decorate(CardNotInROI) \
+    decorate(CardTooSmall) \
+    decorate(NeedMoreDeformation) \
+    decorate(NeedHoldCard) \
+    decorate(None) \
     decorate(Match)
 
 #define CARD_MATCH_STATUS_PREFIX(name) eAuthMe_CardMatch_##name,
@@ -143,6 +149,7 @@ typedef struct AUTHME_FAS_SERVICE_INFO
     decorate(NeedCloseMouth) \
     decorate(NeedOpenEyes) \
     decorate(NeedSmile) \
+    decorate(DepthFake) \
     decorate(NeedMoreFrame) \
     decorate(Pass) \
     decorate(Error)
@@ -198,8 +205,10 @@ typedef struct AUTHME_ID_CARD_ANTI_FRAUD_SERVICE_MODELS
     /* other params */ \
     decorate(int, timeoutSec) \
     decorate(int, iMetalTagValidCountTh) \
+    decorate(int, enableCardInROI) \
     decorate(int, iCardMatchFrameNum) \
     decorate(float, fCardMatchTh) \
+    decorate(float, fCardDeformationTh) \
     decorate(float, fMetalTagReflectionTh) \
     decorate(float, fMetalTagReflectionDensityTh)
 
@@ -231,6 +240,7 @@ typedef struct AUTHME_METAL_TAL_INFO
 {
     EAuthMeIDCardMetalTagStatus aeStatus[3];
     int aiPosition[3][4];
+    bool hasAntiFeature;
     DEFAULT_COMPARISON(AUTHME_METAL_TAL_INFO)
 } AuthMeMetalTagInfo;
 
@@ -243,7 +253,12 @@ typedef struct AUTHME_CARD_CLASS_INFO
 typedef struct AUTHME_ID_CARD_ANTI_FRAUD_INFO
 {
     int aiCardVertices[8];
+    int aiCardMatchVertices[8];
+    int iFrameIndex;
     float fCardMatchScore;
+    float fCardDeformation;
+    bool isCardInsideROI;
+    bool isCardCutByCamera;
     EAuthMeCardMatchStatus eCardMatchStatus;
     AuthMeImageReflectiveInfo reflective;
     AuthMeImageBlurInfo blur;
@@ -278,17 +293,29 @@ typedef enum E_AUTHME_ID_CARD_ANTI_FRAUD_SERVICE_STATGE
 
 
 #define ID_CARD_ANTI_FRAUD_SERVICE_STATUS_TAG(decorate) \
+    decorate(Pass) \
     decorate(Failed) \
     decorate(NoCard) \
     decorate(WrongCardType) \
+    decorate(CardCutByCamera) \
     decorate(Reflective) \
     decorate(Blur) \
-    decorate(Gray) \
-    decorate(PositionNotMatch) \
+    decorate(CardNotInROI) \
+    decorate(CardTooSmall) \
+    decorate(NeedDeformationFrontal) \
+    decorate(NeedDeformationLeft) \
+    decorate(NeedDeformationRight) \
+    decorate(NeedDeformationUp) \
+    decorate(NeedDeformationDown) \
+    decorate(NeedHoldCard) \
+    decorate(StagePass) \
     decorate(NeedMoreFrame) \
+    decorate(Undefined) \
+    decorate(Error)  \
+    /* deprecated */ \
+    decorate(Gray) \
     decorate(AntiFraudFeatureDetect) \
-    decorate(Pass) \
-    decorate(Error)
+    decorate(PositionNotMatch)
 
 #define ID_CARD_ANTI_FRAUD_SERVICE_STATUS_PREFIX(name) eAuthMe_IDCardFraudService_##name,
 typedef enum E_AUTHME_ID_CARD_ANTI_FRAUD_SERVICE_STATUS
@@ -350,6 +377,7 @@ typedef enum E_AUTHME_CARD_OCR_STATUS
 typedef struct AUTHME_CARD_OCR_INFO
 {
     int aiCardVertices[8];
+    int aiCardMatchVertices[8];
     float fCardMatchScore;
     AuthMeCardClassInfo cardClass;
     AuthMeImageReflectiveInfo reflective;

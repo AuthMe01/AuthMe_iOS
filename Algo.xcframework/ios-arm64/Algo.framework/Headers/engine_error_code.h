@@ -12,6 +12,7 @@ typedef enum _E_AUTHME_ENGINE_RETUEN_CODE : int
     eAuthMe_Engine_Authorization_Failed,
     eAuthMe_Engine_ReadFileFailed,
     eAuthMe_Engine_InvalidParams,
+    eAuthMe_Engine_InvalidStages,
     eAuthMe_Engine_MissingConfig,
     eAuthMe_Engine_InvalidUIParams,
 } EAuthMeEngineReturnCode;

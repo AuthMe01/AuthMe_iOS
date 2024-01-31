@@ -38,7 +38,7 @@ EAuthMeEngineReturnCode AuthMe_FASService_Start(long handle);
 
 EAuthMeEngineReturnCode AuthMe_FASService_Run(long handle, AuthMeImage* pImage, AuthMeFASResult* pResult);
 
-EAuthMeEngineReturnCode AuthMe_FASService_RunWithDepth(long handle, AuthMeImage* pImage, AuthMeFASResult* pResult, AuthMeImage* pDepthImage);
+EAuthMeEngineReturnCode AuthMe_FASService_RunWithDepth(long handle, AuthMeImage* pImage, AuthMeFASResult* pResult, AuthMeImage* pDepthImage, EAuthMePlatform* platform);
 
 EAuthMeEngineReturnCode AuthMe_FASService_Stop(long handle);
 
