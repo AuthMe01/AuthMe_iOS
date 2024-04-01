@@ -1,0 +1,40 @@
+name: Release with Tag
+
+on:
+    push:
+      tags:
+        - '*'
+
+env:
+  RBENV_VERSION: 2.7.5
+
+jobs:
+  checkout:
+    name: Release SDK
+    runs-on: macos-13
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          token: '${{ secrets.APP_CI_PAT }}'
+      - name: Extract Tag Version
+        id: extract_tag
+        run: echo "::set-output name=version::${GITHUB_REF#refs/tags/}"  
+      - name: Show Git HEAD
+        run: |
+          echo "Tag Version: ${{ steps.extract_tag.outputs.version }}"
+          git show HEAD
+      - run: export DEPLOY_USER_NAME=AuthMe-Team
+      - run: export DEPLOY_USER_EMAIL=dev@authme.com
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.APP_CI_PAT }}
+        with:
+          tag_name: ${{ steps.extract_tag.outputs.version }}
+          release_name: Release ${{ steps.extract_tag.outputs.version }}
+          draft: false
+          prerelease: false
+          body: |
+            Release ${{ steps.extract_tag.outputs.version }}.
