@@ -46,7 +46,7 @@
 		</data>
 		<key>Headers/engine_service_type.h</key>
 		<data>
-		MX8sYpPYMbZRQVPn5FNgRV9nBPs=
+		aJ9BcvoSpgbYiMWfGP1Cs4gnibI=
 		</data>
 		<key>Headers/engine_type.h</key>
 		<data>
@@ -106,19 +106,19 @@
 		</data>
 		<key>Headers/service_utility.h</key>
 		<data>
-		jJ9Od4bhVbgb803/RQJrYXiZeTw=
+		o9EdbRg1mnPPo1itKW00U2a3qgo=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		3yGhJj04MZVs1If3k72diDn54RQ=
+		Xawv1XJpgxwblpoGd4W1GFcpnFE=
 		</data>
 		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		bQ9AAE3j/bhAaSPq0jyDH6HZ35o=
+		eMAwT9ISNFLvKbGQyAsua8yI/a0=
 		</data>
 		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		uEPzkFJ7WgMOOhGPpQY/0/KgDqQ=
+		tHJlbx4ABDD4ls2NOFtlnUXdTuY=
 		</data>
 		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -126,11 +126,11 @@
 		</data>
 		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		uEPzkFJ7WgMOOhGPpQY/0/KgDqQ=
+		tHJlbx4ABDD4ls2NOFtlnUXdTuY=
 		</data>
 		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		mOITTIq9uSepsoilkNm81Cy8FB0=
+		BPP/R43mj7mKrIiGn2w1R+LAszg=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -139,6 +139,10 @@
 		<key>Modules/module.private.modulemap</key>
 		<data>
 		7/aMqvGptnkhy7DMhtmIOnPWl0I=
+		</data>
+		<key>PrivacyInfo.xcprivacy</key>
+		<data>
+		tjywKnTvbBjdg6abzXh1Dxv+6ok=
 		</data>
 		<key>include/jwt-cpp/base.h</key>
 		<data>
@@ -269,7 +273,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			xHd4es6JQ1LddsYpVBfTrcDAVHx9sRCRdxLgjUpboA8=
+			cX4WsHtEr7d4FwcKqBEcbdfI6n8DS8/qcT6QdAYi5fw=
 			</data>
 		</dict>
 		<key>Headers/engine_type.h</key>
@@ -374,21 +378,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			nh56AVKay7xWq3fWts5pLQde7GiC/Xa9oXFB4y5hy/M=
+			/3J/bhfqIP3sfrf9B6SVsV0qJ7bTYKPd0OD2v3jhTQc=
 			</data>
 		</dict>
 		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			+/kodG0ersMHlp0DQUu29LKb5RfM4t1AaVzLVS4fo2U=
+			N2ZJdu/S20N6HZ5kXK4zIGxS8TzV7OuK8yZL+yNFB4o=
 			</data>
 		</dict>
 		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			za8yjlg7B8ZHSQ4hnQbX8wSMdzwxIlu0KtDw/BRbBZM=
+			f+8GFdkZZZSUYDSP4g3CY2RAAPB1zjVDp2CeZdfC/k0=
 			</data>
 		</dict>
 		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -402,14 +406,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			za8yjlg7B8ZHSQ4hnQbX8wSMdzwxIlu0KtDw/BRbBZM=
+			f+8GFdkZZZSUYDSP4g3CY2RAAPB1zjVDp2CeZdfC/k0=
 			</data>
 		</dict>
 		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			yFRJzbmQeGf0Vtm03G2FywTv8rXcMJQe24JtHxfJ05g=
+			EHCEuJlQWdX0wmiax5xXMvpFlhCq+Kz+1RPDLEIsYo4=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -424,6 +428,13 @@
 			<key>hash2</key>
 			<data>
 			6U5RH/v1ZxMYLpbNpUfjPaovFgqGBHKCQnUZnU1T1Fw=
+			</data>
+		</dict>
+		<key>PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			oHCvlYiDLXLgkXiDuaOJCBxJ49gqVCiG6QZ6VqggzfU=
 			</data>
 		</dict>
 		<key>include/jwt-cpp/base.h</key>
