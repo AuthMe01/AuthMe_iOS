@@ -201,6 +201,7 @@ typedef struct AUTHME_ID_CARD_ANTI_FRAUD_SERVICE_MODELS
     decorate(float, fMetalTagDetectionTh) \
     decorate(float, fImageReflectiveTh) \
     decorate(float, fImageBlurTh) \
+    decorate(float, fImageThicknessTh) \
     decorate(float, fIDCardColorTh) \
     /* other params */ \
     decorate(int, timeoutSec) \
@@ -230,11 +231,24 @@ typedef struct AUTHME_IMAGE_BLUR_INFO
     DEFAULT_COMPARISON(AUTHME_IMAGE_BLUR_INFO)
 } AuthMeImageBlurInfo;
 
+typedef struct AUTHME_IMAGE_THICKNESS_INFO
+{
+    float fScore;
+    DEFAULT_COMPARISON(AUTHME_IMAGE_THICKNESS_INFO)
+} AuthMeImageThicknessInfo;
+
 typedef struct AUTHME_ID_CARD_COLOR_INFO
 {
     float fScore;
     DEFAULT_COMPARISON(AUTHME_ID_CARD_COLOR_INFO)
 } AuthMeIDCardColorInfo;
+
+typedef struct AUTHME_BARCODE_INFO
+{
+    char fBarcode_1[20];
+    char fBarcode_2[20];
+    DEFAULT_COMPARISON(AUTHME_BARCODE_INFO)
+} AuthMeBarcodeInfo;
 
 typedef struct AUTHME_METAL_TAL_INFO
 {
@@ -262,6 +276,7 @@ typedef struct AUTHME_ID_CARD_ANTI_FRAUD_INFO
     EAuthMeCardMatchStatus eCardMatchStatus;
     AuthMeImageReflectiveInfo reflective;
     AuthMeImageBlurInfo blur;
+    AuthMeImageThicknessInfo thickness;
     AuthMeIDCardColorInfo colorDetect;
     AuthMeMetalTagInfo metalTag;
     AuthMeImageReflectiveInfo metalTagReflection;
@@ -298,6 +313,7 @@ typedef enum E_AUTHME_ID_CARD_ANTI_FRAUD_SERVICE_STATGE
     decorate(NoCard) \
     decorate(WrongCardType) \
     decorate(CardCutByCamera) \
+    decorate(CardThicknessFailed) \
     decorate(Reflective) \
     decorate(Blur) \
     decorate(CardNotInROI) \
@@ -382,6 +398,7 @@ typedef struct AUTHME_CARD_OCR_INFO
     AuthMeCardClassInfo cardClass;
     AuthMeImageReflectiveInfo reflective;
     AuthMeImageBlurInfo blur;
+    AuthMeBarcodeInfo barcode;
     DEFAULT_COMPARISON(AUTHME_CARD_OCR_INFO)
 } AuthMeCardOCRInfo;
 
