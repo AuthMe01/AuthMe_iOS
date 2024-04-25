@@ -46008,21 +46008,21 @@
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 16194,
+      "offset": 16235,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 16237,
+      "offset": 16278,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "Array",
-      "offset": 16281,
+      "offset": 16322,
       "length": 18,
       "value": "[\"de-DE\", \"en-US\"]"
     },
