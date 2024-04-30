@@ -14,27 +14,27 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		cGLLgV5UsiYq/j/cdNgnt2IWZ8w=
+		tiYEcU66t3RAsfu20GtFo1ZRQ0A=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		EqxcVudoRDRo2oMV3Hd5sO4y7MA=
+		l94a9vISNqJdoSQuFeZoQ8HVx38=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		MOo46548Pm0YEo0VVvmFomn2nJM=
+		yLiLmMbJMX71x5QncHVhuXFIWeg=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		14AR+fxpuAasDqXcWVsIg8hvQrg=
+		+3wnA2SyZ7qqc79au5ph1brniCY=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		MOo46548Pm0YEo0VVvmFomn2nJM=
+		yLiLmMbJMX71x5QncHVhuXFIWeg=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		pghRRjmC/UhPx5iPIe0IZoKLQtA=
+		uMqUQ75qPJdt3GQME4Ut/Jc4BEA=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -81,35 +81,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			8TO84zYEKd4Y9lx8P3N7zRqBw9vCibxo2+s2KTDQGHo=
+			pKBoF3eI9Ra5Tvv+EsVosB5nkgNXFftahmGa8d7JV4Y=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			cAm03MrTDrHUDQ0ye2rdZsdpXx07lozFsfrqKAqqaG4=
+			/z2jmRqBW07+kOuYfPIOvviK9QToDoyNiccdC6/WVZ0=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ARoH+oW5+kS0qdj6NfQ0NAShM3dE/fcIPBzspDrOcsY=
+			oQsZl8XKZYTG/wreDzxUPHbej3z30gx42WItBGppzC4=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			cAm03MrTDrHUDQ0ye2rdZsdpXx07lozFsfrqKAqqaG4=
+			/z2jmRqBW07+kOuYfPIOvviK9QToDoyNiccdC6/WVZ0=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			pkCWajxwddHQZINZEP7M5hVMbSmf9hwEJtjBHBnL4l4=
+			cNPSreEeWP6bRGAq5no7PF8/+4Ps9JX98UksH4BMOKY=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
