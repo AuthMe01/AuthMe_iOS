@@ -36861,14 +36861,22 @@
               },
               {
                 "kind": "TypeNominal",
-                "name": "UIImage",
-                "printedName": "UIKit.UIImage",
-                "usr": "c:objc(cs)UIImage"
+                "name": "Optional",
+                "printedName": "UIKit.UIImage?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIImage",
+                    "printedName": "UIKit.UIImage",
+                    "usr": "c:objc(cs)UIImage"
+                  }
+                ],
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Func",
-            "usr": "s:6AuthMe15HKVIZClassifierC7process5imageySo7UIImageC_tF",
-            "mangledName": "$s6AuthMe15HKVIZClassifierC7process5imageySo7UIImageC_tF",
+            "usr": "s:6AuthMe15HKVIZClassifierC7process5imageySo7UIImageCSg_tF",
+            "mangledName": "$s6AuthMe15HKVIZClassifierC7process5imageySo7UIImageCSg_tF",
             "moduleName": "AuthMe",
             "declAttributes": [
               "AccessControl"
@@ -57624,400 +57632,400 @@
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
-      "kind": "IntegerLiteral",
-      "offset": 4984,
-      "length": 1,
-      "value": "1"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
-      "kind": "Dictionary",
-      "offset": 6374,
-      "length": 3,
-      "value": "[]"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
-      "kind": "Dictionary",
-      "offset": 6399,
-      "length": 3,
-      "value": "[]"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
-      "kind": "Dictionary",
-      "offset": 6611,
-      "length": 3,
-      "value": "[]"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
-      "kind": "IntegerLiteral",
-      "offset": 6683,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 8018,
+      "offset": 5054,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 8611,
+      "offset": 5207,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
+      "kind": "Dictionary",
+      "offset": 6597,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
+      "kind": "Dictionary",
+      "offset": 6622,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
+      "kind": "Dictionary",
+      "offset": 6834,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6906,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8665,
       "length": 10,
       "value": "1000000000"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 8785,
+      "offset": 8839,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 8809,
+      "offset": 8863,
       "length": 21,
       "value": "\"containTargetString\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 8834,
+      "offset": 8888,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 9298,
+      "offset": 9352,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 9322,
+      "offset": 9376,
       "length": 21,
       "value": "\"containTargetString\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 9347,
+      "offset": 9401,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 10208,
+      "offset": 10262,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 10284,
+      "offset": 10338,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 10781,
+      "offset": 10835,
       "length": 3,
       "value": "401"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "Dictionary",
-      "offset": 11914,
+      "offset": 11968,
       "length": 8,
       "value": "[(\"\", \"\")]"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 12091,
+      "offset": 12145,
       "length": 16,
       "value": "\"documentNumber\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 12135,
+      "offset": 12189,
       "length": 3,
       "value": "\"-\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 12146,
+      "offset": 12200,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 12242,
+      "offset": 12296,
       "length": 1,
       "value": "9"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 12510,
+      "offset": 12564,
       "length": 28,
       "value": "\"checkDigitOfDocumentNumber\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 12619,
+      "offset": 12673,
       "length": 13,
       "value": "\"dateOfBirth\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 12660,
+      "offset": 12714,
       "length": 3,
       "value": "\"-\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 12671,
+      "offset": 12725,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 12764,
+      "offset": 12818,
       "length": 1,
       "value": "6"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 13017,
+      "offset": 13071,
       "length": 25,
       "value": "\"checkDigitOfDateOfBirth\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 13122,
+      "offset": 13176,
       "length": 12,
       "value": "\"expiryDate\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 13162,
+      "offset": 13216,
       "length": 3,
       "value": "\"-\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 13173,
+      "offset": 13227,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 13265,
+      "offset": 13319,
       "length": 1,
       "value": "6"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 13513,
+      "offset": 13567,
       "length": 32,
       "value": "\"checkDigitOfDocumentExpiryDate\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 13622,
+      "offset": 13676,
       "length": 10,
       "value": "\"idNumber\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 13660,
+      "offset": 13714,
       "length": 3,
       "value": "\"-\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 13671,
+      "offset": 13725,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 13761,
+      "offset": 13815,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 14000,
+      "offset": 14054,
       "length": 22,
       "value": "\"checkDigitOfIDNumber\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 14079,
+      "offset": 14133,
       "length": 120,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 14097,
+      "offset": 14151,
       "length": 1,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 14116,
+      "offset": 14170,
       "length": 1,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 14130,
+      "offset": 14184,
       "length": 1,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 14146,
+      "offset": 14200,
       "length": 1,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 14159,
+      "offset": 14213,
       "length": 1,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 14174,
+      "offset": 14228,
       "length": 1,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 14185,
+      "offset": 14239,
       "length": 1,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 14198,
+      "offset": 14252,
       "length": 1,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 14314,
+      "offset": 14368,
       "length": 21,
       "value": "\"compositeCheckDigit\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 14661,
+      "offset": 14715,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 15390,
+      "offset": 15446,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 15805,
+      "offset": 15861,
       "length": 12,
       "value": "\"SearchWord\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 15833,
+      "offset": 15889,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 16022,
+      "offset": 16133,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 16196,
+      "offset": 16307,
       "length": 13,
       "value": "\"CustomWords\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "Array",
-      "offset": 16227,
+      "offset": 16338,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 16341,
+      "offset": 16452,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 16384,
+      "offset": 16495,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "Array",
-      "offset": 16428,
+      "offset": 16539,
       "length": 18,
       "value": "[\"de-DE\", \"en-US\"]"
     },

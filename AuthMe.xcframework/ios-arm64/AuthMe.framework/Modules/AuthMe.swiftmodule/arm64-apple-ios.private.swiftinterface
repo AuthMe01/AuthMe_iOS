@@ -1353,7 +1353,7 @@ public enum ScanType : Swift.String, Swift.Codable {
   }
 }
 @_hasMissingDesignatedInitializers public class HKVIZClassifier {
-  public func process(image: UIKit.UIImage)
+  public func process(image: UIKit.UIImage?)
   @objc deinit
 }
 public protocol FrameworkMode {
