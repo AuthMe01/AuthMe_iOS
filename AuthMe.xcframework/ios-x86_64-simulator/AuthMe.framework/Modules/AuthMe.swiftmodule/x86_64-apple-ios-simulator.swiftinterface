@@ -575,11 +575,11 @@ public protocol OCRResult {
     case dateOfIssue
     case fullName
     case otherName
-    case checkDigitOfDocumentNumber
-    case checkDigitOfDateOfBirth
-    case checkDigitOfDocumentExpiryDate
-    case checkDigitOfIDNumber
-    case compositeCheckDigit
+    case documentNumberCheckDigit
+    case birthDateCheckDigit
+    case expiryDateCheckDigit
+    case optionaldataCheckDigit
+    case overallCheckDigit
     public init?(rawValue: Swift.String)
     public typealias AllCases = [MRZResult.DataType]
     public typealias RawValue = Swift.String

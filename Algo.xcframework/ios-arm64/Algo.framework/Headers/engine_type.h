@@ -62,7 +62,6 @@ typedef enum _E_AUTHME_FACE_POSE : int
     AUTHME_FACE_POSE_TAG(AUTHME_FACE_POSE_PREFIX)
 } EAuthMeFacePose;
 
-
 #define CARD_CLASS_TAG(decorate) \
     decorate(Invalid) \
     decorate(UnknownCard) \
@@ -201,7 +200,12 @@ typedef struct _AUTHME_FACE_INFO
     decorate(char, documentType, 4) \
     decorate(char, sex, 4) \
     decorate(char, nationality, 4) \
-    decorate(char, personalNumber, 16)
+    decorate(char, personalNumber, 16) \
+    decorate(char, documentNumberCheckDigit, 4) \
+    decorate(char, birthDateCheckDigit, 4) \
+    decorate(char, expiryDateCheckDigit, 4) \
+    decorate(char, optionaldataCheckDigit, 4) \
+    decorate(char, overallCheckDigit, 4) \
 
 #define IMPL_FIELD_MRZ(type, name, size) type name[size];
 
