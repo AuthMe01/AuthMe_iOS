@@ -364,6 +364,7 @@ public enum OCRType : Swift.String, Swift.Codable {
   case JPN_IDCard_Thickness
   case JPN_DriverLicense_Front
   case JPN_DriverLicense_Back
+  case JPN_DriverLicense_NFC
   case JPN_DriverLicense_Thickness
   case JPN_ResidentCard_Front
   case JPN_ResidentCard_Back
@@ -601,8 +602,6 @@ public protocol OCRResult {
     case country
     case dateOfBirth
     case dateOfIssue
-    case documentNumber
-    case documentType
     case expiryDate
     case fullName
     case gender
@@ -767,6 +766,62 @@ public protocol OCRResult {
       get
     }
   }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class JPNDriverLicenseNFCResult : OCRBaseResult<JPNDriverLicenseNFCResult.DataType> {
+  override public func get(type: JPNDriverLicenseNFCResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case cardManufacturerIdentifier
+    case class2LicenceDate
+    case class2HeavyVehicleLicenceDate
+    case class2HeavySpecialVehicleLicenceDate
+    case class2MediumVehicleLicenceDate
+    case class2OrdinaryVehicleLicenceDate
+    case class2TrailerLicenceDate
+    case color
+    case commonName
+    case condition1
+    case condition2
+    case condition3
+    case condition4
+    case cryptographicFunctionIdentifier
+    case dateOfBirth
+    case documentNumber
+    case expiryDate
+    case heavyMotorcycleLicenceDate
+    case heavySpecialVehicleLicenceDate
+    case heavyVehicleLicenceDate
+    case issuanceDate
+    case issuingAuthority
+    case jisX0208EstablishmentYearNumber
+    case mediumVehicleLicenceDate
+    case mopedLicenceDate
+    case motorcycleLicenceDate
+    case name
+    case nickname
+    case ordinaryMotorcycleLicenceDate
+    case ordinaryVehicleLicenceDate
+    case otherLicenceDate
+    case referenceNumber
+    case registeredDomicile
+    case semiMediumVehicleLicenceDate
+    case smallSpecialVehicleLicenceDate
+    case specificationVersionNumber
+    case trailerLicenceDate
+    case uniformName
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [JPNDriverLicenseNFCResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [JPNDriverLicenseNFCResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  convenience public init(data: [Swift.String : Swift.String], image: UIKit.UIImage?)
+  public func setScanID(_ scanID: Swift.String)
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class JPNResidentCardResult : OCRBaseResult<JPNResidentCardResult.DataType> {
@@ -1320,6 +1375,7 @@ public enum ScanType : Swift.String, Swift.Codable {
   case JPNID
   case JPNIDNFC
   case JPNDriverLicense
+  case JPNDriverLicenseNFC
   case JPNResidentCard
   case USAID
   case USADriverLicense
@@ -1353,7 +1409,9 @@ public enum ScanType : Swift.String, Swift.Codable {
   }
 }
 @_hasMissingDesignatedInitializers public class HKVIZClassifier {
-  public func process(image: UIKit.UIImage?)
+  #if compiler(>=5.3) && $AsyncAwait
+  public func containingTargetString(image: UIKit.UIImage?) async -> Swift.Bool
+  #endif
   @objc deinit
 }
 public protocol FrameworkMode {
@@ -1475,6 +1533,33 @@ public struct OCRScanViewContentViewRequest {
 }
 extension UIKit.UIDevice {
   @_Concurrency.MainActor(unsafe) public static let modelName: Swift.String
+}
+public class BaseFlow {
+  public init(scanType: ScanType, needConfirm: Swift.Bool)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers public class JPNNFCDriverLicenseFlow : BaseFlow {
+  override public init(scanType: ScanType, needConfirm: Swift.Bool)
+  @objc deinit
+}
+extension JPNNFCDriverLicenseFlow : ScanDocProtocol {
+  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
+  public func prepareScan(handler: @escaping (Swift.Result<(cardType: [ScanDocCardType], info: SessionInfo, expiredIn: Foundation.TimeInterval), OCRError>) -> Swift.Void)
+  public func setPreviewSize(_ previewSize: CoreFoundation.CGSize)
+  public func start(enableUploadFullFrame enable: Swift.Bool? = nil, handler: @escaping (Swift.Result<OCRInitScanDocResponse, OCRError>) -> Swift.Void)
+  public func getCardMatchROI() -> CardMatchROI?
+  public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (AuthmeOCRResult<OCRScanResult, ()?, OCRError>) -> Swift.Void)
+  public func onGetIDCardFraudPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRIDCardFraudStage, OCRError>) -> Swift.Void)
+  public func restart() -> OCRError?
+  public func recognize(handler: @escaping (Swift.Result<OCRScanResult, OCRError>) -> Swift.Void)
+  public func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  public func getStatus() -> (scanDocs: [ScanDocCardType], processing: ScanDocCardType)
+  public func stopScan() -> (any OCRResult)?
+  public func abortScan(completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  public func addResult(_ result: [Swift.String : Swift.String])
+  public func addImage(_ image: UIKit.UIImage?)
+  public func onGetThicknessPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<(stage: OCRIDCardFraudStage, cropImage: UIKit.UIImage), OCRError>) -> Swift.Void)
+  public func onGetThicknessManualData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, OCRError>) -> Swift.Void)
 }
 public protocol LivenessPlaygroundFlowDelegate : LivenessFlowDelegate {
   func livenessDidNotifyMessage(status: LivenessDetectStatus)
@@ -1662,6 +1747,7 @@ public enum ScanDocCardType : Swift.String, Swift.Codable {
   case JPN_IDCARD_Thickness
   case JPN_DriverLicense_Front
   case JPN_DriverLicense_Back
+  case JPN_DriverLicense_NFC
   case JPN_DriverLicense_Thickness
   case JPN_ResidentCard_Front
   case JPN_ResidentCard_Back
@@ -1809,6 +1895,9 @@ extension JPNIDCardNFCResult.DataType : Swift.RawRepresentable {}
 extension JPNDriverLicenseResult.DataType : Swift.Equatable {}
 extension JPNDriverLicenseResult.DataType : Swift.Hashable {}
 extension JPNDriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension JPNDriverLicenseNFCResult.DataType : Swift.Equatable {}
+extension JPNDriverLicenseNFCResult.DataType : Swift.Hashable {}
+extension JPNDriverLicenseNFCResult.DataType : Swift.RawRepresentable {}
 extension JPNResidentCardResult.DataType : Swift.Equatable {}
 extension JPNResidentCardResult.DataType : Swift.Hashable {}
 extension JPNResidentCardResult.DataType : Swift.RawRepresentable {}
