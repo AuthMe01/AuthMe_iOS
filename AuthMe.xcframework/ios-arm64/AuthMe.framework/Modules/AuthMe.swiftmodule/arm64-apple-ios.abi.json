@@ -9538,6 +9538,43 @@
           },
           {
             "kind": "Var",
+            "name": "JPN_ResidentCard_NFC",
+            "printedName": "JPN_ResidentCard_NFC",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(AuthMe.OCRType.Type) -> AuthMe.OCRType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OCRType",
+                    "printedName": "AuthMe.OCRType",
+                    "usr": "s:6AuthMe7OCRTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "AuthMe.OCRType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OCRType",
+                        "printedName": "AuthMe.OCRType",
+                        "usr": "s:6AuthMe7OCRTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6AuthMe7OCRTypeO20JPN_ResidentCard_NFCyA2CmF",
+            "mangledName": "$s6AuthMe7OCRTypeO20JPN_ResidentCard_NFCyA2CmF",
+            "moduleName": "AuthMe"
+          },
+          {
+            "kind": "Var",
             "name": "USA_IDCard_Front",
             "printedName": "USA_IDCard_Front",
             "children": [
@@ -23853,6 +23890,765 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "JPNResidentCardNFCResult",
+        "printedName": "JPNResidentCardNFCResult",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "get",
+            "printedName": "get(type:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "DataType",
+                "printedName": "AuthMe.JPNResidentCardNFCResult.DataType",
+                "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe24JPNResidentCardNFCResultC3get4typeSSAC8DataTypeO_tF",
+            "mangledName": "$s6AuthMe24JPNResidentCardNFCResultC3get4typeSSAC8DataTypeO_tF",
+            "moduleName": "AuthMe",
+            "overriding": true,
+            "declAttributes": [
+              "Override",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "TypeDecl",
+            "name": "DataType",
+            "printedName": "DataType",
+            "children": [
+              {
+                "kind": "Var",
+                "name": "name",
+                "printedName": "name",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(AuthMe.JPNResidentCardNFCResult.DataType.Type) -> AuthMe.JPNResidentCardNFCResult.DataType",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DataType",
+                        "printedName": "AuthMe.JPNResidentCardNFCResult.DataType",
+                        "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "AuthMe.JPNResidentCardNFCResult.DataType.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "DataType",
+                            "printedName": "AuthMe.JPNResidentCardNFCResult.DataType",
+                            "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO4nameyA2EmF",
+                "mangledName": "$s6AuthMe24JPNResidentCardNFCResultC8DataTypeO4nameyA2EmF",
+                "moduleName": "AuthMe"
+              },
+              {
+                "kind": "Var",
+                "name": "gender",
+                "printedName": "gender",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(AuthMe.JPNResidentCardNFCResult.DataType.Type) -> AuthMe.JPNResidentCardNFCResult.DataType",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DataType",
+                        "printedName": "AuthMe.JPNResidentCardNFCResult.DataType",
+                        "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "AuthMe.JPNResidentCardNFCResult.DataType.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "DataType",
+                            "printedName": "AuthMe.JPNResidentCardNFCResult.DataType",
+                            "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO6genderyA2EmF",
+                "mangledName": "$s6AuthMe24JPNResidentCardNFCResultC8DataTypeO6genderyA2EmF",
+                "moduleName": "AuthMe"
+              },
+              {
+                "kind": "Var",
+                "name": "dateOfBirth",
+                "printedName": "dateOfBirth",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(AuthMe.JPNResidentCardNFCResult.DataType.Type) -> AuthMe.JPNResidentCardNFCResult.DataType",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DataType",
+                        "printedName": "AuthMe.JPNResidentCardNFCResult.DataType",
+                        "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "AuthMe.JPNResidentCardNFCResult.DataType.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "DataType",
+                            "printedName": "AuthMe.JPNResidentCardNFCResult.DataType",
+                            "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO11dateOfBirthyA2EmF",
+                "mangledName": "$s6AuthMe24JPNResidentCardNFCResultC8DataTypeO11dateOfBirthyA2EmF",
+                "moduleName": "AuthMe"
+              },
+              {
+                "kind": "Var",
+                "name": "nationality",
+                "printedName": "nationality",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(AuthMe.JPNResidentCardNFCResult.DataType.Type) -> AuthMe.JPNResidentCardNFCResult.DataType",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DataType",
+                        "printedName": "AuthMe.JPNResidentCardNFCResult.DataType",
+                        "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "AuthMe.JPNResidentCardNFCResult.DataType.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "DataType",
+                            "printedName": "AuthMe.JPNResidentCardNFCResult.DataType",
+                            "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO11nationalityyA2EmF",
+                "mangledName": "$s6AuthMe24JPNResidentCardNFCResultC8DataTypeO11nationalityyA2EmF",
+                "moduleName": "AuthMe"
+              },
+              {
+                "kind": "Var",
+                "name": "address",
+                "printedName": "address",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(AuthMe.JPNResidentCardNFCResult.DataType.Type) -> AuthMe.JPNResidentCardNFCResult.DataType",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DataType",
+                        "printedName": "AuthMe.JPNResidentCardNFCResult.DataType",
+                        "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "AuthMe.JPNResidentCardNFCResult.DataType.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "DataType",
+                            "printedName": "AuthMe.JPNResidentCardNFCResult.DataType",
+                            "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO7addressyA2EmF",
+                "mangledName": "$s6AuthMe24JPNResidentCardNFCResultC8DataTypeO7addressyA2EmF",
+                "moduleName": "AuthMe"
+              },
+              {
+                "kind": "Var",
+                "name": "visaStatus",
+                "printedName": "visaStatus",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(AuthMe.JPNResidentCardNFCResult.DataType.Type) -> AuthMe.JPNResidentCardNFCResult.DataType",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DataType",
+                        "printedName": "AuthMe.JPNResidentCardNFCResult.DataType",
+                        "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "AuthMe.JPNResidentCardNFCResult.DataType.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "DataType",
+                            "printedName": "AuthMe.JPNResidentCardNFCResult.DataType",
+                            "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO10visaStatusyA2EmF",
+                "mangledName": "$s6AuthMe24JPNResidentCardNFCResultC8DataTypeO10visaStatusyA2EmF",
+                "moduleName": "AuthMe"
+              },
+              {
+                "kind": "Var",
+                "name": "documentNumber",
+                "printedName": "documentNumber",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(AuthMe.JPNResidentCardNFCResult.DataType.Type) -> AuthMe.JPNResidentCardNFCResult.DataType",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DataType",
+                        "printedName": "AuthMe.JPNResidentCardNFCResult.DataType",
+                        "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "AuthMe.JPNResidentCardNFCResult.DataType.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "DataType",
+                            "printedName": "AuthMe.JPNResidentCardNFCResult.DataType",
+                            "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO14documentNumberyA2EmF",
+                "mangledName": "$s6AuthMe24JPNResidentCardNFCResultC8DataTypeO14documentNumberyA2EmF",
+                "moduleName": "AuthMe"
+              },
+              {
+                "kind": "Var",
+                "name": "restrictionEmployment",
+                "printedName": "restrictionEmployment",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(AuthMe.JPNResidentCardNFCResult.DataType.Type) -> AuthMe.JPNResidentCardNFCResult.DataType",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DataType",
+                        "printedName": "AuthMe.JPNResidentCardNFCResult.DataType",
+                        "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "AuthMe.JPNResidentCardNFCResult.DataType.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "DataType",
+                            "printedName": "AuthMe.JPNResidentCardNFCResult.DataType",
+                            "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO21restrictionEmploymentyA2EmF",
+                "mangledName": "$s6AuthMe24JPNResidentCardNFCResultC8DataTypeO21restrictionEmploymentyA2EmF",
+                "moduleName": "AuthMe"
+              },
+              {
+                "kind": "Var",
+                "name": "dateOfIssue",
+                "printedName": "dateOfIssue",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(AuthMe.JPNResidentCardNFCResult.DataType.Type) -> AuthMe.JPNResidentCardNFCResult.DataType",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DataType",
+                        "printedName": "AuthMe.JPNResidentCardNFCResult.DataType",
+                        "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "AuthMe.JPNResidentCardNFCResult.DataType.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "DataType",
+                            "printedName": "AuthMe.JPNResidentCardNFCResult.DataType",
+                            "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO11dateOfIssueyA2EmF",
+                "mangledName": "$s6AuthMe24JPNResidentCardNFCResultC8DataTypeO11dateOfIssueyA2EmF",
+                "moduleName": "AuthMe"
+              },
+              {
+                "kind": "Var",
+                "name": "expiryDate",
+                "printedName": "expiryDate",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(AuthMe.JPNResidentCardNFCResult.DataType.Type) -> AuthMe.JPNResidentCardNFCResult.DataType",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DataType",
+                        "printedName": "AuthMe.JPNResidentCardNFCResult.DataType",
+                        "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "AuthMe.JPNResidentCardNFCResult.DataType.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "DataType",
+                            "printedName": "AuthMe.JPNResidentCardNFCResult.DataType",
+                            "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO10expiryDateyA2EmF",
+                "mangledName": "$s6AuthMe24JPNResidentCardNFCResultC8DataTypeO10expiryDateyA2EmF",
+                "moduleName": "AuthMe"
+              },
+              {
+                "kind": "Var",
+                "name": "periodOfStay",
+                "printedName": "periodOfStay",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(AuthMe.JPNResidentCardNFCResult.DataType.Type) -> AuthMe.JPNResidentCardNFCResult.DataType",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DataType",
+                        "printedName": "AuthMe.JPNResidentCardNFCResult.DataType",
+                        "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "AuthMe.JPNResidentCardNFCResult.DataType.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "DataType",
+                            "printedName": "AuthMe.JPNResidentCardNFCResult.DataType",
+                            "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO12periodOfStayyA2EmF",
+                "mangledName": "$s6AuthMe24JPNResidentCardNFCResultC8DataTypeO12periodOfStayyA2EmF",
+                "moduleName": "AuthMe"
+              },
+              {
+                "kind": "Constructor",
+                "name": "init",
+                "printedName": "init(rawValue:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "AuthMe.JPNResidentCardNFCResult.DataType?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DataType",
+                        "printedName": "AuthMe.JPNResidentCardNFCResult.DataType",
+                        "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Constructor",
+                "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO8rawValueAESgSS_tcfc",
+                "mangledName": "$s6AuthMe24JPNResidentCardNFCResultC8DataTypeO8rawValueAESgSS_tcfc",
+                "moduleName": "AuthMe",
+                "implicit": true,
+                "init_kind": "Designated"
+              },
+              {
+                "kind": "Var",
+                "name": "rawValue",
+                "printedName": "rawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO8rawValueSSvp",
+                "mangledName": "$s6AuthMe24JPNResidentCardNFCResultC8DataTypeO8rawValueSSvp",
+                "moduleName": "AuthMe",
+                "implicit": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO8rawValueSSvg",
+                    "mangledName": "$s6AuthMe24JPNResidentCardNFCResultC8DataTypeO8rawValueSSvg",
+                    "moduleName": "AuthMe",
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "allCases",
+                "printedName": "allCases",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[AuthMe.JPNResidentCardNFCResult.DataType]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DataType",
+                        "printedName": "AuthMe.JPNResidentCardNFCResult.DataType",
+                        "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO8allCasesSayAEGvpZ",
+                "mangledName": "$s6AuthMe24JPNResidentCardNFCResultC8DataTypeO8allCasesSayAEGvpZ",
+                "moduleName": "AuthMe",
+                "static": true,
+                "implicit": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Array",
+                        "printedName": "[AuthMe.JPNResidentCardNFCResult.DataType]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "DataType",
+                            "printedName": "AuthMe.JPNResidentCardNFCResult.DataType",
+                            "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO"
+                          }
+                        ],
+                        "usr": "s:Sa"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO8allCasesSayAEGvgZ",
+                    "mangledName": "$s6AuthMe24JPNResidentCardNFCResultC8DataTypeO8allCasesSayAEGvgZ",
+                    "moduleName": "AuthMe",
+                    "static": true,
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Enum",
+            "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO",
+            "mangledName": "$s6AuthMe24JPNResidentCardNFCResultC8DataTypeO",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "enumRawTypeName": "String",
+            "conformances": [
+              {
+                "kind": "Conformance",
+                "name": "Equatable",
+                "printedName": "Equatable",
+                "usr": "s:SQ",
+                "mangledName": "$sSQ"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Hashable",
+                "printedName": "Hashable",
+                "usr": "s:SH",
+                "mangledName": "$sSH"
+              },
+              {
+                "kind": "Conformance",
+                "name": "RawRepresentable",
+                "printedName": "RawRepresentable",
+                "children": [
+                  {
+                    "kind": "TypeWitness",
+                    "name": "RawValue",
+                    "printedName": "RawValue",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:SY",
+                "mangledName": "$sSY"
+              },
+              {
+                "kind": "Conformance",
+                "name": "CaseIterable",
+                "printedName": "CaseIterable",
+                "children": [
+                  {
+                    "kind": "TypeWitness",
+                    "name": "AllCases",
+                    "printedName": "AllCases",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Array",
+                        "printedName": "[AuthMe.JPNResidentCardNFCResult.DataType]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "DataType",
+                            "printedName": "AuthMe.JPNResidentCardNFCResult.DataType",
+                            "usr": "s:6AuthMe24JPNResidentCardNFCResultC8DataTypeO"
+                          }
+                        ],
+                        "usr": "s:Sa"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:s12CaseIterableP",
+                "mangledName": "$ss12CaseIterableP"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(data:image:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "JPNResidentCardNFCResult",
+                "printedName": "AuthMe.JPNResidentCardNFCResult",
+                "usr": "s:6AuthMe24JPNResidentCardNFCResultC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIImage?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIImage",
+                    "printedName": "UIKit.UIImage",
+                    "usr": "c:objc(cs)UIImage"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6AuthMe24JPNResidentCardNFCResultC4data5imageACSDyS2SG_So7UIImageCSgtcfc",
+            "mangledName": "$s6AuthMe24JPNResidentCardNFCResultC4data5imageACSDyS2SG_So7UIImageCSgtcfc",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "Convenience",
+              "AccessControl"
+            ],
+            "init_kind": "Convenience"
+          },
+          {
+            "kind": "Function",
+            "name": "setScanID",
+            "printedName": "setScanID(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe24JPNResidentCardNFCResultC9setScanIDyySSF",
+            "mangledName": "$s6AuthMe24JPNResidentCardNFCResultC9setScanIDyySSF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:6AuthMe24JPNResidentCardNFCResultC",
+        "mangledName": "$s6AuthMe24JPNResidentCardNFCResultC",
+        "moduleName": "AuthMe",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "superclassUsr": "s:6AuthMe13OCRBaseResultC",
+        "hasMissingDesignatedInitializers": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "AuthMe.OCRBaseResult<AuthMe.JPNResidentCardNFCResult.DataType>"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "OCRResult",
+            "printedName": "OCRResult",
+            "usr": "s:6AuthMe9OCRResultP",
+            "mangledName": "$s6AuthMe9OCRResultP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
         "name": "USAIDCardResult",
         "printedName": "USAIDCardResult",
         "children": [
@@ -37503,6 +38299,43 @@
           },
           {
             "kind": "Var",
+            "name": "JPNResidentCardNFC",
+            "printedName": "JPNResidentCardNFC",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(AuthMe.ScanType.Type) -> AuthMe.ScanType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ScanType",
+                    "printedName": "AuthMe.ScanType",
+                    "usr": "s:6AuthMe8ScanTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "AuthMe.ScanType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ScanType",
+                        "printedName": "AuthMe.ScanType",
+                        "usr": "s:6AuthMe8ScanTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6AuthMe8ScanTypeO18JPNResidentCardNFCyA2CmF",
+            "mangledName": "$s6AuthMe8ScanTypeO18JPNResidentCardNFCyA2CmF",
+            "moduleName": "AuthMe"
+          },
+          {
+            "kind": "Var",
             "name": "USAID",
             "printedName": "USAID",
             "children": [
@@ -38606,6 +39439,994 @@
         "moduleName": "AuthMe",
         "declAttributes": [
           "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "AuthMe",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "JPNNFCResidentCardFlow",
+        "printedName": "JPNNFCResidentCardFlow",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(scanType:needConfirm:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "JPNNFCResidentCardFlow",
+                "printedName": "AuthMe.JPNNFCResidentCardFlow",
+                "usr": "s:6AuthMe22JPNNFCResidentCardFlowC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ScanType",
+                "printedName": "AuthMe.ScanType",
+                "usr": "s:6AuthMe8ScanTypeO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6AuthMe22JPNNFCResidentCardFlowC8scanType11needConfirmAcA04ScanG0O_Sbtcfc",
+            "mangledName": "$s6AuthMe22JPNNFCResidentCardFlowC8scanType11needConfirmAcA04ScanG0O_Sbtcfc",
+            "moduleName": "AuthMe",
+            "overriding": true,
+            "implicit": true,
+            "declAttributes": [
+              "Override"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "checkModel",
+            "printedName": "checkModel(progressHandler:handler:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((Swift.Double) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.Double) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Double",
+                        "printedName": "Swift.Double",
+                        "usr": "s:Sd"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((Swift.Result<(), AuthMe.OCRError>) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.Result<(), AuthMe.OCRError>) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Result",
+                        "printedName": "Swift.Result<(), AuthMe.OCRError>",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "OCRError",
+                            "printedName": "AuthMe.OCRError",
+                            "usr": "s:6AuthMe8OCRErrorO"
+                          }
+                        ],
+                        "usr": "s:s6ResultO"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe22JPNNFCResidentCardFlowC10checkModel15progressHandler7handleryySdcSg_ys6ResultOyytAA8OCRErrorOGcSgtF",
+            "mangledName": "$s6AuthMe22JPNNFCResidentCardFlowC10checkModel15progressHandler7handleryySdcSg_ys6ResultOyytAA8OCRErrorOGcSgtF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "prepareScan",
+            "printedName": "prepareScan(handler:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.Result<(cardType: [AuthMe.ScanDocCardType], info: AuthMe.SessionInfo, expiredIn: Swift.Double), AuthMe.OCRError>) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Result",
+                    "printedName": "Swift.Result<(cardType: [AuthMe.ScanDocCardType], info: AuthMe.SessionInfo, expiredIn: Swift.Double), AuthMe.OCRError>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(cardType: [AuthMe.ScanDocCardType], info: AuthMe.SessionInfo, expiredIn: Swift.Double)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Array",
+                            "printedName": "[AuthMe.ScanDocCardType]",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "ScanDocCardType",
+                                "printedName": "AuthMe.ScanDocCardType",
+                                "usr": "s:6AuthMe15ScanDocCardTypeO"
+                              }
+                            ],
+                            "usr": "s:Sa"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "SessionInfo",
+                            "printedName": "AuthMe.SessionInfo",
+                            "usr": "s:6AuthMe11SessionInfoV"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Double",
+                            "printedName": "Swift.Double",
+                            "usr": "s:Sd"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OCRError",
+                        "printedName": "AuthMe.OCRError",
+                        "usr": "s:6AuthMe8OCRErrorO"
+                      }
+                    ],
+                    "usr": "s:s6ResultO"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe22JPNNFCResidentCardFlowC11prepareScan7handleryys6ResultOySayAA0g3DocD4TypeOG04cardK0_AA11SessionInfoV4infoSd9expiredIntAA8OCRErrorOGc_tF",
+            "mangledName": "$s6AuthMe22JPNNFCResidentCardFlowC11prepareScan7handleryys6ResultOySayAA0g3DocD4TypeOG04cardK0_AA11SessionInfoV4infoSd9expiredIntAA8OCRErrorOGc_tF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setPreviewSize",
+            "printedName": "setPreviewSize(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGSize",
+                "printedName": "CoreFoundation.CGSize",
+                "usr": "c:@S@CGSize"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe22JPNNFCResidentCardFlowC14setPreviewSizeyySo6CGSizeVF",
+            "mangledName": "$s6AuthMe22JPNNFCResidentCardFlowC14setPreviewSizeyySo6CGSizeVF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "start",
+            "printedName": "start(enableUploadFullFrame:handler:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Bool?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.Result<AuthMe.OCRInitScanDocResponse, AuthMe.OCRError>) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Result",
+                    "printedName": "Swift.Result<AuthMe.OCRInitScanDocResponse, AuthMe.OCRError>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OCRInitScanDocResponse",
+                        "printedName": "AuthMe.OCRInitScanDocResponse",
+                        "usr": "s:6AuthMe22OCRInitScanDocResponseV"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OCRError",
+                        "printedName": "AuthMe.OCRError",
+                        "usr": "s:6AuthMe8OCRErrorO"
+                      }
+                    ],
+                    "usr": "s:s6ResultO"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe22JPNNFCResidentCardFlowC5start21enableUploadFullFrame7handlerySbSg_ys6ResultOyAA22OCRInitScanDocResponseVAA8OCRErrorOGctF",
+            "mangledName": "$s6AuthMe22JPNNFCResidentCardFlowC5start21enableUploadFullFrame7handlerySbSg_ys6ResultOyAA22OCRInitScanDocResponseVAA8OCRErrorOGctF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getCardMatchROI",
+            "printedName": "getCardMatchROI()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "AuthMe.CardMatchROI?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CardMatchROI",
+                    "printedName": "AuthMe.CardMatchROI",
+                    "usr": "s:6AuthMe12CardMatchROIV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe22JPNNFCResidentCardFlowC03getD8MatchROIAA0dgH0VSgyF",
+            "mangledName": "$s6AuthMe22JPNNFCResidentCardFlowC03getD8MatchROIAA0dgH0VSgyF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "onGetPreviewData",
+            "printedName": "onGetPreviewData(image:handler:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIImage",
+                "printedName": "UIKit.UIImage",
+                "usr": "c:objc(cs)UIImage"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(AuthMe.AuthmeOCRResult<AuthMe.OCRScanResult, ()?, AuthMe.OCRError>) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AuthmeOCRResult",
+                    "printedName": "AuthMe.AuthmeOCRResult<AuthMe.OCRScanResult, ()?, AuthMe.OCRError>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OCRScanResult",
+                        "printedName": "AuthMe.OCRScanResult",
+                        "usr": "s:6AuthMe13OCRScanResultV"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "()?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OCRError",
+                        "printedName": "AuthMe.OCRError",
+                        "usr": "s:6AuthMe8OCRErrorO"
+                      }
+                    ],
+                    "usr": "s:6AuthMe15AuthmeOCRResultO"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe22JPNNFCResidentCardFlowC16onGetPreviewData5image7handlerySo7UIImageC_yAA15AuthmeOCRResultOyAA13OCRScanResultVytSgAA8OCRErrorOGctF",
+            "mangledName": "$s6AuthMe22JPNNFCResidentCardFlowC16onGetPreviewData5image7handlerySo7UIImageC_yAA15AuthmeOCRResultOyAA13OCRScanResultVytSgAA8OCRErrorOGctF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "onGetIDCardFraudPreviewData",
+            "printedName": "onGetIDCardFraudPreviewData(image:handler:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIImage",
+                "printedName": "UIKit.UIImage",
+                "usr": "c:objc(cs)UIImage"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.Result<AuthMe.OCRIDCardFraudStage, AuthMe.OCRError>) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Result",
+                    "printedName": "Swift.Result<AuthMe.OCRIDCardFraudStage, AuthMe.OCRError>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OCRIDCardFraudStage",
+                        "printedName": "AuthMe.OCRIDCardFraudStage",
+                        "usr": "s:6AuthMe19OCRIDCardFraudStageO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OCRError",
+                        "printedName": "AuthMe.OCRError",
+                        "usr": "s:6AuthMe8OCRErrorO"
+                      }
+                    ],
+                    "usr": "s:s6ResultO"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe22JPNNFCResidentCardFlowC27onGetIDCardFraudPreviewData5image7handlerySo7UIImageC_ys6ResultOyAA09OCRIDCardI5StageOAA8OCRErrorOGctF",
+            "mangledName": "$s6AuthMe22JPNNFCResidentCardFlowC27onGetIDCardFraudPreviewData5image7handlerySo7UIImageC_ys6ResultOyAA09OCRIDCardI5StageOAA8OCRErrorOGctF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "restart",
+            "printedName": "restart()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "AuthMe.OCRError?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OCRError",
+                    "printedName": "AuthMe.OCRError",
+                    "usr": "s:6AuthMe8OCRErrorO"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe22JPNNFCResidentCardFlowC7restartAA8OCRErrorOSgyF",
+            "mangledName": "$s6AuthMe22JPNNFCResidentCardFlowC7restartAA8OCRErrorOSgyF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "recognize",
+            "printedName": "recognize(handler:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.Result<AuthMe.OCRScanResult, AuthMe.OCRError>) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Result",
+                    "printedName": "Swift.Result<AuthMe.OCRScanResult, AuthMe.OCRError>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OCRScanResult",
+                        "printedName": "AuthMe.OCRScanResult",
+                        "usr": "s:6AuthMe13OCRScanResultV"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OCRError",
+                        "printedName": "AuthMe.OCRError",
+                        "usr": "s:6AuthMe8OCRErrorO"
+                      }
+                    ],
+                    "usr": "s:s6ResultO"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe22JPNNFCResidentCardFlowC9recognize7handleryys6ResultOyAA07OCRScanH0VAA8OCRErrorOGc_tF",
+            "mangledName": "$s6AuthMe22JPNNFCResidentCardFlowC9recognize7handleryys6ResultOyAA07OCRScanH0VAA8OCRErrorOGc_tF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "recordImage",
+            "printedName": "recordImage(progressHandler:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((Swift.Double) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.Double) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Double",
+                        "printedName": "Swift.Double",
+                        "usr": "s:Sd"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.Result<(), AuthMe.OCRError>) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Result",
+                    "printedName": "Swift.Result<(), AuthMe.OCRError>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OCRError",
+                        "printedName": "AuthMe.OCRError",
+                        "usr": "s:6AuthMe8OCRErrorO"
+                      }
+                    ],
+                    "usr": "s:s6ResultO"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe22JPNNFCResidentCardFlowC11recordImage15progressHandler10completionyySdcSg_ys6ResultOyytAA8OCRErrorOGctF",
+            "mangledName": "$s6AuthMe22JPNNFCResidentCardFlowC11recordImage15progressHandler10completionyySdcSg_ys6ResultOyytAA8OCRErrorOGctF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getStatus",
+            "printedName": "getStatus()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tuple",
+                "printedName": "(scanDocs: [AuthMe.ScanDocCardType], processing: AuthMe.ScanDocCardType)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[AuthMe.ScanDocCardType]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ScanDocCardType",
+                        "printedName": "AuthMe.ScanDocCardType",
+                        "usr": "s:6AuthMe15ScanDocCardTypeO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ScanDocCardType",
+                    "printedName": "AuthMe.ScanDocCardType",
+                    "usr": "s:6AuthMe15ScanDocCardTypeO"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe22JPNNFCResidentCardFlowC9getStatusSayAA07ScanDocD4TypeOG8scanDocs_AF10processingtyF",
+            "mangledName": "$s6AuthMe22JPNNFCResidentCardFlowC9getStatusSayAA07ScanDocD4TypeOG8scanDocs_AF10processingtyF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "stopScan",
+            "printedName": "stopScan()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "AuthMe.OCRResult?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OCRResult",
+                    "printedName": "AuthMe.OCRResult",
+                    "usr": "s:6AuthMe9OCRResultP"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe22JPNNFCResidentCardFlowC8stopScanAA9OCRResult_pSgyF",
+            "mangledName": "$s6AuthMe22JPNNFCResidentCardFlowC8stopScanAA9OCRResult_pSgyF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "abortScan",
+            "printedName": "abortScan(completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.Result<(), AuthMe.OCRError>) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Result",
+                    "printedName": "Swift.Result<(), AuthMe.OCRError>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OCRError",
+                        "printedName": "AuthMe.OCRError",
+                        "usr": "s:6AuthMe8OCRErrorO"
+                      }
+                    ],
+                    "usr": "s:s6ResultO"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe22JPNNFCResidentCardFlowC9abortScan10completionyys6ResultOyytAA8OCRErrorOGc_tF",
+            "mangledName": "$s6AuthMe22JPNNFCResidentCardFlowC9abortScan10completionyys6ResultOyytAA8OCRErrorOGc_tF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "addResult",
+            "printedName": "addResult(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe22JPNNFCResidentCardFlowC9addResultyySDyS2SGF",
+            "mangledName": "$s6AuthMe22JPNNFCResidentCardFlowC9addResultyySDyS2SGF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "addImage",
+            "printedName": "addImage(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIImage?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIImage",
+                    "printedName": "UIKit.UIImage",
+                    "usr": "c:objc(cs)UIImage"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe22JPNNFCResidentCardFlowC8addImageyySo7UIImageCSgF",
+            "mangledName": "$s6AuthMe22JPNNFCResidentCardFlowC8addImageyySo7UIImageCSgF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "onGetThicknessPreviewData",
+            "printedName": "onGetThicknessPreviewData(image:handler:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIImage",
+                "printedName": "UIKit.UIImage",
+                "usr": "c:objc(cs)UIImage"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.Result<(stage: AuthMe.OCRIDCardFraudStage, cropImage: UIKit.UIImage), AuthMe.OCRError>) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Result",
+                    "printedName": "Swift.Result<(stage: AuthMe.OCRIDCardFraudStage, cropImage: UIKit.UIImage), AuthMe.OCRError>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(stage: AuthMe.OCRIDCardFraudStage, cropImage: UIKit.UIImage)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "OCRIDCardFraudStage",
+                            "printedName": "AuthMe.OCRIDCardFraudStage",
+                            "usr": "s:6AuthMe19OCRIDCardFraudStageO"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "UIImage",
+                            "printedName": "UIKit.UIImage",
+                            "usr": "c:objc(cs)UIImage"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OCRError",
+                        "printedName": "AuthMe.OCRError",
+                        "usr": "s:6AuthMe8OCRErrorO"
+                      }
+                    ],
+                    "usr": "s:s6ResultO"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe22JPNNFCResidentCardFlowC25onGetThicknessPreviewData5image7handlerySo7UIImageC_ys6ResultOyAA19OCRIDCardFraudStageO5stage_AH9cropImagetAA8OCRErrorOGctF",
+            "mangledName": "$s6AuthMe22JPNNFCResidentCardFlowC25onGetThicknessPreviewData5image7handlerySo7UIImageC_ys6ResultOyAA19OCRIDCardFraudStageO5stage_AH9cropImagetAA8OCRErrorOGctF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "onGetThicknessManualData",
+            "printedName": "onGetThicknessManualData(image:handler:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIImage",
+                "printedName": "UIKit.UIImage",
+                "usr": "c:objc(cs)UIImage"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.Result<UIKit.UIImage, AuthMe.OCRError>) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Result",
+                    "printedName": "Swift.Result<UIKit.UIImage, AuthMe.OCRError>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIImage",
+                        "printedName": "UIKit.UIImage",
+                        "usr": "c:objc(cs)UIImage"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OCRError",
+                        "printedName": "AuthMe.OCRError",
+                        "usr": "s:6AuthMe8OCRErrorO"
+                      }
+                    ],
+                    "usr": "s:s6ResultO"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe22JPNNFCResidentCardFlowC24onGetThicknessManualData5image7handlerySo7UIImageC_ys6ResultOyAhA8OCRErrorOGctF",
+            "mangledName": "$s6AuthMe22JPNNFCResidentCardFlowC24onGetThicknessManualData5image7handlerySo7UIImageC_ys6ResultOyAhA8OCRErrorOGctF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:6AuthMe22JPNNFCResidentCardFlowC",
+        "mangledName": "$s6AuthMe22JPNNFCResidentCardFlowC",
+        "moduleName": "AuthMe",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "superclassUsr": "s:6AuthMe8BaseFlowC",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "AuthMe.BaseFlow"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "ScanDocProtocol",
+            "printedName": "ScanDocProtocol",
+            "usr": "s:6AuthMe15ScanDocProtocolP",
+            "mangledName": "$s6AuthMe15ScanDocProtocolP"
+          }
         ]
       },
       {
@@ -49948,6 +51769,43 @@
           },
           {
             "kind": "Var",
+            "name": "JPN_ResidentCard_NFC",
+            "printedName": "JPN_ResidentCard_NFC",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(AuthMe.ScanDocCardType.Type) -> AuthMe.ScanDocCardType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ScanDocCardType",
+                    "printedName": "AuthMe.ScanDocCardType",
+                    "usr": "s:6AuthMe15ScanDocCardTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "AuthMe.ScanDocCardType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ScanDocCardType",
+                        "printedName": "AuthMe.ScanDocCardType",
+                        "usr": "s:6AuthMe15ScanDocCardTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6AuthMe15ScanDocCardTypeO012JPN_ResidentE4_NFCyA2CmF",
+            "mangledName": "$s6AuthMe15ScanDocCardTypeO012JPN_ResidentE4_NFCyA2CmF",
+            "moduleName": "AuthMe"
+          },
+          {
+            "kind": "Var",
             "name": "USA_IDCARD_Front",
             "printedName": "USA_IDCARD_Front",
             "children": [
@@ -59167,7 +61025,14 @@
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRCard.swift",
       "kind": "StringLiteral",
-      "offset": 2390,
+      "offset": 2330,
+      "length": 25,
+      "value": "\"JPN_ResidentCard_OCRNFC\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRCard.swift",
+      "kind": "StringLiteral",
+      "offset": 2448,
       "length": 30,
       "value": "\"USA_BORDERCROSSINGCARD_FRONT\""
     },
@@ -59188,7 +61053,14 @@
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRCard.swift",
       "kind": "StringLiteral",
-      "offset": 2390,
+      "offset": 2330,
+      "length": 25,
+      "value": "\"JPN_ResidentCard_OCRNFC\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRCard.swift",
+      "kind": "StringLiteral",
+      "offset": 2448,
       "length": 30,
       "value": "\"USA_BORDERCROSSINGCARD_FRONT\""
     },
@@ -59697,6 +61569,27 @@
       "value": "\"\""
     },
     {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
+      "kind": "BooleanLiteral",
+      "offset": 11800,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
+      "kind": "StringLiteral",
+      "offset": 11826,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
+      "kind": "StringLiteral",
+      "offset": 11850,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/HTTPRequest\/OCR\/OCRUploadImageRequest.swift",
       "kind": "StringLiteral",
       "offset": 674,
@@ -59825,147 +61718,147 @@
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 550,
+      "offset": 578,
       "length": 12,
       "value": "\"USA_IDCARD\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 591,
+      "offset": 619,
       "length": 19,
       "value": "\"USA_DriverLicense\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 637,
+      "offset": 665,
       "length": 24,
       "value": "\"USA_BORDERCROSSINGCARD\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 679,
+      "offset": 707,
       "length": 12,
       "value": "\"IDN_IDCARD\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 720,
+      "offset": 748,
       "length": 19,
       "value": "\"IDN_DriverLicense\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 815,
+      "offset": 843,
       "length": 12,
       "value": "\"IND_IDCard\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 856,
+      "offset": 884,
       "length": 19,
       "value": "\"IND_DriverLicense\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 914,
+      "offset": 942,
       "length": 12,
       "value": "\"MYS_IDCard\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 955,
+      "offset": 983,
       "length": 19,
       "value": "\"MYS_DriverLicense\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 1007,
+      "offset": 1035,
       "length": 12,
       "value": "\"HKG_IDCard\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 1091,
+      "offset": 1119,
       "length": 19,
       "value": "\"HKG_DriverLicense\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 1143,
+      "offset": 1171,
       "length": 12,
       "value": "\"GBR_IDCard\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 1184,
+      "offset": 1212,
       "length": 19,
       "value": "\"GBR_DriverLicense\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 1236,
+      "offset": 1264,
       "length": 12,
       "value": "\"EGY_IDCard\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 1277,
+      "offset": 1305,
       "length": 19,
       "value": "\"EGY_DriverLicense\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 1341,
+      "offset": 1369,
       "length": 12,
       "value": "\"SAU_IDCard\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 1382,
+      "offset": 1410,
       "length": 19,
       "value": "\"SAU_DriverLicense\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 1434,
+      "offset": 1462,
       "length": 12,
       "value": "\"NLD_IDCard\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 1475,
+      "offset": 1503,
       "length": 19,
       "value": "\"NLD_DriverLicense\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 1530,
+      "offset": 1558,
       "length": 12,
       "value": "\"SGP_IDCard\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 1571,
+      "offset": 1599,
       "length": 19,
       "value": "\"SGP_DriverLicense\""
     },
@@ -60028,147 +61921,147 @@
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 550,
+      "offset": 578,
       "length": 12,
       "value": "\"USA_IDCARD\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 591,
+      "offset": 619,
       "length": 19,
       "value": "\"USA_DriverLicense\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 637,
+      "offset": 665,
       "length": 24,
       "value": "\"USA_BORDERCROSSINGCARD\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 679,
+      "offset": 707,
       "length": 12,
       "value": "\"IDN_IDCARD\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 720,
+      "offset": 748,
       "length": 19,
       "value": "\"IDN_DriverLicense\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 815,
+      "offset": 843,
       "length": 12,
       "value": "\"IND_IDCard\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 856,
+      "offset": 884,
       "length": 19,
       "value": "\"IND_DriverLicense\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 914,
+      "offset": 942,
       "length": 12,
       "value": "\"MYS_IDCard\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 955,
+      "offset": 983,
       "length": 19,
       "value": "\"MYS_DriverLicense\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 1007,
+      "offset": 1035,
       "length": 12,
       "value": "\"HKG_IDCard\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 1091,
+      "offset": 1119,
       "length": 19,
       "value": "\"HKG_DriverLicense\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 1143,
+      "offset": 1171,
       "length": 12,
       "value": "\"GBR_IDCard\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 1184,
+      "offset": 1212,
       "length": 19,
       "value": "\"GBR_DriverLicense\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 1236,
+      "offset": 1264,
       "length": 12,
       "value": "\"EGY_IDCard\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 1277,
+      "offset": 1305,
       "length": 19,
       "value": "\"EGY_DriverLicense\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 1341,
+      "offset": 1369,
       "length": 12,
       "value": "\"SAU_IDCard\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 1382,
+      "offset": 1410,
       "length": 19,
       "value": "\"SAU_DriverLicense\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 1434,
+      "offset": 1462,
       "length": 12,
       "value": "\"NLD_IDCard\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 1475,
+      "offset": 1503,
       "length": 19,
       "value": "\"NLD_DriverLicense\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 1530,
+      "offset": 1558,
       "length": 12,
       "value": "\"SGP_IDCard\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanType.swift",
       "kind": "StringLiteral",
-      "offset": 1571,
+      "offset": 1599,
       "length": 19,
       "value": "\"SGP_DriverLicense\""
     },
@@ -60283,6 +62176,48 @@
       "offset": 226,
       "length": 1,
       "value": "0"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/JPNNFCResidentCardFlow.swift",
+      "kind": "StringLiteral",
+      "offset": 758,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/JPNNFCResidentCardFlow.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1475,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/JPNNFCResidentCardFlow.swift",
+      "kind": "FloatLiteral",
+      "offset": 3956,
+      "length": 3,
+      "value": "1.0"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/JPNNFCResidentCardFlow.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5730,
+      "length": 3,
+      "value": "401"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/JPNNFCResidentCardFlow.swift",
+      "kind": "StringLiteral",
+      "offset": 7165,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/JPNNFCResidentCardFlow.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8998,
+      "length": 1,
+      "value": "7"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
@@ -60917,168 +62852,168 @@
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ThicknessOCRScanFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 17665,
+      "offset": 17686,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ThicknessOCRScanFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 17741,
+      "offset": 17762,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ThicknessOCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 18238,
+      "offset": 18259,
       "length": 3,
       "value": "401"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ThicknessOCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 18561,
+      "offset": 18582,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ThicknessOCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 18627,
+      "offset": 18648,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ThicknessOCRScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 18644,
+      "offset": 18665,
       "length": 44,
       "value": "\"log time 1 \""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ThicknessOCRScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 18687,
+      "offset": 18708,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ThicknessOCRScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 18846,
+      "offset": 18867,
       "length": 44,
       "value": "\"log time 2 \""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ThicknessOCRScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 18889,
+      "offset": 18910,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ThicknessOCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 18935,
+      "offset": 18956,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ThicknessOCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 19058,
+      "offset": 19079,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ThicknessOCRScanFlow.swift",
       "kind": "Dictionary",
-      "offset": 20006,
+      "offset": 20027,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ThicknessOCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 21738,
+      "offset": 21759,
       "length": 1,
       "value": "7"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ThicknessOCRScanFlow.swift",
       "kind": "FloatLiteral",
-      "offset": 25673,
+      "offset": 25694,
       "length": 3,
       "value": "1.0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ThicknessOCRScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 26263,
+      "offset": 26284,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ThicknessOCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 27340,
+      "offset": 27361,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ThicknessOCRScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 27493,
+      "offset": 27514,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ThicknessOCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 29436,
+      "offset": 29457,
       "length": 3,
       "value": "409"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ThicknessOCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 29451,
+      "offset": 29472,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ThicknessOCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 29510,
+      "offset": 29531,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ThicknessOCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 29963,
+      "offset": 29984,
       "length": 3,
       "value": "401"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ThicknessOCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 31799,
+      "offset": 31820,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ThicknessOCRScanFlow.swift",
       "kind": "Dictionary",
-      "offset": 32289,
+      "offset": 32310,
       "length": 8,
       "value": "[(\"\", \"\")]"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ThicknessOCRScanFlow.swift",
       "kind": "Dictionary",
-      "offset": 32598,
+      "offset": 32619,
       "length": 3,
       "value": "[]"
     },
@@ -62583,175 +64518,175 @@
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 19129,
+      "offset": 19150,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 19205,
+      "offset": 19226,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 19702,
+      "offset": 19723,
       "length": 3,
       "value": "401"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 20025,
+      "offset": 20046,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 20091,
+      "offset": 20112,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 20403,
+      "offset": 20424,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 20526,
+      "offset": 20547,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 22586,
+      "offset": 22607,
       "length": 1,
       "value": "7"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "FloatLiteral",
-      "offset": 26521,
+      "offset": 26542,
       "length": 3,
       "value": "1.0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 27111,
+      "offset": 27132,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 28188,
+      "offset": 28209,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 28341,
+      "offset": 28362,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 30284,
+      "offset": 30305,
       "length": 3,
       "value": "409"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 30299,
+      "offset": 30320,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 30358,
+      "offset": 30379,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 30811,
+      "offset": 30832,
       "length": 3,
       "value": "401"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 31358,
+      "offset": 31379,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 31538,
+      "offset": 31559,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 32869,
+      "offset": 32890,
       "length": 3,
       "value": "409"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 32884,
+      "offset": 32905,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 32949,
+      "offset": 32970,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 33212,
+      "offset": 33233,
       "length": 3,
       "value": "401"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 34840,
+      "offset": 34861,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "Dictionary",
-      "offset": 35330,
+      "offset": 35351,
       "length": 8,
       "value": "[(\"\", \"\")]"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "Dictionary",
-      "offset": 35639,
+      "offset": 35660,
       "length": 3,
       "value": "[]"
     },
@@ -66174,91 +68109,91 @@
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanDocProtocol.swift",
       "kind": "StringLiteral",
-      "offset": 3406,
+      "offset": 3436,
       "length": 30,
       "value": "\"USA_BORDERCROSSINGCARD_FRONT\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanDocProtocol.swift",
       "kind": "StringLiteral",
-      "offset": 3406,
+      "offset": 3436,
       "length": 30,
       "value": "\"USA_BORDERCROSSINGCARD_FRONT\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanDocProtocol.swift",
       "kind": "FloatLiteral",
-      "offset": 9483,
+      "offset": 9590,
       "length": 3,
       "value": "0.9"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanDocProtocol.swift",
       "kind": "IntegerLiteral",
-      "offset": 9527,
+      "offset": 9634,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanDocProtocol.swift",
       "kind": "FloatLiteral",
-      "offset": 9553,
+      "offset": 9660,
       "length": 3,
       "value": "2.0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanDocProtocol.swift",
       "kind": "IntegerLiteral",
-      "offset": 10319,
+      "offset": 10426,
       "length": 2,
       "value": "60"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanDocProtocol.swift",
       "kind": "IntegerLiteral",
-      "offset": 10324,
+      "offset": 10431,
       "length": 2,
       "value": "85"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanDocProtocol.swift",
       "kind": "IntegerLiteral",
-      "offset": 10389,
+      "offset": 10496,
       "length": 2,
       "value": "87"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanDocProtocol.swift",
       "kind": "IntegerLiteral",
-      "offset": 10394,
+      "offset": 10501,
       "length": 3,
       "value": "127"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanDocProtocol.swift",
       "kind": "IntegerLiteral",
-      "offset": 10439,
+      "offset": 10546,
       "length": 2,
       "value": "54"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanDocProtocol.swift",
       "kind": "IntegerLiteral",
-      "offset": 10444,
+      "offset": 10551,
       "length": 2,
       "value": "85"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanDocProtocol.swift",
       "kind": "IntegerLiteral",
-      "offset": 10539,
+      "offset": 10646,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/ScanDocProtocol.swift",
       "kind": "IntegerLiteral",
-      "offset": 10553,
+      "offset": 10660,
       "length": 1,
       "value": "2"
     },

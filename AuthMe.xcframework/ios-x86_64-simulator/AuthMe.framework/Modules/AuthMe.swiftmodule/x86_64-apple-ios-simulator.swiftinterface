@@ -369,6 +369,7 @@ public enum OCRType : Swift.String, Swift.Codable {
   case JPN_ResidentCard_Front
   case JPN_ResidentCard_Back
   case JPN_ResidentCard_Thickness
+  case JPN_ResidentCard_NFC
   case USA_IDCard_Front
   case USA_DriverLicense_Front
   case USA_VisitorVISA_Front
@@ -844,6 +845,34 @@ public protocol OCRResult {
       get
     }
   }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class JPNResidentCardNFCResult : OCRBaseResult<JPNResidentCardNFCResult.DataType> {
+  override public func get(type: JPNResidentCardNFCResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case name
+    case gender
+    case dateOfBirth
+    case nationality
+    case address
+    case visaStatus
+    case documentNumber
+    case restrictionEmployment
+    case dateOfIssue
+    case expiryDate
+    case periodOfStay
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [JPNResidentCardNFCResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [JPNResidentCardNFCResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  convenience public init(data: [Swift.String : Swift.String], image: UIKit.UIImage?)
+  public func setScanID(_ scanID: Swift.String)
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class USAIDCardResult : OCRBaseResult<USAIDCardResult.DataType> {
@@ -1377,6 +1406,7 @@ public enum ScanType : Swift.String, Swift.Codable {
   case JPNDriverLicense
   case JPNDriverLicenseNFC
   case JPNResidentCard
+  case JPNResidentCardNFC
   case USAID
   case USADriverLicense
   case USAVisitorVISA
@@ -1407,6 +1437,29 @@ public enum ScanType : Swift.String, Swift.Codable {
   public var rawValue: Swift.String {
     get
   }
+}
+@_inheritsConvenienceInitializers public class JPNNFCResidentCardFlow : BaseFlow {
+  override public init(scanType: ScanType, needConfirm: Swift.Bool)
+  @objc deinit
+}
+extension JPNNFCResidentCardFlow : ScanDocProtocol {
+  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
+  public func prepareScan(handler: @escaping (Swift.Result<(cardType: [ScanDocCardType], info: SessionInfo, expiredIn: Foundation.TimeInterval), OCRError>) -> Swift.Void)
+  public func setPreviewSize(_ previewSize: CoreFoundation.CGSize)
+  public func start(enableUploadFullFrame enable: Swift.Bool? = nil, handler: @escaping (Swift.Result<OCRInitScanDocResponse, OCRError>) -> Swift.Void)
+  public func getCardMatchROI() -> CardMatchROI?
+  public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (AuthmeOCRResult<OCRScanResult, ()?, OCRError>) -> Swift.Void)
+  public func onGetIDCardFraudPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRIDCardFraudStage, OCRError>) -> Swift.Void)
+  public func restart() -> OCRError?
+  public func recognize(handler: @escaping (Swift.Result<OCRScanResult, OCRError>) -> Swift.Void)
+  public func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  public func getStatus() -> (scanDocs: [ScanDocCardType], processing: ScanDocCardType)
+  public func stopScan() -> (any OCRResult)?
+  public func abortScan(completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  public func addResult(_ result: [Swift.String : Swift.String])
+  public func addImage(_ image: UIKit.UIImage?)
+  public func onGetThicknessPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<(stage: OCRIDCardFraudStage, cropImage: UIKit.UIImage), OCRError>) -> Swift.Void)
+  public func onGetThicknessManualData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, OCRError>) -> Swift.Void)
 }
 @_hasMissingDesignatedInitializers public class HKVIZClassifier {
   #if compiler(>=5.3) && $AsyncAwait
@@ -1752,6 +1805,7 @@ public enum ScanDocCardType : Swift.String, Swift.Codable {
   case JPN_ResidentCard_Front
   case JPN_ResidentCard_Back
   case JPN_ResidentCard_Thickness
+  case JPN_ResidentCard_NFC
   case USA_IDCARD_Front
   case USA_DriverLicense_Front
   case USA_VisitorVISA_FRONT
@@ -1901,6 +1955,9 @@ extension JPNDriverLicenseNFCResult.DataType : Swift.RawRepresentable {}
 extension JPNResidentCardResult.DataType : Swift.Equatable {}
 extension JPNResidentCardResult.DataType : Swift.Hashable {}
 extension JPNResidentCardResult.DataType : Swift.RawRepresentable {}
+extension JPNResidentCardNFCResult.DataType : Swift.Equatable {}
+extension JPNResidentCardNFCResult.DataType : Swift.Hashable {}
+extension JPNResidentCardNFCResult.DataType : Swift.RawRepresentable {}
 extension USAIDCardResult.DataType : Swift.Equatable {}
 extension USAIDCardResult.DataType : Swift.Hashable {}
 extension USAIDCardResult.DataType : Swift.RawRepresentable {}
