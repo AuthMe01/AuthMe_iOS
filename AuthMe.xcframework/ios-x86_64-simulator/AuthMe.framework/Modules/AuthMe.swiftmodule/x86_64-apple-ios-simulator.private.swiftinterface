@@ -793,7 +793,7 @@ public protocol OCRResult {
     case heavyMotorcycleLicenceDate
     case heavySpecialVehicleLicenceDate
     case heavyVehicleLicenceDate
-    case issuanceDate
+    case dateOfIssue
     case issuingAuthority
     case jisX0208EstablishmentYearNumber
     case mediumVehicleLicenceDate

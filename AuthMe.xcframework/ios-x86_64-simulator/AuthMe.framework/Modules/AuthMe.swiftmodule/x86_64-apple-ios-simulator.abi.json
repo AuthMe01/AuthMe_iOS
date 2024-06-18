@@ -22382,8 +22382,8 @@
               },
               {
                 "kind": "Var",
-                "name": "issuanceDate",
-                "printedName": "issuanceDate",
+                "name": "dateOfIssue",
+                "printedName": "dateOfIssue",
                 "children": [
                   {
                     "kind": "TypeFunc",
@@ -22413,8 +22413,8 @@
                   }
                 ],
                 "declKind": "EnumElement",
-                "usr": "s:6AuthMe25JPNDriverLicenseNFCResultC8DataTypeO12issuanceDateyA2EmF",
-                "mangledName": "$s6AuthMe25JPNDriverLicenseNFCResultC8DataTypeO12issuanceDateyA2EmF",
+                "usr": "s:6AuthMe25JPNDriverLicenseNFCResultC8DataTypeO11dateOfIssueyA2EmF",
+                "mangledName": "$s6AuthMe25JPNDriverLicenseNFCResultC8DataTypeO11dateOfIssueyA2EmF",
                 "moduleName": "AuthMe"
               },
               {
@@ -61550,42 +61550,42 @@
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 10471,
+      "offset": 10470,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 10497,
+      "offset": 10496,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 10521,
+      "offset": 10520,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 11800,
+      "offset": 11799,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 11826,
+      "offset": 11825,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 11850,
+      "offset": 11849,
       "length": 2,
       "value": "\"\""
     },
@@ -66964,6 +66964,34 @@
       "offset": 2481,
       "length": 3,
       "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/JPNNFCDriverLicenseFlow.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4594,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/JPNNFCDriverLicenseFlow.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5314,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/JPNNFCDriverLicenseFlow.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5893,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/JPNNFCDriverLicenseFlow.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5935,
+      "length": 4,
+      "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessPlaygroundFlow.swift",
