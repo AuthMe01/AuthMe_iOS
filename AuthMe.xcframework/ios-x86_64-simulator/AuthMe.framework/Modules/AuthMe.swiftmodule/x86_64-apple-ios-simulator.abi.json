@@ -22641,8 +22641,8 @@
               },
               {
                 "kind": "Var",
-                "name": "nickname",
-                "printedName": "nickname",
+                "name": "kanaName",
+                "printedName": "kanaName",
                 "children": [
                   {
                     "kind": "TypeFunc",
@@ -22672,8 +22672,8 @@
                   }
                 ],
                 "declKind": "EnumElement",
-                "usr": "s:6AuthMe25JPNDriverLicenseNFCResultC8DataTypeO8nicknameyA2EmF",
-                "mangledName": "$s6AuthMe25JPNDriverLicenseNFCResultC8DataTypeO8nicknameyA2EmF",
+                "usr": "s:6AuthMe25JPNDriverLicenseNFCResultC8DataTypeO8kanaNameyA2EmF",
+                "mangledName": "$s6AuthMe25JPNDriverLicenseNFCResultC8DataTypeO8kanaNameyA2EmF",
                 "moduleName": "AuthMe"
               },
               {

@@ -800,7 +800,7 @@ public protocol OCRResult {
     case mopedLicenceDate
     case motorcycleLicenceDate
     case name
-    case nickname
+    case kanaName
     case ordinaryMotorcycleLicenceDate
     case ordinaryVehicleLicenceDate
     case otherLicenceDate
