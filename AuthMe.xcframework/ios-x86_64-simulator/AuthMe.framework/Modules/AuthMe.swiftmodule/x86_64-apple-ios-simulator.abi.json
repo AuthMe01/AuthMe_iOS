@@ -59113,134 +59113,197 @@
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
+      "kind": "StringLiteral",
+      "offset": 14758,
+      "length": 8,
+      "value": "\"gender\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
+      "kind": "StringLiteral",
+      "offset": 14771,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
+      "kind": "StringLiteral",
+      "offset": 14795,
+      "length": 3,
+      "value": "\"F\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
+      "kind": "StringLiteral",
+      "offset": 14812,
+      "length": 3,
+      "value": "\"f\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
+      "kind": "StringLiteral",
+      "offset": 14839,
+      "length": 8,
+      "value": "\"female\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
+      "kind": "StringLiteral",
+      "offset": 14876,
+      "length": 3,
+      "value": "\"M\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
+      "kind": "StringLiteral",
+      "offset": 14893,
+      "length": 3,
+      "value": "\"m\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
+      "kind": "StringLiteral",
+      "offset": 14920,
+      "length": 6,
+      "value": "\"male\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
+      "kind": "StringLiteral",
+      "offset": 14953,
+      "length": 8,
+      "value": "\"gender\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 15474,
+      "offset": 15712,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 15550,
+      "offset": 15788,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 16047,
+      "offset": 16285,
       "length": 3,
       "value": "401"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 18303,
+      "offset": 18541,
       "length": 1,
       "value": "7"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 22102,
+      "offset": 22340,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 22255,
+      "offset": 22493,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 24162,
+      "offset": 24400,
       "length": 3,
       "value": "409"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 24177,
+      "offset": 24415,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 24236,
+      "offset": 24474,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 24689,
+      "offset": 24927,
       "length": 3,
       "value": "401"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 25236,
+      "offset": 25474,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 25416,
+      "offset": 25654,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 26747,
+      "offset": 26985,
       "length": 3,
       "value": "409"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 26762,
+      "offset": 27000,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 26827,
+      "offset": 27065,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 27090,
+      "offset": 27328,
       "length": 3,
       "value": "401"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 28694,
+      "offset": 28932,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "Dictionary",
-      "offset": 29180,
+      "offset": 29418,
       "length": 8,
       "value": "[(\"\", \"\")]"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "Dictionary",
-      "offset": 29469,
+      "offset": 29707,
       "length": 3,
       "value": "[]"
     },
