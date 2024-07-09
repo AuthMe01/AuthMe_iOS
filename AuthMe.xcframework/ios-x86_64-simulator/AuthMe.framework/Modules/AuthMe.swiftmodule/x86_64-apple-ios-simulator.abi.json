@@ -20757,6 +20757,43 @@
                 "moduleName": "AuthMe"
               },
               {
+                "kind": "Var",
+                "name": "expiryDate",
+                "printedName": "expiryDate",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(AuthMe.JPNIDCardNFCResult.DataType.Type) -> AuthMe.JPNIDCardNFCResult.DataType",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "DataType",
+                        "printedName": "AuthMe.JPNIDCardNFCResult.DataType",
+                        "usr": "s:6AuthMe18JPNIDCardNFCResultC8DataTypeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "AuthMe.JPNIDCardNFCResult.DataType.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "DataType",
+                            "printedName": "AuthMe.JPNIDCardNFCResult.DataType",
+                            "usr": "s:6AuthMe18JPNIDCardNFCResultC8DataTypeO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:6AuthMe18JPNIDCardNFCResultC8DataTypeO10expiryDateyA2EmF",
+                "mangledName": "$s6AuthMe18JPNIDCardNFCResultC8DataTypeO10expiryDateyA2EmF",
+                "moduleName": "AuthMe"
+              },
+              {
                 "kind": "Constructor",
                 "name": "init",
                 "printedName": "init(rawValue:)",
@@ -61634,16 +61671,9 @@
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 8185,
+      "offset": 8209,
       "length": 4,
       "value": "true"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
-      "kind": "StringLiteral",
-      "offset": 8211,
-      "length": 2,
-      "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
@@ -61654,17 +61684,17 @@
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
-      "kind": "BooleanLiteral",
-      "offset": 10470,
-      "length": 4,
-      "value": "true"
+      "kind": "StringLiteral",
+      "offset": 8259,
+      "length": 2,
+      "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
-      "kind": "StringLiteral",
-      "offset": 10496,
-      "length": 2,
-      "value": "\"\""
+      "kind": "BooleanLiteral",
+      "offset": 10494,
+      "length": 4,
+      "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
@@ -61675,22 +61705,29 @@
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
+      "kind": "StringLiteral",
+      "offset": 10544,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 11799,
+      "offset": 11823,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 11825,
+      "offset": 11849,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 11849,
+      "offset": 11873,
       "length": 2,
       "value": "\"\""
     },

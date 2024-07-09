@@ -734,6 +734,7 @@ public protocol OCRResult {
     case gender
     case dateOfBirth
     case idNumber
+    case expiryDate
     public init?(rawValue: Swift.String)
     public typealias AllCases = [JPNIDCardNFCResult.DataType]
     public typealias RawValue = Swift.String
