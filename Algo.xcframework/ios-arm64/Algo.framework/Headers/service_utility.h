@@ -37,6 +37,13 @@ char* AuthMe_EncryptString(const char* plaintext, const char* publicKey);
 need to free() the return value
 */
 char* AuthMe_DecryptString(const char* cipherBase64, const char* privateKey);
+
+//need to free() the return value
+char* AuthMe_EncryptWithRSAPrivateKey( const char* plaintext );
+
+//need to free() the return value
+char* AuthMe_DecryptWithRSAPublicKey( const char* encryptedText, const char* publickey );
+
 #ifdef __cplusplus
 }
 #endif
