@@ -6,7 +6,11 @@
 	<dict>
 		<key>Resources/Info.plist</key>
 		<data>
-		APXrHT0EiL8F3EWYsw7xYHnMFBY=
+		Y/yjEelWx+LowP7l2uDzAGSjX/A=
+		</data>
+		<key>Resources/PrivacyInfo.xcprivacy</key>
+		<data>
+		AL1dh5ctObXBjoBiabSJ86M3HQs=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -435,14 +439,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Opeaj8UOd4cbIXbtV6e/S+nr7u8pAf/rjqJnCaBupXA=
+			TobY/gSgSFAftkR9MCoN++X6EOEwraLOKY4xULr1+Zo=
 			</data>
 		</dict>
 		<key>Headers/opensslv.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			0PfuD6wHUjzIGtxiFptMOyOCL5TkY7QpYgteCfL2Akg=
+			DKEsKrqL++JMTAaGHp1XuTnF5y0cCPN5ikQtaY3rdZk=
 			</data>
 		</dict>
 		<key>Headers/ossl_typ.h</key>
@@ -589,7 +593,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			zZ3Yc/smeulgXt6HD0h4fTUFISsajdgBrwklOdD6tW4=
+			Ra475POOCRP20DOT0uDAvv/CkGhwldG3+hjPVXYZ3Ws=
 			</data>
 		</dict>
 		<key>Headers/srp.h</key>
@@ -750,14 +754,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			uYLfMx9MVaDkDRzLb4iDSgMnBd0/Lofbg3kPaGqRxP0=
+			Iyk3YE2iKlYEZnIdRRtNf4piXHBV2iLaIdaHtxJFxL8=
 			</data>
 		</dict>
 		<key>Resources/Info.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			3b11H2ge+OqmdIrFJHpYjBsgks3VfvlMI1IBUGTJhd8=
+			31cy9QjKU1gSjO9/RacJyLTF0doFL3n/yEHH0m9lypQ=
+			</data>
+		</dict>
+		<key>Resources/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			WpuPwM3bECAbtHzCgEs/AExyUUdmItJb/E61TtRuEIQ=
 			</data>
 		</dict>
 	</dict>

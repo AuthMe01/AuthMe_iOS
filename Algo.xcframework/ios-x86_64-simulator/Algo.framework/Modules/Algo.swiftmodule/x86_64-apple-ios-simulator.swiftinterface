@@ -10,15 +10,6 @@ import UIKit
 import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
-public enum OfflineEngineError : Swift.Error {
-  case sequenceError
-  case numberError
-  public static func == (a: Algo.OfflineEngineError, b: Algo.OfflineEngineError) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public var hashValue: Swift.Int {
-    get
-  }
-}
 @_inheritsConvenienceInitializers public class FasService : Algo.CoreService {
   public typealias Params = Algo.AuthMeFASParams
   public typealias UIParams = Algo.AuthMeServiceUIParams
@@ -95,7 +86,7 @@ public class CoreService {
   public func setParam(_ param: Algo.AuthMeCardOCRParams) throws
   public func setUIParam(param: Algo.AuthMeServiceUIParams) throws
   public func setCardMatchROI(_ cardMatchROI: [Swift.Float]) throws
-  public func setIgnoreCardType() throws
+  public func setOption() throws
   public func setPubkey(key: Swift.String) throws
   public func getJsonReport() -> Swift.String
   override public init()
@@ -103,20 +94,17 @@ public class CoreService {
 @_inheritsConvenienceInitializers public class IDCardFraudService : Algo.CoreService {
   @objc deinit
   public func create() throws
-  public func create(serviceModel: Algo.IDCardFraudServiceModel, setStage: Swift.Bool = true) throws
+  public func create(serviceModel: Algo.IDCardFraudServiceModel) throws
   public func start() throws
   public func stop()
   public func run(image: UIKit.UIImage) -> Algo.AuthMeIDCardAntiFraudResult?
   public func setTimeoutSec(time: Swift.Int) throws
   public func setUIParam(param: Algo.AuthMeServiceUIParams) throws
   public func setStage() throws
-  public func setThicknessCheckStage() throws
   public func setCardMatchROI(_ cardMatchROI: [Swift.Float]) throws
   public func getCardMatchROI() -> [Swift.Float]?
   public func setPubkey(key: Swift.String) throws
   public func getJsonReport() -> Swift.String
-  public func setIgnoreCardType() throws
-  public func setThicknessDetector() throws
   override public init()
 }
 @_inheritsConvenienceInitializers public class MRZService : Algo.CoreService {
@@ -127,7 +115,6 @@ public class CoreService {
   public func create() throws
   public func create(mrzModel: Algo.MRZServiceModel, ocrModel: Algo.OCRServiceModel) throws
   public func create(mrzModel: Algo.MRZTD1ServiceModel, ocrModel: Algo.OCRServiceModel) throws
-  public func create(filePaths: [Swift.String]) throws
   public func start() throws
   public func stop()
   public func run(image: UIKit.UIImage) -> (result: Algo.AuthMeMRZServiceResult, image: UIKit.UIImage?)?
@@ -161,13 +148,5 @@ public enum OCRServiceType {
     get
   }
 }
-public class EncryptService {
-  public init()
-  public func encryptWithRSAPrivateKey(plaintext: Swift.String) -> Swift.String?
-  public func decryptWithRSAPublicKey(encryptedText: Swift.String, publicKey: Swift.String) -> Swift.String?
-  @objc deinit
-}
-extension Algo.OfflineEngineError : Swift.Equatable {}
-extension Algo.OfflineEngineError : Swift.Hashable {}
 extension Algo.OCRServiceType : Swift.Equatable {}
 extension Algo.OCRServiceType : Swift.Hashable {}

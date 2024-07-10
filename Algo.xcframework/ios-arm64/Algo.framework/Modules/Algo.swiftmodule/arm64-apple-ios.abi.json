@@ -42,230 +42,6 @@
         ]
       },
       {
-        "kind": "TypeDecl",
-        "name": "OfflineEngineError",
-        "printedName": "OfflineEngineError",
-        "children": [
-          {
-            "kind": "Var",
-            "name": "sequenceError",
-            "printedName": "sequenceError",
-            "children": [
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "(Algo.OfflineEngineError.Type) -> Algo.OfflineEngineError",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "OfflineEngineError",
-                    "printedName": "Algo.OfflineEngineError",
-                    "usr": "s:4Algo18OfflineEngineErrorO"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Metatype",
-                    "printedName": "Algo.OfflineEngineError.Type",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "OfflineEngineError",
-                        "printedName": "Algo.OfflineEngineError",
-                        "usr": "s:4Algo18OfflineEngineErrorO"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "declKind": "EnumElement",
-            "usr": "s:4Algo18OfflineEngineErrorO08sequenceD0yA2CmF",
-            "mangledName": "$s4Algo18OfflineEngineErrorO08sequenceD0yA2CmF",
-            "moduleName": "Algo"
-          },
-          {
-            "kind": "Var",
-            "name": "numberError",
-            "printedName": "numberError",
-            "children": [
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "(Algo.OfflineEngineError.Type) -> Algo.OfflineEngineError",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "OfflineEngineError",
-                    "printedName": "Algo.OfflineEngineError",
-                    "usr": "s:4Algo18OfflineEngineErrorO"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Metatype",
-                    "printedName": "Algo.OfflineEngineError.Type",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "OfflineEngineError",
-                        "printedName": "Algo.OfflineEngineError",
-                        "usr": "s:4Algo18OfflineEngineErrorO"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "declKind": "EnumElement",
-            "usr": "s:4Algo18OfflineEngineErrorO06numberD0yA2CmF",
-            "mangledName": "$s4Algo18OfflineEngineErrorO06numberD0yA2CmF",
-            "moduleName": "Algo"
-          },
-          {
-            "kind": "Function",
-            "name": "==",
-            "printedName": "==(_:_:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Bool",
-                "printedName": "Swift.Bool",
-                "usr": "s:Sb"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "OfflineEngineError",
-                "printedName": "Algo.OfflineEngineError",
-                "usr": "s:4Algo18OfflineEngineErrorO"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "OfflineEngineError",
-                "printedName": "Algo.OfflineEngineError",
-                "usr": "s:4Algo18OfflineEngineErrorO"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:4Algo18OfflineEngineErrorO2eeoiySbAC_ACtFZ",
-            "mangledName": "$s4Algo18OfflineEngineErrorO2eeoiySbAC_ACtFZ",
-            "moduleName": "Algo",
-            "static": true,
-            "implicit": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Var",
-            "name": "hashValue",
-            "printedName": "hashValue",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Int",
-                "printedName": "Swift.Int",
-                "usr": "s:Si"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:4Algo18OfflineEngineErrorO9hashValueSivp",
-            "mangledName": "$s4Algo18OfflineEngineErrorO9hashValueSivp",
-            "moduleName": "Algo",
-            "implicit": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:4Algo18OfflineEngineErrorO9hashValueSivg",
-                "mangledName": "$s4Algo18OfflineEngineErrorO9hashValueSivg",
-                "moduleName": "Algo",
-                "implicit": true,
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Function",
-            "name": "hash",
-            "printedName": "hash(into:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Hasher",
-                "printedName": "Swift.Hasher",
-                "paramValueOwnership": "InOut",
-                "usr": "s:s6HasherV"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:4Algo18OfflineEngineErrorO4hash4intoys6HasherVz_tF",
-            "mangledName": "$s4Algo18OfflineEngineErrorO4hash4intoys6HasherVz_tF",
-            "moduleName": "Algo",
-            "implicit": true,
-            "funcSelfKind": "NonMutating"
-          }
-        ],
-        "declKind": "Enum",
-        "usr": "s:4Algo18OfflineEngineErrorO",
-        "mangledName": "$s4Algo18OfflineEngineErrorO",
-        "moduleName": "Algo",
-        "declAttributes": [
-          "AccessControl"
-        ],
-        "conformances": [
-          {
-            "kind": "Conformance",
-            "name": "Equatable",
-            "printedName": "Equatable",
-            "usr": "s:SQ",
-            "mangledName": "$sSQ"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Hashable",
-            "printedName": "Hashable",
-            "usr": "s:SH",
-            "mangledName": "$sSH"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Error",
-            "printedName": "Error",
-            "usr": "s:s5ErrorP",
-            "mangledName": "$ss5ErrorP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Sendable",
-            "printedName": "Sendable",
-            "usr": "s:s8SendableP",
-            "mangledName": "$ss8SendableP"
-          }
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "Algo",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
         "kind": "Import",
         "name": "UIKit",
         "printedName": "UIKit",
@@ -1741,8 +1517,8 @@
           },
           {
             "kind": "Function",
-            "name": "setIgnoreCardType",
-            "printedName": "setIgnoreCardType()",
+            "name": "setOption",
+            "printedName": "setOption()",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -1751,8 +1527,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:4Algo10OCRServiceC17setIgnoreCardTypeyyKF",
-            "mangledName": "$s4Algo10OCRServiceC17setIgnoreCardTypeyyKF",
+            "usr": "s:4Algo10OCRServiceC9setOptionyyKF",
+            "mangledName": "$s4Algo10OCRServiceC9setOptionyyKF",
             "moduleName": "Algo",
             "declAttributes": [
               "AccessControl"
@@ -1885,7 +1661,7 @@
           {
             "kind": "Function",
             "name": "create",
-            "printedName": "create(serviceModel:setStage:)",
+            "printedName": "create(serviceModel:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -1897,18 +1673,11 @@
                 "name": "IDCardFraudServiceModel",
                 "printedName": "Algo.IDCardFraudServiceModel",
                 "usr": "s:4Algo23IDCardFraudServiceModelV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Bool",
-                "printedName": "Swift.Bool",
-                "hasDefaultArg": true,
-                "usr": "s:Sb"
               }
             ],
             "declKind": "Func",
-            "usr": "s:4Algo18IDCardFraudServiceC6create12serviceModel8setStageyAA0bcdG0V_SbtKF",
-            "mangledName": "$s4Algo18IDCardFraudServiceC6create12serviceModel8setStageyAA0bcdG0V_SbtKF",
+            "usr": "s:4Algo18IDCardFraudServiceC6create12serviceModelyAA0bcdG0V_tKF",
+            "mangledName": "$s4Algo18IDCardFraudServiceC6create12serviceModelyAA0bcdG0V_tKF",
             "moduleName": "Algo",
             "declAttributes": [
               "AccessControl"
@@ -2069,27 +1838,6 @@
           },
           {
             "kind": "Function",
-            "name": "setThicknessCheckStage",
-            "printedName": "setThicknessCheckStage()",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:4Algo18IDCardFraudServiceC22setThicknessCheckStageyyKF",
-            "mangledName": "$s4Algo18IDCardFraudServiceC22setThicknessCheckStageyyKF",
-            "moduleName": "Algo",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "throwing": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
             "name": "setCardMatchROI",
             "printedName": "setCardMatchROI(_:)",
             "children": [
@@ -2206,48 +1954,6 @@
             "declAttributes": [
               "AccessControl"
             ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "setIgnoreCardType",
-            "printedName": "setIgnoreCardType()",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:4Algo18IDCardFraudServiceC17setIgnoreCardTypeyyKF",
-            "mangledName": "$s4Algo18IDCardFraudServiceC17setIgnoreCardTypeyyKF",
-            "moduleName": "Algo",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "throwing": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "setThicknessDetector",
-            "printedName": "setThicknessDetector()",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:4Algo18IDCardFraudServiceC20setThicknessDetectoryyKF",
-            "mangledName": "$s4Algo18IDCardFraudServiceC20setThicknessDetectoryyKF",
-            "moduleName": "Algo",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "throwing": true,
             "funcSelfKind": "NonMutating"
           },
           {
@@ -2422,41 +2128,6 @@
             "declKind": "Func",
             "usr": "s:4Algo10MRZServiceC6create8mrzModel03ocrE0yAA013MRZTD1ServiceE0V_AA010OCRServiceE0VtKF",
             "mangledName": "$s4Algo10MRZServiceC6create8mrzModel03ocrE0yAA013MRZTD1ServiceE0V_AA010OCRServiceE0VtKF",
-            "moduleName": "Algo",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "throwing": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "create",
-            "printedName": "create(filePaths:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Array",
-                "printedName": "[Swift.String]",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "usr": "s:Sa"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:4Algo10MRZServiceC6create9filePathsySaySSG_tKF",
-            "mangledName": "$s4Algo10MRZServiceC6create9filePathsySaySSG_tKF",
             "moduleName": "Algo",
             "declAttributes": [
               "AccessControl"
@@ -3361,127 +3032,6 @@
         ]
       },
       {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "Algo",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "TypeDecl",
-        "name": "EncryptService",
-        "printedName": "EncryptService",
-        "children": [
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init()",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "EncryptService",
-                "printedName": "Algo.EncryptService",
-                "usr": "s:4Algo14EncryptServiceC"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:4Algo14EncryptServiceCACycfc",
-            "mangledName": "$s4Algo14EncryptServiceCACycfc",
-            "moduleName": "Algo",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "init_kind": "Designated"
-          },
-          {
-            "kind": "Function",
-            "name": "encryptWithRSAPrivateKey",
-            "printedName": "encryptWithRSAPrivateKey(plaintext:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.String?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:4Algo14EncryptServiceC24encryptWithRSAPrivateKey9plaintextSSSgSS_tF",
-            "mangledName": "$s4Algo14EncryptServiceC24encryptWithRSAPrivateKey9plaintextSSSgSS_tF",
-            "moduleName": "Algo",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "decryptWithRSAPublicKey",
-            "printedName": "decryptWithRSAPublicKey(encryptedText:publicKey:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.String?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:4Algo14EncryptServiceC23decryptWithRSAPublicKey13encryptedText06publicG0SSSgSS_SStF",
-            "mangledName": "$s4Algo14EncryptServiceC23decryptWithRSAPublicKey13encryptedText06publicG0SSSgSS_SStF",
-            "moduleName": "Algo",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
-          }
-        ],
-        "declKind": "Class",
-        "usr": "s:4Algo14EncryptServiceC",
-        "mangledName": "$s4Algo14EncryptServiceC",
-        "moduleName": "Algo",
-        "declAttributes": [
-          "AccessControl"
-        ]
-      },
-      {
         "kind": "TypeDecl",
         "name": "E_AUTHME_FAS_SERVICE_STATUS",
         "printedName": "E_AUTHME_FAS_SERVICE_STATUS",
@@ -4173,47 +3723,33 @@
       "kind": "FloatLiteral",
       "offset": 4019,
       "length": 3,
-      "value": "0.3"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/OCRService.swift",
-      "kind": "IntegerLiteral",
-      "offset": 4052,
-      "length": 3,
-      "value": "750"
+      "value": "0.5"
     },
     {
       "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/OCRService.swift",
       "kind": "FloatLiteral",
-      "offset": 4424,
+      "offset": 4391,
       "length": 3,
-      "value": "0.3"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/OCRService.swift",
-      "kind": "IntegerLiteral",
-      "offset": 4457,
-      "length": 3,
-      "value": "750"
+      "value": "0.5"
     },
     {
       "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/OCRService.swift",
       "kind": "StringLiteral",
-      "offset": 5536,
+      "offset": 5462,
       "length": 27,
       "value": "\"ignore_card_type_checking\""
     },
     {
       "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/OCRService.swift",
       "kind": "StringLiteral",
-      "offset": 5565,
+      "offset": 5491,
       "length": 8,
       "value": "\"enable\""
     },
     {
       "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/OCRService.swift",
       "kind": "StringLiteral",
-      "offset": 6411,
+      "offset": 6337,
       "length": 2,
       "value": "\"\""
     },
@@ -4303,94 +3839,52 @@
     },
     {
       "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/IDCardFraudService.swift",
-      "kind": "BooleanLiteral",
-      "offset": 1142,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/IDCardFraudService.swift",
       "kind": "StringLiteral",
-      "offset": 1193,
+      "offset": 1170,
       "length": 8,
       "value": "\"OCR_00\""
     },
     {
       "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/IDCardFraudService.swift",
       "kind": "StringLiteral",
-      "offset": 1260,
+      "offset": 1237,
       "length": 8,
       "value": "\"OCR_01\""
     },
     {
       "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/IDCardFraudService.swift",
       "kind": "StringLiteral",
-      "offset": 1327,
+      "offset": 1304,
       "length": 8,
       "value": "\"OCR_02\""
     },
     {
       "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/IDCardFraudService.swift",
       "kind": "StringLiteral",
-      "offset": 1406,
+      "offset": 1383,
       "length": 20,
       "value": "\"IDCardAntiFraud_00\""
     },
     {
       "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/IDCardFraudService.swift",
-      "kind": "BooleanLiteral",
-      "offset": 1575,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/IDCardFraudService.swift",
       "kind": "FloatLiteral",
-      "offset": 3698,
+      "offset": 3597,
       "length": 3,
       "value": "0.5"
     },
     {
       "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/IDCardFraudService.swift",
       "kind": "IntegerLiteral",
-      "offset": 6396,
+      "offset": 5923,
       "length": 1,
       "value": "8"
     },
     {
       "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/IDCardFraudService.swift",
       "kind": "StringLiteral",
-      "offset": 7020,
+      "offset": 6547,
       "length": 2,
       "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/IDCardFraudService.swift",
-      "kind": "StringLiteral",
-      "offset": 7150,
-      "length": 27,
-      "value": "\"ignore_card_type_checking\""
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/IDCardFraudService.swift",
-      "kind": "StringLiteral",
-      "offset": 7179,
-      "length": 8,
-      "value": "\"enable\""
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/IDCardFraudService.swift",
-      "kind": "StringLiteral",
-      "offset": 7406,
-      "length": 20,
-      "value": "\"thickness_detector\""
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/IDCardFraudService.swift",
-      "kind": "StringLiteral",
-      "offset": 7428,
-      "length": 8,
-      "value": "\"enable\""
     },
     {
       "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/MRZService.swift",
@@ -4625,141 +4119,22 @@
     },
     {
       "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/MRZService.swift",
-      "kind": "IntegerLiteral",
-      "offset": 2606,
-      "length": 1,
-      "value": "5"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/MRZService.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3151,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/MRZService.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3194,
-      "length": 1,
-      "value": "1"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/MRZService.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3237,
-      "length": 1,
-      "value": "2"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/MRZService.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3280,
-      "length": 1,
-      "value": "3"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/MRZService.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3323,
-      "length": 1,
-      "value": "4"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/MRZService.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3499,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/MRZService.swift",
-      "kind": "StringLiteral",
-      "offset": 3521,
-      "length": 8,
-      "value": "\"OCR_00\""
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/MRZService.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3543,
-      "length": 1,
-      "value": "1"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/MRZService.swift",
-      "kind": "StringLiteral",
-      "offset": 3565,
-      "length": 8,
-      "value": "\"OCR_01\""
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/MRZService.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3587,
-      "length": 1,
-      "value": "2"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/MRZService.swift",
-      "kind": "StringLiteral",
-      "offset": 3609,
-      "length": 8,
-      "value": "\"OCR_02\""
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/MRZService.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3631,
-      "length": 1,
-      "value": "3"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/MRZService.swift",
-      "kind": "StringLiteral",
-      "offset": 3653,
-      "length": 8,
-      "value": "\"MRZ_00\""
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/MRZService.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3675,
-      "length": 1,
-      "value": "4"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/MRZService.swift",
-      "kind": "StringLiteral",
-      "offset": 3697,
-      "length": 8,
-      "value": "\"MRZ_01\""
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/MRZService.swift",
-      "kind": "StringLiteral",
-      "offset": 3742,
-      "length": 2,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/MRZService.swift",
       "kind": "BooleanLiteral",
-      "offset": 3812,
+      "offset": 2577,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/MRZService.swift",
       "kind": "BooleanLiteral",
-      "offset": 4695,
+      "offset": 3460,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/MRZService.swift",
       "kind": "BooleanLiteral",
-      "offset": 4799,
+      "offset": 3564,
       "length": 5,
       "value": "false"
     }

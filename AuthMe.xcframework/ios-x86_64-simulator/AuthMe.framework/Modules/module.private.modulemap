@@ -1,3 +1,0 @@
-framework module AuthMe.Private {
-    umbrella header "AuthMe_Private.h"
-}

@@ -1,7 +1,6 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)
-// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AuthMe
-// swift-module-flags-ignorable: -enable-bare-slash-regex
+// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
+// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name AuthMe
 import Algo
 @_exported import AuthMe
 import CoreGraphics/*.CGFloat*/
@@ -23,20 +22,20 @@ extension Swift.Array where Element : Swift.Equatable {
   public mutating func mergeElements<C>(newElements: C) where Element == C.Element, C : Swift.Collection
 }
 public struct AuthMeConfig {
-  public static var `default`: AuthMeConfig {
+  public static var `default`: AuthMe.AuthMeConfig {
     get
   }
   public var activateCertificate: Swift.String
   public var activateToken: Swift.String
   public var serverURL: Foundation.URL
-  public var sslCredentials: [AuthMeConfig.SSLCredential]?
+  public var sslCredentials: [AuthMe.AuthMeConfig.SSLCredential]?
   public struct SSLCredential {
     public let host: Swift.String
     public let credentialURL: Foundation.URL
     public init(host: Swift.String, credentialURL: Foundation.URL)
   }
 }
-@_hasMissingDesignatedInitializers public class AuthMeCore<T> where T : FrameworkMode {
+@_hasMissingDesignatedInitializers public class AuthMeCore<T> where T : AuthMe.FrameworkMode {
   public static var version: Swift.String {
     get
   }
@@ -53,7 +52,7 @@ public struct LogFAS {
     case Smile
     case Scale
     case Done
-    public static func == (a: LogFAS.LogStage, b: LogFAS.LogStage) -> Swift.Bool
+    public static func == (a: AuthMe.LogFAS.LogStage, b: AuthMe.LogFAS.LogStage) -> Swift.Bool
     public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
@@ -74,30 +73,30 @@ public struct LogFAS {
     case NeedMoreFrame
     case Error
     case Pass
-    public static func == (a: LogFAS.LogFASResult, b: LogFAS.LogFASResult) -> Swift.Bool
+    public static func == (a: AuthMe.LogFAS.LogFASResult, b: AuthMe.LogFAS.LogFASResult) -> Swift.Bool
     public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
   }
-  public let logStage: LogFAS.LogStage
-  public let logFASResult: LogFAS.LogFASResult
-  public init(logStage: LogFAS.LogStage, logFASResult: LogFAS.LogFASResult)
+  public let logStage: AuthMe.LogFAS.LogStage
+  public let logFASResult: AuthMe.LogFAS.LogFASResult
+  public init(logStage: AuthMe.LogFAS.LogStage, logFASResult: AuthMe.LogFAS.LogFASResult)
 }
 public struct LogUpload {
   public enum Event {
     case start
     case end
-    public static func == (a: LogUpload.Event, b: LogUpload.Event) -> Swift.Bool
+    public static func == (a: AuthMe.LogUpload.Event, b: AuthMe.LogUpload.Event) -> Swift.Bool
     public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
   }
   public let duration: Swift.String
-  public let event: LogUpload.Event
+  public let event: AuthMe.LogUpload.Event
   public let frameNo: Swift.String
-  public init(duration: Swift.String = "0", event: LogUpload.Event, frameNo: Swift.String)
+  public init(duration: Swift.String = "0", event: AuthMe.LogUpload.Event, frameNo: Swift.String)
 }
 public enum LivenessDetectStatus {
   case Failed
@@ -115,7 +114,7 @@ public enum LivenessDetectStatus {
   case Pass
   case Error
   case Empty
-  public static func == (a: LivenessDetectStatus, b: LivenessDetectStatus) -> Swift.Bool
+  public static func == (a: AuthMe.LivenessDetectStatus, b: AuthMe.LivenessDetectStatus) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
@@ -123,23 +122,23 @@ public enum LivenessDetectStatus {
 }
 public protocol LivenessFlowDelegate : AnyObject {
   func livenessDidStart()
-  func livenessDidNotifyMessage(status: LivenessDetectStatus)
+  func livenessDidNotifyMessage(status: AuthMe.LivenessDetectStatus)
   func livenessDidUpdateReconize(result: Swift.Bool)
-  func livenessDidFailureWith(error: FlowError, retryHandler: @escaping (() -> Swift.Void))
+  func livenessDidFailureWith(error: AuthMe.FlowError, retryHandler: @escaping (() -> Swift.Void))
   func livenessDidRecognize(image: UIKit.UIImage)
-  func livenessDidFaceScale(direction: LivenessFlow.FaceScaleDirection.Direction)
-  func livenessNotifyStage(log: LogFAS)
-  func livenessNotifyUpload(log: LogUpload)
+  func livenessDidFaceScale(direction: AuthMe.LivenessFlow.FaceScaleDirection.Direction)
+  func livenessNotifyStage(log: AuthMe.LogFAS)
+  func livenessNotifyUpload(log: AuthMe.LogUpload)
 }
-public class LivenessFlow : LivenessFlowProtocol {
-  public func setDelegate(_ delegate: any LivenessFlowDelegate)
-  weak public var delegate: (any LivenessFlowDelegate)?
+public class LivenessFlow : AuthMe.LivenessFlowProtocol {
+  public func setDelegate(_ delegate: any AuthMe.LivenessFlowDelegate)
+  weak public var delegate: (any AuthMe.LivenessFlowDelegate)?
   public var isDetecting: Swift.Bool {
     get
   }
-  public init(action: Action = .register(waitResult: true))
+  public init(action: AuthMe.Action = .register(waitResult: true))
   @objc deinit
-  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)? = nil, handler: ((Swift.Result<Swift.Void, FlowError>) -> Swift.Void)?)
+  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)? = nil, handler: ((Swift.Result<Swift.Void, AuthMe.FlowError>) -> Swift.Void)?)
   public func setPreviewSize(previewSize: CoreFoundation.CGSize)
   public func start(encrypt: Swift.Bool)
   public func recognize(image: UIKit.UIImage)
@@ -151,15 +150,15 @@ public class LivenessFlow : LivenessFlowProtocol {
   public func getVerifyResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
   public func enableUploadFullFrame()
 }
-extension LivenessFlow {
+extension AuthMe.LivenessFlow {
   public struct RoiParam {
-    public init(preview: EnginePreview, ratio: CoreFoundation.CGFloat, widthRatio: CoreFoundation.CGFloat, offset: UIKit.UIOffset)
+    public init(preview: AuthMe.EnginePreview, ratio: CoreFoundation.CGFloat, widthRatio: CoreFoundation.CGFloat, offset: UIKit.UIOffset)
   }
   public struct FaceScaleDirection {
     public enum Direction {
       case small
       case normal
-      public static func == (a: LivenessFlow.FaceScaleDirection.Direction, b: LivenessFlow.FaceScaleDirection.Direction) -> Swift.Bool
+      public static func == (a: AuthMe.LivenessFlow.FaceScaleDirection.Direction, b: AuthMe.LivenessFlow.FaceScaleDirection.Direction) -> Swift.Bool
       public func hash(into hasher: inout Swift.Hasher)
       public var hashValue: Swift.Int {
         get
@@ -167,8 +166,8 @@ extension LivenessFlow {
     }
   }
 }
-extension AuthMeCore where T == OfflineMode {
-  public static func configure() -> AuthmeCoreOfflineBuilder
+extension AuthMe.AuthMeCore where T == AuthMe.OfflineMode {
+  public static func configure() -> AuthMe.AuthmeCoreOfflineBuilder
 }
 public protocol Cancellable : AnyObject {
   var isCancelled: Swift.Bool { get }
@@ -197,8 +196,8 @@ extension Swift.Collection where Self.Element : Swift.BinaryInteger {
 extension Swift.Collection where Self.Element : Swift.FloatingPoint {
   public func average() -> Self.Element
 }
-extension AuthMeCore where T == OnlineMode {
-  public static func configure() -> AuthmeCoreOnlineBuilder
+extension AuthMe.AuthMeCore where T == AuthMe.OnlineMode {
+  public static func configure() -> AuthMe.AuthmeCoreOnlineBuilder
   public static func replaceAccessToken(_ accessToken: Swift.String) throws
 }
 extension Swift.Dictionary {
@@ -217,9 +216,9 @@ public struct ErrorDescription : Foundation.LocalizedError, Swift.Equatable {
   public var localizedDescription: Swift.String {
     get
   }
-  public static func == (a: ErrorDescription, b: ErrorDescription) -> Swift.Bool
+  public static func == (a: AuthMe.ErrorDescription, b: AuthMe.ErrorDescription) -> Swift.Bool
 }
-extension ErrorDescription : Swift.ExpressibleByStringLiteral {
+extension AuthMe.ErrorDescription : Swift.ExpressibleByStringLiteral {
   public init(stringLiteral value: Swift.String)
   public typealias ExtendedGraphemeClusterLiteralType = Swift.String
   public typealias StringLiteralType = Swift.String
@@ -228,7 +227,7 @@ extension ErrorDescription : Swift.ExpressibleByStringLiteral {
 public struct StatusCodeError : Swift.Error {
   public let localizedDescription: Swift.String
 }
-public func decode(jwt: Swift.String) throws -> any JWT
+public func decode(jwt: Swift.String) throws -> any AuthMe.JWT
 public struct Claim {
   public var rawValue: Any? {
     get
@@ -254,33 +253,33 @@ public struct Claim {
 }
 @dynamicMemberLookup public struct Fluent<Subject> {
   public let subject: Subject
-  public subscript<Value>(dynamicMember keyPath: Swift.WritableKeyPath<Subject, Value>) -> ((Value) -> Fluent<Subject>) {
+  public subscript<Value>(dynamicMember keyPath: Swift.WritableKeyPath<Subject, Value>) -> ((Value) -> AuthMe.Fluent<Subject>) {
     get
   }
-  public func set<Value>(_ keyPath: Swift.WritableKeyPath<Subject, Value>, _ value: Value) -> Fluent<Subject>
+  public func set<Value>(_ keyPath: Swift.WritableKeyPath<Subject, Value>, _ value: Value) -> AuthMe.Fluent<Subject>
 }
 @dynamicMemberLookup public struct ObjectFluent<Subject> where Subject : AnyObject {
   public let subject: Subject
-  public subscript<Value>(dynamicMember keyPath: Swift.ReferenceWritableKeyPath<Subject, Value>) -> ((Value) -> ObjectFluent<Subject>) {
+  public subscript<Value>(dynamicMember keyPath: Swift.ReferenceWritableKeyPath<Subject, Value>) -> ((Value) -> AuthMe.ObjectFluent<Subject>) {
     get
   }
   @discardableResult
-  public func set<Value>(_ keyPath: Swift.ReferenceWritableKeyPath<Subject, Value>, _ value: Value) -> ObjectFluent<Subject>
+  public func set<Value>(_ keyPath: Swift.ReferenceWritableKeyPath<Subject, Value>, _ value: Value) -> AuthMe.ObjectFluent<Subject>
   public func cauterize()
 }
 postfix operator +
-postfix public func + <T>(lhs: T) -> Fluent<T>
-postfix public func + <T>(lhs: T) -> ObjectFluent<T> where T : AnyObject
+postfix public func + <T>(lhs: T) -> AuthMe.Fluent<T>
+postfix public func + <T>(lhs: T) -> AuthMe.ObjectFluent<T> where T : AnyObject
 postfix operator -
-postfix public func - <T>(lhs: Fluent<T>) -> T
+postfix public func - <T>(lhs: AuthMe.Fluent<T>) -> T
 @discardableResult
-postfix public func - <T>(lhs: ObjectFluent<T>) -> T where T : AnyObject
-@_hasMissingDesignatedInitializers public class OfflineMode : FrameworkMode {
+postfix public func - <T>(lhs: AuthMe.ObjectFluent<T>) -> T where T : AnyObject
+@_hasMissingDesignatedInitializers public class OfflineMode : AuthMe.FrameworkMode {
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers public class AuthmeCoreOfflineBuilder : ObjectiveC.NSObject {
-  public func setConfig(_ config: AuthMeConfig) -> AuthmeCoreOfflineBuilder
-  public func setModelPaths(_ paths: [Swift.String]) -> AuthmeCoreOfflineBuilder
+  public func setConfig(_ config: AuthMe.AuthMeConfig) -> AuthMe.AuthmeCoreOfflineBuilder
+  public func setModelPaths(_ paths: [Swift.String]) -> AuthMe.AuthmeCoreOfflineBuilder
   public func build() -> Swift.Result<Swift.Void, any Swift.Error>
   @objc override dynamic public init()
   @objc deinit
@@ -438,8 +437,8 @@ public enum OCRError : Swift.String, Foundation.LocalizedError {
 public struct OCRFinishScanDocRequest {
 }
 public protocol OCRFlowDelegate : AnyObject {
-  func didFailureWith(error: OCRError, retryHandler: @escaping (() -> Swift.Void))
-  func notifyAntiFraudWith(status: LogAntiFraud)
+  func didFailureWith(error: AuthMe.OCRError, retryHandler: @escaping (() -> Swift.Void))
+  func notifyAntiFraudWith(status: AuthMe.LogAntiFraud)
 }
 public enum OCRNotifyMessage : Swift.String {
   case SUCCESS_SEGMENTATION
@@ -450,28 +449,28 @@ public enum OCRNotifyMessage : Swift.String {
   }
 }
 public protocol DebugOCRFlowDelegate : AnyObject {
-  func debugMessage(channel: DebugMessageChannel, message: Swift.String)
+  func debugMessage(channel: AuthMe.DebugMessageChannel, message: Swift.String)
 }
 public enum DebugMessageChannel {
   case text
   case value
   case fail
-  public static func == (a: DebugMessageChannel, b: DebugMessageChannel) -> Swift.Bool
+  public static func == (a: AuthMe.DebugMessageChannel, b: AuthMe.DebugMessageChannel) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
 }
 public struct OCRInitScanDocResponse : Swift.Decodable {
-  public let scanView: OCRInitScanDocResponse.OCRScanView?
+  public let scanView: AuthMe.OCRInitScanDocResponse.OCRScanView?
   public struct OCRScanView : Swift.Decodable {
-    public let border: OCRInitScanDocResponse.OCRScanView.OCRScanViewBorder
-    public let content: [OCRInitScanDocResponse.OCRScanView.OCRScanViewContent]
-    public let success: OCRInitScanDocResponse.OCRScanView.OCRScanViewSuccessParameters
-    public let line: OCRInitScanDocResponse.OCRScanView.OCRScanViewLine
+    public let border: AuthMe.OCRInitScanDocResponse.OCRScanView.OCRScanViewBorder
+    public let content: [AuthMe.OCRInitScanDocResponse.OCRScanView.OCRScanViewContent]
+    public let success: AuthMe.OCRInitScanDocResponse.OCRScanView.OCRScanViewSuccessParameters
+    public let line: AuthMe.OCRInitScanDocResponse.OCRScanView.OCRScanViewLine
     public struct OCRScanViewBorder : Swift.Decodable {
       public let enable: Swift.Bool
-      public let type: OCRInitScanDocResponse.OCRScanView.OCRScanViewBorder.OCRScanViewBorderType
+      public let type: AuthMe.OCRInitScanDocResponse.OCRScanView.OCRScanViewBorder.OCRScanViewBorderType
       public let color: Swift.String
       public let opacity: CoreFoundation.CGFloat
       public enum OCRScanViewBorderType : Swift.String, Swift.Decodable {
@@ -486,7 +485,7 @@ public struct OCRInitScanDocResponse : Swift.Decodable {
       public init(from decoder: any Swift.Decoder) throws
     }
     public struct OCRScanViewContent : Swift.Decodable {
-      public let type: OCRInitScanDocResponse.OCRScanView.OCRScanViewContent.OCRScanViewContentType
+      public let type: AuthMe.OCRInitScanDocResponse.OCRScanView.OCRScanViewContent.OCRScanViewContentType
       public let content: Swift.String
       public let color: Swift.String?
       public let opacity: CoreFoundation.CGFloat
@@ -512,7 +511,7 @@ public struct OCRInitScanDocResponse : Swift.Decodable {
     public struct OCRScanViewLine : Swift.Decodable {
       public let enable: Swift.Bool
       public let color: Swift.String
-      public let gradient: OCRInitScanDocResponse.OCRScanView.OCRScanViewLine.OCRScanViewLineGradient
+      public let gradient: AuthMe.OCRInitScanDocResponse.OCRScanView.OCRScanViewLine.OCRScanViewLineGradient
       public struct OCRScanViewLineGradient : Swift.Decodable {
         public let enable: Swift.Bool
         public let color: Swift.String
@@ -527,7 +526,7 @@ public struct OCRInitScanDocResponse : Swift.Decodable {
 }
 public protocol EKYCType : Swift.Hashable, Swift.RawRepresentable where Self.RawValue == Swift.String {
 }
-extension EKYCType {
+extension AuthMe.EKYCType {
   public static func == (lhs: Self, rhs: Self) -> Swift.Bool
 }
 public protocol OCRResult {
@@ -543,7 +542,7 @@ public protocol OCRResult {
   func orderedData() -> [(Swift.String, Swift.String)]
   func set(key: Swift.String, value: Swift.String)
 }
-@_hasMissingDesignatedInitializers public class OCRBaseResult<DataType> : OCRResult where DataType : Swift.RawRepresentable, DataType.RawValue == Swift.String {
+@_hasMissingDesignatedInitializers public class OCRBaseResult<DataType> : AuthMe.OCRResult where DataType : Swift.RawRepresentable, DataType.RawValue == Swift.String {
   final public let data: [Swift.String : Swift.String]
   public var confirmedData: [Swift.String : Swift.String]
   final public let frontImage: UIKit.UIImage?
@@ -560,7 +559,7 @@ public protocol OCRResult {
   public func confirmScan(complete: @escaping ((any Swift.Error)?) -> Swift.Void)
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class MRZResult : OCRBaseResult<MRZResult.DataType> {
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class MRZResult : AuthMe.OCRBaseResult<AuthMe.MRZResult.DataType> {
   public enum DataType : Swift.String, Swift.CaseIterable {
     case surname
     case givenName
@@ -583,9 +582,9 @@ public protocol OCRResult {
     case optionaldataCheckDigit
     case overallCheckDigit
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [MRZResult.DataType]
+    public typealias AllCases = [AuthMe.MRZResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [MRZResult.DataType] {
+    public static var allCases: [AuthMe.MRZResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -596,7 +595,7 @@ public protocol OCRResult {
   public func setScanID(_ scanID: Swift.String)
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class TWNResidentResult : OCRBaseResult<TWNResidentResult.DataType> {
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class TWNResidentResult : AuthMe.OCRBaseResult<AuthMe.TWNResidentResult.DataType> {
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case authority
@@ -616,9 +615,9 @@ public protocol OCRResult {
     case placeOfBirth
     case surname
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [TWNResidentResult.DataType]
+    public typealias AllCases = [AuthMe.TWNResidentResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [TWNResidentResult.DataType] {
+    public static var allCases: [AuthMe.TWNResidentResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -628,8 +627,8 @@ public protocol OCRResult {
   convenience public init(data: [Swift.String : Swift.String], image: UIKit.UIImage?)
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class TWIDResult : OCRBaseResult<TWIDResult.DataType> {
-  override public func get(type: TWIDResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class TWIDResult : AuthMe.OCRBaseResult<AuthMe.TWIDResult.DataType> {
+  override public func get(type: AuthMe.TWIDResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case militaryService
     case birth
@@ -647,9 +646,9 @@ public protocol OCRResult {
     case nationality
     case serialNumber
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [TWIDResult.DataType]
+    public typealias AllCases = [AuthMe.TWIDResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [TWIDResult.DataType] {
+    public static var allCases: [AuthMe.TWIDResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -658,8 +657,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class TWLicenseResult : OCRBaseResult<TWLicenseResult.DataType> {
-  override public func get(type: TWLicenseResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class TWLicenseResult : AuthMe.OCRBaseResult<AuthMe.TWLicenseResult.DataType> {
+  override public func get(type: AuthMe.TWLicenseResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case name
     case condition
@@ -673,9 +672,9 @@ public protocol OCRResult {
     case expiry
     case nationality
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [TWLicenseResult.DataType]
+    public typealias AllCases = [AuthMe.TWLicenseResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [TWLicenseResult.DataType] {
+    public static var allCases: [AuthMe.TWLicenseResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -684,8 +683,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class TWHealthResult : OCRBaseResult<TWHealthResult.DataType> {
-  override public func get(type: TWHealthResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class TWHealthResult : AuthMe.OCRBaseResult<AuthMe.TWHealthResult.DataType> {
+  override public func get(type: AuthMe.TWHealthResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case name
     case dateOfBirth
@@ -693,9 +692,9 @@ public protocol OCRResult {
     case nationality
     case documentNumber
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [TWHealthResult.DataType]
+    public typealias AllCases = [AuthMe.TWHealthResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [TWHealthResult.DataType] {
+    public static var allCases: [AuthMe.TWHealthResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -704,8 +703,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class JPNIDCardResult : OCRBaseResult<JPNIDCardResult.DataType> {
-  override public func get(type: JPNIDCardResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class JPNIDCardResult : AuthMe.OCRBaseResult<AuthMe.JPNIDCardResult.DataType> {
+  override public func get(type: AuthMe.JPNIDCardResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case name
     case address
@@ -715,9 +714,9 @@ public protocol OCRResult {
     case idNumber
     case age
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [JPNIDCardResult.DataType]
+    public typealias AllCases = [AuthMe.JPNIDCardResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [JPNIDCardResult.DataType] {
+    public static var allCases: [AuthMe.JPNIDCardResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -726,8 +725,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class JPNIDCardNFCResult : OCRBaseResult<JPNIDCardNFCResult.DataType> {
-  override public func get(type: JPNIDCardNFCResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class JPNIDCardNFCResult : AuthMe.OCRBaseResult<AuthMe.JPNIDCardNFCResult.DataType> {
+  override public func get(type: AuthMe.JPNIDCardNFCResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case name
     case address
@@ -736,9 +735,9 @@ public protocol OCRResult {
     case idNumber
     case expiryDate
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [JPNIDCardNFCResult.DataType]
+    public typealias AllCases = [AuthMe.JPNIDCardNFCResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [JPNIDCardNFCResult.DataType] {
+    public static var allCases: [AuthMe.JPNIDCardNFCResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -748,8 +747,8 @@ public protocol OCRResult {
   convenience public init(data: [Swift.String : Swift.String], image: UIKit.UIImage)
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class JPNDriverLicenseResult : OCRBaseResult<JPNDriverLicenseResult.DataType> {
-  override public func get(type: JPNDriverLicenseResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class JPNDriverLicenseResult : AuthMe.OCRBaseResult<AuthMe.JPNDriverLicenseResult.DataType> {
+  override public func get(type: AuthMe.JPNDriverLicenseResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case name
     case dateOfBirth
@@ -759,9 +758,9 @@ public protocol OCRResult {
     case documentNumber
     case age
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [JPNDriverLicenseResult.DataType]
+    public typealias AllCases = [AuthMe.JPNDriverLicenseResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [JPNDriverLicenseResult.DataType] {
+    public static var allCases: [AuthMe.JPNDriverLicenseResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -770,8 +769,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class JPNDriverLicenseNFCResult : OCRBaseResult<JPNDriverLicenseNFCResult.DataType> {
-  override public func get(type: JPNDriverLicenseNFCResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class JPNDriverLicenseNFCResult : AuthMe.OCRBaseResult<AuthMe.JPNDriverLicenseNFCResult.DataType> {
+  override public func get(type: AuthMe.JPNDriverLicenseNFCResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case cardManufacturerIdentifier
@@ -813,9 +812,9 @@ public protocol OCRResult {
     case trailerLicenceDate
     case uniformName
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [JPNDriverLicenseNFCResult.DataType]
+    public typealias AllCases = [AuthMe.JPNDriverLicenseNFCResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [JPNDriverLicenseNFCResult.DataType] {
+    public static var allCases: [AuthMe.JPNDriverLicenseNFCResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -826,8 +825,8 @@ public protocol OCRResult {
   public func setScanID(_ scanID: Swift.String)
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class JPNResidentCardResult : OCRBaseResult<JPNResidentCardResult.DataType> {
-  override public func get(type: JPNResidentCardResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class JPNResidentCardResult : AuthMe.OCRBaseResult<AuthMe.JPNResidentCardResult.DataType> {
+  override public func get(type: AuthMe.JPNResidentCardResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case name
     case gender
@@ -837,9 +836,9 @@ public protocol OCRResult {
     case address
     case age
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [JPNResidentCardResult.DataType]
+    public typealias AllCases = [AuthMe.JPNResidentCardResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [JPNResidentCardResult.DataType] {
+    public static var allCases: [AuthMe.JPNResidentCardResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -848,8 +847,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class JPNResidentCardNFCResult : OCRBaseResult<JPNResidentCardNFCResult.DataType> {
-  override public func get(type: JPNResidentCardNFCResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class JPNResidentCardNFCResult : AuthMe.OCRBaseResult<AuthMe.JPNResidentCardNFCResult.DataType> {
+  override public func get(type: AuthMe.JPNResidentCardNFCResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case name
     case gender
@@ -863,9 +862,9 @@ public protocol OCRResult {
     case expiryDate
     case periodOfStay
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [JPNResidentCardNFCResult.DataType]
+    public typealias AllCases = [AuthMe.JPNResidentCardNFCResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [JPNResidentCardNFCResult.DataType] {
+    public static var allCases: [AuthMe.JPNResidentCardNFCResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -876,8 +875,8 @@ public protocol OCRResult {
   public func setScanID(_ scanID: Swift.String)
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class USAIDCardResult : OCRBaseResult<USAIDCardResult.DataType> {
-  override public func get(type: USAIDCardResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class USAIDCardResult : AuthMe.OCRBaseResult<AuthMe.USAIDCardResult.DataType> {
+  override public func get(type: AuthMe.USAIDCardResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case country
@@ -892,9 +891,9 @@ public protocol OCRResult {
     case region
     case surname
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [USAIDCardResult.DataType]
+    public typealias AllCases = [AuthMe.USAIDCardResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [USAIDCardResult.DataType] {
+    public static var allCases: [AuthMe.USAIDCardResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -903,8 +902,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class USADriverLicenseResult : OCRBaseResult<USADriverLicenseResult.DataType> {
-  override public func get(type: USADriverLicenseResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class USADriverLicenseResult : AuthMe.OCRBaseResult<AuthMe.USADriverLicenseResult.DataType> {
+  override public func get(type: AuthMe.USADriverLicenseResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case country
@@ -919,9 +918,9 @@ public protocol OCRResult {
     case region
     case surname
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [USADriverLicenseResult.DataType]
+    public typealias AllCases = [AuthMe.USADriverLicenseResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [USADriverLicenseResult.DataType] {
+    public static var allCases: [AuthMe.USADriverLicenseResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -930,8 +929,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class USAVisitorVISAResult : OCRBaseResult<USAVisitorVISAResult.DataType> {
-  override public func get(type: USAVisitorVISAResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class USAVisitorVISAResult : AuthMe.OCRBaseResult<AuthMe.USAVisitorVISAResult.DataType> {
+  override public func get(type: AuthMe.USAVisitorVISAResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case country
@@ -942,9 +941,9 @@ public protocol OCRResult {
     case name
     case surname
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [USAVisitorVISAResult.DataType]
+    public typealias AllCases = [AuthMe.USAVisitorVISAResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [USAVisitorVISAResult.DataType] {
+    public static var allCases: [AuthMe.USAVisitorVISAResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -953,8 +952,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class IDNIDCardResult : OCRBaseResult<IDNIDCardResult.DataType> {
-  override public func get(type: IDNIDCardResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class IDNIDCardResult : AuthMe.OCRBaseResult<AuthMe.IDNIDCardResult.DataType> {
+  override public func get(type: AuthMe.IDNIDCardResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case dateOfBirth
@@ -967,9 +966,9 @@ public protocol OCRResult {
     case placeOfBirth
     case surname
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [IDNIDCardResult.DataType]
+    public typealias AllCases = [AuthMe.IDNIDCardResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [IDNIDCardResult.DataType] {
+    public static var allCases: [AuthMe.IDNIDCardResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -978,8 +977,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class IDNDriverLicenseResult : OCRBaseResult<IDNDriverLicenseResult.DataType> {
-  override public func get(type: IDNDriverLicenseResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class IDNDriverLicenseResult : AuthMe.OCRBaseResult<AuthMe.IDNDriverLicenseResult.DataType> {
+  override public func get(type: AuthMe.IDNDriverLicenseResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case dateOfBirth
@@ -991,9 +990,9 @@ public protocol OCRResult {
     case placeOfBirth
     case surname
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [IDNDriverLicenseResult.DataType]
+    public typealias AllCases = [AuthMe.IDNDriverLicenseResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [IDNDriverLicenseResult.DataType] {
+    public static var allCases: [AuthMe.IDNDriverLicenseResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1002,8 +1001,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class INDIDCardResult : OCRBaseResult<INDIDCardResult.DataType> {
-  override public func get(type: INDIDCardResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class INDIDCardResult : AuthMe.OCRBaseResult<AuthMe.INDIDCardResult.DataType> {
+  override public func get(type: AuthMe.INDIDCardResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case dateOfBirth
@@ -1016,9 +1015,9 @@ public protocol OCRResult {
     case placeOfBirth
     case surname
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [INDIDCardResult.DataType]
+    public typealias AllCases = [AuthMe.INDIDCardResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [INDIDCardResult.DataType] {
+    public static var allCases: [AuthMe.INDIDCardResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1027,8 +1026,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class INDDriverLicenseResult : OCRBaseResult<INDDriverLicenseResult.DataType> {
-  override public func get(type: INDDriverLicenseResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class INDDriverLicenseResult : AuthMe.OCRBaseResult<AuthMe.INDDriverLicenseResult.DataType> {
+  override public func get(type: AuthMe.INDDriverLicenseResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case dateOfBirth
@@ -1040,9 +1039,9 @@ public protocol OCRResult {
     case placeOfBirth
     case surname
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [INDDriverLicenseResult.DataType]
+    public typealias AllCases = [AuthMe.INDDriverLicenseResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [INDDriverLicenseResult.DataType] {
+    public static var allCases: [AuthMe.INDDriverLicenseResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1051,8 +1050,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class MYIDCardResult : OCRBaseResult<MYIDCardResult.DataType> {
-  override public func get(type: MYIDCardResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class MYIDCardResult : AuthMe.OCRBaseResult<AuthMe.MYIDCardResult.DataType> {
+  override public func get(type: AuthMe.MYIDCardResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case dateOfBirth
@@ -1065,9 +1064,9 @@ public protocol OCRResult {
     case placeOfBirth
     case surname
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [MYIDCardResult.DataType]
+    public typealias AllCases = [AuthMe.MYIDCardResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [MYIDCardResult.DataType] {
+    public static var allCases: [AuthMe.MYIDCardResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1076,8 +1075,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class MYDriverLicenseResult : OCRBaseResult<MYDriverLicenseResult.DataType> {
-  override public func get(type: MYDriverLicenseResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class MYDriverLicenseResult : AuthMe.OCRBaseResult<AuthMe.MYDriverLicenseResult.DataType> {
+  override public func get(type: AuthMe.MYDriverLicenseResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case dateOfBirth
@@ -1089,9 +1088,9 @@ public protocol OCRResult {
     case placeOfBirth
     case surname
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [MYDriverLicenseResult.DataType]
+    public typealias AllCases = [AuthMe.MYDriverLicenseResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [MYDriverLicenseResult.DataType] {
+    public static var allCases: [AuthMe.MYDriverLicenseResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1100,8 +1099,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class HKIDCardResult : OCRBaseResult<HKIDCardResult.DataType> {
-  override public func get(type: HKIDCardResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class HKIDCardResult : AuthMe.OCRBaseResult<AuthMe.HKIDCardResult.DataType> {
+  override public func get(type: AuthMe.HKIDCardResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case dateOfBirth
@@ -1114,9 +1113,9 @@ public protocol OCRResult {
     case placeOfBirth
     case surname
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [HKIDCardResult.DataType]
+    public typealias AllCases = [AuthMe.HKIDCardResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [HKIDCardResult.DataType] {
+    public static var allCases: [AuthMe.HKIDCardResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1125,8 +1124,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class HKDriverLicenseResult : OCRBaseResult<HKDriverLicenseResult.DataType> {
-  override public func get(type: HKDriverLicenseResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class HKDriverLicenseResult : AuthMe.OCRBaseResult<AuthMe.HKDriverLicenseResult.DataType> {
+  override public func get(type: AuthMe.HKDriverLicenseResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case dateOfBirth
@@ -1138,9 +1137,9 @@ public protocol OCRResult {
     case placeOfBirth
     case surname
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [HKDriverLicenseResult.DataType]
+    public typealias AllCases = [AuthMe.HKDriverLicenseResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [HKDriverLicenseResult.DataType] {
+    public static var allCases: [AuthMe.HKDriverLicenseResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1149,8 +1148,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class UKIDCardResult : OCRBaseResult<UKIDCardResult.DataType> {
-  override public func get(type: UKIDCardResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class UKIDCardResult : AuthMe.OCRBaseResult<AuthMe.UKIDCardResult.DataType> {
+  override public func get(type: AuthMe.UKIDCardResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case dateOfBirth
@@ -1163,9 +1162,9 @@ public protocol OCRResult {
     case placeOfBirth
     case surname
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [UKIDCardResult.DataType]
+    public typealias AllCases = [AuthMe.UKIDCardResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [UKIDCardResult.DataType] {
+    public static var allCases: [AuthMe.UKIDCardResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1174,8 +1173,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class UKDriverLicenseResult : OCRBaseResult<UKDriverLicenseResult.DataType> {
-  override public func get(type: UKDriverLicenseResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class UKDriverLicenseResult : AuthMe.OCRBaseResult<AuthMe.UKDriverLicenseResult.DataType> {
+  override public func get(type: AuthMe.UKDriverLicenseResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case dateOfBirth
@@ -1187,9 +1186,9 @@ public protocol OCRResult {
     case placeOfBirth
     case surname
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [UKDriverLicenseResult.DataType]
+    public typealias AllCases = [AuthMe.UKDriverLicenseResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [UKDriverLicenseResult.DataType] {
+    public static var allCases: [AuthMe.UKDriverLicenseResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1198,8 +1197,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class EGIDCardResult : OCRBaseResult<EGIDCardResult.DataType> {
-  override public func get(type: EGIDCardResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class EGIDCardResult : AuthMe.OCRBaseResult<AuthMe.EGIDCardResult.DataType> {
+  override public func get(type: AuthMe.EGIDCardResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case dateOfBirth
@@ -1212,9 +1211,9 @@ public protocol OCRResult {
     case placeOfBirth
     case surname
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [EGIDCardResult.DataType]
+    public typealias AllCases = [AuthMe.EGIDCardResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [EGIDCardResult.DataType] {
+    public static var allCases: [AuthMe.EGIDCardResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1223,8 +1222,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class EGDriverLicenseResult : OCRBaseResult<EGDriverLicenseResult.DataType> {
-  override public func get(type: EGDriverLicenseResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class EGDriverLicenseResult : AuthMe.OCRBaseResult<AuthMe.EGDriverLicenseResult.DataType> {
+  override public func get(type: AuthMe.EGDriverLicenseResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case dateOfBirth
@@ -1236,9 +1235,9 @@ public protocol OCRResult {
     case placeOfBirth
     case surname
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [EGDriverLicenseResult.DataType]
+    public typealias AllCases = [AuthMe.EGDriverLicenseResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [EGDriverLicenseResult.DataType] {
+    public static var allCases: [AuthMe.EGDriverLicenseResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1247,8 +1246,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class SAIDCardResult : OCRBaseResult<SAIDCardResult.DataType> {
-  override public func get(type: SAIDCardResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class SAIDCardResult : AuthMe.OCRBaseResult<AuthMe.SAIDCardResult.DataType> {
+  override public func get(type: AuthMe.SAIDCardResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case dateOfBirth
@@ -1261,9 +1260,9 @@ public protocol OCRResult {
     case placeOfBirth
     case surname
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [SAIDCardResult.DataType]
+    public typealias AllCases = [AuthMe.SAIDCardResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [SAIDCardResult.DataType] {
+    public static var allCases: [AuthMe.SAIDCardResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1272,8 +1271,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class SADriverLicenseResult : OCRBaseResult<SADriverLicenseResult.DataType> {
-  override public func get(type: SADriverLicenseResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class SADriverLicenseResult : AuthMe.OCRBaseResult<AuthMe.SADriverLicenseResult.DataType> {
+  override public func get(type: AuthMe.SADriverLicenseResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case dateOfBirth
@@ -1285,9 +1284,9 @@ public protocol OCRResult {
     case placeOfBirth
     case surname
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [SADriverLicenseResult.DataType]
+    public typealias AllCases = [AuthMe.SADriverLicenseResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [SADriverLicenseResult.DataType] {
+    public static var allCases: [AuthMe.SADriverLicenseResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1296,8 +1295,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class NLIDCardResult : OCRBaseResult<NLIDCardResult.DataType> {
-  override public func get(type: NLIDCardResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class NLIDCardResult : AuthMe.OCRBaseResult<AuthMe.NLIDCardResult.DataType> {
+  override public func get(type: AuthMe.NLIDCardResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case dateOfBirth
@@ -1310,9 +1309,9 @@ public protocol OCRResult {
     case placeOfBirth
     case surname
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [NLIDCardResult.DataType]
+    public typealias AllCases = [AuthMe.NLIDCardResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [NLIDCardResult.DataType] {
+    public static var allCases: [AuthMe.NLIDCardResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1321,8 +1320,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class NLDriverLicenseResult : OCRBaseResult<NLDriverLicenseResult.DataType> {
-  override public func get(type: NLDriverLicenseResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class NLDriverLicenseResult : AuthMe.OCRBaseResult<AuthMe.NLDriverLicenseResult.DataType> {
+  override public func get(type: AuthMe.NLDriverLicenseResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case dateOfBirth
@@ -1334,9 +1333,9 @@ public protocol OCRResult {
     case placeOfBirth
     case surname
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [NLDriverLicenseResult.DataType]
+    public typealias AllCases = [AuthMe.NLDriverLicenseResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [NLDriverLicenseResult.DataType] {
+    public static var allCases: [AuthMe.NLDriverLicenseResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1345,8 +1344,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class SGIDCardResult : OCRBaseResult<SGIDCardResult.DataType> {
-  override public func get(type: SGIDCardResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class SGIDCardResult : AuthMe.OCRBaseResult<AuthMe.SGIDCardResult.DataType> {
+  override public func get(type: AuthMe.SGIDCardResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case dateOfBirth
@@ -1359,9 +1358,9 @@ public protocol OCRResult {
     case placeOfBirth
     case surname
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [SGIDCardResult.DataType]
+    public typealias AllCases = [AuthMe.SGIDCardResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [SGIDCardResult.DataType] {
+    public static var allCases: [AuthMe.SGIDCardResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1370,8 +1369,8 @@ public protocol OCRResult {
   }
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class SGDriverLicenseResult : OCRBaseResult<SGDriverLicenseResult.DataType> {
-  override public func get(type: SGDriverLicenseResult.DataType) -> Swift.String
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class SGDriverLicenseResult : AuthMe.OCRBaseResult<AuthMe.SGDriverLicenseResult.DataType> {
+  override public func get(type: AuthMe.SGDriverLicenseResult.DataType) -> Swift.String
   public enum DataType : Swift.String, Swift.CaseIterable {
     case address
     case dateOfBirth
@@ -1383,9 +1382,9 @@ public protocol OCRResult {
     case placeOfBirth
     case surname
     public init?(rawValue: Swift.String)
-    public typealias AllCases = [SGDriverLicenseResult.DataType]
+    public typealias AllCases = [AuthMe.SGDriverLicenseResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [SGDriverLicenseResult.DataType] {
+    public static var allCases: [AuthMe.SGDriverLicenseResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1432,35 +1431,35 @@ public enum ScanType : Swift.String, Swift.Codable {
   case NLDDriverLicense
   case SGPID
   case SGPDriverLicense
-  public func getOCRCardType() -> OCRCardType
+  public func getOCRCardType() -> AuthMe.OCRCardType
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
 }
-@_inheritsConvenienceInitializers public class JPNNFCResidentCardFlow : BaseFlow {
-  override public init(scanType: ScanType, needConfirm: Swift.Bool)
+@_inheritsConvenienceInitializers public class JPNNFCResidentCardFlow : AuthMe.BaseFlow {
+  override public init(scanType: AuthMe.ScanType, needConfirm: Swift.Bool)
   @objc deinit
 }
-extension JPNNFCResidentCardFlow : ScanDocProtocol {
-  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
-  public func prepareScan(handler: @escaping (Swift.Result<(cardType: [ScanDocCardType], info: SessionInfo, expiredIn: Foundation.TimeInterval), OCRError>) -> Swift.Void)
+extension AuthMe.JPNNFCResidentCardFlow : AuthMe.ScanDocProtocol {
+  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, AuthMe.OCRError>) -> Swift.Void)?)
+  public func prepareScan(handler: @escaping (Swift.Result<(cardType: [AuthMe.ScanDocCardType], info: AuthMe.SessionInfo, expiredIn: Foundation.TimeInterval), AuthMe.OCRError>) -> Swift.Void)
   public func setPreviewSize(_ previewSize: CoreFoundation.CGSize)
-  public func start(enableUploadFullFrame enable: Swift.Bool? = nil, handler: @escaping (Swift.Result<OCRInitScanDocResponse, OCRError>) -> Swift.Void)
-  public func getCardMatchROI() -> CardMatchROI?
-  public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (AuthmeOCRResult<OCRScanResult, ()?, OCRError>) -> Swift.Void)
-  public func onGetIDCardFraudPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRIDCardFraudStage, OCRError>) -> Swift.Void)
-  public func restart() -> OCRError?
-  public func recognize(handler: @escaping (Swift.Result<OCRScanResult, OCRError>) -> Swift.Void)
-  public func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
-  public func getStatus() -> (scanDocs: [ScanDocCardType], processing: ScanDocCardType)
-  public func stopScan() -> (any OCRResult)?
-  public func abortScan(completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  public func start(enableUploadFullFrame enable: Swift.Bool? = nil, handler: @escaping (Swift.Result<AuthMe.OCRInitScanDocResponse, AuthMe.OCRError>) -> Swift.Void)
+  public func getCardMatchROI() -> AuthMe.CardMatchROI?
+  public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (AuthMe.AuthmeOCRResult<AuthMe.OCRScanResult, ()?, AuthMe.OCRError>) -> Swift.Void)
+  public func onGetIDCardFraudPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<AuthMe.OCRIDCardFraudStage, AuthMe.OCRError>) -> Swift.Void)
+  public func restart() -> AuthMe.OCRError?
+  public func recognize(handler: @escaping (Swift.Result<AuthMe.OCRScanResult, AuthMe.OCRError>) -> Swift.Void)
+  public func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, AuthMe.OCRError>) -> Swift.Void)
+  public func getStatus() -> (scanDocs: [AuthMe.ScanDocCardType], processing: AuthMe.ScanDocCardType)
+  public func stopScan() -> (any AuthMe.OCRResult)?
+  public func abortScan(completion: @escaping (Swift.Result<Swift.Void, AuthMe.OCRError>) -> Swift.Void)
   public func addResult(_ result: [Swift.String : Swift.String])
   public func addImage(_ image: UIKit.UIImage?)
-  public func onGetThicknessPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<(stage: OCRIDCardFraudStage, cropImage: UIKit.UIImage), OCRError>) -> Swift.Void)
-  public func onGetThicknessManualData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, OCRError>) -> Swift.Void)
+  public func onGetThicknessPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<(stage: AuthMe.OCRIDCardFraudStage, cropImage: UIKit.UIImage), AuthMe.OCRError>) -> Swift.Void)
+  public func onGetThicknessManualData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, AuthMe.OCRError>) -> Swift.Void)
 }
 @_hasMissingDesignatedInitializers public class HKVIZClassifier {
   #if compiler(>=5.3) && $AsyncAwait
@@ -1486,12 +1485,12 @@ public enum JWTDecodeError : Foundation.LocalizedError, Swift.CustomDebugStringC
 }
 public class OCRScanDocFactory {
   public init()
-  public func prepare(scanType: ScanType, eventName: Swift.String, needConfirm: Swift.Bool, isNFCOffline: Swift.Bool) -> any ScanDocProtocol
+  public func prepare(scanType: AuthMe.ScanType, eventName: Swift.String, needConfirm: Swift.Bool, isNFCOffline: Swift.Bool) -> any AuthMe.ScanDocProtocol
   @objc deinit
 }
 public protocol LivenessFlowProtocol {
-  func setDelegate(_ delegate: any LivenessFlowDelegate)
-  func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, FlowError>) -> Swift.Void)?)
+  func setDelegate(_ delegate: any AuthMe.LivenessFlowDelegate)
+  func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, AuthMe.FlowError>) -> Swift.Void)?)
   func setPreviewSize(previewSize: CoreFoundation.CGSize)
   func start(encrypt: Swift.Bool)
   func roiRect(in previewSize: CoreFoundation.CGSize) -> CoreFoundation.CGRect
@@ -1502,14 +1501,14 @@ public protocol LivenessFlowProtocol {
   func cancelExpired()
   func enableUploadFullFrame()
 }
-extension LivenessFlowProtocol {
+extension AuthMe.LivenessFlowProtocol {
   public func recognize(normal normalImage: UIKit.UIImage, depthImage: UIKit.UIImage)
 }
 public class LivenessFactory {
   public init()
-  public func prepare(with action: Action = .register(waitResult: true)) -> any LivenessFlowProtocol
-  public func preparePlayground() -> any LivenessFlowProtocol
-  public func prepareRecordPlayground() -> any LivenessFlowProtocol
+  public func prepare(with action: AuthMe.Action = .register(waitResult: true)) -> any AuthMe.LivenessFlowProtocol
+  public func preparePlayground() -> any AuthMe.LivenessFlowProtocol
+  public func prepareRecordPlayground() -> any AuthMe.LivenessFlowProtocol
   @objc deinit
 }
 public enum Action {
@@ -1520,59 +1519,59 @@ public enum FlowError : Swift.Error {
   case checkModel
   case start
   case recognize
-  case service(FlowError.Endpoint, code: Swift.String?)
+  case service(AuthMe.FlowError.Endpoint, code: Swift.String?)
   case expiredIn
   public enum Endpoint {
     case `init`
     case detect
     case verify
-    public static func == (a: FlowError.Endpoint, b: FlowError.Endpoint) -> Swift.Bool
+    public static func == (a: AuthMe.FlowError.Endpoint, b: AuthMe.FlowError.Endpoint) -> Swift.Bool
     public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
   }
 }
-@_hasMissingDesignatedInitializers public class OnlineMode : FrameworkMode {
+@_hasMissingDesignatedInitializers public class OnlineMode : AuthMe.FrameworkMode {
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers public class AuthmeCoreOnlineBuilder : ObjectiveC.NSObject {
-  public func setAccessToken(_ accessToken: Swift.String) -> AuthmeCoreOnlineBuilder
-  public func setConfig(_ config: AuthMeConfig) -> AuthmeCoreOnlineBuilder
+  public func setAccessToken(_ accessToken: Swift.String) -> AuthMe.AuthmeCoreOnlineBuilder
+  public func setConfig(_ config: AuthMe.AuthMeConfig) -> AuthMe.AuthmeCoreOnlineBuilder
   public func build() -> Swift.Result<Swift.Void, any Swift.Error>
   @objc override dynamic public init()
   @objc deinit
 }
-public protocol LivenessPlaygroundRecordFlowDelegate : LivenessFlowDelegate {
+public protocol LivenessPlaygroundRecordFlowDelegate : AuthMe.LivenessFlowDelegate {
   func livenessDidNotifyMessage(message: Swift.String)
   func livenessDidUpdateReconize(result: Swift.Bool)
-  func livenessDidFailureWith(error: FlowError, retryHandler: @escaping (() -> Swift.Void))
+  func livenessDidFailureWith(error: AuthMe.FlowError, retryHandler: @escaping (() -> Swift.Void))
   func livenessDidRecognize(image: UIKit.UIImage)
-  func livenessDidFaceScale(direction: LivenessFlow.FaceScaleDirection.Direction)
+  func livenessDidFaceScale(direction: AuthMe.LivenessFlow.FaceScaleDirection.Direction)
   func livenessDidProcessed(jsonString: Swift.String)
 }
 public class JPIDNFCCardFlow {
-  public init(scanType: ScanType, needConfirm: Swift.Bool)
+  public init(scanType: AuthMe.ScanType, needConfirm: Swift.Bool)
   @objc deinit
 }
-extension JPIDNFCCardFlow : ScanDocProtocol {
-  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
-  public func prepareScan(handler: @escaping (Swift.Result<(cardType: [ScanDocCardType], info: SessionInfo, expiredIn: Foundation.TimeInterval), OCRError>) -> Swift.Void)
+extension AuthMe.JPIDNFCCardFlow : AuthMe.ScanDocProtocol {
+  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, AuthMe.OCRError>) -> Swift.Void)?)
+  public func prepareScan(handler: @escaping (Swift.Result<(cardType: [AuthMe.ScanDocCardType], info: AuthMe.SessionInfo, expiredIn: Foundation.TimeInterval), AuthMe.OCRError>) -> Swift.Void)
   public func setPreviewSize(_ previewSize: CoreFoundation.CGSize)
-  public func start(enableUploadFullFrame enable: Swift.Bool? = nil, handler: @escaping (Swift.Result<OCRInitScanDocResponse, OCRError>) -> Swift.Void)
-  public func getCardMatchROI() -> CardMatchROI?
-  public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (AuthmeOCRResult<OCRScanResult, ()?, OCRError>) -> Swift.Void)
-  public func onGetIDCardFraudPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRIDCardFraudStage, OCRError>) -> Swift.Void)
-  public func restart() -> OCRError?
-  public func recognize(handler: @escaping (Swift.Result<OCRScanResult, OCRError>) -> Swift.Void)
-  public func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
-  public func getStatus() -> (scanDocs: [ScanDocCardType], processing: ScanDocCardType)
-  public func stopScan() -> (any OCRResult)?
-  public func abortScan(completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  public func start(enableUploadFullFrame enable: Swift.Bool? = nil, handler: @escaping (Swift.Result<AuthMe.OCRInitScanDocResponse, AuthMe.OCRError>) -> Swift.Void)
+  public func getCardMatchROI() -> AuthMe.CardMatchROI?
+  public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (AuthMe.AuthmeOCRResult<AuthMe.OCRScanResult, ()?, AuthMe.OCRError>) -> Swift.Void)
+  public func onGetIDCardFraudPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<AuthMe.OCRIDCardFraudStage, AuthMe.OCRError>) -> Swift.Void)
+  public func restart() -> AuthMe.OCRError?
+  public func recognize(handler: @escaping (Swift.Result<AuthMe.OCRScanResult, AuthMe.OCRError>) -> Swift.Void)
+  public func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, AuthMe.OCRError>) -> Swift.Void)
+  public func getStatus() -> (scanDocs: [AuthMe.ScanDocCardType], processing: AuthMe.ScanDocCardType)
+  public func stopScan() -> (any AuthMe.OCRResult)?
+  public func abortScan(completion: @escaping (Swift.Result<Swift.Void, AuthMe.OCRError>) -> Swift.Void)
   public func addResult(_ result: [Swift.String : Swift.String])
   public func addImage(_ image: UIKit.UIImage?)
-  public func onGetThicknessPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<(stage: OCRIDCardFraudStage, cropImage: UIKit.UIImage), OCRError>) -> Swift.Void)
-  public func onGetThicknessManualData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, OCRError>) -> Swift.Void)
+  public func onGetThicknessPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<(stage: AuthMe.OCRIDCardFraudStage, cropImage: UIKit.UIImage), AuthMe.OCRError>) -> Swift.Void)
+  public func onGetThicknessManualData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, AuthMe.OCRError>) -> Swift.Void)
 }
 public class EncryptHelper {
   public init()
@@ -1589,47 +1588,47 @@ extension UIKit.UIDevice {
   @_Concurrency.MainActor(unsafe) public static let modelName: Swift.String
 }
 public class BaseFlow {
-  public init(scanType: ScanType, needConfirm: Swift.Bool)
+  public init(scanType: AuthMe.ScanType, needConfirm: Swift.Bool)
   @objc deinit
 }
-@_inheritsConvenienceInitializers public class JPNNFCDriverLicenseFlow : BaseFlow {
-  override public init(scanType: ScanType, needConfirm: Swift.Bool)
+@_inheritsConvenienceInitializers public class JPNNFCDriverLicenseFlow : AuthMe.BaseFlow {
+  override public init(scanType: AuthMe.ScanType, needConfirm: Swift.Bool)
   @objc deinit
 }
-extension JPNNFCDriverLicenseFlow : ScanDocProtocol {
-  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
-  public func prepareScan(handler: @escaping (Swift.Result<(cardType: [ScanDocCardType], info: SessionInfo, expiredIn: Foundation.TimeInterval), OCRError>) -> Swift.Void)
+extension AuthMe.JPNNFCDriverLicenseFlow : AuthMe.ScanDocProtocol {
+  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, AuthMe.OCRError>) -> Swift.Void)?)
+  public func prepareScan(handler: @escaping (Swift.Result<(cardType: [AuthMe.ScanDocCardType], info: AuthMe.SessionInfo, expiredIn: Foundation.TimeInterval), AuthMe.OCRError>) -> Swift.Void)
   public func setPreviewSize(_ previewSize: CoreFoundation.CGSize)
-  public func start(enableUploadFullFrame enable: Swift.Bool? = nil, handler: @escaping (Swift.Result<OCRInitScanDocResponse, OCRError>) -> Swift.Void)
-  public func getCardMatchROI() -> CardMatchROI?
-  public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (AuthmeOCRResult<OCRScanResult, ()?, OCRError>) -> Swift.Void)
-  public func onGetIDCardFraudPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRIDCardFraudStage, OCRError>) -> Swift.Void)
-  public func restart() -> OCRError?
-  public func recognize(handler: @escaping (Swift.Result<OCRScanResult, OCRError>) -> Swift.Void)
-  public func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
-  public func getStatus() -> (scanDocs: [ScanDocCardType], processing: ScanDocCardType)
-  public func stopScan() -> (any OCRResult)?
-  public func abortScan(completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  public func start(enableUploadFullFrame enable: Swift.Bool? = nil, handler: @escaping (Swift.Result<AuthMe.OCRInitScanDocResponse, AuthMe.OCRError>) -> Swift.Void)
+  public func getCardMatchROI() -> AuthMe.CardMatchROI?
+  public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (AuthMe.AuthmeOCRResult<AuthMe.OCRScanResult, ()?, AuthMe.OCRError>) -> Swift.Void)
+  public func onGetIDCardFraudPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<AuthMe.OCRIDCardFraudStage, AuthMe.OCRError>) -> Swift.Void)
+  public func restart() -> AuthMe.OCRError?
+  public func recognize(handler: @escaping (Swift.Result<AuthMe.OCRScanResult, AuthMe.OCRError>) -> Swift.Void)
+  public func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, AuthMe.OCRError>) -> Swift.Void)
+  public func getStatus() -> (scanDocs: [AuthMe.ScanDocCardType], processing: AuthMe.ScanDocCardType)
+  public func stopScan() -> (any AuthMe.OCRResult)?
+  public func abortScan(completion: @escaping (Swift.Result<Swift.Void, AuthMe.OCRError>) -> Swift.Void)
   public func addResult(_ result: [Swift.String : Swift.String])
   public func addImage(_ image: UIKit.UIImage?)
-  public func onGetThicknessPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<(stage: OCRIDCardFraudStage, cropImage: UIKit.UIImage), OCRError>) -> Swift.Void)
-  public func onGetThicknessManualData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, OCRError>) -> Swift.Void)
+  public func onGetThicknessPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<(stage: AuthMe.OCRIDCardFraudStage, cropImage: UIKit.UIImage), AuthMe.OCRError>) -> Swift.Void)
+  public func onGetThicknessManualData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, AuthMe.OCRError>) -> Swift.Void)
 }
-public protocol LivenessPlaygroundFlowDelegate : LivenessFlowDelegate {
-  func livenessDidNotifyMessage(status: LivenessDetectStatus)
+public protocol LivenessPlaygroundFlowDelegate : AuthMe.LivenessFlowDelegate {
+  func livenessDidNotifyMessage(status: AuthMe.LivenessDetectStatus)
   func livenessDidUpdateReconize(result: Swift.Bool)
-  func livenessDidFailureWith(error: FlowError, retryHandler: @escaping (() -> Swift.Void))
+  func livenessDidFailureWith(error: AuthMe.FlowError, retryHandler: @escaping (() -> Swift.Void))
   func livenessDidRecognize(image: UIKit.UIImage)
   func livenessQueueDidUpload(currentCount: Swift.Int)
 }
 public class LivenessPlaygroundFlow {
-  weak public var delegate: (any LivenessPlaygroundFlowDelegate)?
+  weak public var delegate: (any AuthMe.LivenessPlaygroundFlowDelegate)?
   public init()
   @objc deinit
 }
-extension LivenessPlaygroundFlow : LivenessFlowProtocol {
-  public func setDelegate(_ delegate: any LivenessFlowDelegate)
-  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)? = nil, handler: ((Swift.Result<Swift.Void, FlowError>) -> Swift.Void)?)
+extension AuthMe.LivenessPlaygroundFlow : AuthMe.LivenessFlowProtocol {
+  public func setDelegate(_ delegate: any AuthMe.LivenessFlowDelegate)
+  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)? = nil, handler: ((Swift.Result<Swift.Void, AuthMe.FlowError>) -> Swift.Void)?)
   public func setPreviewSize(previewSize: CoreFoundation.CGSize)
   public func start(encrypt: Swift.Bool)
   public func recognize(image: UIKit.UIImage)
@@ -1644,7 +1643,7 @@ final public class URLEncodedFormEncoder {
     case brackets
     case noBrackets
     case indexInBrackets
-    public static func == (a: URLEncodedFormEncoder.ArrayEncoding, b: URLEncodedFormEncoder.ArrayEncoding) -> Swift.Bool
+    public static func == (a: AuthMe.URLEncodedFormEncoder.ArrayEncoding, b: AuthMe.URLEncodedFormEncoder.ArrayEncoding) -> Swift.Bool
     public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
@@ -1653,7 +1652,7 @@ final public class URLEncodedFormEncoder {
   public enum BoolEncoding {
     case numeric
     case literal
-    public static func == (a: URLEncodedFormEncoder.BoolEncoding, b: URLEncodedFormEncoder.BoolEncoding) -> Swift.Bool
+    public static func == (a: AuthMe.URLEncodedFormEncoder.BoolEncoding, b: AuthMe.URLEncodedFormEncoder.BoolEncoding) -> Swift.Bool
     public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
@@ -1684,7 +1683,7 @@ final public class URLEncodedFormEncoder {
   public enum SpaceEncoding {
     case percentEscaped
     case plusReplaced
-    public static func == (a: URLEncodedFormEncoder.SpaceEncoding, b: URLEncodedFormEncoder.SpaceEncoding) -> Swift.Bool
+    public static func == (a: AuthMe.URLEncodedFormEncoder.SpaceEncoding, b: AuthMe.URLEncodedFormEncoder.SpaceEncoding) -> Swift.Bool
     public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
@@ -1694,14 +1693,14 @@ final public class URLEncodedFormEncoder {
     case invalidRootObject(Swift.String)
   }
   final public let alphabetizeKeyValuePairs: Swift.Bool
-  final public let arrayEncoding: URLEncodedFormEncoder.ArrayEncoding
-  final public let boolEncoding: URLEncodedFormEncoder.BoolEncoding
-  final public let dataEncoding: URLEncodedFormEncoder.DataEncoding
-  final public let dateEncoding: URLEncodedFormEncoder.DateEncoding
-  final public let keyEncoding: URLEncodedFormEncoder.KeyEncoding
-  final public let spaceEncoding: URLEncodedFormEncoder.SpaceEncoding
+  final public let arrayEncoding: AuthMe.URLEncodedFormEncoder.ArrayEncoding
+  final public let boolEncoding: AuthMe.URLEncodedFormEncoder.BoolEncoding
+  final public let dataEncoding: AuthMe.URLEncodedFormEncoder.DataEncoding
+  final public let dateEncoding: AuthMe.URLEncodedFormEncoder.DateEncoding
+  final public let keyEncoding: AuthMe.URLEncodedFormEncoder.KeyEncoding
+  final public let spaceEncoding: AuthMe.URLEncodedFormEncoder.SpaceEncoding
   final public var allowedCharacters: Foundation.CharacterSet
-  public init(alphabetizeKeyValuePairs: Swift.Bool = true, arrayEncoding: URLEncodedFormEncoder.ArrayEncoding = .brackets, boolEncoding: URLEncodedFormEncoder.BoolEncoding = .numeric, dataEncoding: URLEncodedFormEncoder.DataEncoding = .base64, dateEncoding: URLEncodedFormEncoder.DateEncoding = .deferredToDate, keyEncoding: URLEncodedFormEncoder.KeyEncoding = .useDefaultKeys, spaceEncoding: URLEncodedFormEncoder.SpaceEncoding = .percentEscaped, allowedCharacters: Foundation.CharacterSet = .afURLQueryAllowed)
+  public init(alphabetizeKeyValuePairs: Swift.Bool = true, arrayEncoding: AuthMe.URLEncodedFormEncoder.ArrayEncoding = .brackets, boolEncoding: AuthMe.URLEncodedFormEncoder.BoolEncoding = .numeric, dataEncoding: AuthMe.URLEncodedFormEncoder.DataEncoding = .base64, dateEncoding: AuthMe.URLEncodedFormEncoder.DateEncoding = .deferredToDate, keyEncoding: AuthMe.URLEncodedFormEncoder.KeyEncoding = .useDefaultKeys, spaceEncoding: AuthMe.URLEncodedFormEncoder.SpaceEncoding = .percentEscaped, allowedCharacters: Foundation.CharacterSet = .afURLQueryAllowed)
   final public func encode(_ value: any Swift.Encodable) throws -> Swift.String
   final public func encode(_ value: any Swift.Encodable) throws -> Foundation.Data
   @objc deinit
@@ -1723,38 +1722,38 @@ public protocol JWT {
   var identifier: Swift.String? { get }
   var expired: Swift.Bool { get }
 }
-extension JWT {
-  public func claim(name: Swift.String) -> Claim
-  public subscript(claim: Swift.String) -> Claim {
+extension AuthMe.JWT {
+  public func claim(name: Swift.String) -> AuthMe.Claim
+  public subscript(claim: Swift.String) -> AuthMe.Claim {
     get
   }
 }
 public protocol ScanDocProtocol {
-  func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
-  func prepareScan(handler: @escaping (Swift.Result<(cardType: [ScanDocCardType], info: SessionInfo, expiredIn: Foundation.TimeInterval), OCRError>) -> Swift.Void)
+  func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, AuthMe.OCRError>) -> Swift.Void)?)
+  func prepareScan(handler: @escaping (Swift.Result<(cardType: [AuthMe.ScanDocCardType], info: AuthMe.SessionInfo, expiredIn: Foundation.TimeInterval), AuthMe.OCRError>) -> Swift.Void)
   func setPreviewSize(_ previewSize: CoreFoundation.CGSize)
-  func start(enableUploadFullFrame: Swift.Bool?, handler: @escaping (Swift.Result<OCRInitScanDocResponse, OCRError>) -> Swift.Void)
-  func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (AuthmeOCRResult<OCRScanResult, ()?, OCRError>) -> Swift.Void)
-  func getCardMatchROI() -> CardMatchROI?
-  func onGetIDCardFraudPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRIDCardFraudStage, OCRError>) -> Swift.Void)
-  func onGetThicknessPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<(stage: OCRIDCardFraudStage, cropImage: UIKit.UIImage), OCRError>) -> Swift.Void)
-  func onGetThicknessManualData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, OCRError>) -> Swift.Void)
-  func restart() -> OCRError?
-  func recognize(handler: @escaping (Swift.Result<OCRScanResult, OCRError>) -> Swift.Void)
-  func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
-  func recordImageWithBase64(_ image: UIKit.UIImage, progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
-  func getStatus() -> (scanDocs: [ScanDocCardType], processing: ScanDocCardType)
-  func stopScan() -> (any OCRResult)?
-  func abortScan(completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  func start(enableUploadFullFrame: Swift.Bool?, handler: @escaping (Swift.Result<AuthMe.OCRInitScanDocResponse, AuthMe.OCRError>) -> Swift.Void)
+  func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (AuthMe.AuthmeOCRResult<AuthMe.OCRScanResult, ()?, AuthMe.OCRError>) -> Swift.Void)
+  func getCardMatchROI() -> AuthMe.CardMatchROI?
+  func onGetIDCardFraudPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<AuthMe.OCRIDCardFraudStage, AuthMe.OCRError>) -> Swift.Void)
+  func onGetThicknessPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<(stage: AuthMe.OCRIDCardFraudStage, cropImage: UIKit.UIImage), AuthMe.OCRError>) -> Swift.Void)
+  func onGetThicknessManualData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, AuthMe.OCRError>) -> Swift.Void)
+  func restart() -> AuthMe.OCRError?
+  func recognize(handler: @escaping (Swift.Result<AuthMe.OCRScanResult, AuthMe.OCRError>) -> Swift.Void)
+  func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, AuthMe.OCRError>) -> Swift.Void)
+  func recordImageWithBase64(_ image: UIKit.UIImage, progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, AuthMe.OCRError>) -> Swift.Void)
+  func getStatus() -> (scanDocs: [AuthMe.ScanDocCardType], processing: AuthMe.ScanDocCardType)
+  func stopScan() -> (any AuthMe.OCRResult)?
+  func abortScan(completion: @escaping (Swift.Result<Swift.Void, AuthMe.OCRError>) -> Swift.Void)
   func addResult(_ result: [Swift.String : Swift.String])
   func addImage(_ image: UIKit.UIImage?)
-  func startWithoutEngine(cardType: OCRType, handler: @escaping (Swift.Result<OCRInitScanDocResponse, OCRError>) -> Swift.Void)
+  func startWithoutEngine(cardType: AuthMe.OCRType, handler: @escaping (Swift.Result<AuthMe.OCRInitScanDocResponse, AuthMe.OCRError>) -> Swift.Void)
 }
-extension ScanDocProtocol {
-  public func recordImageWithBase64(_ image: UIKit.UIImage, progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+extension AuthMe.ScanDocProtocol {
+  public func recordImageWithBase64(_ image: UIKit.UIImage, progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, AuthMe.OCRError>) -> Swift.Void)
   public func addResult(_ result: [Swift.String : Swift.String])
   public func addImage(_ image: UIKit.UIImage?)
-  public func startWithoutEngine(cardType: OCRType, handler: @escaping (Swift.Result<OCRInitScanDocResponse, OCRError>) -> Swift.Void)
+  public func startWithoutEngine(cardType: AuthMe.OCRType, handler: @escaping (Swift.Result<AuthMe.OCRInitScanDocResponse, AuthMe.OCRError>) -> Swift.Void)
 }
 public struct OCRScanResult {
   public let originalImage: UIKit.UIImage
@@ -1768,7 +1767,7 @@ public enum OCRIDCardFraudStage {
   case up
   case down
   case ocrscan
-  public static func == (a: OCRIDCardFraudStage, b: OCRIDCardFraudStage) -> Swift.Bool
+  public static func == (a: AuthMe.OCRIDCardFraudStage, b: AuthMe.OCRIDCardFraudStage) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
@@ -1778,7 +1777,7 @@ public enum ScanDocStatus {
   case idle
   case processing
   case done
-  public static func == (a: ScanDocStatus, b: ScanDocStatus) -> Swift.Bool
+  public static func == (a: AuthMe.ScanDocStatus, b: AuthMe.ScanDocStatus) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
@@ -1845,7 +1844,7 @@ public enum ScanDocCardType : Swift.String, Swift.Codable {
     get
   }
 }
-extension ScanDocCardType {
+extension AuthMe.ScanDocCardType {
   public func getMaskRect(frame: CoreFoundation.CGRect) -> CoreFoundation.CGRect
 }
 public struct CardMatchROI {
@@ -1854,9 +1853,9 @@ public struct CardMatchROI {
   public let rightUp: CoreFoundation.CGPoint
   public let rightDown: CoreFoundation.CGPoint
 }
-public typealias onlinePassport = OnlineMode.Passport
-extension OnlineMode {
-  public enum Passport : Swift.String, EKYCType {
+public typealias onlinePassport = AuthMe.OnlineMode.Passport
+extension AuthMe.OnlineMode {
+  public enum Passport : Swift.String, AuthMe.EKYCType {
     case Passport
     public init?(rawValue: Swift.String)
     public typealias RawValue = Swift.String
@@ -1865,9 +1864,9 @@ extension OnlineMode {
     }
   }
 }
-public typealias offlinePassport = OfflineMode.Passport
-extension OfflineMode {
-  public enum Passport : Swift.String, EKYCType {
+public typealias offlinePassport = AuthMe.OfflineMode.Passport
+extension AuthMe.OfflineMode {
+  public enum Passport : Swift.String, AuthMe.EKYCType {
     case Passport
     case PassportWithVIZ
     public init?(rawValue: Swift.String)
@@ -1886,157 +1885,157 @@ public class EventHelper {
   public init()
   @objc deinit
   public func stop()
-  public func saveLogWith(sessionInfo: SessionInfo? = nil, info: EventInfo, preEvent: EventInfo? = nil)
-  public func saveLogWithDuration(_ duration: Swift.String = "0", sessionInfo: SessionInfo? = nil, info: EventInfo)
-  public func saveLog(info: EventInfo, sessionId: Swift.String = "", tenantId: Swift.String = "", customerId: Swift.String = "", preEvent: EventInfo? = nil)
+  public func saveLogWith(sessionInfo: AuthMe.SessionInfo? = nil, info: AuthMe.EventInfo, preEvent: AuthMe.EventInfo? = nil)
+  public func saveLogWithDuration(_ duration: Swift.String = "0", sessionInfo: AuthMe.SessionInfo? = nil, info: AuthMe.EventInfo)
+  public func saveLog(info: AuthMe.EventInfo, sessionId: Swift.String = "", tenantId: Swift.String = "", customerId: Swift.String = "", preEvent: AuthMe.EventInfo? = nil)
 }
 public struct EventInfo {
   public init(eventID: Foundation.UUID = UUID(), log: Swift.String, language: Swift.String = "", description: Swift.String = "", extraInfo: Swift.String = "")
 }
-extension LogFAS.LogStage : Swift.Equatable {}
-extension LogFAS.LogStage : Swift.Hashable {}
-extension LogFAS.LogFASResult : Swift.Equatable {}
-extension LogFAS.LogFASResult : Swift.Hashable {}
-extension LogUpload.Event : Swift.Equatable {}
-extension LogUpload.Event : Swift.Hashable {}
-extension LivenessDetectStatus : Swift.Equatable {}
-extension LivenessDetectStatus : Swift.Hashable {}
-extension LivenessFlow.FaceScaleDirection.Direction : Swift.Equatable {}
-extension LivenessFlow.FaceScaleDirection.Direction : Swift.Hashable {}
-extension LogAntiFraud : Swift.Equatable {}
-extension LogAntiFraud : Swift.Hashable {}
-extension LogAntiFraud : Swift.RawRepresentable {}
-extension OCRCardType : Swift.Equatable {}
-extension OCRCardType : Swift.Hashable {}
-extension OCRCardType : Swift.RawRepresentable {}
-extension OCRType : Swift.Equatable {}
-extension OCRType : Swift.Hashable {}
-extension OCRType : Swift.RawRepresentable {}
-extension OCRError : Swift.Equatable {}
-extension OCRError : Swift.Hashable {}
-extension OCRError : Swift.RawRepresentable {}
-extension OCRNotifyMessage : Swift.Equatable {}
-extension OCRNotifyMessage : Swift.Hashable {}
-extension OCRNotifyMessage : Swift.RawRepresentable {}
-extension DebugMessageChannel : Swift.Equatable {}
-extension DebugMessageChannel : Swift.Hashable {}
-extension OCRInitScanDocResponse.OCRScanView.OCRScanViewBorder.OCRScanViewBorderType : Swift.Equatable {}
-extension OCRInitScanDocResponse.OCRScanView.OCRScanViewBorder.OCRScanViewBorderType : Swift.Hashable {}
-extension OCRInitScanDocResponse.OCRScanView.OCRScanViewBorder.OCRScanViewBorderType : Swift.RawRepresentable {}
-extension OCRInitScanDocResponse.OCRScanView.OCRScanViewContent.OCRScanViewContentType : Swift.Equatable {}
-extension OCRInitScanDocResponse.OCRScanView.OCRScanViewContent.OCRScanViewContentType : Swift.Hashable {}
-extension OCRInitScanDocResponse.OCRScanView.OCRScanViewContent.OCRScanViewContentType : Swift.RawRepresentable {}
-extension MRZResult.DataType : Swift.Equatable {}
-extension MRZResult.DataType : Swift.Hashable {}
-extension MRZResult.DataType : Swift.RawRepresentable {}
-extension TWNResidentResult.DataType : Swift.Equatable {}
-extension TWNResidentResult.DataType : Swift.Hashable {}
-extension TWNResidentResult.DataType : Swift.RawRepresentable {}
-extension TWIDResult.DataType : Swift.Equatable {}
-extension TWIDResult.DataType : Swift.Hashable {}
-extension TWIDResult.DataType : Swift.RawRepresentable {}
-extension TWLicenseResult.DataType : Swift.Equatable {}
-extension TWLicenseResult.DataType : Swift.Hashable {}
-extension TWLicenseResult.DataType : Swift.RawRepresentable {}
-extension TWHealthResult.DataType : Swift.Equatable {}
-extension TWHealthResult.DataType : Swift.Hashable {}
-extension TWHealthResult.DataType : Swift.RawRepresentable {}
-extension JPNIDCardResult.DataType : Swift.Equatable {}
-extension JPNIDCardResult.DataType : Swift.Hashable {}
-extension JPNIDCardResult.DataType : Swift.RawRepresentable {}
-extension JPNIDCardNFCResult.DataType : Swift.Equatable {}
-extension JPNIDCardNFCResult.DataType : Swift.Hashable {}
-extension JPNIDCardNFCResult.DataType : Swift.RawRepresentable {}
-extension JPNDriverLicenseResult.DataType : Swift.Equatable {}
-extension JPNDriverLicenseResult.DataType : Swift.Hashable {}
-extension JPNDriverLicenseResult.DataType : Swift.RawRepresentable {}
-extension JPNDriverLicenseNFCResult.DataType : Swift.Equatable {}
-extension JPNDriverLicenseNFCResult.DataType : Swift.Hashable {}
-extension JPNDriverLicenseNFCResult.DataType : Swift.RawRepresentable {}
-extension JPNResidentCardResult.DataType : Swift.Equatable {}
-extension JPNResidentCardResult.DataType : Swift.Hashable {}
-extension JPNResidentCardResult.DataType : Swift.RawRepresentable {}
-extension JPNResidentCardNFCResult.DataType : Swift.Equatable {}
-extension JPNResidentCardNFCResult.DataType : Swift.Hashable {}
-extension JPNResidentCardNFCResult.DataType : Swift.RawRepresentable {}
-extension USAIDCardResult.DataType : Swift.Equatable {}
-extension USAIDCardResult.DataType : Swift.Hashable {}
-extension USAIDCardResult.DataType : Swift.RawRepresentable {}
-extension USADriverLicenseResult.DataType : Swift.Equatable {}
-extension USADriverLicenseResult.DataType : Swift.Hashable {}
-extension USADriverLicenseResult.DataType : Swift.RawRepresentable {}
-extension USAVisitorVISAResult.DataType : Swift.Equatable {}
-extension USAVisitorVISAResult.DataType : Swift.Hashable {}
-extension USAVisitorVISAResult.DataType : Swift.RawRepresentable {}
-extension IDNIDCardResult.DataType : Swift.Equatable {}
-extension IDNIDCardResult.DataType : Swift.Hashable {}
-extension IDNIDCardResult.DataType : Swift.RawRepresentable {}
-extension IDNDriverLicenseResult.DataType : Swift.Equatable {}
-extension IDNDriverLicenseResult.DataType : Swift.Hashable {}
-extension IDNDriverLicenseResult.DataType : Swift.RawRepresentable {}
-extension INDIDCardResult.DataType : Swift.Equatable {}
-extension INDIDCardResult.DataType : Swift.Hashable {}
-extension INDIDCardResult.DataType : Swift.RawRepresentable {}
-extension INDDriverLicenseResult.DataType : Swift.Equatable {}
-extension INDDriverLicenseResult.DataType : Swift.Hashable {}
-extension INDDriverLicenseResult.DataType : Swift.RawRepresentable {}
-extension MYIDCardResult.DataType : Swift.Equatable {}
-extension MYIDCardResult.DataType : Swift.Hashable {}
-extension MYIDCardResult.DataType : Swift.RawRepresentable {}
-extension MYDriverLicenseResult.DataType : Swift.Equatable {}
-extension MYDriverLicenseResult.DataType : Swift.Hashable {}
-extension MYDriverLicenseResult.DataType : Swift.RawRepresentable {}
-extension HKIDCardResult.DataType : Swift.Equatable {}
-extension HKIDCardResult.DataType : Swift.Hashable {}
-extension HKIDCardResult.DataType : Swift.RawRepresentable {}
-extension HKDriverLicenseResult.DataType : Swift.Equatable {}
-extension HKDriverLicenseResult.DataType : Swift.Hashable {}
-extension HKDriverLicenseResult.DataType : Swift.RawRepresentable {}
-extension UKIDCardResult.DataType : Swift.Equatable {}
-extension UKIDCardResult.DataType : Swift.Hashable {}
-extension UKIDCardResult.DataType : Swift.RawRepresentable {}
-extension UKDriverLicenseResult.DataType : Swift.Equatable {}
-extension UKDriverLicenseResult.DataType : Swift.Hashable {}
-extension UKDriverLicenseResult.DataType : Swift.RawRepresentable {}
-extension EGIDCardResult.DataType : Swift.Equatable {}
-extension EGIDCardResult.DataType : Swift.Hashable {}
-extension EGIDCardResult.DataType : Swift.RawRepresentable {}
-extension EGDriverLicenseResult.DataType : Swift.Equatable {}
-extension EGDriverLicenseResult.DataType : Swift.Hashable {}
-extension EGDriverLicenseResult.DataType : Swift.RawRepresentable {}
-extension SAIDCardResult.DataType : Swift.Equatable {}
-extension SAIDCardResult.DataType : Swift.Hashable {}
-extension SAIDCardResult.DataType : Swift.RawRepresentable {}
-extension SADriverLicenseResult.DataType : Swift.Equatable {}
-extension SADriverLicenseResult.DataType : Swift.Hashable {}
-extension SADriverLicenseResult.DataType : Swift.RawRepresentable {}
-extension NLIDCardResult.DataType : Swift.Equatable {}
-extension NLIDCardResult.DataType : Swift.Hashable {}
-extension NLIDCardResult.DataType : Swift.RawRepresentable {}
-extension NLDriverLicenseResult.DataType : Swift.Equatable {}
-extension NLDriverLicenseResult.DataType : Swift.Hashable {}
-extension NLDriverLicenseResult.DataType : Swift.RawRepresentable {}
-extension SGIDCardResult.DataType : Swift.Equatable {}
-extension SGIDCardResult.DataType : Swift.Hashable {}
-extension SGIDCardResult.DataType : Swift.RawRepresentable {}
-extension SGDriverLicenseResult.DataType : Swift.Equatable {}
-extension SGDriverLicenseResult.DataType : Swift.Hashable {}
-extension SGDriverLicenseResult.DataType : Swift.RawRepresentable {}
-extension ScanType : Swift.Equatable {}
-extension ScanType : Swift.Hashable {}
-extension ScanType : Swift.RawRepresentable {}
-extension FlowError.Endpoint : Swift.Equatable {}
-extension FlowError.Endpoint : Swift.Hashable {}
-extension URLEncodedFormEncoder.ArrayEncoding : Swift.Equatable {}
-extension URLEncodedFormEncoder.ArrayEncoding : Swift.Hashable {}
-extension URLEncodedFormEncoder.BoolEncoding : Swift.Equatable {}
-extension URLEncodedFormEncoder.BoolEncoding : Swift.Hashable {}
-extension URLEncodedFormEncoder.SpaceEncoding : Swift.Equatable {}
-extension URLEncodedFormEncoder.SpaceEncoding : Swift.Hashable {}
-extension OCRIDCardFraudStage : Swift.Equatable {}
-extension OCRIDCardFraudStage : Swift.Hashable {}
-extension ScanDocStatus : Swift.Equatable {}
-extension ScanDocStatus : Swift.Hashable {}
-extension ScanDocCardType : Swift.Equatable {}
-extension ScanDocCardType : Swift.Hashable {}
-extension ScanDocCardType : Swift.RawRepresentable {}
+extension AuthMe.LogFAS.LogStage : Swift.Equatable {}
+extension AuthMe.LogFAS.LogStage : Swift.Hashable {}
+extension AuthMe.LogFAS.LogFASResult : Swift.Equatable {}
+extension AuthMe.LogFAS.LogFASResult : Swift.Hashable {}
+extension AuthMe.LogUpload.Event : Swift.Equatable {}
+extension AuthMe.LogUpload.Event : Swift.Hashable {}
+extension AuthMe.LivenessDetectStatus : Swift.Equatable {}
+extension AuthMe.LivenessDetectStatus : Swift.Hashable {}
+extension AuthMe.LivenessFlow.FaceScaleDirection.Direction : Swift.Equatable {}
+extension AuthMe.LivenessFlow.FaceScaleDirection.Direction : Swift.Hashable {}
+extension AuthMe.LogAntiFraud : Swift.Equatable {}
+extension AuthMe.LogAntiFraud : Swift.Hashable {}
+extension AuthMe.LogAntiFraud : Swift.RawRepresentable {}
+extension AuthMe.OCRCardType : Swift.Equatable {}
+extension AuthMe.OCRCardType : Swift.Hashable {}
+extension AuthMe.OCRCardType : Swift.RawRepresentable {}
+extension AuthMe.OCRType : Swift.Equatable {}
+extension AuthMe.OCRType : Swift.Hashable {}
+extension AuthMe.OCRType : Swift.RawRepresentable {}
+extension AuthMe.OCRError : Swift.Equatable {}
+extension AuthMe.OCRError : Swift.Hashable {}
+extension AuthMe.OCRError : Swift.RawRepresentable {}
+extension AuthMe.OCRNotifyMessage : Swift.Equatable {}
+extension AuthMe.OCRNotifyMessage : Swift.Hashable {}
+extension AuthMe.OCRNotifyMessage : Swift.RawRepresentable {}
+extension AuthMe.DebugMessageChannel : Swift.Equatable {}
+extension AuthMe.DebugMessageChannel : Swift.Hashable {}
+extension AuthMe.OCRInitScanDocResponse.OCRScanView.OCRScanViewBorder.OCRScanViewBorderType : Swift.Equatable {}
+extension AuthMe.OCRInitScanDocResponse.OCRScanView.OCRScanViewBorder.OCRScanViewBorderType : Swift.Hashable {}
+extension AuthMe.OCRInitScanDocResponse.OCRScanView.OCRScanViewBorder.OCRScanViewBorderType : Swift.RawRepresentable {}
+extension AuthMe.OCRInitScanDocResponse.OCRScanView.OCRScanViewContent.OCRScanViewContentType : Swift.Equatable {}
+extension AuthMe.OCRInitScanDocResponse.OCRScanView.OCRScanViewContent.OCRScanViewContentType : Swift.Hashable {}
+extension AuthMe.OCRInitScanDocResponse.OCRScanView.OCRScanViewContent.OCRScanViewContentType : Swift.RawRepresentable {}
+extension AuthMe.MRZResult.DataType : Swift.Equatable {}
+extension AuthMe.MRZResult.DataType : Swift.Hashable {}
+extension AuthMe.MRZResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.TWNResidentResult.DataType : Swift.Equatable {}
+extension AuthMe.TWNResidentResult.DataType : Swift.Hashable {}
+extension AuthMe.TWNResidentResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.TWIDResult.DataType : Swift.Equatable {}
+extension AuthMe.TWIDResult.DataType : Swift.Hashable {}
+extension AuthMe.TWIDResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.TWLicenseResult.DataType : Swift.Equatable {}
+extension AuthMe.TWLicenseResult.DataType : Swift.Hashable {}
+extension AuthMe.TWLicenseResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.TWHealthResult.DataType : Swift.Equatable {}
+extension AuthMe.TWHealthResult.DataType : Swift.Hashable {}
+extension AuthMe.TWHealthResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.JPNIDCardResult.DataType : Swift.Equatable {}
+extension AuthMe.JPNIDCardResult.DataType : Swift.Hashable {}
+extension AuthMe.JPNIDCardResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.JPNIDCardNFCResult.DataType : Swift.Equatable {}
+extension AuthMe.JPNIDCardNFCResult.DataType : Swift.Hashable {}
+extension AuthMe.JPNIDCardNFCResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.JPNDriverLicenseResult.DataType : Swift.Equatable {}
+extension AuthMe.JPNDriverLicenseResult.DataType : Swift.Hashable {}
+extension AuthMe.JPNDriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.JPNDriverLicenseNFCResult.DataType : Swift.Equatable {}
+extension AuthMe.JPNDriverLicenseNFCResult.DataType : Swift.Hashable {}
+extension AuthMe.JPNDriverLicenseNFCResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.JPNResidentCardResult.DataType : Swift.Equatable {}
+extension AuthMe.JPNResidentCardResult.DataType : Swift.Hashable {}
+extension AuthMe.JPNResidentCardResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.JPNResidentCardNFCResult.DataType : Swift.Equatable {}
+extension AuthMe.JPNResidentCardNFCResult.DataType : Swift.Hashable {}
+extension AuthMe.JPNResidentCardNFCResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.USAIDCardResult.DataType : Swift.Equatable {}
+extension AuthMe.USAIDCardResult.DataType : Swift.Hashable {}
+extension AuthMe.USAIDCardResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.USADriverLicenseResult.DataType : Swift.Equatable {}
+extension AuthMe.USADriverLicenseResult.DataType : Swift.Hashable {}
+extension AuthMe.USADriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.USAVisitorVISAResult.DataType : Swift.Equatable {}
+extension AuthMe.USAVisitorVISAResult.DataType : Swift.Hashable {}
+extension AuthMe.USAVisitorVISAResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.IDNIDCardResult.DataType : Swift.Equatable {}
+extension AuthMe.IDNIDCardResult.DataType : Swift.Hashable {}
+extension AuthMe.IDNIDCardResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.IDNDriverLicenseResult.DataType : Swift.Equatable {}
+extension AuthMe.IDNDriverLicenseResult.DataType : Swift.Hashable {}
+extension AuthMe.IDNDriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.INDIDCardResult.DataType : Swift.Equatable {}
+extension AuthMe.INDIDCardResult.DataType : Swift.Hashable {}
+extension AuthMe.INDIDCardResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.INDDriverLicenseResult.DataType : Swift.Equatable {}
+extension AuthMe.INDDriverLicenseResult.DataType : Swift.Hashable {}
+extension AuthMe.INDDriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.MYIDCardResult.DataType : Swift.Equatable {}
+extension AuthMe.MYIDCardResult.DataType : Swift.Hashable {}
+extension AuthMe.MYIDCardResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.MYDriverLicenseResult.DataType : Swift.Equatable {}
+extension AuthMe.MYDriverLicenseResult.DataType : Swift.Hashable {}
+extension AuthMe.MYDriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.HKIDCardResult.DataType : Swift.Equatable {}
+extension AuthMe.HKIDCardResult.DataType : Swift.Hashable {}
+extension AuthMe.HKIDCardResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.HKDriverLicenseResult.DataType : Swift.Equatable {}
+extension AuthMe.HKDriverLicenseResult.DataType : Swift.Hashable {}
+extension AuthMe.HKDriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.UKIDCardResult.DataType : Swift.Equatable {}
+extension AuthMe.UKIDCardResult.DataType : Swift.Hashable {}
+extension AuthMe.UKIDCardResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.UKDriverLicenseResult.DataType : Swift.Equatable {}
+extension AuthMe.UKDriverLicenseResult.DataType : Swift.Hashable {}
+extension AuthMe.UKDriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.EGIDCardResult.DataType : Swift.Equatable {}
+extension AuthMe.EGIDCardResult.DataType : Swift.Hashable {}
+extension AuthMe.EGIDCardResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.EGDriverLicenseResult.DataType : Swift.Equatable {}
+extension AuthMe.EGDriverLicenseResult.DataType : Swift.Hashable {}
+extension AuthMe.EGDriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.SAIDCardResult.DataType : Swift.Equatable {}
+extension AuthMe.SAIDCardResult.DataType : Swift.Hashable {}
+extension AuthMe.SAIDCardResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.SADriverLicenseResult.DataType : Swift.Equatable {}
+extension AuthMe.SADriverLicenseResult.DataType : Swift.Hashable {}
+extension AuthMe.SADriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.NLIDCardResult.DataType : Swift.Equatable {}
+extension AuthMe.NLIDCardResult.DataType : Swift.Hashable {}
+extension AuthMe.NLIDCardResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.NLDriverLicenseResult.DataType : Swift.Equatable {}
+extension AuthMe.NLDriverLicenseResult.DataType : Swift.Hashable {}
+extension AuthMe.NLDriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.SGIDCardResult.DataType : Swift.Equatable {}
+extension AuthMe.SGIDCardResult.DataType : Swift.Hashable {}
+extension AuthMe.SGIDCardResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.SGDriverLicenseResult.DataType : Swift.Equatable {}
+extension AuthMe.SGDriverLicenseResult.DataType : Swift.Hashable {}
+extension AuthMe.SGDriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension AuthMe.ScanType : Swift.Equatable {}
+extension AuthMe.ScanType : Swift.Hashable {}
+extension AuthMe.ScanType : Swift.RawRepresentable {}
+extension AuthMe.FlowError.Endpoint : Swift.Equatable {}
+extension AuthMe.FlowError.Endpoint : Swift.Hashable {}
+extension AuthMe.URLEncodedFormEncoder.ArrayEncoding : Swift.Equatable {}
+extension AuthMe.URLEncodedFormEncoder.ArrayEncoding : Swift.Hashable {}
+extension AuthMe.URLEncodedFormEncoder.BoolEncoding : Swift.Equatable {}
+extension AuthMe.URLEncodedFormEncoder.BoolEncoding : Swift.Hashable {}
+extension AuthMe.URLEncodedFormEncoder.SpaceEncoding : Swift.Equatable {}
+extension AuthMe.URLEncodedFormEncoder.SpaceEncoding : Swift.Hashable {}
+extension AuthMe.OCRIDCardFraudStage : Swift.Equatable {}
+extension AuthMe.OCRIDCardFraudStage : Swift.Hashable {}
+extension AuthMe.ScanDocStatus : Swift.Equatable {}
+extension AuthMe.ScanDocStatus : Swift.Hashable {}
+extension AuthMe.ScanDocCardType : Swift.Equatable {}
+extension AuthMe.ScanDocCardType : Swift.Hashable {}
+extension AuthMe.ScanDocCardType : Swift.RawRepresentable {}

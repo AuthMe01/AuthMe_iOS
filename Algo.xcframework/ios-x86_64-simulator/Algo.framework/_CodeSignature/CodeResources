@@ -46,11 +46,11 @@
 		</data>
 		<key>Headers/engine_service_type.h</key>
 		<data>
-		aJ9BcvoSpgbYiMWfGP1Cs4gnibI=
+		pGmIWnYd2ByMqpIFpVN/L/zQlxg=
 		</data>
 		<key>Headers/engine_type.h</key>
 		<data>
-		2MFrH4HK/SHsR2JfNlON887fG/k=
+		M7pdERPaxogy4HG2NlLA3vJS0Nk=
 		</data>
 		<key>Headers/face_alignment.h</key>
 		<data>
@@ -106,19 +106,19 @@
 		</data>
 		<key>Headers/service_utility.h</key>
 		<data>
-		o9EdbRg1mnPPo1itKW00U2a3qgo=
+		jJ9Od4bhVbgb803/RQJrYXiZeTw=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		zI6WwWcJPIx/qLGqoXnEaAkgZWk=
+		Rpwi8nMdxfe/rvK5RyZc4mko0hE=
 		</data>
 		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		eMAwT9ISNFLvKbGQyAsua8yI/a0=
+		qkqe2wiYu+YRDpiVRHmQK9J29HA=
 		</data>
 		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		tHJlbx4ABDD4ls2NOFtlnUXdTuY=
+		uEPzkFJ7WgMOOhGPpQY/0/KgDqQ=
 		</data>
 		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -126,11 +126,11 @@
 		</data>
 		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		tHJlbx4ABDD4ls2NOFtlnUXdTuY=
+		uEPzkFJ7WgMOOhGPpQY/0/KgDqQ=
 		</data>
 		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		BPP/R43mj7mKrIiGn2w1R+LAszg=
+		w/GshDvOz66bdf8s93JXXoDV2dc=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -139,10 +139,6 @@
 		<key>Modules/module.private.modulemap</key>
 		<data>
 		7/aMqvGptnkhy7DMhtmIOnPWl0I=
-		</data>
-		<key>PrivacyInfo.xcprivacy</key>
-		<data>
-		tjywKnTvbBjdg6abzXh1Dxv+6ok=
 		</data>
 		<key>include/jwt-cpp/base.h</key>
 		<data>
@@ -273,14 +269,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			cX4WsHtEr7d4FwcKqBEcbdfI6n8DS8/qcT6QdAYi5fw=
+			PdMJIQnPx8jTKYS9sHJJka0ipVZzsqcvKS6gepOYtcA=
 			</data>
 		</dict>
 		<key>Headers/engine_type.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Yll3wDCdSWUYf+L6xk1GlO3DjHW0Rk59EYP+fKMUAWM=
+			GvRRPmo6mjlnhzMkNvH57iw8HuB7CIgfGlNowsSsFsU=
 			</data>
 		</dict>
 		<key>Headers/face_alignment.h</key>
@@ -378,21 +374,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			/3J/bhfqIP3sfrf9B6SVsV0qJ7bTYKPd0OD2v3jhTQc=
+			nh56AVKay7xWq3fWts5pLQde7GiC/Xa9oXFB4y5hy/M=
 			</data>
 		</dict>
 		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			N2ZJdu/S20N6HZ5kXK4zIGxS8TzV7OuK8yZL+yNFB4o=
+			i9csdvybu5nVIIAK0LBAANe9Pg5JwDZ43JzTzoMmX04=
 			</data>
 		</dict>
 		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			f+8GFdkZZZSUYDSP4g3CY2RAAPB1zjVDp2CeZdfC/k0=
+			za8yjlg7B8ZHSQ4hnQbX8wSMdzwxIlu0KtDw/BRbBZM=
 			</data>
 		</dict>
 		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -406,14 +402,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			f+8GFdkZZZSUYDSP4g3CY2RAAPB1zjVDp2CeZdfC/k0=
+			za8yjlg7B8ZHSQ4hnQbX8wSMdzwxIlu0KtDw/BRbBZM=
 			</data>
 		</dict>
 		<key>Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			EHCEuJlQWdX0wmiax5xXMvpFlhCq+Kz+1RPDLEIsYo4=
+			rWtudwsqjOqn8lR85I+ESMGsPxBwG+meEaTU+nQQG+U=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -428,13 +424,6 @@
 			<key>hash2</key>
 			<data>
 			6U5RH/v1ZxMYLpbNpUfjPaovFgqGBHKCQnUZnU1T1Fw=
-			</data>
-		</dict>
-		<key>PrivacyInfo.xcprivacy</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			oHCvlYiDLXLgkXiDuaOJCBxJ49gqVCiG6QZ6VqggzfU=
 			</data>
 		</dict>
 		<key>include/jwt-cpp/base.h</key>
