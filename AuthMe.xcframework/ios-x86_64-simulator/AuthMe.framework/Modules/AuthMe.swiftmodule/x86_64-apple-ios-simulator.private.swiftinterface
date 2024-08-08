@@ -1124,6 +1124,9 @@ public protocol OCRResult {
       get
     }
   }
+  convenience public init(data: [Swift.String : Swift.String], image: UIKit.UIImage?)
+  convenience public init(scanFlow: HKGIDCardFlow)
+  public func setScanID(_ scanID: Swift.String)
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class HKDriverLicenseResult : OCRBaseResult<HKDriverLicenseResult.DataType> {
@@ -1485,6 +1488,29 @@ public enum JWTDecodeError : Foundation.LocalizedError, Swift.CustomDebugStringC
     get
   }
 }
+@_inheritsConvenienceInitializers public class HKGIDCardFlow : OCRFlow {
+  override public init(scanType: ScanType, needConfirm: Swift.Bool)
+  @objc deinit
+}
+extension HKGIDCardFlow : ScanDocProtocol {
+  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
+  public func prepareScan(handler: @escaping (Swift.Result<(cardType: [ScanDocCardType], info: SessionInfo, expiredIn: Foundation.TimeInterval), OCRError>) -> Swift.Void)
+  public func setPreviewSize(_ previewSize: CoreFoundation.CGSize)
+  public func start(enableUploadFullFrame enable: Swift.Bool? = nil, handler: @escaping (Swift.Result<OCRInitScanDocResponse, OCRError>) -> Swift.Void)
+  public func getCardMatchROI() -> CardMatchROI?
+  public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (AuthmeOCRResult<OCRScanResult, ()?, OCRError>) -> Swift.Void)
+  public func onGetIDCardFraudPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRIDCardFraudStage, OCRError>) -> Swift.Void)
+  public func restart() -> OCRError?
+  public func recognize(handler: @escaping (Swift.Result<OCRScanResult, OCRError>) -> Swift.Void)
+  public func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  public func getStatus() -> (scanDocs: [ScanDocCardType], processing: ScanDocCardType)
+  public func stopScan() -> (any OCRResult)?
+  public func abortScan(completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  public func addResult(_ result: [Swift.String : Swift.String])
+  public func addImage(_ image: UIKit.UIImage?)
+  public func onGetThicknessPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<(stage: OCRIDCardFraudStage, cropImage: UIKit.UIImage), OCRError>) -> Swift.Void)
+  public func onGetThicknessManualData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, OCRError>) -> Swift.Void)
+}
 public class OCRScanDocFactory {
   public init()
   public func prepare(scanType: ScanType, eventName: Swift.String, needConfirm: Swift.Bool, isNFCOffline: Swift.Bool) -> any ScanDocProtocol
@@ -1709,6 +1735,10 @@ final public class URLEncodedFormEncoder {
 }
 extension Foundation.CharacterSet {
   public static let afURLQueryAllowed: Foundation.CharacterSet
+}
+@_inheritsConvenienceInitializers public class OCRFlow : BaseFlow {
+  override public init(scanType: ScanType, needConfirm: Swift.Bool)
+  @objc deinit
 }
 public protocol JWT {
   var header: [Swift.String : Any] { get }

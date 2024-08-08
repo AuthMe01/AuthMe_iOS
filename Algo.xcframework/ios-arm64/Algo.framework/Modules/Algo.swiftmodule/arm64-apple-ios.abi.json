@@ -1653,6 +1653,39 @@
           {
             "kind": "Function",
             "name": "setParam",
+            "printedName": "setParam(ocrType:fImageBlurTh:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "_E_AUTHME_CARD_CLASS",
+                "printedName": "Algo._E_AUTHME_CARD_CLASS",
+                "usr": "c:@E@_E_AUTHME_CARD_CLASS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:4Algo10OCRServiceC8setParam7ocrType12fImageBlurThySo20_E_AUTHME_CARD_CLASSV_SftKF",
+            "mangledName": "$s4Algo10OCRServiceC8setParam7ocrType12fImageBlurThySo20_E_AUTHME_CARD_CLASSV_SftKF",
+            "moduleName": "Algo",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setParam",
             "printedName": "setParam(_:)",
             "children": [
               {
@@ -4198,22 +4231,29 @@
     },
     {
       "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/OCRService.swift",
+      "kind": "FloatLiteral",
+      "offset": 4850,
+      "length": 3,
+      "value": "0.3"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/OCRService.swift",
       "kind": "StringLiteral",
-      "offset": 5536,
+      "offset": 5971,
       "length": 27,
       "value": "\"ignore_card_type_checking\""
     },
     {
       "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/OCRService.swift",
       "kind": "StringLiteral",
-      "offset": 5565,
+      "offset": 6000,
       "length": 8,
       "value": "\"enable\""
     },
     {
       "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/OCRService.swift",
       "kind": "StringLiteral",
-      "offset": 6411,
+      "offset": 6846,
       "length": 2,
       "value": "\"\""
     },
