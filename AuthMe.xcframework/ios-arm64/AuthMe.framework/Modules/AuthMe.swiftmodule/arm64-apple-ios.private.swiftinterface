@@ -1,7 +1,6 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)
-// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AuthMe
-// swift-module-flags-ignorable: -enable-bare-slash-regex
+// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
+// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name AuthMe
 import Algo
 @_exported import AuthMe
 import CoreGraphics/*.CGFloat*/
@@ -1454,6 +1453,7 @@ extension JPNNFCResidentCardFlow : ScanDocProtocol {
   public func start(enableUploadFullFrame enable: Swift.Bool? = nil, handler: @escaping (Swift.Result<OCRInitScanDocResponse, OCRError>) -> Swift.Void)
   public func getCardMatchROI() -> CardMatchROI?
   public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (AuthmeOCRResult<OCRScanResult, ()?, OCRError>) -> Swift.Void)
+  public func onGetManualPreviewData(image: UIKit.UIImage, handler: @escaping (AuthmeOCRResult<OCRScanResult, ()?, OCRError>) -> Swift.Void)
   public func onGetIDCardFraudPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRIDCardFraudStage, OCRError>) -> Swift.Void)
   public func restart() -> OCRError?
   public func recognize(handler: @escaping (Swift.Result<OCRScanResult, OCRError>) -> Swift.Void)
@@ -1499,6 +1499,7 @@ extension HKGIDCardFlow : ScanDocProtocol {
   public func start(enableUploadFullFrame enable: Swift.Bool? = nil, handler: @escaping (Swift.Result<OCRInitScanDocResponse, OCRError>) -> Swift.Void)
   public func getCardMatchROI() -> CardMatchROI?
   public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (AuthmeOCRResult<OCRScanResult, ()?, OCRError>) -> Swift.Void)
+  public func onGetManualPreviewData(image: UIKit.UIImage, handler: @escaping (AuthmeOCRResult<OCRScanResult, ()?, OCRError>) -> Swift.Void)
   public func onGetIDCardFraudPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRIDCardFraudStage, OCRError>) -> Swift.Void)
   public func restart() -> OCRError?
   public func recognize(handler: @escaping (Swift.Result<OCRScanResult, OCRError>) -> Swift.Void)
@@ -1589,6 +1590,7 @@ extension JPIDNFCCardFlow : ScanDocProtocol {
   public func start(enableUploadFullFrame enable: Swift.Bool? = nil, handler: @escaping (Swift.Result<OCRInitScanDocResponse, OCRError>) -> Swift.Void)
   public func getCardMatchROI() -> CardMatchROI?
   public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (AuthmeOCRResult<OCRScanResult, ()?, OCRError>) -> Swift.Void)
+  public func onGetManualPreviewData(image: UIKit.UIImage, handler: @escaping (AuthmeOCRResult<OCRScanResult, ()?, OCRError>) -> Swift.Void)
   public func onGetIDCardFraudPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRIDCardFraudStage, OCRError>) -> Swift.Void)
   public func restart() -> OCRError?
   public func recognize(handler: @escaping (Swift.Result<OCRScanResult, OCRError>) -> Swift.Void)
@@ -1630,6 +1632,7 @@ extension JPNNFCDriverLicenseFlow : ScanDocProtocol {
   public func start(enableUploadFullFrame enable: Swift.Bool? = nil, handler: @escaping (Swift.Result<OCRInitScanDocResponse, OCRError>) -> Swift.Void)
   public func getCardMatchROI() -> CardMatchROI?
   public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (AuthmeOCRResult<OCRScanResult, ()?, OCRError>) -> Swift.Void)
+  public func onGetManualPreviewData(image: UIKit.UIImage, handler: @escaping (AuthmeOCRResult<OCRScanResult, ()?, OCRError>) -> Swift.Void)
   public func onGetIDCardFraudPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRIDCardFraudStage, OCRError>) -> Swift.Void)
   public func restart() -> OCRError?
   public func recognize(handler: @escaping (Swift.Result<OCRScanResult, OCRError>) -> Swift.Void)
@@ -1766,6 +1769,7 @@ public protocol ScanDocProtocol {
   func setPreviewSize(_ previewSize: CoreFoundation.CGSize)
   func start(enableUploadFullFrame: Swift.Bool?, handler: @escaping (Swift.Result<OCRInitScanDocResponse, OCRError>) -> Swift.Void)
   func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (AuthmeOCRResult<OCRScanResult, ()?, OCRError>) -> Swift.Void)
+  func onGetManualPreviewData(image: UIKit.UIImage, handler: @escaping (AuthmeOCRResult<OCRScanResult, ()?, OCRError>) -> Swift.Void)
   func getCardMatchROI() -> CardMatchROI?
   func onGetIDCardFraudPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRIDCardFraudStage, OCRError>) -> Swift.Void)
   func onGetThicknessPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<(stage: OCRIDCardFraudStage, cropImage: UIKit.UIImage), OCRError>) -> Swift.Void)

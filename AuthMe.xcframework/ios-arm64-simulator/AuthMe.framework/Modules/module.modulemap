@@ -1,0 +1,11 @@
+framework module AuthMe {
+  umbrella header "AuthMe.h"
+  export *
+
+  module * { export * }
+}
+
+module AuthMe.Swift {
+  header "AuthMe-Swift.h"
+  requires objc
+}

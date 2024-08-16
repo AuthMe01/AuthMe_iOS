@@ -1,0 +1,10 @@
+framework module Algo {
+    umbrella header "Algo.h"
+    export *
+    module * { export * }
+}
+
+module Algo.Swift {
+  header "Algo-Swift.h"
+  requires objc
+}
