@@ -308,6 +308,7 @@ public enum LogAntiFraud : Swift.String {
   case failure(Failure)
 }
 public struct SessionInfo {
+  public let sessionId: Swift.String
 }
 public enum OCRCardType : Swift.String, Swift.Codable {
   case TWID

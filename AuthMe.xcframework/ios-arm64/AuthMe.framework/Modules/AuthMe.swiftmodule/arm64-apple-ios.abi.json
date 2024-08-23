@@ -7449,6 +7449,52 @@
         "kind": "TypeDecl",
         "name": "SessionInfo",
         "printedName": "SessionInfo",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "sessionId",
+            "printedName": "sessionId",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6AuthMe11SessionInfoV9sessionIdSSvp",
+            "mangledName": "$s6AuthMe11SessionInfoV9sessionIdSSvp",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6AuthMe11SessionInfoV9sessionIdSSvg",
+                "mangledName": "$s6AuthMe11SessionInfoV9sessionIdSSvg",
+                "moduleName": "AuthMe",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
         "declKind": "Struct",
         "usr": "s:6AuthMe11SessionInfoV",
         "mangledName": "$s6AuthMe11SessionInfoV",
@@ -60495,7 +60541,7 @@
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/EngineProduct.swift",
       "kind": "BooleanLiteral",
-      "offset": 13407,
+      "offset": 13399,
       "length": 5,
       "value": "false"
     },
