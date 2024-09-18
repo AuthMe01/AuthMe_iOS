@@ -44,82 +44,6 @@ public struct AuthMeConfig {
   }
   @objc deinit
 }
-public struct LogFAS {
-  public enum LogStage {
-    case Passive
-    case OpenMouth
-    case CloseMouth
-    case Smile
-    case Scale
-    case Done
-    public static func == (a: LogFAS.LogStage, b: LogFAS.LogStage) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
-    public var hashValue: Swift.Int {
-      get
-    }
-  }
-  public enum LogFASResult {
-    case Failed
-    case NoFace
-    case FaceNotAtCenter
-    case FaceTooSmall
-    case FaceTooLarge
-    case NeedFaceToCamera
-    case FaceMasked
-    case NeedOpenMouth
-    case NeedCloseMouth
-    case NeedSmile
-    case NeedOpenEyes
-    case NeedMoreFrame
-    case Error
-    case Pass
-    public static func == (a: LogFAS.LogFASResult, b: LogFAS.LogFASResult) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
-    public var hashValue: Swift.Int {
-      get
-    }
-  }
-  public let logStage: LogFAS.LogStage
-  public let logFASResult: LogFAS.LogFASResult
-  public init(logStage: LogFAS.LogStage, logFASResult: LogFAS.LogFASResult)
-}
-public struct LogUpload {
-  public enum Event {
-    case start
-    case end
-    public static func == (a: LogUpload.Event, b: LogUpload.Event) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
-    public var hashValue: Swift.Int {
-      get
-    }
-  }
-  public let duration: Swift.String
-  public let event: LogUpload.Event
-  public let frameNo: Swift.String
-  public init(duration: Swift.String = "0", event: LogUpload.Event, frameNo: Swift.String)
-}
-public enum LivenessDetectStatus {
-  case Failed
-  case NoFace
-  case FaceNotAtCenter
-  case FaceTooSmall
-  case FaceTooLarge
-  case NeedFaceToCamera
-  case FaceMasked
-  case NeedOpenMouth
-  case NeedCloseMouth
-  case NeedOpenEyes
-  case NeedSmile
-  case NeedMoreFrame
-  case Pass
-  case Error
-  case Empty
-  public static func == (a: LivenessDetectStatus, b: LivenessDetectStatus) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public var hashValue: Swift.Int {
-    get
-  }
-}
 public protocol LivenessFlowDelegate : AnyObject {
   func livenessDidStart()
   func livenessDidNotifyMessage(status: LivenessDetectStatus)
@@ -195,6 +119,82 @@ extension Swift.Collection where Self.Element : Swift.BinaryInteger {
 }
 extension Swift.Collection where Self.Element : Swift.FloatingPoint {
   public func average() -> Self.Element
+}
+public struct LogFAS {
+  public enum LogStage {
+    case Passive
+    case OpenMouth
+    case CloseMouth
+    case Smile
+    case Scale
+    case Done
+    public static func == (a: LogFAS.LogStage, b: LogFAS.LogStage) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum LogFASResult {
+    case Failed
+    case NoFace
+    case FaceNotAtCenter
+    case FaceTooSmall
+    case FaceTooLarge
+    case NeedFaceToCamera
+    case FaceMasked
+    case NeedOpenMouth
+    case NeedCloseMouth
+    case NeedSmile
+    case NeedOpenEyes
+    case NeedMoreFrame
+    case Error
+    case Pass
+    public static func == (a: LogFAS.LogFASResult, b: LogFAS.LogFASResult) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let logStage: LogFAS.LogStage
+  public let logFASResult: LogFAS.LogFASResult
+  public init(logStage: LogFAS.LogStage, logFASResult: LogFAS.LogFASResult)
+}
+public struct LogUpload {
+  public enum Event {
+    case start
+    case end
+    public static func == (a: LogUpload.Event, b: LogUpload.Event) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let duration: Swift.String
+  public let event: LogUpload.Event
+  public let frameNo: Swift.String
+  public init(duration: Swift.String = "0", event: LogUpload.Event, frameNo: Swift.String)
+}
+public enum LivenessDetectStatus {
+  case Failed
+  case NoFace
+  case FaceNotAtCenter
+  case FaceTooSmall
+  case FaceTooLarge
+  case NeedFaceToCamera
+  case FaceMasked
+  case NeedOpenMouth
+  case NeedCloseMouth
+  case NeedOpenEyes
+  case NeedSmile
+  case NeedMoreFrame
+  case Pass
+  case Error
+  case Empty
+  public static func == (a: LivenessDetectStatus, b: LivenessDetectStatus) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
 }
 extension AuthMeCore where T == OnlineMode {
   public static func configure() -> AuthmeCoreOnlineBuilder
@@ -1929,6 +1929,8 @@ public class EventHelper {
 public struct EventInfo {
   public init(eventID: Foundation.UUID = UUID(), log: Swift.String, language: Swift.String = "", description: Swift.String = "", extraInfo: Swift.String = "")
 }
+extension LivenessFlow.FaceScaleDirection.Direction : Swift.Equatable {}
+extension LivenessFlow.FaceScaleDirection.Direction : Swift.Hashable {}
 extension LogFAS.LogStage : Swift.Equatable {}
 extension LogFAS.LogStage : Swift.Hashable {}
 extension LogFAS.LogFASResult : Swift.Equatable {}
@@ -1937,8 +1939,6 @@ extension LogUpload.Event : Swift.Equatable {}
 extension LogUpload.Event : Swift.Hashable {}
 extension LivenessDetectStatus : Swift.Equatable {}
 extension LivenessDetectStatus : Swift.Hashable {}
-extension LivenessFlow.FaceScaleDirection.Direction : Swift.Equatable {}
-extension LivenessFlow.FaceScaleDirection.Direction : Swift.Hashable {}
 extension LogAntiFraud : Swift.Equatable {}
 extension LogAntiFraud : Swift.Hashable {}
 extension LogAntiFraud : Swift.RawRepresentable {}

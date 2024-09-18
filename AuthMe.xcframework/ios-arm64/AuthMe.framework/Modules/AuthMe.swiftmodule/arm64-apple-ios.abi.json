@@ -865,6 +865,1336 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "LivenessFlowDelegate",
+        "printedName": "LivenessFlowDelegate",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "livenessDidStart",
+            "printedName": "livenessDidStart()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe20LivenessFlowDelegateP16livenessDidStartyyF",
+            "mangledName": "$s6AuthMe20LivenessFlowDelegateP16livenessDidStartyyF",
+            "moduleName": "AuthMe",
+            "genericSig": "<τ_0_0 where τ_0_0 : AuthMe.LivenessFlowDelegate>",
+            "sugared_genericSig": "<Self where Self : AuthMe.LivenessFlowDelegate>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "livenessDidNotifyMessage",
+            "printedName": "livenessDidNotifyMessage(status:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LivenessDetectStatus",
+                "printedName": "AuthMe.LivenessDetectStatus",
+                "usr": "s:6AuthMe20LivenessDetectStatusO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe20LivenessFlowDelegateP24livenessDidNotifyMessage6statusyAA0C12DetectStatusO_tF",
+            "mangledName": "$s6AuthMe20LivenessFlowDelegateP24livenessDidNotifyMessage6statusyAA0C12DetectStatusO_tF",
+            "moduleName": "AuthMe",
+            "genericSig": "<τ_0_0 where τ_0_0 : AuthMe.LivenessFlowDelegate>",
+            "sugared_genericSig": "<Self where Self : AuthMe.LivenessFlowDelegate>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "livenessDidUpdateReconize",
+            "printedName": "livenessDidUpdateReconize(result:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe20LivenessFlowDelegateP25livenessDidUpdateReconize6resultySb_tF",
+            "mangledName": "$s6AuthMe20LivenessFlowDelegateP25livenessDidUpdateReconize6resultySb_tF",
+            "moduleName": "AuthMe",
+            "genericSig": "<τ_0_0 where τ_0_0 : AuthMe.LivenessFlowDelegate>",
+            "sugared_genericSig": "<Self where Self : AuthMe.LivenessFlowDelegate>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "livenessDidFailureWith",
+            "printedName": "livenessDidFailureWith(error:retryHandler:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "FlowError",
+                "printedName": "AuthMe.FlowError",
+                "usr": "s:6AuthMe9FlowErrorO"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "() -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe20LivenessFlowDelegateP22livenessDidFailureWith5error12retryHandleryAA0D5ErrorO_yyctF",
+            "mangledName": "$s6AuthMe20LivenessFlowDelegateP22livenessDidFailureWith5error12retryHandleryAA0D5ErrorO_yyctF",
+            "moduleName": "AuthMe",
+            "genericSig": "<τ_0_0 where τ_0_0 : AuthMe.LivenessFlowDelegate>",
+            "sugared_genericSig": "<Self where Self : AuthMe.LivenessFlowDelegate>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "livenessDidRecognize",
+            "printedName": "livenessDidRecognize(image:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIImage",
+                "printedName": "UIKit.UIImage",
+                "usr": "c:objc(cs)UIImage"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe20LivenessFlowDelegateP20livenessDidRecognize5imageySo7UIImageC_tF",
+            "mangledName": "$s6AuthMe20LivenessFlowDelegateP20livenessDidRecognize5imageySo7UIImageC_tF",
+            "moduleName": "AuthMe",
+            "genericSig": "<τ_0_0 where τ_0_0 : AuthMe.LivenessFlowDelegate>",
+            "sugared_genericSig": "<Self where Self : AuthMe.LivenessFlowDelegate>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "livenessDidFaceScale",
+            "printedName": "livenessDidFaceScale(direction:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Direction",
+                "printedName": "AuthMe.LivenessFlow.FaceScaleDirection.Direction",
+                "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe20LivenessFlowDelegateP20livenessDidFaceScale9directionyAA0cD0C0hI9DirectionV0K0O_tF",
+            "mangledName": "$s6AuthMe20LivenessFlowDelegateP20livenessDidFaceScale9directionyAA0cD0C0hI9DirectionV0K0O_tF",
+            "moduleName": "AuthMe",
+            "genericSig": "<τ_0_0 where τ_0_0 : AuthMe.LivenessFlowDelegate>",
+            "sugared_genericSig": "<Self where Self : AuthMe.LivenessFlowDelegate>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "livenessNotifyStage",
+            "printedName": "livenessNotifyStage(log:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LogFAS",
+                "printedName": "AuthMe.LogFAS",
+                "usr": "s:6AuthMe6LogFASV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe20LivenessFlowDelegateP19livenessNotifyStage3logyAA6LogFASV_tF",
+            "mangledName": "$s6AuthMe20LivenessFlowDelegateP19livenessNotifyStage3logyAA6LogFASV_tF",
+            "moduleName": "AuthMe",
+            "genericSig": "<τ_0_0 where τ_0_0 : AuthMe.LivenessFlowDelegate>",
+            "sugared_genericSig": "<Self where Self : AuthMe.LivenessFlowDelegate>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "livenessNotifyUpload",
+            "printedName": "livenessNotifyUpload(log:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LogUpload",
+                "printedName": "AuthMe.LogUpload",
+                "usr": "s:6AuthMe9LogUploadV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe20LivenessFlowDelegateP20livenessNotifyUpload3logyAA03LogH0V_tF",
+            "mangledName": "$s6AuthMe20LivenessFlowDelegateP20livenessNotifyUpload3logyAA03LogH0V_tF",
+            "moduleName": "AuthMe",
+            "genericSig": "<τ_0_0 where τ_0_0 : AuthMe.LivenessFlowDelegate>",
+            "sugared_genericSig": "<Self where Self : AuthMe.LivenessFlowDelegate>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:6AuthMe20LivenessFlowDelegateP",
+        "mangledName": "$s6AuthMe20LivenessFlowDelegateP",
+        "moduleName": "AuthMe",
+        "genericSig": "<τ_0_0 : AnyObject>",
+        "sugared_genericSig": "<Self : AnyObject>",
+        "declAttributes": [
+          "AccessControl"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "LivenessFlow",
+        "printedName": "LivenessFlow",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "setDelegate",
+            "printedName": "setDelegate(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LivenessFlowDelegate",
+                "printedName": "any AuthMe.LivenessFlowDelegate",
+                "usr": "s:6AuthMe20LivenessFlowDelegateP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe12LivenessFlowC11setDelegateyyAA0cdF0_pF",
+            "mangledName": "$s6AuthMe12LivenessFlowC11setDelegateyyAA0cdF0_pF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "delegate",
+            "printedName": "delegate",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "WeakStorage",
+                "printedName": "(any AuthMe.LivenessFlowDelegate)?"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6AuthMe12LivenessFlowC8delegateAA0cD8Delegate_pSgvp",
+            "mangledName": "$s6AuthMe12LivenessFlowC8delegateAA0cD8Delegate_pSgvp",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "ReferenceOwnership",
+              "AccessControl"
+            ],
+            "ownership": 1,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "(any AuthMe.LivenessFlowDelegate)?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LivenessFlowDelegate",
+                        "printedName": "any AuthMe.LivenessFlowDelegate",
+                        "usr": "s:6AuthMe20LivenessFlowDelegateP"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6AuthMe12LivenessFlowC8delegateAA0cD8Delegate_pSgvg",
+                "mangledName": "$s6AuthMe12LivenessFlowC8delegateAA0cD8Delegate_pSgvg",
+                "moduleName": "AuthMe",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "(any AuthMe.LivenessFlowDelegate)?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LivenessFlowDelegate",
+                        "printedName": "any AuthMe.LivenessFlowDelegate",
+                        "usr": "s:6AuthMe20LivenessFlowDelegateP"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6AuthMe12LivenessFlowC8delegateAA0cD8Delegate_pSgvs",
+                "mangledName": "$s6AuthMe12LivenessFlowC8delegateAA0cD8Delegate_pSgvs",
+                "moduleName": "AuthMe",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6AuthMe12LivenessFlowC8delegateAA0cD8Delegate_pSgvM",
+                "mangledName": "$s6AuthMe12LivenessFlowC8delegateAA0cD8Delegate_pSgvM",
+                "moduleName": "AuthMe",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isDetecting",
+            "printedName": "isDetecting",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6AuthMe12LivenessFlowC11isDetectingSbvp",
+            "mangledName": "$s6AuthMe12LivenessFlowC11isDetectingSbvp",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6AuthMe12LivenessFlowC11isDetectingSbvg",
+                "mangledName": "$s6AuthMe12LivenessFlowC11isDetectingSbvg",
+                "moduleName": "AuthMe",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(action:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "LivenessFlow",
+                "printedName": "AuthMe.LivenessFlow",
+                "usr": "s:6AuthMe12LivenessFlowC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Action",
+                "printedName": "AuthMe.Action",
+                "hasDefaultArg": true,
+                "usr": "s:6AuthMe6ActionO"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6AuthMe12LivenessFlowC6actionAcA6ActionO_tcfc",
+            "mangledName": "$s6AuthMe12LivenessFlowC6actionAcA6ActionO_tcfc",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "checkModel",
+            "printedName": "checkModel(progressHandler:handler:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((Swift.Double) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.Double) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Double",
+                        "printedName": "Swift.Double",
+                        "usr": "s:Sd"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((Swift.Result<(), AuthMe.FlowError>) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.Result<(), AuthMe.FlowError>) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Result",
+                        "printedName": "Swift.Result<(), AuthMe.FlowError>",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Void",
+                            "printedName": "()"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "FlowError",
+                            "printedName": "AuthMe.FlowError",
+                            "usr": "s:6AuthMe9FlowErrorO"
+                          }
+                        ],
+                        "usr": "s:s6ResultO"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe12LivenessFlowC10checkModel15progressHandler7handleryySdcSg_ys6ResultOyytAA0D5ErrorOGcSgtF",
+            "mangledName": "$s6AuthMe12LivenessFlowC10checkModel15progressHandler7handleryySdcSg_ys6ResultOyytAA0D5ErrorOGcSgtF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setPreviewSize",
+            "printedName": "setPreviewSize(previewSize:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGSize",
+                "printedName": "CoreFoundation.CGSize",
+                "usr": "c:@S@CGSize"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe12LivenessFlowC14setPreviewSize07previewG0ySo6CGSizeV_tF",
+            "mangledName": "$s6AuthMe12LivenessFlowC14setPreviewSize07previewG0ySo6CGSizeV_tF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "start",
+            "printedName": "start(encrypt:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe12LivenessFlowC5start7encryptySb_tF",
+            "mangledName": "$s6AuthMe12LivenessFlowC5start7encryptySb_tF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "recognize",
+            "printedName": "recognize(image:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIImage",
+                "printedName": "UIKit.UIImage",
+                "usr": "c:objc(cs)UIImage"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe12LivenessFlowC9recognize5imageySo7UIImageC_tF",
+            "mangledName": "$s6AuthMe12LivenessFlowC9recognize5imageySo7UIImageC_tF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "recognize",
+            "printedName": "recognize(normal:depthImage:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIImage",
+                "printedName": "UIKit.UIImage",
+                "usr": "c:objc(cs)UIImage"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIImage",
+                "printedName": "UIKit.UIImage",
+                "usr": "c:objc(cs)UIImage"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe12LivenessFlowC9recognize6normal10depthImageySo7UIImageC_AHtF",
+            "mangledName": "$s6AuthMe12LivenessFlowC9recognize6normal10depthImageySo7UIImageC_AHtF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "roiRect",
+            "printedName": "roiRect(in:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGSize",
+                "printedName": "CoreFoundation.CGSize",
+                "usr": "c:@S@CGSize"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe12LivenessFlowC7roiRect2inSo6CGRectVSo6CGSizeV_tF",
+            "mangledName": "$s6AuthMe12LivenessFlowC7roiRect2inSo6CGRectVSo6CGSizeV_tF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "cancelExpired",
+            "printedName": "cancelExpired()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe12LivenessFlowC13cancelExpiredyyF",
+            "mangledName": "$s6AuthMe12LivenessFlowC13cancelExpiredyyF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getResult",
+            "printedName": "getResult(completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.Bool) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe12LivenessFlowC9getResult10completionyySbc_tF",
+            "mangledName": "$s6AuthMe12LivenessFlowC9getResult10completionyySbc_tF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "isExpired",
+            "printedName": "isExpired()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe12LivenessFlowC9isExpiredSbyF",
+            "mangledName": "$s6AuthMe12LivenessFlowC9isExpiredSbyF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getVerifyResult",
+            "printedName": "getVerifyResult(completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.Bool) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe12LivenessFlowC15getVerifyResult10completionyySbc_tF",
+            "mangledName": "$s6AuthMe12LivenessFlowC15getVerifyResult10completionyySbc_tF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "enableUploadFullFrame",
+            "printedName": "enableUploadFullFrame()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe12LivenessFlowC21enableUploadFullFrameyyF",
+            "mangledName": "$s6AuthMe12LivenessFlowC21enableUploadFullFrameyyF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "TypeDecl",
+            "name": "RoiParam",
+            "printedName": "RoiParam",
+            "children": [
+              {
+                "kind": "Constructor",
+                "name": "init",
+                "printedName": "init(preview:ratio:widthRatio:offset:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "RoiParam",
+                    "printedName": "AuthMe.LivenessFlow.RoiParam",
+                    "usr": "s:6AuthMe12LivenessFlowC8RoiParamV"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "EnginePreview",
+                    "printedName": "AuthMe.EnginePreview",
+                    "usr": "s:6AuthMe13EnginePreviewV"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIOffset",
+                    "printedName": "UIKit.UIOffset",
+                    "usr": "c:@S@UIOffset"
+                  }
+                ],
+                "declKind": "Constructor",
+                "usr": "s:6AuthMe12LivenessFlowC8RoiParamV7preview5ratio10widthRatio6offsetAeA13EnginePreviewV_14CoreFoundation7CGFloatVANSo8UIOffsetVtcfc",
+                "mangledName": "$s6AuthMe12LivenessFlowC8RoiParamV7preview5ratio10widthRatio6offsetAeA13EnginePreviewV_12CoreGraphics7CGFloatVANSo8UIOffsetVtcfc",
+                "moduleName": "AuthMe",
+                "declAttributes": [
+                  "AccessControl",
+                  "RawDocComment"
+                ],
+                "init_kind": "Designated"
+              }
+            ],
+            "declKind": "Struct",
+            "usr": "s:6AuthMe12LivenessFlowC8RoiParamV",
+            "mangledName": "$s6AuthMe12LivenessFlowC8RoiParamV",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true
+          },
+          {
+            "kind": "TypeDecl",
+            "name": "FaceScaleDirection",
+            "printedName": "FaceScaleDirection",
+            "children": [
+              {
+                "kind": "TypeDecl",
+                "name": "Direction",
+                "printedName": "Direction",
+                "children": [
+                  {
+                    "kind": "Var",
+                    "name": "small",
+                    "printedName": "small",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "(AuthMe.LivenessFlow.FaceScaleDirection.Direction.Type) -> AuthMe.LivenessFlow.FaceScaleDirection.Direction",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Direction",
+                            "printedName": "AuthMe.LivenessFlow.FaceScaleDirection.Direction",
+                            "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Metatype",
+                            "printedName": "AuthMe.LivenessFlow.FaceScaleDirection.Direction.Type",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Direction",
+                                "printedName": "AuthMe.LivenessFlow.FaceScaleDirection.Direction",
+                                "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "declKind": "EnumElement",
+                    "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O5smallyA2GmF",
+                    "mangledName": "$s6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O5smallyA2GmF",
+                    "moduleName": "AuthMe"
+                  },
+                  {
+                    "kind": "Var",
+                    "name": "normal",
+                    "printedName": "normal",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "(AuthMe.LivenessFlow.FaceScaleDirection.Direction.Type) -> AuthMe.LivenessFlow.FaceScaleDirection.Direction",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Direction",
+                            "printedName": "AuthMe.LivenessFlow.FaceScaleDirection.Direction",
+                            "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Metatype",
+                            "printedName": "AuthMe.LivenessFlow.FaceScaleDirection.Direction.Type",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Direction",
+                                "printedName": "AuthMe.LivenessFlow.FaceScaleDirection.Direction",
+                                "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "declKind": "EnumElement",
+                    "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O6normalyA2GmF",
+                    "mangledName": "$s6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O6normalyA2GmF",
+                    "moduleName": "AuthMe"
+                  },
+                  {
+                    "kind": "Function",
+                    "name": "==",
+                    "printedName": "==(_:_:)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Bool",
+                        "printedName": "Swift.Bool",
+                        "usr": "s:Sb"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Direction",
+                        "printedName": "AuthMe.LivenessFlow.FaceScaleDirection.Direction",
+                        "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Direction",
+                        "printedName": "AuthMe.LivenessFlow.FaceScaleDirection.Direction",
+                        "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O"
+                      }
+                    ],
+                    "declKind": "Func",
+                    "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O2eeoiySbAG_AGtFZ",
+                    "mangledName": "$s6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O2eeoiySbAG_AGtFZ",
+                    "moduleName": "AuthMe",
+                    "static": true,
+                    "implicit": true,
+                    "funcSelfKind": "NonMutating"
+                  },
+                  {
+                    "kind": "Var",
+                    "name": "hashValue",
+                    "printedName": "hashValue",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      }
+                    ],
+                    "declKind": "Var",
+                    "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O9hashValueSivp",
+                    "mangledName": "$s6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O9hashValueSivp",
+                    "moduleName": "AuthMe",
+                    "implicit": true,
+                    "accessors": [
+                      {
+                        "kind": "Accessor",
+                        "name": "Get",
+                        "printedName": "Get()",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Int",
+                            "printedName": "Swift.Int",
+                            "usr": "s:Si"
+                          }
+                        ],
+                        "declKind": "Accessor",
+                        "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O9hashValueSivg",
+                        "mangledName": "$s6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O9hashValueSivg",
+                        "moduleName": "AuthMe",
+                        "implicit": true,
+                        "accessorKind": "get"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Function",
+                    "name": "hash",
+                    "printedName": "hash(into:)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Hasher",
+                        "printedName": "Swift.Hasher",
+                        "paramValueOwnership": "InOut",
+                        "usr": "s:s6HasherV"
+                      }
+                    ],
+                    "declKind": "Func",
+                    "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O4hash4intoys6HasherVz_tF",
+                    "mangledName": "$s6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O4hash4intoys6HasherVz_tF",
+                    "moduleName": "AuthMe",
+                    "implicit": true,
+                    "funcSelfKind": "NonMutating"
+                  }
+                ],
+                "declKind": "Enum",
+                "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O",
+                "mangledName": "$s6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O",
+                "moduleName": "AuthMe",
+                "declAttributes": [
+                  "AccessControl"
+                ],
+                "conformances": [
+                  {
+                    "kind": "Conformance",
+                    "name": "Equatable",
+                    "printedName": "Equatable",
+                    "usr": "s:SQ",
+                    "mangledName": "$sSQ"
+                  },
+                  {
+                    "kind": "Conformance",
+                    "name": "Hashable",
+                    "printedName": "Hashable",
+                    "usr": "s:SH",
+                    "mangledName": "$sSH"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Struct",
+            "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV",
+            "mangledName": "$s6AuthMe12LivenessFlowC18FaceScaleDirectionV",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:6AuthMe12LivenessFlowC",
+        "mangledName": "$s6AuthMe12LivenessFlowC",
+        "moduleName": "AuthMe",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "LivenessFlowProtocol",
+            "printedName": "LivenessFlowProtocol",
+            "usr": "s:6AuthMe20LivenessFlowProtocolP",
+            "mangledName": "$s6AuthMe20LivenessFlowProtocolP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "AuthMe",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "AuthMe",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "AuthMe",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "AuthMe",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Cancellable",
+        "printedName": "Cancellable",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "isCancelled",
+            "printedName": "isCancelled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6AuthMe11CancellableP11isCancelledSbvp",
+            "mangledName": "$s6AuthMe11CancellableP11isCancelledSbvp",
+            "moduleName": "AuthMe",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6AuthMe11CancellableP11isCancelledSbvg",
+                "mangledName": "$s6AuthMe11CancellableP11isCancelledSbvg",
+                "moduleName": "AuthMe",
+                "genericSig": "<τ_0_0 where τ_0_0 : AuthMe.Cancellable>",
+                "sugared_genericSig": "<Self where Self : AuthMe.Cancellable>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "cancel",
+            "printedName": "cancel()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe11CancellableP6cancelyyF",
+            "mangledName": "$s6AuthMe11CancellableP6cancelyyF",
+            "moduleName": "AuthMe",
+            "genericSig": "<τ_0_0 where τ_0_0 : AuthMe.Cancellable>",
+            "sugared_genericSig": "<Self where Self : AuthMe.Cancellable>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:6AuthMe11CancellableP",
+        "mangledName": "$s6AuthMe11CancellableP",
+        "moduleName": "AuthMe",
+        "genericSig": "<τ_0_0 : AnyObject>",
+        "sugared_genericSig": "<Self : AnyObject>",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "AuthMe",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "AuthMe",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Algo",
+        "printedName": "Algo",
+        "declKind": "Import",
+        "moduleName": "AuthMe"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "AuthMe",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Algo",
+        "printedName": "Algo",
+        "declKind": "Import",
+        "moduleName": "AuthMe"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "AuthMe",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "AuthMe",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "AuthMe",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "AuthMe",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "AuthMe",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "AuthMe",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
         "name": "LogFAS",
         "printedName": "LogFAS",
         "children": [
@@ -3055,1336 +4385,6 @@
             "usr": "s:SH",
             "mangledName": "$sSH"
           }
-        ]
-      },
-      {
-        "kind": "TypeDecl",
-        "name": "LivenessFlowDelegate",
-        "printedName": "LivenessFlowDelegate",
-        "children": [
-          {
-            "kind": "Function",
-            "name": "livenessDidStart",
-            "printedName": "livenessDidStart()",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:6AuthMe20LivenessFlowDelegateP16livenessDidStartyyF",
-            "mangledName": "$s6AuthMe20LivenessFlowDelegateP16livenessDidStartyyF",
-            "moduleName": "AuthMe",
-            "genericSig": "<τ_0_0 where τ_0_0 : AuthMe.LivenessFlowDelegate>",
-            "sugared_genericSig": "<Self where Self : AuthMe.LivenessFlowDelegate>",
-            "protocolReq": true,
-            "reqNewWitnessTableEntry": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "livenessDidNotifyMessage",
-            "printedName": "livenessDidNotifyMessage(status:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "LivenessDetectStatus",
-                "printedName": "AuthMe.LivenessDetectStatus",
-                "usr": "s:6AuthMe20LivenessDetectStatusO"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:6AuthMe20LivenessFlowDelegateP24livenessDidNotifyMessage6statusyAA0C12DetectStatusO_tF",
-            "mangledName": "$s6AuthMe20LivenessFlowDelegateP24livenessDidNotifyMessage6statusyAA0C12DetectStatusO_tF",
-            "moduleName": "AuthMe",
-            "genericSig": "<τ_0_0 where τ_0_0 : AuthMe.LivenessFlowDelegate>",
-            "sugared_genericSig": "<Self where Self : AuthMe.LivenessFlowDelegate>",
-            "protocolReq": true,
-            "reqNewWitnessTableEntry": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "livenessDidUpdateReconize",
-            "printedName": "livenessDidUpdateReconize(result:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Bool",
-                "printedName": "Swift.Bool",
-                "usr": "s:Sb"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:6AuthMe20LivenessFlowDelegateP25livenessDidUpdateReconize6resultySb_tF",
-            "mangledName": "$s6AuthMe20LivenessFlowDelegateP25livenessDidUpdateReconize6resultySb_tF",
-            "moduleName": "AuthMe",
-            "genericSig": "<τ_0_0 where τ_0_0 : AuthMe.LivenessFlowDelegate>",
-            "sugared_genericSig": "<Self where Self : AuthMe.LivenessFlowDelegate>",
-            "protocolReq": true,
-            "reqNewWitnessTableEntry": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "livenessDidFailureWith",
-            "printedName": "livenessDidFailureWith(error:retryHandler:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "FlowError",
-                "printedName": "AuthMe.FlowError",
-                "usr": "s:6AuthMe9FlowErrorO"
-              },
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "() -> ()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  }
-                ]
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:6AuthMe20LivenessFlowDelegateP22livenessDidFailureWith5error12retryHandleryAA0D5ErrorO_yyctF",
-            "mangledName": "$s6AuthMe20LivenessFlowDelegateP22livenessDidFailureWith5error12retryHandleryAA0D5ErrorO_yyctF",
-            "moduleName": "AuthMe",
-            "genericSig": "<τ_0_0 where τ_0_0 : AuthMe.LivenessFlowDelegate>",
-            "sugared_genericSig": "<Self where Self : AuthMe.LivenessFlowDelegate>",
-            "protocolReq": true,
-            "reqNewWitnessTableEntry": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "livenessDidRecognize",
-            "printedName": "livenessDidRecognize(image:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "UIImage",
-                "printedName": "UIKit.UIImage",
-                "usr": "c:objc(cs)UIImage"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:6AuthMe20LivenessFlowDelegateP20livenessDidRecognize5imageySo7UIImageC_tF",
-            "mangledName": "$s6AuthMe20LivenessFlowDelegateP20livenessDidRecognize5imageySo7UIImageC_tF",
-            "moduleName": "AuthMe",
-            "genericSig": "<τ_0_0 where τ_0_0 : AuthMe.LivenessFlowDelegate>",
-            "sugared_genericSig": "<Self where Self : AuthMe.LivenessFlowDelegate>",
-            "protocolReq": true,
-            "reqNewWitnessTableEntry": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "livenessDidFaceScale",
-            "printedName": "livenessDidFaceScale(direction:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Direction",
-                "printedName": "AuthMe.LivenessFlow.FaceScaleDirection.Direction",
-                "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:6AuthMe20LivenessFlowDelegateP20livenessDidFaceScale9directionyAA0cD0C0hI9DirectionV0K0O_tF",
-            "mangledName": "$s6AuthMe20LivenessFlowDelegateP20livenessDidFaceScale9directionyAA0cD0C0hI9DirectionV0K0O_tF",
-            "moduleName": "AuthMe",
-            "genericSig": "<τ_0_0 where τ_0_0 : AuthMe.LivenessFlowDelegate>",
-            "sugared_genericSig": "<Self where Self : AuthMe.LivenessFlowDelegate>",
-            "protocolReq": true,
-            "reqNewWitnessTableEntry": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "livenessNotifyStage",
-            "printedName": "livenessNotifyStage(log:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "LogFAS",
-                "printedName": "AuthMe.LogFAS",
-                "usr": "s:6AuthMe6LogFASV"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:6AuthMe20LivenessFlowDelegateP19livenessNotifyStage3logyAA6LogFASV_tF",
-            "mangledName": "$s6AuthMe20LivenessFlowDelegateP19livenessNotifyStage3logyAA6LogFASV_tF",
-            "moduleName": "AuthMe",
-            "genericSig": "<τ_0_0 where τ_0_0 : AuthMe.LivenessFlowDelegate>",
-            "sugared_genericSig": "<Self where Self : AuthMe.LivenessFlowDelegate>",
-            "protocolReq": true,
-            "reqNewWitnessTableEntry": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "livenessNotifyUpload",
-            "printedName": "livenessNotifyUpload(log:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "LogUpload",
-                "printedName": "AuthMe.LogUpload",
-                "usr": "s:6AuthMe9LogUploadV"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:6AuthMe20LivenessFlowDelegateP20livenessNotifyUpload3logyAA03LogH0V_tF",
-            "mangledName": "$s6AuthMe20LivenessFlowDelegateP20livenessNotifyUpload3logyAA03LogH0V_tF",
-            "moduleName": "AuthMe",
-            "genericSig": "<τ_0_0 where τ_0_0 : AuthMe.LivenessFlowDelegate>",
-            "sugared_genericSig": "<Self where Self : AuthMe.LivenessFlowDelegate>",
-            "protocolReq": true,
-            "reqNewWitnessTableEntry": true,
-            "funcSelfKind": "NonMutating"
-          }
-        ],
-        "declKind": "Protocol",
-        "usr": "s:6AuthMe20LivenessFlowDelegateP",
-        "mangledName": "$s6AuthMe20LivenessFlowDelegateP",
-        "moduleName": "AuthMe",
-        "genericSig": "<τ_0_0 : AnyObject>",
-        "sugared_genericSig": "<Self : AnyObject>",
-        "declAttributes": [
-          "AccessControl"
-        ]
-      },
-      {
-        "kind": "TypeDecl",
-        "name": "LivenessFlow",
-        "printedName": "LivenessFlow",
-        "children": [
-          {
-            "kind": "Function",
-            "name": "setDelegate",
-            "printedName": "setDelegate(_:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "LivenessFlowDelegate",
-                "printedName": "any AuthMe.LivenessFlowDelegate",
-                "usr": "s:6AuthMe20LivenessFlowDelegateP"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:6AuthMe12LivenessFlowC11setDelegateyyAA0cdF0_pF",
-            "mangledName": "$s6AuthMe12LivenessFlowC11setDelegateyyAA0cdF0_pF",
-            "moduleName": "AuthMe",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Var",
-            "name": "delegate",
-            "printedName": "delegate",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "WeakStorage",
-                "printedName": "(any AuthMe.LivenessFlowDelegate)?"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:6AuthMe12LivenessFlowC8delegateAA0cD8Delegate_pSgvp",
-            "mangledName": "$s6AuthMe12LivenessFlowC8delegateAA0cD8Delegate_pSgvp",
-            "moduleName": "AuthMe",
-            "declAttributes": [
-              "HasInitialValue",
-              "HasStorage",
-              "ReferenceOwnership",
-              "AccessControl"
-            ],
-            "ownership": 1,
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "(any AuthMe.LivenessFlowDelegate)?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "LivenessFlowDelegate",
-                        "printedName": "any AuthMe.LivenessFlowDelegate",
-                        "usr": "s:6AuthMe20LivenessFlowDelegateP"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:6AuthMe12LivenessFlowC8delegateAA0cD8Delegate_pSgvg",
-                "mangledName": "$s6AuthMe12LivenessFlowC8delegateAA0cD8Delegate_pSgvg",
-                "moduleName": "AuthMe",
-                "implicit": true,
-                "accessorKind": "get"
-              },
-              {
-                "kind": "Accessor",
-                "name": "Set",
-                "printedName": "Set()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "(any AuthMe.LivenessFlowDelegate)?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "LivenessFlowDelegate",
-                        "printedName": "any AuthMe.LivenessFlowDelegate",
-                        "usr": "s:6AuthMe20LivenessFlowDelegateP"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:6AuthMe12LivenessFlowC8delegateAA0cD8Delegate_pSgvs",
-                "mangledName": "$s6AuthMe12LivenessFlowC8delegateAA0cD8Delegate_pSgvs",
-                "moduleName": "AuthMe",
-                "implicit": true,
-                "accessorKind": "set"
-              },
-              {
-                "kind": "Accessor",
-                "name": "Modify",
-                "printedName": "Modify()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:6AuthMe12LivenessFlowC8delegateAA0cD8Delegate_pSgvM",
-                "mangledName": "$s6AuthMe12LivenessFlowC8delegateAA0cD8Delegate_pSgvM",
-                "moduleName": "AuthMe",
-                "implicit": true,
-                "accessorKind": "_modify"
-              }
-            ]
-          },
-          {
-            "kind": "Var",
-            "name": "isDetecting",
-            "printedName": "isDetecting",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Bool",
-                "printedName": "Swift.Bool",
-                "usr": "s:Sb"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:6AuthMe12LivenessFlowC11isDetectingSbvp",
-            "mangledName": "$s6AuthMe12LivenessFlowC11isDetectingSbvp",
-            "moduleName": "AuthMe",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Bool",
-                    "printedName": "Swift.Bool",
-                    "usr": "s:Sb"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:6AuthMe12LivenessFlowC11isDetectingSbvg",
-                "mangledName": "$s6AuthMe12LivenessFlowC11isDetectingSbvg",
-                "moduleName": "AuthMe",
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(action:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "LivenessFlow",
-                "printedName": "AuthMe.LivenessFlow",
-                "usr": "s:6AuthMe12LivenessFlowC"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Action",
-                "printedName": "AuthMe.Action",
-                "hasDefaultArg": true,
-                "usr": "s:6AuthMe6ActionO"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:6AuthMe12LivenessFlowC6actionAcA6ActionO_tcfc",
-            "mangledName": "$s6AuthMe12LivenessFlowC6actionAcA6ActionO_tcfc",
-            "moduleName": "AuthMe",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "init_kind": "Designated"
-          },
-          {
-            "kind": "Function",
-            "name": "checkModel",
-            "printedName": "checkModel(progressHandler:handler:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "((Swift.Double) -> ())?",
-                "children": [
-                  {
-                    "kind": "TypeFunc",
-                    "name": "Function",
-                    "printedName": "(Swift.Double) -> ()",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Void",
-                        "printedName": "()"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Double",
-                        "printedName": "Swift.Double",
-                        "usr": "s:Sd"
-                      }
-                    ]
-                  }
-                ],
-                "hasDefaultArg": true,
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "((Swift.Result<(), AuthMe.FlowError>) -> ())?",
-                "children": [
-                  {
-                    "kind": "TypeFunc",
-                    "name": "Function",
-                    "printedName": "(Swift.Result<(), AuthMe.FlowError>) -> ()",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Void",
-                        "printedName": "()"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Result",
-                        "printedName": "Swift.Result<(), AuthMe.FlowError>",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Void",
-                            "printedName": "()"
-                          },
-                          {
-                            "kind": "TypeNominal",
-                            "name": "FlowError",
-                            "printedName": "AuthMe.FlowError",
-                            "usr": "s:6AuthMe9FlowErrorO"
-                          }
-                        ],
-                        "usr": "s:s6ResultO"
-                      }
-                    ]
-                  }
-                ],
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:6AuthMe12LivenessFlowC10checkModel15progressHandler7handleryySdcSg_ys6ResultOyytAA0D5ErrorOGcSgtF",
-            "mangledName": "$s6AuthMe12LivenessFlowC10checkModel15progressHandler7handleryySdcSg_ys6ResultOyytAA0D5ErrorOGcSgtF",
-            "moduleName": "AuthMe",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "setPreviewSize",
-            "printedName": "setPreviewSize(previewSize:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "CGSize",
-                "printedName": "CoreFoundation.CGSize",
-                "usr": "c:@S@CGSize"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:6AuthMe12LivenessFlowC14setPreviewSize07previewG0ySo6CGSizeV_tF",
-            "mangledName": "$s6AuthMe12LivenessFlowC14setPreviewSize07previewG0ySo6CGSizeV_tF",
-            "moduleName": "AuthMe",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "start",
-            "printedName": "start(encrypt:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Bool",
-                "printedName": "Swift.Bool",
-                "usr": "s:Sb"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:6AuthMe12LivenessFlowC5start7encryptySb_tF",
-            "mangledName": "$s6AuthMe12LivenessFlowC5start7encryptySb_tF",
-            "moduleName": "AuthMe",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "recognize",
-            "printedName": "recognize(image:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "UIImage",
-                "printedName": "UIKit.UIImage",
-                "usr": "c:objc(cs)UIImage"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:6AuthMe12LivenessFlowC9recognize5imageySo7UIImageC_tF",
-            "mangledName": "$s6AuthMe12LivenessFlowC9recognize5imageySo7UIImageC_tF",
-            "moduleName": "AuthMe",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "recognize",
-            "printedName": "recognize(normal:depthImage:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "UIImage",
-                "printedName": "UIKit.UIImage",
-                "usr": "c:objc(cs)UIImage"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "UIImage",
-                "printedName": "UIKit.UIImage",
-                "usr": "c:objc(cs)UIImage"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:6AuthMe12LivenessFlowC9recognize6normal10depthImageySo7UIImageC_AHtF",
-            "mangledName": "$s6AuthMe12LivenessFlowC9recognize6normal10depthImageySo7UIImageC_AHtF",
-            "moduleName": "AuthMe",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "roiRect",
-            "printedName": "roiRect(in:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "CGRect",
-                "printedName": "CoreFoundation.CGRect",
-                "usr": "c:@S@CGRect"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "CGSize",
-                "printedName": "CoreFoundation.CGSize",
-                "usr": "c:@S@CGSize"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:6AuthMe12LivenessFlowC7roiRect2inSo6CGRectVSo6CGSizeV_tF",
-            "mangledName": "$s6AuthMe12LivenessFlowC7roiRect2inSo6CGRectVSo6CGSizeV_tF",
-            "moduleName": "AuthMe",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "cancelExpired",
-            "printedName": "cancelExpired()",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:6AuthMe12LivenessFlowC13cancelExpiredyyF",
-            "mangledName": "$s6AuthMe12LivenessFlowC13cancelExpiredyyF",
-            "moduleName": "AuthMe",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "getResult",
-            "printedName": "getResult(completion:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "(Swift.Bool) -> ()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Bool",
-                    "printedName": "Swift.Bool",
-                    "usr": "s:Sb"
-                  }
-                ]
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:6AuthMe12LivenessFlowC9getResult10completionyySbc_tF",
-            "mangledName": "$s6AuthMe12LivenessFlowC9getResult10completionyySbc_tF",
-            "moduleName": "AuthMe",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "isExpired",
-            "printedName": "isExpired()",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Bool",
-                "printedName": "Swift.Bool",
-                "usr": "s:Sb"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:6AuthMe12LivenessFlowC9isExpiredSbyF",
-            "mangledName": "$s6AuthMe12LivenessFlowC9isExpiredSbyF",
-            "moduleName": "AuthMe",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "getVerifyResult",
-            "printedName": "getVerifyResult(completion:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "(Swift.Bool) -> ()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Bool",
-                    "printedName": "Swift.Bool",
-                    "usr": "s:Sb"
-                  }
-                ]
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:6AuthMe12LivenessFlowC15getVerifyResult10completionyySbc_tF",
-            "mangledName": "$s6AuthMe12LivenessFlowC15getVerifyResult10completionyySbc_tF",
-            "moduleName": "AuthMe",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "enableUploadFullFrame",
-            "printedName": "enableUploadFullFrame()",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:6AuthMe12LivenessFlowC21enableUploadFullFrameyyF",
-            "mangledName": "$s6AuthMe12LivenessFlowC21enableUploadFullFrameyyF",
-            "moduleName": "AuthMe",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "TypeDecl",
-            "name": "RoiParam",
-            "printedName": "RoiParam",
-            "children": [
-              {
-                "kind": "Constructor",
-                "name": "init",
-                "printedName": "init(preview:ratio:widthRatio:offset:)",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "RoiParam",
-                    "printedName": "AuthMe.LivenessFlow.RoiParam",
-                    "usr": "s:6AuthMe12LivenessFlowC8RoiParamV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "EnginePreview",
-                    "printedName": "AuthMe.EnginePreview",
-                    "usr": "s:6AuthMe13EnginePreviewV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CGFloat",
-                    "printedName": "CoreGraphics.CGFloat",
-                    "usr": "s:14CoreFoundation7CGFloatV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "CGFloat",
-                    "printedName": "CoreGraphics.CGFloat",
-                    "usr": "s:14CoreFoundation7CGFloatV"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "UIOffset",
-                    "printedName": "UIKit.UIOffset",
-                    "usr": "c:@S@UIOffset"
-                  }
-                ],
-                "declKind": "Constructor",
-                "usr": "s:6AuthMe12LivenessFlowC8RoiParamV7preview5ratio10widthRatio6offsetAeA13EnginePreviewV_14CoreFoundation7CGFloatVANSo8UIOffsetVtcfc",
-                "mangledName": "$s6AuthMe12LivenessFlowC8RoiParamV7preview5ratio10widthRatio6offsetAeA13EnginePreviewV_12CoreGraphics7CGFloatVANSo8UIOffsetVtcfc",
-                "moduleName": "AuthMe",
-                "declAttributes": [
-                  "AccessControl",
-                  "RawDocComment"
-                ],
-                "init_kind": "Designated"
-              }
-            ],
-            "declKind": "Struct",
-            "usr": "s:6AuthMe12LivenessFlowC8RoiParamV",
-            "mangledName": "$s6AuthMe12LivenessFlowC8RoiParamV",
-            "moduleName": "AuthMe",
-            "declAttributes": [
-              "AccessControl",
-              "RawDocComment"
-            ],
-            "isFromExtension": true
-          },
-          {
-            "kind": "TypeDecl",
-            "name": "FaceScaleDirection",
-            "printedName": "FaceScaleDirection",
-            "children": [
-              {
-                "kind": "TypeDecl",
-                "name": "Direction",
-                "printedName": "Direction",
-                "children": [
-                  {
-                    "kind": "Var",
-                    "name": "small",
-                    "printedName": "small",
-                    "children": [
-                      {
-                        "kind": "TypeFunc",
-                        "name": "Function",
-                        "printedName": "(AuthMe.LivenessFlow.FaceScaleDirection.Direction.Type) -> AuthMe.LivenessFlow.FaceScaleDirection.Direction",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Direction",
-                            "printedName": "AuthMe.LivenessFlow.FaceScaleDirection.Direction",
-                            "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O"
-                          },
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Metatype",
-                            "printedName": "AuthMe.LivenessFlow.FaceScaleDirection.Direction.Type",
-                            "children": [
-                              {
-                                "kind": "TypeNominal",
-                                "name": "Direction",
-                                "printedName": "AuthMe.LivenessFlow.FaceScaleDirection.Direction",
-                                "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O"
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ],
-                    "declKind": "EnumElement",
-                    "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O5smallyA2GmF",
-                    "mangledName": "$s6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O5smallyA2GmF",
-                    "moduleName": "AuthMe"
-                  },
-                  {
-                    "kind": "Var",
-                    "name": "normal",
-                    "printedName": "normal",
-                    "children": [
-                      {
-                        "kind": "TypeFunc",
-                        "name": "Function",
-                        "printedName": "(AuthMe.LivenessFlow.FaceScaleDirection.Direction.Type) -> AuthMe.LivenessFlow.FaceScaleDirection.Direction",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Direction",
-                            "printedName": "AuthMe.LivenessFlow.FaceScaleDirection.Direction",
-                            "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O"
-                          },
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Metatype",
-                            "printedName": "AuthMe.LivenessFlow.FaceScaleDirection.Direction.Type",
-                            "children": [
-                              {
-                                "kind": "TypeNominal",
-                                "name": "Direction",
-                                "printedName": "AuthMe.LivenessFlow.FaceScaleDirection.Direction",
-                                "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O"
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ],
-                    "declKind": "EnumElement",
-                    "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O6normalyA2GmF",
-                    "mangledName": "$s6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O6normalyA2GmF",
-                    "moduleName": "AuthMe"
-                  },
-                  {
-                    "kind": "Function",
-                    "name": "==",
-                    "printedName": "==(_:_:)",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Bool",
-                        "printedName": "Swift.Bool",
-                        "usr": "s:Sb"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Direction",
-                        "printedName": "AuthMe.LivenessFlow.FaceScaleDirection.Direction",
-                        "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Direction",
-                        "printedName": "AuthMe.LivenessFlow.FaceScaleDirection.Direction",
-                        "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O"
-                      }
-                    ],
-                    "declKind": "Func",
-                    "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O2eeoiySbAG_AGtFZ",
-                    "mangledName": "$s6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O2eeoiySbAG_AGtFZ",
-                    "moduleName": "AuthMe",
-                    "static": true,
-                    "implicit": true,
-                    "funcSelfKind": "NonMutating"
-                  },
-                  {
-                    "kind": "Var",
-                    "name": "hashValue",
-                    "printedName": "hashValue",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Int",
-                        "printedName": "Swift.Int",
-                        "usr": "s:Si"
-                      }
-                    ],
-                    "declKind": "Var",
-                    "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O9hashValueSivp",
-                    "mangledName": "$s6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O9hashValueSivp",
-                    "moduleName": "AuthMe",
-                    "implicit": true,
-                    "accessors": [
-                      {
-                        "kind": "Accessor",
-                        "name": "Get",
-                        "printedName": "Get()",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Int",
-                            "printedName": "Swift.Int",
-                            "usr": "s:Si"
-                          }
-                        ],
-                        "declKind": "Accessor",
-                        "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O9hashValueSivg",
-                        "mangledName": "$s6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O9hashValueSivg",
-                        "moduleName": "AuthMe",
-                        "implicit": true,
-                        "accessorKind": "get"
-                      }
-                    ]
-                  },
-                  {
-                    "kind": "Function",
-                    "name": "hash",
-                    "printedName": "hash(into:)",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Void",
-                        "printedName": "()"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Hasher",
-                        "printedName": "Swift.Hasher",
-                        "paramValueOwnership": "InOut",
-                        "usr": "s:s6HasherV"
-                      }
-                    ],
-                    "declKind": "Func",
-                    "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O4hash4intoys6HasherVz_tF",
-                    "mangledName": "$s6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O4hash4intoys6HasherVz_tF",
-                    "moduleName": "AuthMe",
-                    "implicit": true,
-                    "funcSelfKind": "NonMutating"
-                  }
-                ],
-                "declKind": "Enum",
-                "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O",
-                "mangledName": "$s6AuthMe12LivenessFlowC18FaceScaleDirectionV0G0O",
-                "moduleName": "AuthMe",
-                "declAttributes": [
-                  "AccessControl"
-                ],
-                "conformances": [
-                  {
-                    "kind": "Conformance",
-                    "name": "Equatable",
-                    "printedName": "Equatable",
-                    "usr": "s:SQ",
-                    "mangledName": "$sSQ"
-                  },
-                  {
-                    "kind": "Conformance",
-                    "name": "Hashable",
-                    "printedName": "Hashable",
-                    "usr": "s:SH",
-                    "mangledName": "$sSH"
-                  }
-                ]
-              }
-            ],
-            "declKind": "Struct",
-            "usr": "s:6AuthMe12LivenessFlowC18FaceScaleDirectionV",
-            "mangledName": "$s6AuthMe12LivenessFlowC18FaceScaleDirectionV",
-            "moduleName": "AuthMe",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "isFromExtension": true
-          }
-        ],
-        "declKind": "Class",
-        "usr": "s:6AuthMe12LivenessFlowC",
-        "mangledName": "$s6AuthMe12LivenessFlowC",
-        "moduleName": "AuthMe",
-        "declAttributes": [
-          "AccessControl"
-        ],
-        "conformances": [
-          {
-            "kind": "Conformance",
-            "name": "LivenessFlowProtocol",
-            "printedName": "LivenessFlowProtocol",
-            "usr": "s:6AuthMe20LivenessFlowProtocolP",
-            "mangledName": "$s6AuthMe20LivenessFlowProtocolP"
-          }
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "AuthMe",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "AuthMe",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "AuthMe",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "AuthMe",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "TypeDecl",
-        "name": "Cancellable",
-        "printedName": "Cancellable",
-        "children": [
-          {
-            "kind": "Var",
-            "name": "isCancelled",
-            "printedName": "isCancelled",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Bool",
-                "printedName": "Swift.Bool",
-                "usr": "s:Sb"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:6AuthMe11CancellableP11isCancelledSbvp",
-            "mangledName": "$s6AuthMe11CancellableP11isCancelledSbvp",
-            "moduleName": "AuthMe",
-            "protocolReq": true,
-            "declAttributes": [
-              "RawDocComment"
-            ],
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Bool",
-                    "printedName": "Swift.Bool",
-                    "usr": "s:Sb"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:6AuthMe11CancellableP11isCancelledSbvg",
-                "mangledName": "$s6AuthMe11CancellableP11isCancelledSbvg",
-                "moduleName": "AuthMe",
-                "genericSig": "<τ_0_0 where τ_0_0 : AuthMe.Cancellable>",
-                "sugared_genericSig": "<Self where Self : AuthMe.Cancellable>",
-                "protocolReq": true,
-                "reqNewWitnessTableEntry": true,
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Function",
-            "name": "cancel",
-            "printedName": "cancel()",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:6AuthMe11CancellableP6cancelyyF",
-            "mangledName": "$s6AuthMe11CancellableP6cancelyyF",
-            "moduleName": "AuthMe",
-            "genericSig": "<τ_0_0 where τ_0_0 : AuthMe.Cancellable>",
-            "sugared_genericSig": "<Self where Self : AuthMe.Cancellable>",
-            "protocolReq": true,
-            "declAttributes": [
-              "RawDocComment"
-            ],
-            "reqNewWitnessTableEntry": true,
-            "funcSelfKind": "NonMutating"
-          }
-        ],
-        "declKind": "Protocol",
-        "usr": "s:6AuthMe11CancellableP",
-        "mangledName": "$s6AuthMe11CancellableP",
-        "moduleName": "AuthMe",
-        "genericSig": "<τ_0_0 : AnyObject>",
-        "sugared_genericSig": "<Self : AnyObject>",
-        "declAttributes": [
-          "AccessControl",
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "UIKit",
-        "printedName": "UIKit",
-        "declKind": "Import",
-        "moduleName": "AuthMe",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "AuthMe",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "Algo",
-        "printedName": "Algo",
-        "declKind": "Import",
-        "moduleName": "AuthMe"
-      },
-      {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "AuthMe",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "Algo",
-        "printedName": "Algo",
-        "declKind": "Import",
-        "moduleName": "AuthMe"
-      },
-      {
-        "kind": "Import",
-        "name": "UIKit",
-        "printedName": "UIKit",
-        "declKind": "Import",
-        "moduleName": "AuthMe",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "AuthMe",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "UIKit",
-        "printedName": "UIKit",
-        "declKind": "Import",
-        "moduleName": "AuthMe",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "AuthMe",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "AuthMe",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "AuthMe",
-        "declAttributes": [
-          "RawDocComment"
         ]
       },
       {
@@ -57677,141 +57677,134 @@
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
-      "kind": "StringLiteral",
-      "offset": 1224,
-      "length": 3,
-      "value": "\"0\""
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "FloatLiteral",
-      "offset": 2453,
+      "offset": 946,
       "length": 3,
       "value": "0.0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "FloatLiteral",
-      "offset": 2493,
+      "offset": 986,
       "length": 3,
       "value": "0.5"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 2894,
+      "offset": 1387,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 2936,
+      "offset": 1429,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "StringLiteral",
-      "offset": 3046,
+      "offset": 1539,
       "length": 13,
       "value": "\"RecordQueue\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 3104,
+      "offset": 1597,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "StringLiteral",
-      "offset": 3232,
+      "offset": 1725,
       "length": 19,
       "value": "\"VerifyResultQueue\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "StringLiteral",
-      "offset": 3340,
+      "offset": 1833,
       "length": 33,
       "value": "\"com.authme.serialQueue.liveness\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 3550,
+      "offset": 2043,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "FloatLiteral",
-      "offset": 3584,
+      "offset": 2077,
       "length": 3,
       "value": "0.0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 3661,
+      "offset": 2154,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 3784,
+      "offset": 2277,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 18623,
+      "offset": 17688,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 18648,
+      "offset": 17713,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 19279,
+      "offset": 18344,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 19362,
-      "length": 2,
-      "value": "10"
+      "offset": 18427,
+      "length": 1,
+      "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 21126,
-      "length": 2,
-      "value": "10"
+      "offset": 20190,
+      "length": 1,
+      "value": "5"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 31885,
+      "offset": 30948,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 31929,
+      "offset": 30992,
       "length": 5,
       "value": "false"
     },
@@ -58052,6 +58045,13 @@
       "offset": 234,
       "length": 18,
       "value": "\"dd\/MM\/yyyy HH:mm\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow+Ext.swift",
+      "kind": "StringLiteral",
+      "offset": 1128,
+      "length": 3,
+      "value": "\"0\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/HTTPRequest\/ModelManagement\/GetModelsRequest.swift",
