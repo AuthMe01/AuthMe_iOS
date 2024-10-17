@@ -4,209 +4,13 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>ios-arm64-simulator/Algo.framework/Algo</key>
-		<data>
-		te+Ogn0xCCqRdd2aifJjpLkSSMY=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Headers/Algo-Swift.h</key>
-		<data>
-		X6w3eaEwqVnyy+gRZiKctgg8qDo=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Headers/Algo.h</key>
-		<data>
-		UpU9A1CpvhhY6ugbBOVRgZDDKrk=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Headers/EngineWrapper.h</key>
-		<data>
-		0rnhbQxvyB09HkxSZjB1OqkROa4=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Headers/authorization.h</key>
-		<data>
-		HUhHrJ+w116Jpg/JQ7ETbw4krqs=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Headers/card_classification.h</key>
-		<data>
-		vS8PTDvTigNjq8nt3Fp4oR7Fgrg=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Headers/card_detection.h</key>
-		<data>
-		wnv4Rx+2U1UidysYSfGcwK/uu38=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Headers/card_match.h</key>
-		<data>
-		tcRYxTZJmCEvHVY6g9BpEtpTrGw=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Headers/card_ocr_service.h</key>
-		<data>
-		kIqmOsWwxkruM8DL3lTSmPx9/A4=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Headers/engine_base.h</key>
-		<data>
-		d1Jquxcy/YeI0irE775yOYN8RBA=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Headers/engine_error_code.h</key>
-		<data>
-		wD9vE3QeuDjCZYW4R4iQe9dOalA=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Headers/engine_service_type.h</key>
-		<data>
-		aJ9BcvoSpgbYiMWfGP1Cs4gnibI=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Headers/engine_type.h</key>
-		<data>
-		2MFrH4HK/SHsR2JfNlON887fG/k=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Headers/face_alignment.h</key>
-		<data>
-		W3k1tKhtRodl0HjakGvF61UyjGA=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Headers/face_anti_spoofing.h</key>
-		<data>
-		WRbdBToVTZBzYu5QC5ZmzfS/h4o=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Headers/face_detection.h</key>
-		<data>
-		vGkizrJIO+y/v/TPyla0boF0pzc=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Headers/fas_service.h</key>
-		<data>
-		GF+nuVaE9WILp3fS75TV/BOQnNc=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Headers/id_card_anti_fraud_service.h</key>
-		<data>
-		qS2ZL+OleiGKTLdeW7HR4UE2hzM=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Headers/image_assessment.h</key>
-		<data>
-		fGCLxBJlEnwCqeQbigrgYZrnbQ0=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Headers/laser_tag_detection.h</key>
-		<data>
-		y5oX+quXsavXE5yCf5InnlGd7no=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Headers/metal_tag_detection.h</key>
-		<data>
-		9PUJbKj0arKmb8VxmtVkliNBrLE=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Headers/mini_fas.h</key>
-		<data>
-		nwc10UVUzy10+hE/UsI3SsQTeLs=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Headers/mrz_detection.h</key>
-		<data>
-		OHs4ZxoOF4i5uqt1Mc6tJJeC+Zk=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Headers/mrz_recognition.h</key>
-		<data>
-		RTPmRddiAU3nrwA8yvNTxVMD2F0=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Headers/mrz_service.h</key>
-		<data>
-		W6moGIhy55GOA77tv2RL/lRC3ec=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Headers/reflection_detection.h</key>
-		<data>
-		bt51d+jsruWXfDqX1RNoileFoTw=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Headers/service_utility.h</key>
-		<data>
-		o9EdbRg1mnPPo1itKW00U2a3qgo=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Info.plist</key>
-		<data>
-		e/geVJDzyfQv4sI1CHGUXlTyZTA=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
-		<data>
-		9pCZScaDhMqTBZbT80kfJv+vGsI=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
-		<data>
-		tZlsR/l62YyPaZbslZjpLWGNLc0=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
-		<data>
-		BAEoe2aKKjmgr/eHAOm1+QccR58=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
-		<data>
-		tZlsR/l62YyPaZbslZjpLWGNLc0=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Modules/module.modulemap</key>
-		<data>
-		IAnQ+Hw00idd8hqtc1lAdCpxeKE=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/Modules/module.private.modulemap</key>
-		<data>
-		7/aMqvGptnkhy7DMhtmIOnPWl0I=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/PrivacyInfo.xcprivacy</key>
-		<data>
-		tjywKnTvbBjdg6abzXh1Dxv+6ok=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/_CodeSignature/CodeResources</key>
-		<data>
-		u1xnIJGmSVfg6PP9m7Px2uq8c2g=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/include/jwt-cpp/base.h</key>
-		<data>
-		daH6xORlVix85LCCjIpPkBnKXRE=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/include/jwt-cpp/jwt.h</key>
-		<data>
-		BoykaCMVBSvYTKATGJfCDI/zNrs=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/include/jwt-cpp/traits/boost-json/defaults.h</key>
-		<data>
-		0glq+EjsDulXABNR/3r85tD5plk=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/include/jwt-cpp/traits/boost-json/traits.h</key>
-		<data>
-		2vlRFKblLTia7AB59q7sztKzdP0=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/include/jwt-cpp/traits/danielaparker-jsoncons/defaults.h</key>
-		<data>
-		rVw8g9EeCsgzIDGwlnJKY2v+I6g=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/include/jwt-cpp/traits/danielaparker-jsoncons/traits.h</key>
-		<data>
-		XoalwCb+WWBSh9eXAhkICe0faWs=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/include/jwt-cpp/traits/defaults.h.mustache</key>
-		<data>
-		oLfM48KfIe4c6+ZU+7ZAmn19//g=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/include/jwt-cpp/traits/kazuho-picojson/defaults.h</key>
-		<data>
-		bl6G/6k9lfuTOfSO49YahvtQqck=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/include/jwt-cpp/traits/kazuho-picojson/traits.h</key>
-		<data>
-		Veosz6djrjjxdVC6jQEUQjGFYjU=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/include/jwt-cpp/traits/nlohmann-json/defaults.h</key>
-		<data>
-		rkkCeP4Hs9FcejxdYAGqoGhr098=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/include/jwt-cpp/traits/nlohmann-json/traits.h</key>
-		<data>
-		6G3WCTSx9JC4rdwADhdCXemuma4=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/include/nlohmann/json.hpp</key>
-		<data>
-		EOjccQR2g431sRGGVsq3bAubNAo=
-		</data>
-		<key>ios-arm64-simulator/Algo.framework/include/picojson/picojson.h</key>
-		<data>
-		yJurrLPIydD/3/PXDoG16QSnjCg=
-		</data>
 		<key>ios-arm64/Algo.framework/Algo</key>
 		<data>
-		UbdQOmghK6GQQbQ6quAJf7bFdyg=
+		lX4BveIN7KKsy5qGuQF1Ro2+05U=
 		</data>
 		<key>ios-arm64/Algo.framework/Headers/Algo-Swift.h</key>
 		<data>
-		X6w3eaEwqVnyy+gRZiKctgg8qDo=
+		xOS8YscxwCVmabRPwQAqVKSXEpM=
 		</data>
 		<key>ios-arm64/Algo.framework/Headers/Algo.h</key>
 		<data>
@@ -310,23 +114,23 @@
 		</data>
 		<key>ios-arm64/Algo.framework/Info.plist</key>
 		<data>
-		tVDrc9fedIAa5o5MkNLdvPtMemc=
+		2yrnINpYRMgiKTQ7oDbDqYAX2RI=
 		</data>
 		<key>ios-arm64/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		9pCZScaDhMqTBZbT80kfJv+vGsI=
+		UwmiIcu7v6/twNdjOOe1lY15u9A=
 		</data>
 		<key>ios-arm64/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		V5hBi9JFfEMd5hcPingjX/A+q+0=
+		swGZ9qoKhfSA/3Qv/uuzAvPBh1Y=
 		</data>
 		<key>ios-arm64/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		KzD9GEuTfU9FcmCJ/yw6L8bscZM=
+		U5iGNLYO/ragftsIuYpanIHUFuE=
 		</data>
 		<key>ios-arm64/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		V5hBi9JFfEMd5hcPingjX/A+q+0=
+		swGZ9qoKhfSA/3Qv/uuzAvPBh1Y=
 		</data>
 		<key>ios-arm64/Algo.framework/Modules/module.modulemap</key>
 		<data>
@@ -338,7 +142,7 @@
 		</data>
 		<key>ios-arm64/Algo.framework/PrivacyInfo.xcprivacy</key>
 		<data>
-		tjywKnTvbBjdg6abzXh1Dxv+6ok=
+		YZKTRHNrTxX3QTFjTE1CsuxomoY=
 		</data>
 		<key>ios-arm64/Algo.framework/include/jwt-cpp/base.h</key>
 		<data>
@@ -392,32 +196,244 @@
 		<data>
 		yJurrLPIydD/3/PXDoG16QSnjCg=
 		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Algo</key>
+		<data>
+		yFfGOQCr2sB6N4DcD9uV64de7RA=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/Algo-Swift.h</key>
+		<data>
+		fWuDg60Vvzn9IsShGJU8HZFYZik=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/Algo.h</key>
+		<data>
+		UpU9A1CpvhhY6ugbBOVRgZDDKrk=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/EngineWrapper.h</key>
+		<data>
+		0rnhbQxvyB09HkxSZjB1OqkROa4=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/authorization.h</key>
+		<data>
+		HUhHrJ+w116Jpg/JQ7ETbw4krqs=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/card_classification.h</key>
+		<data>
+		vS8PTDvTigNjq8nt3Fp4oR7Fgrg=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/card_detection.h</key>
+		<data>
+		wnv4Rx+2U1UidysYSfGcwK/uu38=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/card_match.h</key>
+		<data>
+		tcRYxTZJmCEvHVY6g9BpEtpTrGw=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/card_ocr_service.h</key>
+		<data>
+		kIqmOsWwxkruM8DL3lTSmPx9/A4=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/engine_base.h</key>
+		<data>
+		d1Jquxcy/YeI0irE775yOYN8RBA=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/engine_error_code.h</key>
+		<data>
+		wD9vE3QeuDjCZYW4R4iQe9dOalA=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/engine_service_type.h</key>
+		<data>
+		aJ9BcvoSpgbYiMWfGP1Cs4gnibI=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/engine_type.h</key>
+		<data>
+		2MFrH4HK/SHsR2JfNlON887fG/k=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/face_alignment.h</key>
+		<data>
+		W3k1tKhtRodl0HjakGvF61UyjGA=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/face_anti_spoofing.h</key>
+		<data>
+		WRbdBToVTZBzYu5QC5ZmzfS/h4o=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/face_detection.h</key>
+		<data>
+		vGkizrJIO+y/v/TPyla0boF0pzc=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/fas_service.h</key>
+		<data>
+		GF+nuVaE9WILp3fS75TV/BOQnNc=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/id_card_anti_fraud_service.h</key>
+		<data>
+		qS2ZL+OleiGKTLdeW7HR4UE2hzM=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/image_assessment.h</key>
+		<data>
+		fGCLxBJlEnwCqeQbigrgYZrnbQ0=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/laser_tag_detection.h</key>
+		<data>
+		y5oX+quXsavXE5yCf5InnlGd7no=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/metal_tag_detection.h</key>
+		<data>
+		9PUJbKj0arKmb8VxmtVkliNBrLE=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/mini_fas.h</key>
+		<data>
+		nwc10UVUzy10+hE/UsI3SsQTeLs=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/mrz_detection.h</key>
+		<data>
+		OHs4ZxoOF4i5uqt1Mc6tJJeC+Zk=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/mrz_recognition.h</key>
+		<data>
+		RTPmRddiAU3nrwA8yvNTxVMD2F0=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/mrz_service.h</key>
+		<data>
+		W6moGIhy55GOA77tv2RL/lRC3ec=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/reflection_detection.h</key>
+		<data>
+		bt51d+jsruWXfDqX1RNoileFoTw=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/service_utility.h</key>
+		<data>
+		o9EdbRg1mnPPo1itKW00U2a3qgo=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Info.plist</key>
+		<data>
+		h/7Y0K1cS6SIE4Xuni4Cbh73x4E=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
+		<data>
+		UwmiIcu7v6/twNdjOOe1lY15u9A=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
+		<data>
+		EZ+nBoiWDFtLO2qwQLuGckH87qY=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
+		<data>
+		L2w8dp38Xf+IlhGxCzIq6PHtm2s=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
+		<data>
+		EZ+nBoiWDFtLO2qwQLuGckH87qY=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
+		<data>
+		UwmiIcu7v6/twNdjOOe1lY15u9A=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
+		<data>
+		+uTf2+Rc9JVH77cpYyq6q/Xjfw8=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
+		<data>
+		yQ45/KG1miILR6QeXoDTe+rHdzQ=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
+		<data>
+		+uTf2+Rc9JVH77cpYyq6q/Xjfw8=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Modules/module.modulemap</key>
+		<data>
+		IAnQ+Hw00idd8hqtc1lAdCpxeKE=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Modules/module.private.modulemap</key>
+		<data>
+		7/aMqvGptnkhy7DMhtmIOnPWl0I=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/PrivacyInfo.xcprivacy</key>
+		<data>
+		YZKTRHNrTxX3QTFjTE1CsuxomoY=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/_CodeSignature/CodeResources</key>
+		<data>
+		prVc4VeQ6xZtRKSmyW4StPn00hI=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/include/jwt-cpp/base.h</key>
+		<data>
+		daH6xORlVix85LCCjIpPkBnKXRE=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/include/jwt-cpp/jwt.h</key>
+		<data>
+		BoykaCMVBSvYTKATGJfCDI/zNrs=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/include/jwt-cpp/traits/boost-json/defaults.h</key>
+		<data>
+		0glq+EjsDulXABNR/3r85tD5plk=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/include/jwt-cpp/traits/boost-json/traits.h</key>
+		<data>
+		2vlRFKblLTia7AB59q7sztKzdP0=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/include/jwt-cpp/traits/danielaparker-jsoncons/defaults.h</key>
+		<data>
+		rVw8g9EeCsgzIDGwlnJKY2v+I6g=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/include/jwt-cpp/traits/danielaparker-jsoncons/traits.h</key>
+		<data>
+		XoalwCb+WWBSh9eXAhkICe0faWs=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/include/jwt-cpp/traits/defaults.h.mustache</key>
+		<data>
+		oLfM48KfIe4c6+ZU+7ZAmn19//g=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/include/jwt-cpp/traits/kazuho-picojson/defaults.h</key>
+		<data>
+		bl6G/6k9lfuTOfSO49YahvtQqck=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/include/jwt-cpp/traits/kazuho-picojson/traits.h</key>
+		<data>
+		Veosz6djrjjxdVC6jQEUQjGFYjU=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/include/jwt-cpp/traits/nlohmann-json/defaults.h</key>
+		<data>
+		rkkCeP4Hs9FcejxdYAGqoGhr098=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/include/jwt-cpp/traits/nlohmann-json/traits.h</key>
+		<data>
+		6G3WCTSx9JC4rdwADhdCXemuma4=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/include/nlohmann/json.hpp</key>
+		<data>
+		EOjccQR2g431sRGGVsq3bAubNAo=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/include/picojson/picojson.h</key>
+		<data>
+		yJurrLPIydD/3/PXDoG16QSnjCg=
+		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>ios-arm64-simulator/Algo.framework/Algo</key>
+		<key>ios-arm64/Algo.framework/Algo</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			te+Ogn0xCCqRdd2aifJjpLkSSMY=
+			lX4BveIN7KKsy5qGuQF1Ro2+05U=
 			</data>
 			<key>hash2</key>
 			<data>
-			Q7JkD9u6x26/PJFGi//DX6MJX0O/+5ah4PNvNgcmlGs=
+			tg4EsDUp2yPqUHJVYco5qGYtRMpcZfusWFokee9WHC4=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Headers/Algo-Swift.h</key>
+		<key>ios-arm64/Algo.framework/Headers/Algo-Swift.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			X6w3eaEwqVnyy+gRZiKctgg8qDo=
+			xOS8YscxwCVmabRPwQAqVKSXEpM=
 			</data>
 			<key>hash2</key>
 			<data>
-			wvm4BMVadpOxOCr7G9jLuaKtlyq2mBxM8ikQTKIUA6k=
+			vol2+ALT1A0NKE1Pkpbp2PxQrCJ9pUfsmjAxJwgWNIY=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Headers/Algo.h</key>
+		<key>ios-arm64/Algo.framework/Headers/Algo.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -428,7 +444,7 @@
 			dfXa29/FC2YIQvcbEKSUTmn38X1g6Jp2hOyhOVlttN8=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Headers/EngineWrapper.h</key>
+		<key>ios-arm64/Algo.framework/Headers/EngineWrapper.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -439,7 +455,7 @@
 			ZeA8uPa80oqn4zNBw3hga8GoLbNTxMyMRg33PYaFecE=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Headers/authorization.h</key>
+		<key>ios-arm64/Algo.framework/Headers/authorization.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -450,7 +466,7 @@
 			b+CXRoVfJtgDDq95b+J9neeQECSP30SNflDXnkqP6jI=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Headers/card_classification.h</key>
+		<key>ios-arm64/Algo.framework/Headers/card_classification.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -461,7 +477,7 @@
 			SvWFAlHjXyJaGbA+olAotavRz34xgCgaZLK5usKkGeo=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Headers/card_detection.h</key>
+		<key>ios-arm64/Algo.framework/Headers/card_detection.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -472,7 +488,7 @@
 			M9wU7w03gRgmCVhu1taktzM6u3XAGKwNkFEv2WyqF3c=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Headers/card_match.h</key>
+		<key>ios-arm64/Algo.framework/Headers/card_match.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -483,7 +499,7 @@
 			HRWbTmgIhSSrhSlj02gh79ZZ/P43cBlbm4bPxPW5ijM=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Headers/card_ocr_service.h</key>
+		<key>ios-arm64/Algo.framework/Headers/card_ocr_service.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -494,7 +510,7 @@
 			lKuMtw5lRnVeAZw93JsGElC7EiXO1iRMSb755+gb2mQ=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Headers/engine_base.h</key>
+		<key>ios-arm64/Algo.framework/Headers/engine_base.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -505,7 +521,7 @@
 			TGr29dU0eqExvpTndznCHbXFM+D7tkhXaCS5M07ZFT8=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Headers/engine_error_code.h</key>
+		<key>ios-arm64/Algo.framework/Headers/engine_error_code.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -516,7 +532,7 @@
 			7bXHIUD8+SSOpWEkev8jp5v9AQo+85VzHITGXuaIMeE=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Headers/engine_service_type.h</key>
+		<key>ios-arm64/Algo.framework/Headers/engine_service_type.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -527,7 +543,7 @@
 			cX4WsHtEr7d4FwcKqBEcbdfI6n8DS8/qcT6QdAYi5fw=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Headers/engine_type.h</key>
+		<key>ios-arm64/Algo.framework/Headers/engine_type.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -538,7 +554,7 @@
 			Yll3wDCdSWUYf+L6xk1GlO3DjHW0Rk59EYP+fKMUAWM=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Headers/face_alignment.h</key>
+		<key>ios-arm64/Algo.framework/Headers/face_alignment.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -549,7 +565,7 @@
 			BMQEYj112/RjfDCZYapLM4zn31FE+UHHa5EHeZTGzUQ=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Headers/face_anti_spoofing.h</key>
+		<key>ios-arm64/Algo.framework/Headers/face_anti_spoofing.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -560,7 +576,7 @@
 			V2IoQ3ZujM0Xum4P6/5etSjn/Bt0Z28HQ2JYOouwcRQ=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Headers/face_detection.h</key>
+		<key>ios-arm64/Algo.framework/Headers/face_detection.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -571,7 +587,7 @@
 			I4MkzsaxUivIJHgh8KrxlhdfNcTCIWWEDj1ROFPHcfQ=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Headers/fas_service.h</key>
+		<key>ios-arm64/Algo.framework/Headers/fas_service.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -582,7 +598,7 @@
 			478VnOt1G7VYNMd/juc4ulb4O538ICxxQ+F/pnUfFSg=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Headers/id_card_anti_fraud_service.h</key>
+		<key>ios-arm64/Algo.framework/Headers/id_card_anti_fraud_service.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -593,7 +609,7 @@
 			9ci0yu71zN4fSmBrOw/Q4mDtwKp27R4nDq/0muMPzH4=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Headers/image_assessment.h</key>
+		<key>ios-arm64/Algo.framework/Headers/image_assessment.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -604,7 +620,7 @@
 			ueyU0PdO2B45YokW0rRxooVyTpD5bhXetyEyXYEDQdI=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Headers/laser_tag_detection.h</key>
+		<key>ios-arm64/Algo.framework/Headers/laser_tag_detection.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -615,7 +631,7 @@
 			8qWtXuAWJaVJ9CuQxkBXuHv7phINkcitK6gS8ekoXZA=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Headers/metal_tag_detection.h</key>
+		<key>ios-arm64/Algo.framework/Headers/metal_tag_detection.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -626,7 +642,7 @@
 			XKgVFW8Yc4pMybL9epTlplOirLx3S6SDWUjD4qvHzJU=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Headers/mini_fas.h</key>
+		<key>ios-arm64/Algo.framework/Headers/mini_fas.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -637,7 +653,7 @@
 			d7snXuED4+8u2++3KobQYEc9ZPptNrMB8kltkhCjo0k=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Headers/mrz_detection.h</key>
+		<key>ios-arm64/Algo.framework/Headers/mrz_detection.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -648,7 +664,7 @@
 			gWJ3ceVaZVXjdVBl1JizUeRqNGysN4qA8EeBMNwX3T8=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Headers/mrz_recognition.h</key>
+		<key>ios-arm64/Algo.framework/Headers/mrz_recognition.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -659,7 +675,7 @@
 			C2loNbbtl8rRFPFB7De1bCfatqsu3t8Zv9RHXMyalwQ=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Headers/mrz_service.h</key>
+		<key>ios-arm64/Algo.framework/Headers/mrz_service.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -670,7 +686,7 @@
 			SWYv+m4xYeBLfoNAoqOtMMu73GqI7OJCCzDJUPkGfd4=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Headers/reflection_detection.h</key>
+		<key>ios-arm64/Algo.framework/Headers/reflection_detection.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -681,7 +697,7 @@
 			0eNjUYWu5idO90Hee56XbimEVk1QyfhjVwNWqqSpEnY=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Headers/service_utility.h</key>
+		<key>ios-arm64/Algo.framework/Headers/service_utility.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -692,62 +708,62 @@
 			/3J/bhfqIP3sfrf9B6SVsV0qJ7bTYKPd0OD2v3jhTQc=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Info.plist</key>
+		<key>ios-arm64/Algo.framework/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			e/geVJDzyfQv4sI1CHGUXlTyZTA=
+			2yrnINpYRMgiKTQ7oDbDqYAX2RI=
 			</data>
 			<key>hash2</key>
 			<data>
-			LrYIxyhK2tWzfNE+2x1rh8tabZ2Ev87FEzrGlEBXpBw=
+			TrUQ26t/hSYwWW/PD+0pwsLCn2UbOpkvV51hA9CwUFM=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
+		<key>ios-arm64/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios.abi.json</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			9pCZScaDhMqTBZbT80kfJv+vGsI=
+			UwmiIcu7v6/twNdjOOe1lY15u9A=
 			</data>
 			<key>hash2</key>
 			<data>
-			hqpbm0JMZf9B2zVXvff25VlHDqvANsNWIwKnwBAr+1I=
+			AH0nQcCAWoSpX1wp9VfJI9WpZ2H46etdffccBiv7xZg=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
+		<key>ios-arm64/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			tZlsR/l62YyPaZbslZjpLWGNLc0=
+			swGZ9qoKhfSA/3Qv/uuzAvPBh1Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			753cYsxI00AjmqoBiPI8UvONwszdzccQC+g6fQZ+tgo=
+			fyqXvJm09LJ4S4iaqPAwSOpCEYRAkjZgwz1wsBAtkXk=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
+		<key>ios-arm64/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			BAEoe2aKKjmgr/eHAOm1+QccR58=
+			U5iGNLYO/ragftsIuYpanIHUFuE=
 			</data>
 			<key>hash2</key>
 			<data>
-			LPsary6lZ6WQYerY1Yc+zLR2PQgGJyddLVOwVIp7bNc=
+			qQ07PtkUpBpTd1QpE77B9K2840AsJ838ea2c286pGbs=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
+		<key>ios-arm64/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			tZlsR/l62YyPaZbslZjpLWGNLc0=
+			swGZ9qoKhfSA/3Qv/uuzAvPBh1Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			753cYsxI00AjmqoBiPI8UvONwszdzccQC+g6fQZ+tgo=
+			fyqXvJm09LJ4S4iaqPAwSOpCEYRAkjZgwz1wsBAtkXk=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Modules/module.modulemap</key>
+		<key>ios-arm64/Algo.framework/Modules/module.modulemap</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -758,7 +774,7 @@
 			DGtO5i9Fy0w01TtDeoyI8eTL0P4bNZ4gkB9mCN3gdig=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/Modules/module.private.modulemap</key>
+		<key>ios-arm64/Algo.framework/Modules/module.private.modulemap</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -769,29 +785,18 @@
 			6U5RH/v1ZxMYLpbNpUfjPaovFgqGBHKCQnUZnU1T1Fw=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/PrivacyInfo.xcprivacy</key>
+		<key>ios-arm64/Algo.framework/PrivacyInfo.xcprivacy</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			tjywKnTvbBjdg6abzXh1Dxv+6ok=
+			YZKTRHNrTxX3QTFjTE1CsuxomoY=
 			</data>
 			<key>hash2</key>
 			<data>
-			oHCvlYiDLXLgkXiDuaOJCBxJ49gqVCiG6QZ6VqggzfU=
+			RQ9GCBpKizzxqBtjiCUGH1T128YFNk4RyrvS5iRv02U=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/_CodeSignature/CodeResources</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			u1xnIJGmSVfg6PP9m7Px2uq8c2g=
-			</data>
-			<key>hash2</key>
-			<data>
-			EARzd+MsYr1/sEnCo2tAbs5UC7yqlg1jaOYR5dbUXQA=
-			</data>
-		</dict>
-		<key>ios-arm64-simulator/Algo.framework/include/jwt-cpp/base.h</key>
+		<key>ios-arm64/Algo.framework/include/jwt-cpp/base.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -802,7 +807,7 @@
 			D63G2xgf+tfABoWnxXFxOIUvE5V4szlU85OQcxihZIM=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/include/jwt-cpp/jwt.h</key>
+		<key>ios-arm64/Algo.framework/include/jwt-cpp/jwt.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -813,7 +818,7 @@
 			QY+ao6FSXRiGOMAPK6vL4tnb40cbAVtfIcUaC47txJA=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/include/jwt-cpp/traits/boost-json/defaults.h</key>
+		<key>ios-arm64/Algo.framework/include/jwt-cpp/traits/boost-json/defaults.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -824,7 +829,7 @@
 			+F7a0XfJlNMRnoJv3nWSLUyW5zvuJxwzyZ9hrV6e3c8=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/include/jwt-cpp/traits/boost-json/traits.h</key>
+		<key>ios-arm64/Algo.framework/include/jwt-cpp/traits/boost-json/traits.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -835,7 +840,7 @@
 			roWJ3Y+b3t8ucEPb459FM5lCEBxXMb14A2O21o/+vJU=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/include/jwt-cpp/traits/danielaparker-jsoncons/defaults.h</key>
+		<key>ios-arm64/Algo.framework/include/jwt-cpp/traits/danielaparker-jsoncons/defaults.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -846,7 +851,7 @@
 			0pKo4hgqjsKvyjRS26nNyM3+4NXkjVboznjHv9e6aDc=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/include/jwt-cpp/traits/danielaparker-jsoncons/traits.h</key>
+		<key>ios-arm64/Algo.framework/include/jwt-cpp/traits/danielaparker-jsoncons/traits.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -857,7 +862,7 @@
 			X+ctpAenPs+F8ALTszCl+ekuWH7Nwjo1kukDBCxCQRw=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/include/jwt-cpp/traits/defaults.h.mustache</key>
+		<key>ios-arm64/Algo.framework/include/jwt-cpp/traits/defaults.h.mustache</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -868,7 +873,7 @@
 			L6vHk3rtp/ujZLgroDdj5X7AFTOPrneTCQFdwvSutkM=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/include/jwt-cpp/traits/kazuho-picojson/defaults.h</key>
+		<key>ios-arm64/Algo.framework/include/jwt-cpp/traits/kazuho-picojson/defaults.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -879,7 +884,7 @@
 			qD+vqPXXwcmq8aDCaPzv1U6/FXYMUvvhE2lbzUnwJZA=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/include/jwt-cpp/traits/kazuho-picojson/traits.h</key>
+		<key>ios-arm64/Algo.framework/include/jwt-cpp/traits/kazuho-picojson/traits.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -890,7 +895,7 @@
 			Ho1bYovfNnJSD46CT9tn2zQ0TR8qaRGYfw6ym0XXXw4=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/include/jwt-cpp/traits/nlohmann-json/defaults.h</key>
+		<key>ios-arm64/Algo.framework/include/jwt-cpp/traits/nlohmann-json/defaults.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -901,7 +906,7 @@
 			eU995ytJqSsfm1WZtQg3xIrLd2BAhRqVppKfykYmhRE=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/include/jwt-cpp/traits/nlohmann-json/traits.h</key>
+		<key>ios-arm64/Algo.framework/include/jwt-cpp/traits/nlohmann-json/traits.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -912,7 +917,7 @@
 			0Rl7Y7n4SIFBpPAauB95vKhRzL1QIHMHUHskC13pDRg=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/include/nlohmann/json.hpp</key>
+		<key>ios-arm64/Algo.framework/include/nlohmann/json.hpp</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -923,7 +928,7 @@
 			vnu/vHxiw1qm8n373ZUDhPJH3Z8igbWTC9qjpquV7vc=
 			</data>
 		</dict>
-		<key>ios-arm64-simulator/Algo.framework/include/picojson/picojson.h</key>
+		<key>ios-arm64/Algo.framework/include/picojson/picojson.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -934,29 +939,29 @@
 			7s+4nRpyqziiAyLk+VkhDEMhZzUPyElWhW2U3+bkpSY=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Algo</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Algo</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			UbdQOmghK6GQQbQ6quAJf7bFdyg=
+			yFfGOQCr2sB6N4DcD9uV64de7RA=
 			</data>
 			<key>hash2</key>
 			<data>
-			LHkuZHQDUSHoLyI+krbRxt5/Y3FgU1WRN/5HD1JHw9g=
+			LtMXUz4EMZMN7efeFAV+U51dzYsHPT2LoEiuLHdoRSs=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Headers/Algo-Swift.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/Algo-Swift.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			X6w3eaEwqVnyy+gRZiKctgg8qDo=
+			fWuDg60Vvzn9IsShGJU8HZFYZik=
 			</data>
 			<key>hash2</key>
 			<data>
-			wvm4BMVadpOxOCr7G9jLuaKtlyq2mBxM8ikQTKIUA6k=
+			Wb/94Z4bK7nRzbHv3zT25vLx7Nb18DdXWP3+6UyVKwU=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Headers/Algo.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/Algo.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -967,7 +972,7 @@
 			dfXa29/FC2YIQvcbEKSUTmn38X1g6Jp2hOyhOVlttN8=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Headers/EngineWrapper.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/EngineWrapper.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -978,7 +983,7 @@
 			ZeA8uPa80oqn4zNBw3hga8GoLbNTxMyMRg33PYaFecE=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Headers/authorization.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/authorization.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -989,7 +994,7 @@
 			b+CXRoVfJtgDDq95b+J9neeQECSP30SNflDXnkqP6jI=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Headers/card_classification.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/card_classification.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1000,7 +1005,7 @@
 			SvWFAlHjXyJaGbA+olAotavRz34xgCgaZLK5usKkGeo=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Headers/card_detection.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/card_detection.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1011,7 +1016,7 @@
 			M9wU7w03gRgmCVhu1taktzM6u3XAGKwNkFEv2WyqF3c=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Headers/card_match.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/card_match.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1022,7 +1027,7 @@
 			HRWbTmgIhSSrhSlj02gh79ZZ/P43cBlbm4bPxPW5ijM=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Headers/card_ocr_service.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/card_ocr_service.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1033,7 +1038,7 @@
 			lKuMtw5lRnVeAZw93JsGElC7EiXO1iRMSb755+gb2mQ=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Headers/engine_base.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/engine_base.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1044,7 +1049,7 @@
 			TGr29dU0eqExvpTndznCHbXFM+D7tkhXaCS5M07ZFT8=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Headers/engine_error_code.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/engine_error_code.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1055,7 +1060,7 @@
 			7bXHIUD8+SSOpWEkev8jp5v9AQo+85VzHITGXuaIMeE=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Headers/engine_service_type.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/engine_service_type.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1066,7 +1071,7 @@
 			cX4WsHtEr7d4FwcKqBEcbdfI6n8DS8/qcT6QdAYi5fw=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Headers/engine_type.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/engine_type.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1077,7 +1082,7 @@
 			Yll3wDCdSWUYf+L6xk1GlO3DjHW0Rk59EYP+fKMUAWM=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Headers/face_alignment.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/face_alignment.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1088,7 +1093,7 @@
 			BMQEYj112/RjfDCZYapLM4zn31FE+UHHa5EHeZTGzUQ=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Headers/face_anti_spoofing.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/face_anti_spoofing.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1099,7 +1104,7 @@
 			V2IoQ3ZujM0Xum4P6/5etSjn/Bt0Z28HQ2JYOouwcRQ=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Headers/face_detection.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/face_detection.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1110,7 +1115,7 @@
 			I4MkzsaxUivIJHgh8KrxlhdfNcTCIWWEDj1ROFPHcfQ=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Headers/fas_service.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/fas_service.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1121,7 +1126,7 @@
 			478VnOt1G7VYNMd/juc4ulb4O538ICxxQ+F/pnUfFSg=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Headers/id_card_anti_fraud_service.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/id_card_anti_fraud_service.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1132,7 +1137,7 @@
 			9ci0yu71zN4fSmBrOw/Q4mDtwKp27R4nDq/0muMPzH4=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Headers/image_assessment.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/image_assessment.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1143,7 +1148,7 @@
 			ueyU0PdO2B45YokW0rRxooVyTpD5bhXetyEyXYEDQdI=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Headers/laser_tag_detection.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/laser_tag_detection.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1154,7 +1159,7 @@
 			8qWtXuAWJaVJ9CuQxkBXuHv7phINkcitK6gS8ekoXZA=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Headers/metal_tag_detection.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/metal_tag_detection.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1165,7 +1170,7 @@
 			XKgVFW8Yc4pMybL9epTlplOirLx3S6SDWUjD4qvHzJU=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Headers/mini_fas.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/mini_fas.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1176,7 +1181,7 @@
 			d7snXuED4+8u2++3KobQYEc9ZPptNrMB8kltkhCjo0k=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Headers/mrz_detection.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/mrz_detection.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1187,7 +1192,7 @@
 			gWJ3ceVaZVXjdVBl1JizUeRqNGysN4qA8EeBMNwX3T8=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Headers/mrz_recognition.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/mrz_recognition.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1198,7 +1203,7 @@
 			C2loNbbtl8rRFPFB7De1bCfatqsu3t8Zv9RHXMyalwQ=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Headers/mrz_service.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/mrz_service.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1209,7 +1214,7 @@
 			SWYv+m4xYeBLfoNAoqOtMMu73GqI7OJCCzDJUPkGfd4=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Headers/reflection_detection.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/reflection_detection.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1220,7 +1225,7 @@
 			0eNjUYWu5idO90Hee56XbimEVk1QyfhjVwNWqqSpEnY=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Headers/service_utility.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/service_utility.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1231,62 +1236,106 @@
 			/3J/bhfqIP3sfrf9B6SVsV0qJ7bTYKPd0OD2v3jhTQc=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Info.plist</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			tVDrc9fedIAa5o5MkNLdvPtMemc=
+			h/7Y0K1cS6SIE4Xuni4Cbh73x4E=
 			</data>
 			<key>hash2</key>
 			<data>
-			ylxwtvCiWLCr1gqfcfRzqt0O1YBjmMU5tsva0IvqhHk=
+			6eESS+ZjYQh1Q+MSKzA394AsbsKjiIQ0YSQvvveq7x8=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios.abi.json</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			9pCZScaDhMqTBZbT80kfJv+vGsI=
+			UwmiIcu7v6/twNdjOOe1lY15u9A=
 			</data>
 			<key>hash2</key>
 			<data>
-			hqpbm0JMZf9B2zVXvff25VlHDqvANsNWIwKnwBAr+1I=
+			AH0nQcCAWoSpX1wp9VfJI9WpZ2H46etdffccBiv7xZg=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			V5hBi9JFfEMd5hcPingjX/A+q+0=
+			EZ+nBoiWDFtLO2qwQLuGckH87qY=
 			</data>
 			<key>hash2</key>
 			<data>
-			ySNyXD4Yrj9znBZ8JJbYVgB7kT0PSTgm7WGcvu3ufrg=
+			XIyOfWrv+zN7erHNl8jphpLiJrWgsUzbNNwu8aD2+g4=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios.swiftdoc</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			KzD9GEuTfU9FcmCJ/yw6L8bscZM=
+			L2w8dp38Xf+IlhGxCzIq6PHtm2s=
 			</data>
 			<key>hash2</key>
 			<data>
-			XxGIaNi1qxQs5C+Sc0UNu1ycxiaBBT5T6xyXspNnp5w=
+			85JSemGPR/FUXKgFcmSwwKbk5TULaDp9AE9h1Znn/6A=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios.swiftinterface</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			V5hBi9JFfEMd5hcPingjX/A+q+0=
+			EZ+nBoiWDFtLO2qwQLuGckH87qY=
 			</data>
 			<key>hash2</key>
 			<data>
-			ySNyXD4Yrj9znBZ8JJbYVgB7kT0PSTgm7WGcvu3ufrg=
+			XIyOfWrv+zN7erHNl8jphpLiJrWgsUzbNNwu8aD2+g4=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Modules/module.modulemap</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			UwmiIcu7v6/twNdjOOe1lY15u9A=
+			</data>
+			<key>hash2</key>
+			<data>
+			AH0nQcCAWoSpX1wp9VfJI9WpZ2H46etdffccBiv7xZg=
+			</data>
+		</dict>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			+uTf2+Rc9JVH77cpYyq6q/Xjfw8=
+			</data>
+			<key>hash2</key>
+			<data>
+			vjgIs32VsCXF7ht6jUkl8i8hUA+zYE4+kIke4Wey20g=
+			</data>
+		</dict>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			yQ45/KG1miILR6QeXoDTe+rHdzQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			xiGooMdwoq7UgGIjkHEIg8fI5lSgeShaq2DxlXQ/eS0=
+			</data>
+		</dict>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			+uTf2+Rc9JVH77cpYyq6q/Xjfw8=
+			</data>
+			<key>hash2</key>
+			<data>
+			vjgIs32VsCXF7ht6jUkl8i8hUA+zYE4+kIke4Wey20g=
+			</data>
+		</dict>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Modules/module.modulemap</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1297,7 +1346,7 @@
 			DGtO5i9Fy0w01TtDeoyI8eTL0P4bNZ4gkB9mCN3gdig=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/Modules/module.private.modulemap</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Modules/module.private.modulemap</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1308,18 +1357,29 @@
 			6U5RH/v1ZxMYLpbNpUfjPaovFgqGBHKCQnUZnU1T1Fw=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/PrivacyInfo.xcprivacy</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/PrivacyInfo.xcprivacy</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			tjywKnTvbBjdg6abzXh1Dxv+6ok=
+			YZKTRHNrTxX3QTFjTE1CsuxomoY=
 			</data>
 			<key>hash2</key>
 			<data>
-			oHCvlYiDLXLgkXiDuaOJCBxJ49gqVCiG6QZ6VqggzfU=
+			RQ9GCBpKizzxqBtjiCUGH1T128YFNk4RyrvS5iRv02U=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/include/jwt-cpp/base.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			prVc4VeQ6xZtRKSmyW4StPn00hI=
+			</data>
+			<key>hash2</key>
+			<data>
+			yxlodGWdKQT9E8pQ14cQPM5gkCHhq21nLaQ9fUqdcwA=
+			</data>
+		</dict>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/include/jwt-cpp/base.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1330,7 +1390,7 @@
 			D63G2xgf+tfABoWnxXFxOIUvE5V4szlU85OQcxihZIM=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/include/jwt-cpp/jwt.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/include/jwt-cpp/jwt.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1341,7 +1401,7 @@
 			QY+ao6FSXRiGOMAPK6vL4tnb40cbAVtfIcUaC47txJA=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/include/jwt-cpp/traits/boost-json/defaults.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/include/jwt-cpp/traits/boost-json/defaults.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1352,7 +1412,7 @@
 			+F7a0XfJlNMRnoJv3nWSLUyW5zvuJxwzyZ9hrV6e3c8=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/include/jwt-cpp/traits/boost-json/traits.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/include/jwt-cpp/traits/boost-json/traits.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1363,7 +1423,7 @@
 			roWJ3Y+b3t8ucEPb459FM5lCEBxXMb14A2O21o/+vJU=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/include/jwt-cpp/traits/danielaparker-jsoncons/defaults.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/include/jwt-cpp/traits/danielaparker-jsoncons/defaults.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1374,7 +1434,7 @@
 			0pKo4hgqjsKvyjRS26nNyM3+4NXkjVboznjHv9e6aDc=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/include/jwt-cpp/traits/danielaparker-jsoncons/traits.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/include/jwt-cpp/traits/danielaparker-jsoncons/traits.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1385,7 +1445,7 @@
 			X+ctpAenPs+F8ALTszCl+ekuWH7Nwjo1kukDBCxCQRw=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/include/jwt-cpp/traits/defaults.h.mustache</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/include/jwt-cpp/traits/defaults.h.mustache</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1396,7 +1456,7 @@
 			L6vHk3rtp/ujZLgroDdj5X7AFTOPrneTCQFdwvSutkM=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/include/jwt-cpp/traits/kazuho-picojson/defaults.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/include/jwt-cpp/traits/kazuho-picojson/defaults.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1407,7 +1467,7 @@
 			qD+vqPXXwcmq8aDCaPzv1U6/FXYMUvvhE2lbzUnwJZA=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/include/jwt-cpp/traits/kazuho-picojson/traits.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/include/jwt-cpp/traits/kazuho-picojson/traits.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1418,7 +1478,7 @@
 			Ho1bYovfNnJSD46CT9tn2zQ0TR8qaRGYfw6ym0XXXw4=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/include/jwt-cpp/traits/nlohmann-json/defaults.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/include/jwt-cpp/traits/nlohmann-json/defaults.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1429,7 +1489,7 @@
 			eU995ytJqSsfm1WZtQg3xIrLd2BAhRqVppKfykYmhRE=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/include/jwt-cpp/traits/nlohmann-json/traits.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/include/jwt-cpp/traits/nlohmann-json/traits.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1440,7 +1500,7 @@
 			0Rl7Y7n4SIFBpPAauB95vKhRzL1QIHMHUHskC13pDRg=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/include/nlohmann/json.hpp</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/include/nlohmann/json.hpp</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -1451,7 +1511,7 @@
 			vnu/vHxiw1qm8n373ZUDhPJH3Z8igbWTC9qjpquV7vc=
 			</data>
 		</dict>
-		<key>ios-arm64/Algo.framework/include/picojson/picojson.h</key>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/include/picojson/picojson.h</key>
 		<dict>
 			<key>hash</key>
 			<data>

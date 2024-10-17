@@ -1,0 +1,2079 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)
+// swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AuthMe
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import Algo
+@_exported import AuthMe
+import CoreGraphics/*.CGFloat*/
+import CoreGraphics/*.CGSize*/
+import CryptoKit
+import Foundation
+import MobileCoreServices
+import Security
+import Swift
+import UIKit.UIImage
+import UIKit
+import UIKit/*.UIEdgeInsets*/
+import UIKit/*.UIImage*/
+import Vision
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+extension Swift.Array where Element : Swift.Equatable {
+  public mutating func mergeElements<C>(newElements: C) where Element == C.Element, C : Swift.Collection
+}
+public struct AuthMeConfig {
+  public static var `default`: AuthMeConfig {
+    get
+  }
+  public var activateCertificate: Swift.String
+  public var activateToken: Swift.String
+  public var serverURL: Foundation.URL
+  public var sslCredentials: [AuthMeConfig.SSLCredential]?
+  public struct SSLCredential {
+    public let host: Swift.String
+    public let credentialURL: Foundation.URL
+    public init(host: Swift.String, credentialURL: Foundation.URL)
+  }
+}
+@_hasMissingDesignatedInitializers public class AuthMeCore<T> where T : FrameworkMode {
+  public static var version: Swift.String {
+    get
+  }
+  public static var buildNumber: Swift.String {
+    get
+  }
+  @objc deinit
+}
+public protocol LivenessFlowDelegate : AnyObject {
+  func livenessDidStart()
+  func livenessDidNotifyMessage(status: LivenessDetectStatus)
+  func livenessDidUpdateReconize(result: Swift.Bool)
+  func livenessDidFailureWith(error: FlowError, retryHandler: @escaping (() -> Swift.Void))
+  func livenessDidRecognize(image: UIKit.UIImage)
+  func livenessDidFaceScale(direction: LivenessFlow.FaceScaleDirection.Direction)
+  func livenessNotifyStage(log: LogFAS)
+  func livenessNotifyUpload(log: LogUpload)
+}
+public class LivenessFlow : LivenessFlowProtocol {
+  public func setDelegate(_ delegate: any LivenessFlowDelegate)
+  weak public var delegate: (any LivenessFlowDelegate)?
+  public var isDetecting: Swift.Bool {
+    get
+  }
+  public init(action: Action = .register(waitResult: true))
+  @objc deinit
+  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)? = nil, handler: ((Swift.Result<Swift.Void, FlowError>) -> Swift.Void)?)
+  public func setPreviewSize(previewSize: CoreFoundation.CGSize)
+  public func start(encrypt: Swift.Bool)
+  public func recognize(image: UIKit.UIImage)
+  public func recognize(normal normalImage: UIKit.UIImage, depthImage: UIKit.UIImage)
+  public func roiRect(in previewSize: CoreFoundation.CGSize) -> CoreFoundation.CGRect
+  public func cancelExpired()
+  public func getResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
+  public func isExpired() -> Swift.Bool
+  public func getVerifyResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
+  public func enableUploadFullFrame()
+}
+extension LivenessFlow {
+  public struct RoiParam {
+    public init(preview: EnginePreview, ratio: CoreFoundation.CGFloat, widthRatio: CoreFoundation.CGFloat, offset: UIKit.UIOffset)
+  }
+  public struct FaceScaleDirection {
+    public enum Direction {
+      case small
+      case normal
+      public static func == (a: LivenessFlow.FaceScaleDirection.Direction, b: LivenessFlow.FaceScaleDirection.Direction) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
+      public var hashValue: Swift.Int {
+        get
+      }
+    }
+  }
+}
+extension AuthMeCore where T == OfflineMode {
+  public static func configure() -> AuthmeCoreOfflineBuilder
+}
+public protocol Cancellable : AnyObject {
+  var isCancelled: Swift.Bool { get }
+  func cancel()
+}
+extension CoreFoundation.CGRect {
+  public var center: CoreFoundation.CGPoint {
+    get
+  }
+}
+extension CoreFoundation.CGRect {
+  public init(center: CoreFoundation.CGPoint, size: CoreFoundation.CGSize)
+}
+extension CoreFoundation.CGRect {
+  public func resizing(to size: CoreFoundation.CGSize, anchor: CoreFoundation.CGPoint = CGPoint(x: 0.5, y: 0.5)) -> CoreFoundation.CGRect
+}
+extension Swift.Collection {
+  public subscript(safe index: Self.Index) -> Self.Element? {
+    get
+  }
+  public func group(by size: Swift.Int) -> [[Self.Element]]?
+}
+extension Swift.Collection where Self.Element : Swift.BinaryInteger {
+  public func average() -> Swift.Double
+}
+extension Swift.Collection where Self.Element : Swift.FloatingPoint {
+  public func average() -> Self.Element
+}
+public struct LogFAS {
+  public enum LogStage {
+    case Passive
+    case OpenMouth
+    case CloseMouth
+    case Smile
+    case Scale
+    case Done
+    public static func == (a: LogFAS.LogStage, b: LogFAS.LogStage) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum LogFASResult {
+    case Failed
+    case NoFace
+    case FaceNotAtCenter
+    case FaceTooSmall
+    case FaceTooLarge
+    case NeedFaceToCamera
+    case FaceMasked
+    case NeedOpenMouth
+    case NeedCloseMouth
+    case NeedSmile
+    case NeedOpenEyes
+    case NeedMoreFrame
+    case Error
+    case Pass
+    public static func == (a: LogFAS.LogFASResult, b: LogFAS.LogFASResult) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let logStage: LogFAS.LogStage
+  public let logFASResult: LogFAS.LogFASResult
+  public init(logStage: LogFAS.LogStage, logFASResult: LogFAS.LogFASResult)
+}
+public struct LogUpload {
+  public enum Event {
+    case start
+    case end
+    public static func == (a: LogUpload.Event, b: LogUpload.Event) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let duration: Swift.String
+  public let event: LogUpload.Event
+  public let frameNo: Swift.String
+  public init(duration: Swift.String = "0", event: LogUpload.Event, frameNo: Swift.String)
+}
+public enum LivenessDetectStatus {
+  case Failed
+  case NoFace
+  case FaceNotAtCenter
+  case FaceTooSmall
+  case FaceTooLarge
+  case NeedFaceToCamera
+  case FaceMasked
+  case NeedOpenMouth
+  case NeedCloseMouth
+  case NeedOpenEyes
+  case NeedSmile
+  case NeedMoreFrame
+  case Pass
+  case Error
+  case Empty
+  public static func == (a: LivenessDetectStatus, b: LivenessDetectStatus) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension AuthMeCore where T == OnlineMode {
+  public static func configure() -> AuthmeCoreOnlineBuilder
+  public static func replaceAccessToken(_ accessToken: Swift.String) throws
+}
+extension Swift.Dictionary {
+  public mutating func removeAll<S>(keys: S) where Key == S.Element, S : Swift.Sequence
+  public func has(key: Key) -> Swift.Bool
+  public static func + (lhs: [Key : Value], rhs: [Key : Value]) -> [Key : Value]
+  public static func += (lhs: inout [Key : Value], rhs: [Key : Value])
+  public static func - <S>(lhs: [Key : Value], keys: S) -> [Key : Value] where Key == S.Element, S : Swift.Sequence
+  public static func -= <S>(lhs: inout [Key : Value], keys: S) where Key == S.Element, S : Swift.Sequence
+}
+public struct EnginePreview {
+  public init(imageSize: CoreFoundation.CGSize, previewSize: CoreFoundation.CGSize, previewInsets: UIKit.UIEdgeInsets = .zero)
+}
+public struct ErrorDescription : Foundation.LocalizedError, Swift.Equatable {
+  public init(description: Swift.String)
+  public var localizedDescription: Swift.String {
+    get
+  }
+  public static func == (a: ErrorDescription, b: ErrorDescription) -> Swift.Bool
+}
+extension ErrorDescription : Swift.ExpressibleByStringLiteral {
+  public init(stringLiteral value: Swift.String)
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
+  public typealias StringLiteralType = Swift.String
+  public typealias UnicodeScalarLiteralType = Swift.String
+}
+public struct StatusCodeError : Swift.Error {
+  public let localizedDescription: Swift.String
+}
+public func decode(jwt: Swift.String) throws -> any JWT
+public struct Claim {
+  public var rawValue: Any? {
+    get
+  }
+  public var string: Swift.String? {
+    get
+  }
+  public var boolean: Swift.Bool? {
+    get
+  }
+  public var double: Swift.Double? {
+    get
+  }
+  public var integer: Swift.Int? {
+    get
+  }
+  public var date: Foundation.Date? {
+    get
+  }
+  public var array: [Swift.String]? {
+    get
+  }
+}
+@dynamicMemberLookup public struct Fluent<Subject> {
+  public let subject: Subject
+  public subscript<Value>(dynamicMember keyPath: Swift.WritableKeyPath<Subject, Value>) -> ((Value) -> Fluent<Subject>) {
+    get
+  }
+  public func set<Value>(_ keyPath: Swift.WritableKeyPath<Subject, Value>, _ value: Value) -> Fluent<Subject>
+}
+@dynamicMemberLookup public struct ObjectFluent<Subject> where Subject : AnyObject {
+  public let subject: Subject
+  public subscript<Value>(dynamicMember keyPath: Swift.ReferenceWritableKeyPath<Subject, Value>) -> ((Value) -> ObjectFluent<Subject>) {
+    get
+  }
+  @discardableResult
+  public func set<Value>(_ keyPath: Swift.ReferenceWritableKeyPath<Subject, Value>, _ value: Value) -> ObjectFluent<Subject>
+  public func cauterize()
+}
+postfix operator +
+postfix public func + <T>(lhs: T) -> Fluent<T>
+postfix public func + <T>(lhs: T) -> ObjectFluent<T> where T : AnyObject
+postfix operator -
+postfix public func - <T>(lhs: Fluent<T>) -> T
+@discardableResult
+postfix public func - <T>(lhs: ObjectFluent<T>) -> T where T : AnyObject
+@_hasMissingDesignatedInitializers public class OfflineMode : FrameworkMode {
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class AuthmeCoreOfflineBuilder : ObjectiveC.NSObject {
+  public func setConfig(_ config: AuthMeConfig) -> AuthmeCoreOfflineBuilder
+  public func setModelPaths(_ paths: [Swift.String]) -> AuthmeCoreOfflineBuilder
+  public func build() -> Swift.Result<Swift.Void, any Swift.Error>
+  @objc override dynamic public init()
+  @objc deinit
+}
+public enum LogAntiFraud : Swift.String {
+  case Failed
+  case NoCard
+  case WrongCardType
+  case Reflective
+  case Blur
+  case Gray
+  case PositionNotMatch
+  case NeedMoreFrame
+  case Pass
+  case Error
+  case none
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@frozen public enum AuthmeOCRResult<Success, Temporariness, Failure> where Failure : Swift.Error {
+  case success(Success)
+  case temporariness(Temporariness)
+  case failure(Failure)
+}
+public struct SessionInfo {
+  public let sessionId: Swift.String
+}
+public enum OCRCardType : Swift.String, Swift.Codable {
+  case TWID
+  case TWLicense
+  case TWHealth
+  case Passport
+  case Passport_NFC
+  case TWNResident
+  case JPNID
+  case JPNDriverLicense
+  case JPNResidentCard
+  case USAID
+  case USADriverLicense
+  case USAVisitorVISA
+  case IDNID
+  case IDNDriverLicense
+  case INDID
+  case INDDriverLicense
+  case MYSID
+  case MYSDriverLicense
+  case HKGID
+  case HKGIDFront
+  case HKGDriverLicense
+  case GBRID
+  case GBRDriverLicense
+  case EGYID
+  case EGYDriverLicense
+  case SAUID
+  case SAUDriverLicense
+  case NLDID
+  case NLDDriverLicense
+  case SGPID
+  case SGPDriverLicense
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum OCRType : Swift.String, Swift.Codable {
+  case TWN_IDCard_Front
+  case TWN_IDCard_Back
+  case TWN_DriverLicense_Front
+  case TWN_DriverLicense_Back
+  case TWN_HealthCard_Front
+  case Passport
+  case Passport_NFC
+  case TWN_ResidentCard_Front
+  case TWN_ResidentCard_Back
+  case JPN_IDCard_Front
+  case JPN_IDCard_Back
+  case JPN_IDCard_NFC
+  case JPN_IDCard_Thickness
+  case JPN_DriverLicense_Front
+  case JPN_DriverLicense_Back
+  case JPN_DriverLicense_NFC
+  case JPN_DriverLicense_Thickness
+  case JPN_ResidentCard_Front
+  case JPN_ResidentCard_Back
+  case JPN_ResidentCard_Thickness
+  case JPN_ResidentCard_NFC
+  case USA_IDCard_Front
+  case USA_DriverLicense_Front
+  case USA_VisitorVISA_Front
+  case IDN_IDCard_Front
+  case IDN_IDCard_Back
+  case IDN_DriverLicense_Front
+  case IND_IDCard_Front
+  case IND_IDCard_Back
+  case IND_DriverLicense_Front
+  case MYS_IDCard_Front
+  case MYS_IDCard_Back
+  case MYS_DriverLicense_Front
+  case HKG_IDCard_Front
+  case HKG_IDCard_Back
+  case HKG_DriverLicense_Front
+  case GBR_IDCard_Front
+  case GBR_DriverLicense_Front
+  case GBR_DriverLicense_Back
+  case EGY_IDCard_Front
+  case EGY_IDCard_Back
+  case EGY_DriverLicense_Front
+  case SAU_IDCard_Front
+  case SAU_IDCard_Back
+  case SAU_DriverLicense_Front
+  case NLD_IDCard_Front
+  case NLD_DriverLicense_Front
+  case SGP_IDCard_Front
+  case SGP_IDCard_Back
+  case SGP_DriverLicense_Front
+  case UnknownCard
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum OCRError : Swift.String, Foundation.LocalizedError {
+  case ERROR_NETWORK
+  case ERROR_RESPONSE
+  case ERROR_SYSTEM_BUSY
+  case ERROR_401
+  case NO_DETECTED
+  case CARD_REFLECTIVE
+  case LOW_SHARPNESS
+  case WORNG_CARD_TYPE
+  case CARD_NOT_IN_REGION
+  case CARD_TOO_SMALL
+  case CARD_CUT_BY_CAMERA
+  case PROCESS_FAIL
+  case ERROR_VERCIAL
+  case EXPIRED
+  case EngineError
+  case ERROR_EVENTNAME
+  case ERROR_NEED_HOLD_CARD
+  case DEFORMATION_LEFT
+  case DEFORMATION_RIGHT
+  case DEFORMATION_UP
+  case DEFORMATION_DOWN
+  case CARD_THICKNESS_FAILED
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct OCRFinishScanDocRequest {
+}
+public protocol OCRFlowDelegate : AnyObject {
+  func didFailureWith(error: OCRError, retryHandler: @escaping (() -> Swift.Void))
+  func notifyAntiFraudWith(status: LogAntiFraud)
+}
+public enum OCRNotifyMessage : Swift.String {
+  case SUCCESS_SEGMENTATION
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol DebugOCRFlowDelegate : AnyObject {
+  func debugMessage(channel: DebugMessageChannel, message: Swift.String)
+}
+public enum DebugMessageChannel {
+  case text
+  case value
+  case fail
+  public static func == (a: DebugMessageChannel, b: DebugMessageChannel) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct OCRInitScanDocResponse : Swift.Decodable {
+  public let scanView: OCRInitScanDocResponse.OCRScanView?
+  public struct OCRScanView : Swift.Decodable {
+    public let border: OCRInitScanDocResponse.OCRScanView.OCRScanViewBorder
+    public let content: [OCRInitScanDocResponse.OCRScanView.OCRScanViewContent]
+    public let success: OCRInitScanDocResponse.OCRScanView.OCRScanViewSuccessParameters
+    public let line: OCRInitScanDocResponse.OCRScanView.OCRScanViewLine
+    public struct OCRScanViewBorder : Swift.Decodable {
+      public let enable: Swift.Bool
+      public let type: OCRInitScanDocResponse.OCRScanView.OCRScanViewBorder.OCRScanViewBorderType
+      public let color: Swift.String
+      public let opacity: CoreFoundation.CGFloat
+      public enum OCRScanViewBorderType : Swift.String, Swift.Decodable {
+        case cornered
+        case bordered
+        public init?(rawValue: Swift.String)
+        public typealias RawValue = Swift.String
+        public var rawValue: Swift.String {
+          get
+        }
+      }
+      public init(from decoder: any Swift.Decoder) throws
+    }
+    public struct OCRScanViewContent : Swift.Decodable {
+      public let type: OCRInitScanDocResponse.OCRScanView.OCRScanViewContent.OCRScanViewContentType
+      public let content: Swift.String
+      public let color: Swift.String?
+      public let opacity: CoreFoundation.CGFloat
+      public var imageData: Foundation.Data?
+      public enum OCRScanViewContentType : Swift.String, Swift.Decodable {
+        case text
+        case pdf
+        case svg
+        public init?(rawValue: Swift.String)
+        public typealias RawValue = Swift.String
+        public var rawValue: Swift.String {
+          get
+        }
+      }
+      public init(from decoder: any Swift.Decoder) throws
+    }
+    public struct OCRScanViewSuccessParameters : Swift.Decodable {
+      public let enable: Swift.Bool
+      public let color: Swift.String
+      public let opacity: CoreFoundation.CGFloat
+      public init(from decoder: any Swift.Decoder) throws
+    }
+    public struct OCRScanViewLine : Swift.Decodable {
+      public let enable: Swift.Bool
+      public let color: Swift.String
+      public let gradient: OCRInitScanDocResponse.OCRScanView.OCRScanViewLine.OCRScanViewLineGradient
+      public struct OCRScanViewLineGradient : Swift.Decodable {
+        public let enable: Swift.Bool
+        public let color: Swift.String
+        public let opacity: CoreFoundation.CGFloat
+        public init(from decoder: any Swift.Decoder) throws
+      }
+      public init(from decoder: any Swift.Decoder) throws
+    }
+    public init(from decoder: any Swift.Decoder) throws
+  }
+  public init(from decoder: any Swift.Decoder) throws
+}
+public protocol EKYCType : Swift.Hashable, Swift.RawRepresentable where Self.RawValue == Swift.String {
+}
+extension EKYCType {
+  public static func == (lhs: Self, rhs: Self) -> Swift.Bool
+}
+public protocol OCRResult {
+  var fileID: Swift.String { get }
+  var scanID: Swift.String { get }
+  var data: [Swift.String : Swift.String] { get }
+  var confirmedData: [Swift.String : Swift.String] { get }
+  var frontImage: UIKit.UIImage? { get }
+  var backImage: UIKit.UIImage? { get }
+  var frontCropImage: UIKit.UIImage? { get }
+  var backCropImage: UIKit.UIImage? { get }
+  func confirmScan(complete: @escaping ((any Swift.Error)?) -> Swift.Void)
+  func orderedData() -> [(Swift.String, Swift.String)]
+  func set(key: Swift.String, value: Swift.String)
+}
+@_hasMissingDesignatedInitializers public class OCRBaseResult<DataType> : OCRResult where DataType : Swift.RawRepresentable, DataType.RawValue == Swift.String {
+  final public let data: [Swift.String : Swift.String]
+  public var confirmedData: [Swift.String : Swift.String]
+  final public let frontImage: UIKit.UIImage?
+  final public let backImage: UIKit.UIImage?
+  public var frontCropImage: UIKit.UIImage?
+  public var backCropImage: UIKit.UIImage?
+  final public let isAuto: Swift.Bool
+  final public let fileID: Swift.String
+  public var scanID: Swift.String
+  public func orderedData() -> [(Swift.String, Swift.String)]
+  public func get(type: DataType) -> Swift.String
+  public func set(type: DataType, value: Swift.String)
+  public func set(key: Swift.String, value: Swift.String)
+  public func confirmScan(complete: @escaping ((any Swift.Error)?) -> Swift.Void)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class MRZResult : OCRBaseResult<MRZResult.DataType> {
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case surname
+    case givenName
+    case country
+    case nationality
+    case dateOfBirth
+    case expiryDate
+    case gender
+    case documentType
+    case documentNumber
+    case idNumber
+    case placeOfBirth
+    case authority
+    case dateOfIssue
+    case fullName
+    case otherName
+    case documentNumberCheckDigit
+    case birthDateCheckDigit
+    case expiryDateCheckDigit
+    case optionaldataCheckDigit
+    case overallCheckDigit
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [MRZResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [MRZResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  convenience public init(data: [Swift.String : Swift.String], image: UIKit.UIImage?)
+  public func setScanID(_ scanID: Swift.String)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class TWNResidentResult : OCRBaseResult<TWNResidentResult.DataType> {
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case authority
+    case country
+    case dateOfBirth
+    case dateOfIssue
+    case expiryDate
+    case fullName
+    case gender
+    case givenName
+    case idNumber
+    case middleName
+    case name
+    case nationality
+    case otherName
+    case passportNumber
+    case placeOfBirth
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [TWNResidentResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [TWNResidentResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  convenience public init(data: [Swift.String : Swift.String], image: UIKit.UIImage?)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class TWIDResult : OCRBaseResult<TWIDResult.DataType> {
+  override public func get(type: TWIDResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case militaryService
+    case birth
+    case issueCity
+    case gender
+    case issueReason
+    case father
+    case name
+    case issueDate
+    case placeOfBirth
+    case spouse
+    case mother
+    case idNumber
+    case address
+    case nationality
+    case serialNumber
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [TWIDResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [TWIDResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class TWLicenseResult : OCRBaseResult<TWLicenseResult.DataType> {
+  override public func get(type: TWLicenseResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case name
+    case condition
+    case controlNo
+    case gender
+    case address
+    case birth
+    case issue
+    case type
+    case licenseNo
+    case expiry
+    case nationality
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [TWLicenseResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [TWLicenseResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class TWHealthResult : OCRBaseResult<TWHealthResult.DataType> {
+  override public func get(type: TWHealthResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case name
+    case dateOfBirth
+    case idNumber
+    case nationality
+    case documentNumber
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [TWHealthResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [TWHealthResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class JPNIDCardResult : OCRBaseResult<JPNIDCardResult.DataType> {
+  override public func get(type: JPNIDCardResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case name
+    case address
+    case gender
+    case dateOfBirth
+    case expiryDate
+    case idNumber
+    case age
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [JPNIDCardResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [JPNIDCardResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class JPNIDCardNFCResult : OCRBaseResult<JPNIDCardNFCResult.DataType> {
+  override public func get(type: JPNIDCardNFCResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case name
+    case address
+    case gender
+    case dateOfBirth
+    case idNumber
+    case expiryDate
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [JPNIDCardNFCResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [JPNIDCardNFCResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  convenience public init(data: [Swift.String : Swift.String], image: UIKit.UIImage)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class JPNDriverLicenseResult : OCRBaseResult<JPNDriverLicenseResult.DataType> {
+  override public func get(type: JPNDriverLicenseResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case name
+    case dateOfBirth
+    case address
+    case dateOfIssue
+    case expiryDate
+    case documentNumber
+    case age
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [JPNDriverLicenseResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [JPNDriverLicenseResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class JPNDriverLicenseNFCResult : OCRBaseResult<JPNDriverLicenseNFCResult.DataType> {
+  override public func get(type: JPNDriverLicenseNFCResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case cardManufacturerIdentifier
+    case class2LicenseDate
+    case class2HeavyVehicleLicenseDate
+    case class2HeavySpecialVehicleLicenseDate
+    case class2MediumVehicleLicenseDate
+    case class2OrdinaryVehicleLicenseDate
+    case class2TrailerLicenseDate
+    case color
+    case commonName
+    case condition1
+    case condition2
+    case condition3
+    case condition4
+    case cryptographicFunctionIdentifier
+    case dateOfBirth
+    case documentNumber
+    case expiryDate
+    case heavyMotorcycleLicenseDate
+    case heavySpecialVehicleLicenseDate
+    case heavyVehicleLicenseDate
+    case dateOfIssue
+    case issuingAuthority
+    case mediumVehicleLicenseDate
+    case mopedLicenseDate
+    case motorcycleLicenseDate
+    case name
+    case kanaName
+    case ordinaryMotorcycleLicenseDate
+    case ordinaryVehicleLicenseDate
+    case otherLicenseDate
+    case referenceNumber
+    case registeredDomicile
+    case semiMediumVehicleLicenseDate
+    case smallSpecialVehicleLicenseDate
+    case specificationVersionNumber
+    case trailerLicenseDate
+    case uniformName
+    case yearCode
+    case homeAddress
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [JPNDriverLicenseNFCResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [JPNDriverLicenseNFCResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  convenience public init(data: [Swift.String : Swift.String], image: UIKit.UIImage?)
+  public func setScanID(_ scanID: Swift.String)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class JPNResidentCardResult : OCRBaseResult<JPNResidentCardResult.DataType> {
+  override public func get(type: JPNResidentCardResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case name
+    case gender
+    case dateOfBirth
+    case nationality
+    case idNumber
+    case address
+    case age
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [JPNResidentCardResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [JPNResidentCardResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class JPNResidentCardNFCResult : OCRBaseResult<JPNResidentCardNFCResult.DataType> {
+  override public func get(type: JPNResidentCardNFCResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case name
+    case gender
+    case dateOfBirth
+    case nationality
+    case address
+    case visaStatus
+    case documentNumber
+    case restrictionEmployment
+    case dateOfIssue
+    case expiryDate
+    case periodOfStay
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [JPNResidentCardNFCResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [JPNResidentCardNFCResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  convenience public init(data: [Swift.String : Swift.String], image: UIKit.UIImage?)
+  public func setScanID(_ scanID: Swift.String)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class USAIDCardResult : OCRBaseResult<USAIDCardResult.DataType> {
+  override public func get(type: USAIDCardResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case country
+    case dateOfBirth
+    case dateOfIssue
+    case gender
+    case givenName
+    case idNumber
+    case middleName
+    case name
+    case nationality
+    case region
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [USAIDCardResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [USAIDCardResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class USADriverLicenseResult : OCRBaseResult<USADriverLicenseResult.DataType> {
+  override public func get(type: USADriverLicenseResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case country
+    case dateOfBirth
+    case dateOfIssue
+    case documentNumber
+    case gender
+    case givenName
+    case middleName
+    case name
+    case nationality
+    case region
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [USADriverLicenseResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [USADriverLicenseResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class USAVisitorVISAResult : OCRBaseResult<USAVisitorVISAResult.DataType> {
+  override public func get(type: USAVisitorVISAResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case country
+    case dateOfBirth
+    case expiryDate
+    case givenName
+    case middleName
+    case name
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [USAVisitorVISAResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [USAVisitorVISAResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class IDNIDCardResult : OCRBaseResult<IDNIDCardResult.DataType> {
+  override public func get(type: IDNIDCardResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case dateOfBirth
+    case dateOfIssue
+    case gender
+    case givenName
+    case idNumber
+    case middleName
+    case name
+    case placeOfBirth
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [IDNIDCardResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [IDNIDCardResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class IDNDriverLicenseResult : OCRBaseResult<IDNDriverLicenseResult.DataType> {
+  override public func get(type: IDNDriverLicenseResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case dateOfBirth
+    case documentNumber
+    case expiryDate
+    case givenName
+    case middleName
+    case name
+    case placeOfBirth
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [IDNDriverLicenseResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [IDNDriverLicenseResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class INDIDCardResult : OCRBaseResult<INDIDCardResult.DataType> {
+  override public func get(type: INDIDCardResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case dateOfBirth
+    case dateOfIssue
+    case gender
+    case givenName
+    case idNumber
+    case middleName
+    case name
+    case placeOfBirth
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [INDIDCardResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [INDIDCardResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class INDDriverLicenseResult : OCRBaseResult<INDDriverLicenseResult.DataType> {
+  override public func get(type: INDDriverLicenseResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case dateOfBirth
+    case documentNumber
+    case expiryDate
+    case givenName
+    case middleName
+    case name
+    case placeOfBirth
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [INDDriverLicenseResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [INDDriverLicenseResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class MYIDCardResult : OCRBaseResult<MYIDCardResult.DataType> {
+  override public func get(type: MYIDCardResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case dateOfBirth
+    case dateOfIssue
+    case gender
+    case givenName
+    case idNumber
+    case middleName
+    case name
+    case placeOfBirth
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [MYIDCardResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [MYIDCardResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class MYDriverLicenseResult : OCRBaseResult<MYDriverLicenseResult.DataType> {
+  override public func get(type: MYDriverLicenseResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case dateOfBirth
+    case documentNumber
+    case expiryDate
+    case givenName
+    case middleName
+    case name
+    case placeOfBirth
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [MYDriverLicenseResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [MYDriverLicenseResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class HKIDCardResult : OCRBaseResult<HKIDCardResult.DataType> {
+  override public func get(type: HKIDCardResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case dateOfBirth
+    case dateOfIssue
+    case gender
+    case givenName
+    case idNumber
+    case middleName
+    case name
+    case placeOfBirth
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [HKIDCardResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [HKIDCardResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  convenience public init(data: [Swift.String : Swift.String], image: UIKit.UIImage?)
+  convenience public init(scanFlow: HKGIDCardFlow)
+  public func setScanID(_ scanID: Swift.String)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class HKDriverLicenseResult : OCRBaseResult<HKDriverLicenseResult.DataType> {
+  override public func get(type: HKDriverLicenseResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case dateOfBirth
+    case documentNumber
+    case expiryDate
+    case givenName
+    case middleName
+    case name
+    case placeOfBirth
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [HKDriverLicenseResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [HKDriverLicenseResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class UKIDCardResult : OCRBaseResult<UKIDCardResult.DataType> {
+  override public func get(type: UKIDCardResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case dateOfBirth
+    case dateOfIssue
+    case gender
+    case givenName
+    case idNumber
+    case middleName
+    case name
+    case placeOfBirth
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [UKIDCardResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [UKIDCardResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class UKDriverLicenseResult : OCRBaseResult<UKDriverLicenseResult.DataType> {
+  override public func get(type: UKDriverLicenseResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case dateOfBirth
+    case documentNumber
+    case expiryDate
+    case givenName
+    case middleName
+    case name
+    case placeOfBirth
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [UKDriverLicenseResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [UKDriverLicenseResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class EGIDCardResult : OCRBaseResult<EGIDCardResult.DataType> {
+  override public func get(type: EGIDCardResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case dateOfBirth
+    case dateOfIssue
+    case gender
+    case givenName
+    case idNumber
+    case middleName
+    case name
+    case placeOfBirth
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [EGIDCardResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [EGIDCardResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class EGDriverLicenseResult : OCRBaseResult<EGDriverLicenseResult.DataType> {
+  override public func get(type: EGDriverLicenseResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case dateOfBirth
+    case documentNumber
+    case expiryDate
+    case givenName
+    case middleName
+    case name
+    case placeOfBirth
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [EGDriverLicenseResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [EGDriverLicenseResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class SAIDCardResult : OCRBaseResult<SAIDCardResult.DataType> {
+  override public func get(type: SAIDCardResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case dateOfBirth
+    case dateOfIssue
+    case gender
+    case givenName
+    case idNumber
+    case middleName
+    case name
+    case placeOfBirth
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [SAIDCardResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [SAIDCardResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class SADriverLicenseResult : OCRBaseResult<SADriverLicenseResult.DataType> {
+  override public func get(type: SADriverLicenseResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case dateOfBirth
+    case documentNumber
+    case expiryDate
+    case givenName
+    case middleName
+    case name
+    case placeOfBirth
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [SADriverLicenseResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [SADriverLicenseResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class NLIDCardResult : OCRBaseResult<NLIDCardResult.DataType> {
+  override public func get(type: NLIDCardResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case dateOfBirth
+    case dateOfIssue
+    case gender
+    case givenName
+    case idNumber
+    case middleName
+    case name
+    case placeOfBirth
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [NLIDCardResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [NLIDCardResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class NLDriverLicenseResult : OCRBaseResult<NLDriverLicenseResult.DataType> {
+  override public func get(type: NLDriverLicenseResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case dateOfBirth
+    case documentNumber
+    case expiryDate
+    case givenName
+    case middleName
+    case name
+    case placeOfBirth
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [NLDriverLicenseResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [NLDriverLicenseResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class SGIDCardResult : OCRBaseResult<SGIDCardResult.DataType> {
+  override public func get(type: SGIDCardResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case dateOfBirth
+    case dateOfIssue
+    case gender
+    case givenName
+    case idNumber
+    case middleName
+    case name
+    case placeOfBirth
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [SGIDCardResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [SGIDCardResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class SGDriverLicenseResult : OCRBaseResult<SGDriverLicenseResult.DataType> {
+  override public func get(type: SGDriverLicenseResult.DataType) -> Swift.String
+  public enum DataType : Swift.String, Swift.CaseIterable {
+    case address
+    case dateOfBirth
+    case documentNumber
+    case expiryDate
+    case givenName
+    case middleName
+    case name
+    case placeOfBirth
+    case surname
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [SGDriverLicenseResult.DataType]
+    public typealias RawValue = Swift.String
+    public static var allCases: [SGDriverLicenseResult.DataType] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  @objc deinit
+}
+public enum ScanType : Swift.String, Swift.Codable {
+  case TWIDFraud
+  case TWID
+  case TWDriverLicense
+  case TWHealth
+  case Passport
+  case NFCPassport
+  case TWNResident
+  case JPNID
+  case JPNIDNFC
+  case JPNDriverLicense
+  case JPNDriverLicenseNFC
+  case JPNResidentCard
+  case JPNResidentCardNFC
+  case USAID
+  case USADriverLicense
+  case USAVisitorVISA
+  case IDNID
+  case IDNDriverLicense
+  case Liveness
+  case PassportWithVIZ
+  case INDID
+  case INDDriverLicense
+  case MYSID
+  case MYSDriverLicense
+  case HKGID
+  case HKGIDFront
+  case HKGDriverLicense
+  case GBRID
+  case GBRDriverLicense
+  case EGYID
+  case EGYDriverLicense
+  case SAUID
+  case SAUDriverLicense
+  case NLDID
+  case NLDDriverLicense
+  case SGPID
+  case SGPDriverLicense
+  public func getOCRCardType() -> OCRCardType
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_inheritsConvenienceInitializers public class JPNNFCResidentCardFlow : BaseFlow {
+  override public init(scanType: ScanType, needConfirm: Swift.Bool)
+  @objc deinit
+}
+extension JPNNFCResidentCardFlow : ScanDocProtocol {
+  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
+  public func prepareScan(handler: @escaping (Swift.Result<(cardType: [ScanDocCardType], info: SessionInfo, expiredIn: Foundation.TimeInterval), OCRError>) -> Swift.Void)
+  public func setPreviewSize(_ previewSize: CoreFoundation.CGSize)
+  public func start(enableUploadFullFrame enable: Swift.Bool? = nil, handler: @escaping (Swift.Result<OCRInitScanDocResponse, OCRError>) -> Swift.Void)
+  public func getCardMatchROI() -> CardMatchROI?
+  public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (AuthmeOCRResult<OCRScanResult, ()?, OCRError>) -> Swift.Void)
+  public func onGetManualPreviewData(image: UIKit.UIImage, handler: @escaping (AuthmeOCRResult<OCRScanResult, ()?, OCRError>) -> Swift.Void)
+  public func onGetIDCardFraudPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRIDCardFraudStage, OCRError>) -> Swift.Void)
+  public func restart() -> OCRError?
+  public func recognize(handler: @escaping (Swift.Result<OCRScanResult, OCRError>) -> Swift.Void)
+  public func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  public func getStatus() -> (scanDocs: [ScanDocCardType], processing: ScanDocCardType)
+  public func stopScan() -> (any OCRResult)?
+  public func abortScan(completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  public func addResult(_ result: [Swift.String : Swift.String])
+  public func addImage(_ image: UIKit.UIImage?)
+  public func onGetThicknessPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<(stage: OCRIDCardFraudStage, cropImage: UIKit.UIImage), OCRError>) -> Swift.Void)
+  public func onGetThicknessManualData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, OCRError>) -> Swift.Void)
+}
+@_hasMissingDesignatedInitializers public class HKVIZClassifier {
+  #if compiler(>=5.3) && $AsyncAwait
+  public func containingTargetString(image: UIKit.UIImage?) async -> Swift.Bool
+  #endif
+  @objc deinit
+}
+public protocol FrameworkMode {
+}
+public enum JWTDecodeError : Foundation.LocalizedError, Swift.CustomDebugStringConvertible {
+  case invalidBase64URL(Swift.String)
+  case invalidJSON(Swift.String)
+  case invalidPartCount(Swift.String, Swift.Int)
+  public var localizedDescription: Swift.String {
+    get
+  }
+  public var errorDescription: Swift.String? {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+@_inheritsConvenienceInitializers public class HKGIDCardFlow : OCRFlow {
+  override public init(scanType: ScanType, needConfirm: Swift.Bool)
+  @objc deinit
+}
+extension HKGIDCardFlow : ScanDocProtocol {
+  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
+  public func prepareScan(handler: @escaping (Swift.Result<(cardType: [ScanDocCardType], info: SessionInfo, expiredIn: Foundation.TimeInterval), OCRError>) -> Swift.Void)
+  public func setPreviewSize(_ previewSize: CoreFoundation.CGSize)
+  public func start(enableUploadFullFrame enable: Swift.Bool? = nil, handler: @escaping (Swift.Result<OCRInitScanDocResponse, OCRError>) -> Swift.Void)
+  public func getCardMatchROI() -> CardMatchROI?
+  public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (AuthmeOCRResult<OCRScanResult, ()?, OCRError>) -> Swift.Void)
+  public func onGetManualPreviewData(image: UIKit.UIImage, handler: @escaping (AuthmeOCRResult<OCRScanResult, ()?, OCRError>) -> Swift.Void)
+  public func onGetIDCardFraudPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRIDCardFraudStage, OCRError>) -> Swift.Void)
+  public func restart() -> OCRError?
+  public func recognize(handler: @escaping (Swift.Result<OCRScanResult, OCRError>) -> Swift.Void)
+  public func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  public func getStatus() -> (scanDocs: [ScanDocCardType], processing: ScanDocCardType)
+  public func stopScan() -> (any OCRResult)?
+  public func abortScan(completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  public func addResult(_ result: [Swift.String : Swift.String])
+  public func addImage(_ image: UIKit.UIImage?)
+  public func onGetThicknessPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<(stage: OCRIDCardFraudStage, cropImage: UIKit.UIImage), OCRError>) -> Swift.Void)
+  public func onGetThicknessManualData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, OCRError>) -> Swift.Void)
+}
+public class OCRScanDocFactory {
+  public init()
+  public func prepare(scanType: ScanType, eventName: Swift.String, needConfirm: Swift.Bool, isNFCOffline: Swift.Bool) -> any ScanDocProtocol
+  @objc deinit
+}
+public protocol LivenessFlowProtocol {
+  func setDelegate(_ delegate: any LivenessFlowDelegate)
+  func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, FlowError>) -> Swift.Void)?)
+  func setPreviewSize(previewSize: CoreFoundation.CGSize)
+  func start(encrypt: Swift.Bool)
+  func roiRect(in previewSize: CoreFoundation.CGSize) -> CoreFoundation.CGRect
+  func recognize(image: UIKit.UIImage)
+  func recognize(normal normalImage: UIKit.UIImage, depthImage: UIKit.UIImage)
+  func getResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
+  func isExpired() -> Swift.Bool
+  func cancelExpired()
+  func enableUploadFullFrame()
+}
+extension LivenessFlowProtocol {
+  public func recognize(normal normalImage: UIKit.UIImage, depthImage: UIKit.UIImage)
+}
+public class LivenessFactory {
+  public init()
+  public func prepare(with action: Action = .register(waitResult: true)) -> any LivenessFlowProtocol
+  public func preparePlayground() -> any LivenessFlowProtocol
+  public func prepareRecordPlayground() -> any LivenessFlowProtocol
+  @objc deinit
+}
+public enum Action {
+  case register(waitResult: Swift.Bool)
+  case verify(_: Swift.Bool)
+}
+public enum FlowError : Swift.Error {
+  case checkModel
+  case start
+  case recognize
+  case service(FlowError.Endpoint, code: Swift.String?)
+  case expiredIn
+  public enum Endpoint {
+    case `init`
+    case detect
+    case verify
+    public static func == (a: FlowError.Endpoint, b: FlowError.Endpoint) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+@_hasMissingDesignatedInitializers public class OnlineMode : FrameworkMode {
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class AuthmeCoreOnlineBuilder : ObjectiveC.NSObject {
+  public func setAccessToken(_ accessToken: Swift.String) -> AuthmeCoreOnlineBuilder
+  public func setConfig(_ config: AuthMeConfig) -> AuthmeCoreOnlineBuilder
+  public func build() -> Swift.Result<Swift.Void, any Swift.Error>
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol LivenessPlaygroundRecordFlowDelegate : LivenessFlowDelegate {
+  func livenessDidNotifyMessage(message: Swift.String)
+  func livenessDidUpdateReconize(result: Swift.Bool)
+  func livenessDidFailureWith(error: FlowError, retryHandler: @escaping (() -> Swift.Void))
+  func livenessDidRecognize(image: UIKit.UIImage)
+  func livenessDidFaceScale(direction: LivenessFlow.FaceScaleDirection.Direction)
+  func livenessDidProcessed(jsonString: Swift.String)
+}
+public class JPIDNFCCardFlow {
+  public init(scanType: ScanType, needConfirm: Swift.Bool)
+  @objc deinit
+}
+extension JPIDNFCCardFlow : ScanDocProtocol {
+  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
+  public func prepareScan(handler: @escaping (Swift.Result<(cardType: [ScanDocCardType], info: SessionInfo, expiredIn: Foundation.TimeInterval), OCRError>) -> Swift.Void)
+  public func setPreviewSize(_ previewSize: CoreFoundation.CGSize)
+  public func start(enableUploadFullFrame enable: Swift.Bool? = nil, handler: @escaping (Swift.Result<OCRInitScanDocResponse, OCRError>) -> Swift.Void)
+  public func getCardMatchROI() -> CardMatchROI?
+  public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (AuthmeOCRResult<OCRScanResult, ()?, OCRError>) -> Swift.Void)
+  public func onGetManualPreviewData(image: UIKit.UIImage, handler: @escaping (AuthmeOCRResult<OCRScanResult, ()?, OCRError>) -> Swift.Void)
+  public func onGetIDCardFraudPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRIDCardFraudStage, OCRError>) -> Swift.Void)
+  public func restart() -> OCRError?
+  public func recognize(handler: @escaping (Swift.Result<OCRScanResult, OCRError>) -> Swift.Void)
+  public func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  public func getStatus() -> (scanDocs: [ScanDocCardType], processing: ScanDocCardType)
+  public func stopScan() -> (any OCRResult)?
+  public func abortScan(completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  public func addResult(_ result: [Swift.String : Swift.String])
+  public func addImage(_ image: UIKit.UIImage?)
+  public func onGetThicknessPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<(stage: OCRIDCardFraudStage, cropImage: UIKit.UIImage), OCRError>) -> Swift.Void)
+  public func onGetThicknessManualData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, OCRError>) -> Swift.Void)
+}
+public class EncryptHelper {
+  public init()
+  public func encryptWithRSA(plaintext: Swift.String) -> Swift.String?
+  public func decryptWithRSA(encryptedText: Swift.String, publicKey: Swift.String) -> Swift.String?
+  @objc deinit
+}
+public struct OCRScanViewContentViewRequest {
+  public struct OCRScanViewContentViewResponse : Swift.Decodable {
+    public init(from decoder: any Swift.Decoder) throws
+  }
+}
+extension UIKit.UIDevice {
+  @_Concurrency.MainActor(unsafe) public static let modelName: Swift.String
+}
+public class BaseFlow {
+  public init(scanType: ScanType, needConfirm: Swift.Bool)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers public class JPNNFCDriverLicenseFlow : BaseFlow {
+  override public init(scanType: ScanType, needConfirm: Swift.Bool)
+  @objc deinit
+}
+extension JPNNFCDriverLicenseFlow : ScanDocProtocol {
+  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
+  public func prepareScan(handler: @escaping (Swift.Result<(cardType: [ScanDocCardType], info: SessionInfo, expiredIn: Foundation.TimeInterval), OCRError>) -> Swift.Void)
+  public func setPreviewSize(_ previewSize: CoreFoundation.CGSize)
+  public func start(enableUploadFullFrame enable: Swift.Bool? = nil, handler: @escaping (Swift.Result<OCRInitScanDocResponse, OCRError>) -> Swift.Void)
+  public func getCardMatchROI() -> CardMatchROI?
+  public func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (AuthmeOCRResult<OCRScanResult, ()?, OCRError>) -> Swift.Void)
+  public func onGetManualPreviewData(image: UIKit.UIImage, handler: @escaping (AuthmeOCRResult<OCRScanResult, ()?, OCRError>) -> Swift.Void)
+  public func onGetIDCardFraudPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRIDCardFraudStage, OCRError>) -> Swift.Void)
+  public func restart() -> OCRError?
+  public func recognize(handler: @escaping (Swift.Result<OCRScanResult, OCRError>) -> Swift.Void)
+  public func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  public func getStatus() -> (scanDocs: [ScanDocCardType], processing: ScanDocCardType)
+  public func stopScan() -> (any OCRResult)?
+  public func abortScan(completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  public func addResult(_ result: [Swift.String : Swift.String])
+  public func addImage(_ image: UIKit.UIImage?)
+  public func onGetThicknessPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<(stage: OCRIDCardFraudStage, cropImage: UIKit.UIImage), OCRError>) -> Swift.Void)
+  public func onGetThicknessManualData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, OCRError>) -> Swift.Void)
+}
+public protocol LivenessPlaygroundFlowDelegate : LivenessFlowDelegate {
+  func livenessDidNotifyMessage(status: LivenessDetectStatus)
+  func livenessDidUpdateReconize(result: Swift.Bool)
+  func livenessDidFailureWith(error: FlowError, retryHandler: @escaping (() -> Swift.Void))
+  func livenessDidRecognize(image: UIKit.UIImage)
+  func livenessQueueDidUpload(currentCount: Swift.Int)
+}
+public class LivenessPlaygroundFlow {
+  weak public var delegate: (any LivenessPlaygroundFlowDelegate)?
+  public init()
+  @objc deinit
+}
+extension LivenessPlaygroundFlow : LivenessFlowProtocol {
+  public func setDelegate(_ delegate: any LivenessFlowDelegate)
+  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)? = nil, handler: ((Swift.Result<Swift.Void, FlowError>) -> Swift.Void)?)
+  public func setPreviewSize(previewSize: CoreFoundation.CGSize)
+  public func start(encrypt: Swift.Bool)
+  public func recognize(image: UIKit.UIImage)
+  public func roiRect(in previewSize: CoreFoundation.CGSize) -> CoreFoundation.CGRect
+  public func getResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
+  public func isExpired() -> Swift.Bool
+  public func cancelExpired()
+  public func enableUploadFullFrame()
+}
+final public class URLEncodedFormEncoder {
+  public enum ArrayEncoding {
+    case brackets
+    case noBrackets
+    case indexInBrackets
+    public static func == (a: URLEncodedFormEncoder.ArrayEncoding, b: URLEncodedFormEncoder.ArrayEncoding) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum BoolEncoding {
+    case numeric
+    case literal
+    public static func == (a: URLEncodedFormEncoder.BoolEncoding, b: URLEncodedFormEncoder.BoolEncoding) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum DataEncoding {
+    case deferredToData
+    case base64
+    case custom((Foundation.Data) throws -> Swift.String)
+  }
+  public enum DateEncoding {
+    case deferredToDate
+    case secondsSince1970
+    case millisecondsSince1970
+    case iso8601
+    case formatted(Foundation.DateFormatter)
+    case custom((Foundation.Date) throws -> Swift.String)
+  }
+  public enum KeyEncoding {
+    case useDefaultKeys
+    case convertToSnakeCase
+    case convertToKebabCase
+    case capitalized
+    case uppercased
+    case lowercased
+    case custom((Swift.String) -> Swift.String)
+  }
+  public enum SpaceEncoding {
+    case percentEscaped
+    case plusReplaced
+    public static func == (a: URLEncodedFormEncoder.SpaceEncoding, b: URLEncodedFormEncoder.SpaceEncoding) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum Error : Swift.Error {
+    case invalidRootObject(Swift.String)
+  }
+  final public let alphabetizeKeyValuePairs: Swift.Bool
+  final public let arrayEncoding: URLEncodedFormEncoder.ArrayEncoding
+  final public let boolEncoding: URLEncodedFormEncoder.BoolEncoding
+  final public let dataEncoding: URLEncodedFormEncoder.DataEncoding
+  final public let dateEncoding: URLEncodedFormEncoder.DateEncoding
+  final public let keyEncoding: URLEncodedFormEncoder.KeyEncoding
+  final public let spaceEncoding: URLEncodedFormEncoder.SpaceEncoding
+  final public var allowedCharacters: Foundation.CharacterSet
+  public init(alphabetizeKeyValuePairs: Swift.Bool = true, arrayEncoding: URLEncodedFormEncoder.ArrayEncoding = .brackets, boolEncoding: URLEncodedFormEncoder.BoolEncoding = .numeric, dataEncoding: URLEncodedFormEncoder.DataEncoding = .base64, dateEncoding: URLEncodedFormEncoder.DateEncoding = .deferredToDate, keyEncoding: URLEncodedFormEncoder.KeyEncoding = .useDefaultKeys, spaceEncoding: URLEncodedFormEncoder.SpaceEncoding = .percentEscaped, allowedCharacters: Foundation.CharacterSet = .afURLQueryAllowed)
+  final public func encode(_ value: any Swift.Encodable) throws -> Swift.String
+  final public func encode(_ value: any Swift.Encodable) throws -> Foundation.Data
+  @objc deinit
+}
+extension Foundation.CharacterSet {
+  public static let afURLQueryAllowed: Foundation.CharacterSet
+}
+@_inheritsConvenienceInitializers public class OCRFlow : BaseFlow {
+  override public init(scanType: ScanType, needConfirm: Swift.Bool)
+  @objc deinit
+}
+public protocol JWT {
+  var header: [Swift.String : Any] { get }
+  var body: [Swift.String : Any] { get }
+  var signature: Swift.String? { get }
+  var string: Swift.String { get }
+  var expiresAt: Foundation.Date? { get }
+  var issuer: Swift.String? { get }
+  var subject: Swift.String? { get }
+  var audience: [Swift.String]? { get }
+  var issuedAt: Foundation.Date? { get }
+  var notBefore: Foundation.Date? { get }
+  var identifier: Swift.String? { get }
+  var expired: Swift.Bool { get }
+}
+extension JWT {
+  public func claim(name: Swift.String) -> Claim
+  public subscript(claim: Swift.String) -> Claim {
+    get
+  }
+}
+public protocol ScanDocProtocol {
+  func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
+  func prepareScan(handler: @escaping (Swift.Result<(cardType: [ScanDocCardType], info: SessionInfo, expiredIn: Foundation.TimeInterval), OCRError>) -> Swift.Void)
+  func setPreviewSize(_ previewSize: CoreFoundation.CGSize)
+  func start(enableUploadFullFrame: Swift.Bool?, handler: @escaping (Swift.Result<OCRInitScanDocResponse, OCRError>) -> Swift.Void)
+  func onGetPreviewData(image: UIKit.UIImage, handler: @escaping (AuthmeOCRResult<OCRScanResult, ()?, OCRError>) -> Swift.Void)
+  func onGetManualPreviewData(image: UIKit.UIImage, handler: @escaping (AuthmeOCRResult<OCRScanResult, ()?, OCRError>) -> Swift.Void)
+  func getCardMatchROI() -> CardMatchROI?
+  func onGetIDCardFraudPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<OCRIDCardFraudStage, OCRError>) -> Swift.Void)
+  func onGetThicknessPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<(stage: OCRIDCardFraudStage, cropImage: UIKit.UIImage), OCRError>) -> Swift.Void)
+  func onGetThicknessManualData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, OCRError>) -> Swift.Void)
+  func restart() -> OCRError?
+  func recognize(handler: @escaping (Swift.Result<OCRScanResult, OCRError>) -> Swift.Void)
+  func recordImage(progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  func recordImageWithBase64(_ image: UIKit.UIImage, progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  func getStatus() -> (scanDocs: [ScanDocCardType], processing: ScanDocCardType)
+  func stopScan() -> (any OCRResult)?
+  func abortScan(completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  func addResult(_ result: [Swift.String : Swift.String])
+  func addImage(_ image: UIKit.UIImage?)
+  func startWithoutEngine(cardType: OCRType, handler: @escaping (Swift.Result<OCRInitScanDocResponse, OCRError>) -> Swift.Void)
+}
+extension ScanDocProtocol {
+  public func recordImageWithBase64(_ image: UIKit.UIImage, progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  public func addResult(_ result: [Swift.String : Swift.String])
+  public func addImage(_ image: UIKit.UIImage?)
+  public func startWithoutEngine(cardType: OCRType, handler: @escaping (Swift.Result<OCRInitScanDocResponse, OCRError>) -> Swift.Void)
+}
+public struct OCRScanResult {
+  public let originalImage: UIKit.UIImage
+  public let cropImage: UIKit.UIImage
+  public let context: [Swift.String : Swift.String]
+}
+public enum OCRIDCardFraudStage {
+  case frontal
+  case left
+  case right
+  case up
+  case down
+  case ocrscan
+  public static func == (a: OCRIDCardFraudStage, b: OCRIDCardFraudStage) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum ScanDocStatus {
+  case idle
+  case processing
+  case done
+  public static func == (a: ScanDocStatus, b: ScanDocStatus) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum ScanDocCardType : Swift.String, Swift.Codable {
+  case TWN_IDCard_Fraud_Front
+  case TWN_IDCard_Front
+  case TWN_IDCard_Back
+  case TWN_DriverLicense_Front
+  case TWN_DriverLicense_Back
+  case TWN_HealthCard_Front
+  case Passport
+  case NFCPassport
+  case TWN_ResidentCard_Front
+  case TWN_ResidentCard_Back
+  case JPN_IDCARD_Front
+  case JPN_IDCARD_Back
+  case JPN_IDCard_NFC
+  case JPN_IDCARD_Thickness
+  case JPN_DriverLicense_Front
+  case JPN_DriverLicense_Back
+  case JPN_DriverLicense_NFC
+  case JPN_DriverLicense_Thickness
+  case JPN_ResidentCard_Front
+  case JPN_ResidentCard_Back
+  case JPN_ResidentCard_Thickness
+  case JPN_ResidentCard_NFC
+  case USA_IDCARD_Front
+  case USA_DriverLicense_Front
+  case USA_VisitorVISA_FRONT
+  case IDN_IDCARD_Front
+  case IDN_IDCARD_Back
+  case IDN_DriverLicense_Front
+  case Liveness
+  case PassportWithVIZ
+  case IND_IDCard_Front
+  case IND_IDCard_Back
+  case IND_DriverLicense_Front
+  case MYS_IDCard_Front
+  case MYS_IDCard_Back
+  case MYS_DriverLicense_Front
+  case HKG_IDCard_Front
+  case HKG_IDCard_Back
+  case HKG_DriverLicense_Front
+  case GBR_IDCard_Front
+  case GBR_DriverLicense_Front
+  case GBR_DriverLicense_Back
+  case EGY_IDCard_Front
+  case EGY_IDCard_Back
+  case EGY_DriverLicense_Front
+  case SAU_IDCard_Front
+  case SAU_IDCard_Back
+  case SAU_DriverLicense_Front
+  case NLD_IDCard_Front
+  case NLD_DriverLicense_Front
+  case SGP_IDCard_Front
+  case SGP_IDCard_Back
+  case SGP_DriverLicense_Front
+  case UnknownCard
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension ScanDocCardType {
+  public func getMaskRect(frame: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+}
+public struct CardMatchROI {
+  public let leftUp: CoreFoundation.CGPoint
+  public let leftDown: CoreFoundation.CGPoint
+  public let rightUp: CoreFoundation.CGPoint
+  public let rightDown: CoreFoundation.CGPoint
+}
+public typealias onlinePassport = OnlineMode.Passport
+extension OnlineMode {
+  public enum Passport : Swift.String, EKYCType {
+    case Passport
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+public typealias offlinePassport = OfflineMode.Passport
+extension OfflineMode {
+  public enum Passport : Swift.String, EKYCType {
+    case Passport
+    case PassportWithVIZ
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+@_hasMissingDesignatedInitializers public class CVMath {
+  public static func transformedLeftPoint(w: Swift.Float, h: Swift.Float, degree: Swift.Float, x: inout Swift.Float, y: inout Swift.Float)
+  public static func transformedTopPoint(w: Swift.Float, h: Swift.Float, degree: Swift.Float, x: inout Swift.Float, y: inout Swift.Float)
+  @objc deinit
+}
+public class EventHelper {
+  public init()
+  @objc deinit
+  public func stop()
+  public func saveLogWith(sessionInfo: SessionInfo? = nil, info: EventInfo, preEvent: EventInfo? = nil)
+  public func saveLogWithDuration(_ duration: Swift.String = "0", sessionInfo: SessionInfo? = nil, info: EventInfo)
+  public func saveLog(info: EventInfo, sessionId: Swift.String = "", tenantId: Swift.String = "", customerId: Swift.String = "", preEvent: EventInfo? = nil)
+}
+public struct EventInfo {
+  public init(eventID: Foundation.UUID = UUID(), log: Swift.String, language: Swift.String = "", description: Swift.String = "", extraInfo: Swift.String = "")
+}
+extension LivenessFlow.FaceScaleDirection.Direction : Swift.Equatable {}
+extension LivenessFlow.FaceScaleDirection.Direction : Swift.Hashable {}
+extension LogFAS.LogStage : Swift.Equatable {}
+extension LogFAS.LogStage : Swift.Hashable {}
+extension LogFAS.LogFASResult : Swift.Equatable {}
+extension LogFAS.LogFASResult : Swift.Hashable {}
+extension LogUpload.Event : Swift.Equatable {}
+extension LogUpload.Event : Swift.Hashable {}
+extension LivenessDetectStatus : Swift.Equatable {}
+extension LivenessDetectStatus : Swift.Hashable {}
+extension LogAntiFraud : Swift.Equatable {}
+extension LogAntiFraud : Swift.Hashable {}
+extension LogAntiFraud : Swift.RawRepresentable {}
+extension OCRCardType : Swift.Equatable {}
+extension OCRCardType : Swift.Hashable {}
+extension OCRCardType : Swift.RawRepresentable {}
+extension OCRType : Swift.Equatable {}
+extension OCRType : Swift.Hashable {}
+extension OCRType : Swift.RawRepresentable {}
+extension OCRError : Swift.Equatable {}
+extension OCRError : Swift.Hashable {}
+extension OCRError : Swift.RawRepresentable {}
+extension OCRNotifyMessage : Swift.Equatable {}
+extension OCRNotifyMessage : Swift.Hashable {}
+extension OCRNotifyMessage : Swift.RawRepresentable {}
+extension DebugMessageChannel : Swift.Equatable {}
+extension DebugMessageChannel : Swift.Hashable {}
+extension OCRInitScanDocResponse.OCRScanView.OCRScanViewBorder.OCRScanViewBorderType : Swift.Equatable {}
+extension OCRInitScanDocResponse.OCRScanView.OCRScanViewBorder.OCRScanViewBorderType : Swift.Hashable {}
+extension OCRInitScanDocResponse.OCRScanView.OCRScanViewBorder.OCRScanViewBorderType : Swift.RawRepresentable {}
+extension OCRInitScanDocResponse.OCRScanView.OCRScanViewContent.OCRScanViewContentType : Swift.Equatable {}
+extension OCRInitScanDocResponse.OCRScanView.OCRScanViewContent.OCRScanViewContentType : Swift.Hashable {}
+extension OCRInitScanDocResponse.OCRScanView.OCRScanViewContent.OCRScanViewContentType : Swift.RawRepresentable {}
+extension MRZResult.DataType : Swift.Equatable {}
+extension MRZResult.DataType : Swift.Hashable {}
+extension MRZResult.DataType : Swift.RawRepresentable {}
+extension TWNResidentResult.DataType : Swift.Equatable {}
+extension TWNResidentResult.DataType : Swift.Hashable {}
+extension TWNResidentResult.DataType : Swift.RawRepresentable {}
+extension TWIDResult.DataType : Swift.Equatable {}
+extension TWIDResult.DataType : Swift.Hashable {}
+extension TWIDResult.DataType : Swift.RawRepresentable {}
+extension TWLicenseResult.DataType : Swift.Equatable {}
+extension TWLicenseResult.DataType : Swift.Hashable {}
+extension TWLicenseResult.DataType : Swift.RawRepresentable {}
+extension TWHealthResult.DataType : Swift.Equatable {}
+extension TWHealthResult.DataType : Swift.Hashable {}
+extension TWHealthResult.DataType : Swift.RawRepresentable {}
+extension JPNIDCardResult.DataType : Swift.Equatable {}
+extension JPNIDCardResult.DataType : Swift.Hashable {}
+extension JPNIDCardResult.DataType : Swift.RawRepresentable {}
+extension JPNIDCardNFCResult.DataType : Swift.Equatable {}
+extension JPNIDCardNFCResult.DataType : Swift.Hashable {}
+extension JPNIDCardNFCResult.DataType : Swift.RawRepresentable {}
+extension JPNDriverLicenseResult.DataType : Swift.Equatable {}
+extension JPNDriverLicenseResult.DataType : Swift.Hashable {}
+extension JPNDriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension JPNDriverLicenseNFCResult.DataType : Swift.Equatable {}
+extension JPNDriverLicenseNFCResult.DataType : Swift.Hashable {}
+extension JPNDriverLicenseNFCResult.DataType : Swift.RawRepresentable {}
+extension JPNResidentCardResult.DataType : Swift.Equatable {}
+extension JPNResidentCardResult.DataType : Swift.Hashable {}
+extension JPNResidentCardResult.DataType : Swift.RawRepresentable {}
+extension JPNResidentCardNFCResult.DataType : Swift.Equatable {}
+extension JPNResidentCardNFCResult.DataType : Swift.Hashable {}
+extension JPNResidentCardNFCResult.DataType : Swift.RawRepresentable {}
+extension USAIDCardResult.DataType : Swift.Equatable {}
+extension USAIDCardResult.DataType : Swift.Hashable {}
+extension USAIDCardResult.DataType : Swift.RawRepresentable {}
+extension USADriverLicenseResult.DataType : Swift.Equatable {}
+extension USADriverLicenseResult.DataType : Swift.Hashable {}
+extension USADriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension USAVisitorVISAResult.DataType : Swift.Equatable {}
+extension USAVisitorVISAResult.DataType : Swift.Hashable {}
+extension USAVisitorVISAResult.DataType : Swift.RawRepresentable {}
+extension IDNIDCardResult.DataType : Swift.Equatable {}
+extension IDNIDCardResult.DataType : Swift.Hashable {}
+extension IDNIDCardResult.DataType : Swift.RawRepresentable {}
+extension IDNDriverLicenseResult.DataType : Swift.Equatable {}
+extension IDNDriverLicenseResult.DataType : Swift.Hashable {}
+extension IDNDriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension INDIDCardResult.DataType : Swift.Equatable {}
+extension INDIDCardResult.DataType : Swift.Hashable {}
+extension INDIDCardResult.DataType : Swift.RawRepresentable {}
+extension INDDriverLicenseResult.DataType : Swift.Equatable {}
+extension INDDriverLicenseResult.DataType : Swift.Hashable {}
+extension INDDriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension MYIDCardResult.DataType : Swift.Equatable {}
+extension MYIDCardResult.DataType : Swift.Hashable {}
+extension MYIDCardResult.DataType : Swift.RawRepresentable {}
+extension MYDriverLicenseResult.DataType : Swift.Equatable {}
+extension MYDriverLicenseResult.DataType : Swift.Hashable {}
+extension MYDriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension HKIDCardResult.DataType : Swift.Equatable {}
+extension HKIDCardResult.DataType : Swift.Hashable {}
+extension HKIDCardResult.DataType : Swift.RawRepresentable {}
+extension HKDriverLicenseResult.DataType : Swift.Equatable {}
+extension HKDriverLicenseResult.DataType : Swift.Hashable {}
+extension HKDriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension UKIDCardResult.DataType : Swift.Equatable {}
+extension UKIDCardResult.DataType : Swift.Hashable {}
+extension UKIDCardResult.DataType : Swift.RawRepresentable {}
+extension UKDriverLicenseResult.DataType : Swift.Equatable {}
+extension UKDriverLicenseResult.DataType : Swift.Hashable {}
+extension UKDriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension EGIDCardResult.DataType : Swift.Equatable {}
+extension EGIDCardResult.DataType : Swift.Hashable {}
+extension EGIDCardResult.DataType : Swift.RawRepresentable {}
+extension EGDriverLicenseResult.DataType : Swift.Equatable {}
+extension EGDriverLicenseResult.DataType : Swift.Hashable {}
+extension EGDriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension SAIDCardResult.DataType : Swift.Equatable {}
+extension SAIDCardResult.DataType : Swift.Hashable {}
+extension SAIDCardResult.DataType : Swift.RawRepresentable {}
+extension SADriverLicenseResult.DataType : Swift.Equatable {}
+extension SADriverLicenseResult.DataType : Swift.Hashable {}
+extension SADriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension NLIDCardResult.DataType : Swift.Equatable {}
+extension NLIDCardResult.DataType : Swift.Hashable {}
+extension NLIDCardResult.DataType : Swift.RawRepresentable {}
+extension NLDriverLicenseResult.DataType : Swift.Equatable {}
+extension NLDriverLicenseResult.DataType : Swift.Hashable {}
+extension NLDriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension SGIDCardResult.DataType : Swift.Equatable {}
+extension SGIDCardResult.DataType : Swift.Hashable {}
+extension SGIDCardResult.DataType : Swift.RawRepresentable {}
+extension SGDriverLicenseResult.DataType : Swift.Equatable {}
+extension SGDriverLicenseResult.DataType : Swift.Hashable {}
+extension SGDriverLicenseResult.DataType : Swift.RawRepresentable {}
+extension ScanType : Swift.Equatable {}
+extension ScanType : Swift.Hashable {}
+extension ScanType : Swift.RawRepresentable {}
+extension FlowError.Endpoint : Swift.Equatable {}
+extension FlowError.Endpoint : Swift.Hashable {}
+extension URLEncodedFormEncoder.ArrayEncoding : Swift.Equatable {}
+extension URLEncodedFormEncoder.ArrayEncoding : Swift.Hashable {}
+extension URLEncodedFormEncoder.BoolEncoding : Swift.Equatable {}
+extension URLEncodedFormEncoder.BoolEncoding : Swift.Hashable {}
+extension URLEncodedFormEncoder.SpaceEncoding : Swift.Equatable {}
+extension URLEncodedFormEncoder.SpaceEncoding : Swift.Hashable {}
+extension OCRIDCardFraudStage : Swift.Equatable {}
+extension OCRIDCardFraudStage : Swift.Hashable {}
+extension ScanDocStatus : Swift.Equatable {}
+extension ScanDocStatus : Swift.Hashable {}
+extension ScanDocCardType : Swift.Equatable {}
+extension ScanDocCardType : Swift.Hashable {}
+extension ScanDocCardType : Swift.RawRepresentable {}
