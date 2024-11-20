@@ -4,6 +4,10 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>Frameworks/libamssl.a</key>
+		<data>
+		ra8vJTPbdgTR2k9kUF6ntdsaWmU=
+		</data>
 		<key>Headers/Algo-Swift.h</key>
 		<data>
 		fWuDg60Vvzn9IsShGJU8HZFYZik=
@@ -219,6 +223,13 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>Frameworks/libamssl.a</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Sl6bS11amJ/Gm7vJEPFd4MOEY5dihIJIuV45m1ZR7Ww=
+			</data>
+		</dict>
 		<key>Headers/Algo-Swift.h</key>
 		<dict>
 			<key>hash2</key>

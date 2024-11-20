@@ -6,7 +6,11 @@
 	<dict>
 		<key>ios-arm64/Algo.framework/Algo</key>
 		<data>
-		lX4BveIN7KKsy5qGuQF1Ro2+05U=
+		6B0C+6ujVLe22v5AKQRh8RX0tog=
+		</data>
+		<key>ios-arm64/Algo.framework/Frameworks/libamssl.a</key>
+		<data>
+		2mnL0EZRDllAwOlmQ9UUCY9nrAw=
 		</data>
 		<key>ios-arm64/Algo.framework/Headers/Algo-Swift.h</key>
 		<data>
@@ -198,7 +202,11 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/Algo.framework/Algo</key>
 		<data>
-		yFfGOQCr2sB6N4DcD9uV64de7RA=
+		+QHfFGJylMrWE2d6BxDGQNnHTx8=
+		</data>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Frameworks/libamssl.a</key>
+		<data>
+		ra8vJTPbdgTR2k9kUF6ntdsaWmU=
 		</data>
 		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/Algo-Swift.h</key>
 		<data>
@@ -354,7 +362,7 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/Algo.framework/_CodeSignature/CodeResources</key>
 		<data>
-		prVc4VeQ6xZtRKSmyW4StPn00hI=
+		1IfPgO/nt1WffBoK5+JUMRV6o+4=
 		</data>
 		<key>ios-arm64_x86_64-simulator/Algo.framework/include/jwt-cpp/base.h</key>
 		<data>
@@ -415,11 +423,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			lX4BveIN7KKsy5qGuQF1Ro2+05U=
+			6B0C+6ujVLe22v5AKQRh8RX0tog=
 			</data>
 			<key>hash2</key>
 			<data>
-			tg4EsDUp2yPqUHJVYco5qGYtRMpcZfusWFokee9WHC4=
+			Ut99lXVWKPhRjTMhaHIyuyhPrVtIqkcvaX5yUN6/t8g=
+			</data>
+		</dict>
+		<key>ios-arm64/Algo.framework/Frameworks/libamssl.a</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			2mnL0EZRDllAwOlmQ9UUCY9nrAw=
+			</data>
+			<key>hash2</key>
+			<data>
+			4ZPopGx7LpHXGFFjIaGcWUB9a3hUcr0d4ePCFrS5OmE=
 			</data>
 		</dict>
 		<key>ios-arm64/Algo.framework/Headers/Algo-Swift.h</key>
@@ -943,11 +962,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			yFfGOQCr2sB6N4DcD9uV64de7RA=
+			+QHfFGJylMrWE2d6BxDGQNnHTx8=
 			</data>
 			<key>hash2</key>
 			<data>
-			LtMXUz4EMZMN7efeFAV+U51dzYsHPT2LoEiuLHdoRSs=
+			rtWAXQMCcrntBQPG45Wq5NdccbCuhMBMwj8vTUEWpgA=
+			</data>
+		</dict>
+		<key>ios-arm64_x86_64-simulator/Algo.framework/Frameworks/libamssl.a</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ra8vJTPbdgTR2k9kUF6ntdsaWmU=
+			</data>
+			<key>hash2</key>
+			<data>
+			Sl6bS11amJ/Gm7vJEPFd4MOEY5dihIJIuV45m1ZR7Ww=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/Algo-Swift.h</key>
@@ -1372,11 +1402,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			prVc4VeQ6xZtRKSmyW4StPn00hI=
+			1IfPgO/nt1WffBoK5+JUMRV6o+4=
 			</data>
 			<key>hash2</key>
 			<data>
-			yxlodGWdKQT9E8pQ14cQPM5gkCHhq21nLaQ9fUqdcwA=
+			05myqDVtmkBsp+2B6wMzJ3VQOLEV3rbT6/VL0lnItFI=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/Algo.framework/include/jwt-cpp/base.h</key>
