@@ -4393,42 +4393,49 @@
     {
       "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/IDCardFraudService.swift",
       "kind": "IntegerLiteral",
-      "offset": 6396,
+      "offset": 3747,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/IDCardFraudService.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6443,
       "length": 1,
       "value": "8"
     },
     {
       "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/IDCardFraudService.swift",
       "kind": "StringLiteral",
-      "offset": 7020,
+      "offset": 7067,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/IDCardFraudService.swift",
       "kind": "StringLiteral",
-      "offset": 7150,
+      "offset": 7197,
       "length": 27,
       "value": "\"ignore_card_type_checking\""
     },
     {
       "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/IDCardFraudService.swift",
       "kind": "StringLiteral",
-      "offset": 7179,
+      "offset": 7226,
       "length": 8,
       "value": "\"enable\""
     },
     {
       "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/IDCardFraudService.swift",
       "kind": "StringLiteral",
-      "offset": 7406,
+      "offset": 7453,
       "length": 20,
       "value": "\"thickness_detector\""
     },
     {
       "filePath": "\/Users\/runner\/work\/Algo_iOS\/Algo_iOS\/Algo\/Engine\/IDCardFraudService.swift",
       "kind": "StringLiteral",
-      "offset": 7428,
+      "offset": 7475,
       "length": 8,
       "value": "\"enable\""
     },
