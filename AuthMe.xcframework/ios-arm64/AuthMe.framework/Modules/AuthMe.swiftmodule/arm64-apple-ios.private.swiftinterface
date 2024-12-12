@@ -285,6 +285,9 @@ postfix public func - <T>(lhs: ObjectFluent<T>) -> T where T : AnyObject
   @objc override dynamic public init()
   @objc deinit
 }
+extension AuthMeCore where T == OnlineMode {
+  public static func cleanAllModel()
+}
 public enum LogAntiFraud : Swift.String {
   case Failed
   case NoCard

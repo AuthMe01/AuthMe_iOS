@@ -6,7 +6,7 @@
 	<dict>
 		<key>ios-arm64/Algo.framework/Algo</key>
 		<data>
-		L20ZxGkeBcdWJI1RFrcm+fmd7kc=
+		lX4BveIN7KKsy5qGuQF1Ro2+05U=
 		</data>
 		<key>ios-arm64/Algo.framework/Headers/Algo-Swift.h</key>
 		<data>
@@ -118,7 +118,7 @@
 		</data>
 		<key>ios-arm64/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		PUqzGlMRTsBTXS/RR/f1z+mrq3w=
+		UwmiIcu7v6/twNdjOOe1lY15u9A=
 		</data>
 		<key>ios-arm64/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
@@ -198,7 +198,7 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/Algo.framework/Algo</key>
 		<data>
-		mM4CesMY0H46eVV2UdZn1N1oS38=
+		meyyiqMcBQhbi0O1NlFpWouGf6c=
 		</data>
 		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/Algo-Swift.h</key>
 		<data>
@@ -310,7 +310,7 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		PUqzGlMRTsBTXS/RR/f1z+mrq3w=
+		UwmiIcu7v6/twNdjOOe1lY15u9A=
 		</data>
 		<key>ios-arm64_x86_64-simulator/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -326,7 +326,7 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/Algo.framework/Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		PUqzGlMRTsBTXS/RR/f1z+mrq3w=
+		UwmiIcu7v6/twNdjOOe1lY15u9A=
 		</data>
 		<key>ios-arm64_x86_64-simulator/Algo.framework/Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -354,7 +354,7 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/Algo.framework/_CodeSignature/CodeResources</key>
 		<data>
-		nJtrw0k3cc84ZG9YPyT4MkGyiVA=
+		Cv+d3qOMhP1ZKW5G2c1bghk7Kbs=
 		</data>
 		<key>ios-arm64_x86_64-simulator/Algo.framework/include/jwt-cpp/base.h</key>
 		<data>
@@ -415,11 +415,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			L20ZxGkeBcdWJI1RFrcm+fmd7kc=
+			lX4BveIN7KKsy5qGuQF1Ro2+05U=
 			</data>
 			<key>hash2</key>
 			<data>
-			5QSNMyafMV+cM13aicMP6ZcUt/ESov0sueAZAlggo4w=
+			tg4EsDUp2yPqUHJVYco5qGYtRMpcZfusWFokee9WHC4=
 			</data>
 		</dict>
 		<key>ios-arm64/Algo.framework/Headers/Algo-Swift.h</key>
@@ -723,11 +723,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			PUqzGlMRTsBTXS/RR/f1z+mrq3w=
+			UwmiIcu7v6/twNdjOOe1lY15u9A=
 			</data>
 			<key>hash2</key>
 			<data>
-			BDPdRac7hLsIiQqjZ9avwO+gWBBmYMNSyIHew81ah7o=
+			AH0nQcCAWoSpX1wp9VfJI9WpZ2H46etdffccBiv7xZg=
 			</data>
 		</dict>
 		<key>ios-arm64/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
@@ -943,11 +943,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			mM4CesMY0H46eVV2UdZn1N1oS38=
+			meyyiqMcBQhbi0O1NlFpWouGf6c=
 			</data>
 			<key>hash2</key>
 			<data>
-			E2/yK/Mn+7kgz91G6FjsdhnBZQjbXZtiFgR+27A+6+I=
+			SDFSlrEwdI8EXge8OU/w9ihHvZrzeX7Dr4+hx2bX3O4=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/Algo.framework/Headers/Algo-Swift.h</key>
@@ -1251,11 +1251,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			PUqzGlMRTsBTXS/RR/f1z+mrq3w=
+			UwmiIcu7v6/twNdjOOe1lY15u9A=
 			</data>
 			<key>hash2</key>
 			<data>
-			BDPdRac7hLsIiQqjZ9avwO+gWBBmYMNSyIHew81ah7o=
+			AH0nQcCAWoSpX1wp9VfJI9WpZ2H46etdffccBiv7xZg=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/Algo.framework/Modules/Algo.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -1295,11 +1295,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			PUqzGlMRTsBTXS/RR/f1z+mrq3w=
+			UwmiIcu7v6/twNdjOOe1lY15u9A=
 			</data>
 			<key>hash2</key>
 			<data>
-			BDPdRac7hLsIiQqjZ9avwO+gWBBmYMNSyIHew81ah7o=
+			AH0nQcCAWoSpX1wp9VfJI9WpZ2H46etdffccBiv7xZg=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/Algo.framework/Modules/Algo.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
@@ -1372,11 +1372,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			nJtrw0k3cc84ZG9YPyT4MkGyiVA=
+			Cv+d3qOMhP1ZKW5G2c1bghk7Kbs=
 			</data>
 			<key>hash2</key>
 			<data>
-			lWpKM+GSlcVWQK4WvC2FXSYFUcv5KS7f/WjAN3ccBqM=
+			mjk/2I5xgSbaTwuFszrnhfK/y05blV9eanQZFPaXxao=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/Algo.framework/include/jwt-cpp/base.h</key>
