@@ -57936,519 +57936,526 @@
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1460,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "StringLiteral",
-      "offset": 1539,
+      "offset": 1566,
       "length": 13,
       "value": "\"RecordQueue\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 1597,
+      "offset": 1624,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "StringLiteral",
-      "offset": 1725,
+      "offset": 1752,
       "length": 19,
       "value": "\"VerifyResultQueue\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "StringLiteral",
-      "offset": 1833,
+      "offset": 1860,
       "length": 33,
       "value": "\"com.authme.serialQueue.liveness\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 2043,
+      "offset": 2070,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "FloatLiteral",
-      "offset": 2077,
+      "offset": 2104,
       "length": 3,
       "value": "0.0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 2154,
+      "offset": 2181,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 2277,
+      "offset": 2304,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "StringLiteral",
-      "offset": 3031,
+      "offset": 3058,
       "length": 19,
       "value": "\"載入Model失敗\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "StringLiteral",
-      "offset": 3064,
+      "offset": 3091,
       "length": 60,
       "value": "\"description: \""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "StringLiteral",
-      "offset": 3107,
+      "offset": 3134,
       "length": 1,
       "value": "\", error:\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "StringLiteral",
-      "offset": 3123,
+      "offset": 3150,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "StringLiteral",
-      "offset": 4173,
+      "offset": 4200,
       "length": 19,
       "value": "\"載入Model失敗\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "StringLiteral",
-      "offset": 4206,
+      "offset": 4233,
       "length": 60,
       "value": "\"description: \""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "StringLiteral",
-      "offset": 4249,
+      "offset": 4276,
       "length": 1,
       "value": "\", error:\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "StringLiteral",
-      "offset": 4265,
+      "offset": 4292,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 4707,
+      "offset": 4734,
       "length": 3,
       "value": "720"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 4720,
+      "offset": 4747,
       "length": 4,
       "value": "1280"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "FloatLiteral",
-      "offset": 4802,
+      "offset": 4829,
       "length": 3,
       "value": "1.3"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "FloatLiteral",
-      "offset": 4831,
+      "offset": 4858,
       "length": 3,
       "value": "0.7"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 4877,
+      "offset": 4904,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 4890,
+      "offset": 4917,
       "length": 3,
       "value": "-50"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 5764,
+      "offset": 5791,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "FloatLiteral",
-      "offset": 6007,
+      "offset": 6034,
       "length": 3,
       "value": "0.6"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "FloatLiteral",
-      "offset": 7735,
+      "offset": 7762,
       "length": 3,
       "value": "0.0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "FloatLiteral",
-      "offset": 7774,
+      "offset": 7801,
       "length": 3,
       "value": "1.0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 12058,
+      "offset": 12085,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 12533,
+      "offset": 12560,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 12600,
+      "offset": 12627,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 15116,
+      "offset": 15143,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 15597,
+      "offset": 15624,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 15664,
+      "offset": 15691,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 17099,
+      "offset": 17126,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 17183,
+      "offset": 17210,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 17257,
+      "offset": 17284,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 17704,
+      "offset": 17731,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 17788,
+      "offset": 17815,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 17862,
+      "offset": 17889,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 17970,
+      "offset": 17997,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 17995,
+      "offset": 18022,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "FloatLiteral",
-      "offset": 18266,
+      "offset": 18293,
       "length": 4,
       "value": "0.85"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 18392,
+      "offset": 18419,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 18626,
+      "offset": 18653,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 18709,
+      "offset": 18736,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 19858,
+      "offset": 19885,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 19943,
+      "offset": 19970,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 20301,
+      "offset": 20328,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 20472,
+      "offset": 20499,
       "length": 1,
       "value": "5"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 21458,
+      "offset": 21485,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 21542,
+      "offset": 21569,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 21823,
+      "offset": 21850,
       "length": 5,
       "value": "false"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
-      "kind": "BooleanLiteral",
-      "offset": 22066,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
-      "kind": "FloatLiteral",
-      "offset": 22125,
-      "length": 3,
-      "value": "3.0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 22338,
+      "offset": 21995,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
+      "kind": "IntegerLiteral",
+      "offset": 22067,
+      "length": 10,
+      "value": "2000000000"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
+      "kind": "IntegerLiteral",
+      "offset": 22141,
       "length": 1,
       "value": "5"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
+      "kind": "IntegerLiteral",
+      "offset": 22499,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
+      "kind": "IntegerLiteral",
+      "offset": 22627,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 22620,
+      "offset": 23286,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 22816,
+      "offset": 23515,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 23102,
+      "offset": 23633,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 23442,
+      "offset": 23665,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
+      "kind": "BooleanLiteral",
+      "offset": 23894,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 23573,
+      "offset": 24137,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 23606,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
-      "kind": "BooleanLiteral",
-      "offset": 23946,
+      "offset": 24586,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 24299,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
-      "kind": "BooleanLiteral",
-      "offset": 24890,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
-      "kind": "BooleanLiteral",
-      "offset": 25343,
+      "offset": 24989,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "FloatLiteral",
-      "offset": 25402,
+      "offset": 25048,
       "length": 3,
       "value": "0.1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 25678,
+      "offset": 25324,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 25867,
+      "offset": 25513,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 27313,
+      "offset": 26959,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 27910,
+      "offset": 27556,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 28221,
+      "offset": 27867,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 31230,
+      "offset": 30876,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 31274,
+      "offset": 30920,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 31397,
+      "offset": 31043,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 31532,
+      "offset": 31178,
       "length": 4,
       "value": "true"
     },
