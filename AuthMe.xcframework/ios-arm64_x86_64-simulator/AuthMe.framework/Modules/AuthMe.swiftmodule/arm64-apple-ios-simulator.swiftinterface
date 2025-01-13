@@ -11,7 +11,6 @@ import Foundation
 import MobileCoreServices
 import Security
 import Swift
-import UIKit.UIImage
 import UIKit
 import UIKit/*.UIEdgeInsets*/
 import UIKit/*.UIImage*/
@@ -35,6 +34,7 @@ public struct AuthMeConfig {
     public let credentialURL: Foundation.URL
     public init(host: Swift.String, credentialURL: Foundation.URL)
   }
+  public var customParameters: Swift.String?
 }
 @_hasMissingDesignatedInitializers public class AuthMeCore<T> where T : FrameworkMode {
   public static var version: Swift.String {
@@ -44,6 +44,69 @@ public struct AuthMeConfig {
     get
   }
   @objc deinit
+}
+public struct LogFAS {
+  public enum LogStage {
+    case Passive
+    case OpenMouth
+    case CloseMouth
+    case Smile
+    case Scale
+    case Done
+    public static func == (a: LogFAS.LogStage, b: LogFAS.LogStage) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum LogFASResult {
+    case Failed
+    case NoFace
+    case FaceNotAtCenter
+    case FaceTooSmall
+    case FaceTooLarge
+    case NeedFaceToCamera
+    case FaceMasked
+    case NeedOpenMouth
+    case NeedCloseMouth
+    case NeedSmile
+    case DepthFake
+    case NeedOpenEyes
+    case NeedMoreFrame
+    case Error
+    case Pass
+    public static func == (a: LogFAS.LogFASResult, b: LogFAS.LogFASResult) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let logStage: LogFAS.LogStage
+  public let logFASResult: LogFAS.LogFASResult
+  public init(logStage: LogFAS.LogStage, logFASResult: LogFAS.LogFASResult)
+}
+public enum LivenessDetectStatus {
+  case Failed
+  case NoFace
+  case FaceNotAtCenter
+  case FaceTooSmall
+  case FaceTooLarge
+  case NeedFaceToCamera
+  case FaceMasked
+  case NeedOpenMouth
+  case NeedCloseMouth
+  case NeedOpenEyes
+  case NeedSmile
+  case DepthFake
+  case NeedMoreFrame
+  case Pass
+  case Error
+  case Empty
+  public static func == (a: LivenessDetectStatus, b: LivenessDetectStatus) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
 }
 public protocol LivenessFlowDelegate : AnyObject {
   func livenessDidStart()
@@ -56,20 +119,16 @@ public protocol LivenessFlowDelegate : AnyObject {
   func livenessNotifyUpload(log: LogUpload)
 }
 public class LivenessFlow : LivenessFlowProtocol {
-  public func setDelegate(_ delegate: any LivenessFlowDelegate)
   weak public var delegate: (any LivenessFlowDelegate)?
-  public var isDetecting: Swift.Bool {
-    get
-  }
-  public init(action: Action = .register(waitResult: true))
+  public init()
   @objc deinit
   public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)? = nil, handler: ((Swift.Result<Swift.Void, FlowError>) -> Swift.Void)?)
   public func setPreviewSize(previewSize: CoreFoundation.CGSize)
-  public func start(encrypt: Swift.Bool)
+  public func start()
   public func recognize(image: UIKit.UIImage)
   public func recognize(normal normalImage: UIKit.UIImage, depthImage: UIKit.UIImage)
-  public func roiRect(in previewSize: CoreFoundation.CGSize) -> CoreFoundation.CGRect
   public func cancelExpired()
+  public func roiRect(in previewSize: CoreFoundation.CGSize) -> CoreFoundation.CGRect
   public func getResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
   public func isExpired() -> Swift.Bool
   public func getVerifyResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
@@ -121,45 +180,6 @@ extension Swift.Collection where Self.Element : Swift.BinaryInteger {
 extension Swift.Collection where Self.Element : Swift.FloatingPoint {
   public func average() -> Self.Element
 }
-public struct LogFAS {
-  public enum LogStage {
-    case Passive
-    case OpenMouth
-    case CloseMouth
-    case Smile
-    case Scale
-    case Done
-    public static func == (a: LogFAS.LogStage, b: LogFAS.LogStage) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
-    public var hashValue: Swift.Int {
-      get
-    }
-  }
-  public enum LogFASResult {
-    case Failed
-    case NoFace
-    case FaceNotAtCenter
-    case FaceTooSmall
-    case FaceTooLarge
-    case NeedFaceToCamera
-    case FaceMasked
-    case NeedOpenMouth
-    case NeedCloseMouth
-    case NeedSmile
-    case NeedOpenEyes
-    case NeedMoreFrame
-    case Error
-    case Pass
-    public static func == (a: LogFAS.LogFASResult, b: LogFAS.LogFASResult) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
-    public var hashValue: Swift.Int {
-      get
-    }
-  }
-  public let logStage: LogFAS.LogStage
-  public let logFASResult: LogFAS.LogFASResult
-  public init(logStage: LogFAS.LogStage, logFASResult: LogFAS.LogFASResult)
-}
 public struct LogUpload {
   public enum Event {
     case start
@@ -174,28 +194,6 @@ public struct LogUpload {
   public let event: LogUpload.Event
   public let frameNo: Swift.String
   public init(duration: Swift.String = "0", event: LogUpload.Event, frameNo: Swift.String)
-}
-public enum LivenessDetectStatus {
-  case Failed
-  case NoFace
-  case FaceNotAtCenter
-  case FaceTooSmall
-  case FaceTooLarge
-  case NeedFaceToCamera
-  case FaceMasked
-  case NeedOpenMouth
-  case NeedCloseMouth
-  case NeedOpenEyes
-  case NeedSmile
-  case NeedMoreFrame
-  case Pass
-  case Error
-  case Empty
-  public static func == (a: LivenessDetectStatus, b: LivenessDetectStatus) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public var hashValue: Swift.Int {
-    get
-  }
 }
 extension AuthMeCore where T == OnlineMode {
   public static func configure() -> AuthmeCoreOnlineBuilder
@@ -251,6 +249,56 @@ public struct Claim {
   public var array: [Swift.String]? {
     get
   }
+}
+public enum VerificationErrorCode {
+  case idt004
+  case idt005
+  case idt113
+  case idt115
+  case idt116
+  case idt117
+  case idt118
+  case idt119
+  case idt120
+  case idt121
+  case idt200
+  case idt300
+  case idp100
+  case idp101
+  case idp102
+  case idp103
+  case idp104
+  case idp106
+  case idp107
+  case idp108
+  case idp200
+  case unknown(Swift.String)
+  public var description: Swift.String {
+    get
+  }
+}
+public enum VerificationError : Swift.Error {
+  case responseError
+  case apiError
+  public static func == (a: VerificationError, b: VerificationError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum VerificationState : Swift.Equatable {
+  case approved
+  case incomplete
+  case pendingApproval
+  case rejected(VerificationErrorCode)
+  case pending(VerificationErrorCode)
+  public static func == (lhs: VerificationState, rhs: VerificationState) -> Swift.Bool
+}
+public struct VerificationHandler {
+  public init()
+  #if compiler(>=5.3) && $AsyncAwait
+  public func getCustomerState(waitingTime: Swift.Int = 3, retryTimes: Swift.Int = 2) async throws -> VerificationState
+  #endif
 }
 @dynamicMemberLookup public struct Fluent<Subject> {
   public let subject: Subject
@@ -418,6 +466,7 @@ public enum OCRError : Swift.String, Foundation.LocalizedError {
   case NO_DETECTED
   case CARD_REFLECTIVE
   case LOW_SHARPNESS
+  case Gray
   case WORNG_CARD_TYPE
   case CARD_NOT_IN_REGION
   case CARD_TOO_SMALL
@@ -1523,10 +1572,10 @@ public class OCRScanDocFactory {
   @objc deinit
 }
 public protocol LivenessFlowProtocol {
-  func setDelegate(_ delegate: any LivenessFlowDelegate)
+  var delegate: (any LivenessFlowDelegate)? { get set }
   func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, FlowError>) -> Swift.Void)?)
   func setPreviewSize(previewSize: CoreFoundation.CGSize)
-  func start(encrypt: Swift.Bool)
+  func start()
   func roiRect(in previewSize: CoreFoundation.CGSize) -> CoreFoundation.CGRect
   func recognize(image: UIKit.UIImage)
   func recognize(normal normalImage: UIKit.UIImage, depthImage: UIKit.UIImage)
@@ -1541,8 +1590,6 @@ extension LivenessFlowProtocol {
 public class LivenessFactory {
   public init()
   public func prepare(with action: Action = .register(waitResult: true)) -> any LivenessFlowProtocol
-  public func preparePlayground() -> any LivenessFlowProtocol
-  public func prepareRecordPlayground() -> any LivenessFlowProtocol
   @objc deinit
 }
 public enum Action {
@@ -1566,6 +1613,9 @@ public enum FlowError : Swift.Error {
     }
   }
 }
+public enum ConfigError : Swift.Error {
+  case verifyFail(Swift.Int)
+}
 @_hasMissingDesignatedInitializers public class OnlineMode : FrameworkMode {
   @objc deinit
 }
@@ -1575,14 +1625,6 @@ public enum FlowError : Swift.Error {
   public func build() -> Swift.Result<Swift.Void, any Swift.Error>
   @objc override dynamic public init()
   @objc deinit
-}
-public protocol LivenessPlaygroundRecordFlowDelegate : LivenessFlowDelegate {
-  func livenessDidNotifyMessage(message: Swift.String)
-  func livenessDidUpdateReconize(result: Swift.Bool)
-  func livenessDidFailureWith(error: FlowError, retryHandler: @escaping (() -> Swift.Void))
-  func livenessDidRecognize(image: UIKit.UIImage)
-  func livenessDidFaceScale(direction: LivenessFlow.FaceScaleDirection.Direction)
-  func livenessDidProcessed(jsonString: Swift.String)
 }
 public class JPIDNFCCardFlow {
   public init(scanType: ScanType, needConfirm: Swift.Bool)
@@ -1649,30 +1691,6 @@ extension JPNNFCDriverLicenseFlow : ScanDocProtocol {
   public func addImage(_ image: UIKit.UIImage?)
   public func onGetThicknessPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<(stage: OCRIDCardFraudStage, cropImage: UIKit.UIImage), OCRError>) -> Swift.Void)
   public func onGetThicknessManualData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, OCRError>) -> Swift.Void)
-}
-public protocol LivenessPlaygroundFlowDelegate : LivenessFlowDelegate {
-  func livenessDidNotifyMessage(status: LivenessDetectStatus)
-  func livenessDidUpdateReconize(result: Swift.Bool)
-  func livenessDidFailureWith(error: FlowError, retryHandler: @escaping (() -> Swift.Void))
-  func livenessDidRecognize(image: UIKit.UIImage)
-  func livenessQueueDidUpload(currentCount: Swift.Int)
-}
-public class LivenessPlaygroundFlow {
-  weak public var delegate: (any LivenessPlaygroundFlowDelegate)?
-  public init()
-  @objc deinit
-}
-extension LivenessPlaygroundFlow : LivenessFlowProtocol {
-  public func setDelegate(_ delegate: any LivenessFlowDelegate)
-  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)? = nil, handler: ((Swift.Result<Swift.Void, FlowError>) -> Swift.Void)?)
-  public func setPreviewSize(previewSize: CoreFoundation.CGSize)
-  public func start(encrypt: Swift.Bool)
-  public func recognize(image: UIKit.UIImage)
-  public func roiRect(in previewSize: CoreFoundation.CGSize) -> CoreFoundation.CGRect
-  public func getResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
-  public func isExpired() -> Swift.Bool
-  public func cancelExpired()
-  public func enableUploadFullFrame()
 }
 final public class URLEncodedFormEncoder {
   public enum ArrayEncoding {
@@ -1835,10 +1853,10 @@ public enum ScanDocCardType : Swift.String, Swift.Codable {
   case NFCPassport
   case TWN_ResidentCard_Front
   case TWN_ResidentCard_Back
-  case JPN_IDCARD_Front
-  case JPN_IDCARD_Back
+  case JPN_IDCard_Front
+  case JPN_IDCard_Back
   case JPN_IDCard_NFC
-  case JPN_IDCARD_Thickness
+  case JPN_IDCard_Thickness
   case JPN_DriverLicense_Front
   case JPN_DriverLicense_Back
   case JPN_DriverLicense_NFC
@@ -1850,8 +1868,8 @@ public enum ScanDocCardType : Swift.String, Swift.Codable {
   case USA_IDCARD_Front
   case USA_DriverLicense_Front
   case USA_VisitorVISA_FRONT
-  case IDN_IDCARD_Front
-  case IDN_IDCARD_Back
+  case IDN_IDCard_Front
+  case IDN_IDCard_Back
   case IDN_DriverLicense_Front
   case Liveness
   case PassportWithVIZ
@@ -1933,16 +1951,18 @@ public class EventHelper {
 public struct EventInfo {
   public init(eventID: Foundation.UUID = UUID(), log: Swift.String, language: Swift.String = "", description: Swift.String = "", extraInfo: Swift.String = "")
 }
-extension LivenessFlow.FaceScaleDirection.Direction : Swift.Equatable {}
-extension LivenessFlow.FaceScaleDirection.Direction : Swift.Hashable {}
 extension LogFAS.LogStage : Swift.Equatable {}
 extension LogFAS.LogStage : Swift.Hashable {}
 extension LogFAS.LogFASResult : Swift.Equatable {}
 extension LogFAS.LogFASResult : Swift.Hashable {}
-extension LogUpload.Event : Swift.Equatable {}
-extension LogUpload.Event : Swift.Hashable {}
 extension LivenessDetectStatus : Swift.Equatable {}
 extension LivenessDetectStatus : Swift.Hashable {}
+extension LivenessFlow.FaceScaleDirection.Direction : Swift.Equatable {}
+extension LivenessFlow.FaceScaleDirection.Direction : Swift.Hashable {}
+extension LogUpload.Event : Swift.Equatable {}
+extension LogUpload.Event : Swift.Hashable {}
+extension VerificationError : Swift.Equatable {}
+extension VerificationError : Swift.Hashable {}
 extension LogAntiFraud : Swift.Equatable {}
 extension LogAntiFraud : Swift.Hashable {}
 extension LogAntiFraud : Swift.RawRepresentable {}
