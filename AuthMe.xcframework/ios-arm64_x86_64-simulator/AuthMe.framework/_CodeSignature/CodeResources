@@ -14,15 +14,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		4WspJ2qOMA7FYwDMhtGCnBzj5H8=
+		splkKRvxTT82ay5sxrqX189bB50=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		/ScAqRjRHpeI47sG3BmAjPQi/Rk=
+		UoPyKsHcSpcgbh/vDKF5i17WB3A=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		l7SsZpqWTq80aJ666BppD1/v0DM=
+		h/fqaU+thmnp3RWHHEGSlBR+Oi0=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -30,19 +30,19 @@
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		l7SsZpqWTq80aJ666BppD1/v0DM=
+		h/fqaU+thmnp3RWHHEGSlBR+Oi0=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		yHP5taa89jHeTLlTIF4GYv3qTNQ=
+		XwXVWAK0yYUcbtYxTDikk7LxjlA=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		/ScAqRjRHpeI47sG3BmAjPQi/Rk=
+		UoPyKsHcSpcgbh/vDKF5i17WB3A=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		b+ajFE48CcO+c/qjsEENKnAlews=
+		1lxua6Z3UBQarC+q68qefEsPWeM=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -50,11 +50,11 @@
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		b+ajFE48CcO+c/qjsEENKnAlews=
+		1lxua6Z3UBQarC+q68qefEsPWeM=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		9wCqI2T3Ggc4iqBTcKnEowVdGlA=
+		ahVFxDjiDyRQdC630hvcGCWsqMQ=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -101,14 +101,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			bJU/B3JJs14GJ+TmRLYAGvLzx+EnhJbwghIjhM4Ja+s=
+			uV9tX0tGwq4JYtjCJ4Ez4JjmfJJ4JZqQKGtdjV495vA=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			N6wBVZgKCIUYaGdmEUDbmu19+eGZzODh11ijobx9XTY=
+			/Ba8lMqGDtqwMoZT/9FIqpLBaknuEeAJUSgrLF/V0MA=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
@@ -122,28 +122,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			N6wBVZgKCIUYaGdmEUDbmu19+eGZzODh11ijobx9XTY=
+			/Ba8lMqGDtqwMoZT/9FIqpLBaknuEeAJUSgrLF/V0MA=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			UsY7a/v75hZLi6yQtW7CN30aelwKuiiKdRSVV96DpOQ=
+			9ghgzyJdY4WuRVGPzGhuFJmJBIeCrbrXN9+ebzJosE8=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			bJU/B3JJs14GJ+TmRLYAGvLzx+EnhJbwghIjhM4Ja+s=
+			uV9tX0tGwq4JYtjCJ4Ez4JjmfJJ4JZqQKGtdjV495vA=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			sKm1P3jAsB2AnS8G0Sxmozv90aefrL10U55Bs8oEReM=
+			PxWxBezHFllBsmwtcQOwfZDvAXfmiD+vVguOIAF1/VE=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -157,14 +157,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			sKm1P3jAsB2AnS8G0Sxmozv90aefrL10U55Bs8oEReM=
+			PxWxBezHFllBsmwtcQOwfZDvAXfmiD+vVguOIAF1/VE=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			e1YR/FnH5F4SV5R3eW2HLeC8VOb5FQ7uukrtHN8xyis=
+			0hyuAZXfVCA4UoVSHi/xyb0WuoBhhC+XMOqQ/givg4o=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

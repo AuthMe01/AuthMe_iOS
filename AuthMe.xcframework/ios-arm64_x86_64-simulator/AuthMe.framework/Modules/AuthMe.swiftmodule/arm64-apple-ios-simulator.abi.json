@@ -5976,6 +5976,46 @@
           },
           {
             "kind": "Var",
+            "name": "idt400",
+            "printedName": "idt400",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(AuthMe.VerificationErrorCode.Type) -> AuthMe.VerificationErrorCode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "VerificationErrorCode",
+                    "printedName": "AuthMe.VerificationErrorCode",
+                    "usr": "s:6AuthMe21VerificationErrorCodeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "AuthMe.VerificationErrorCode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "VerificationErrorCode",
+                        "printedName": "AuthMe.VerificationErrorCode",
+                        "usr": "s:6AuthMe21VerificationErrorCodeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6AuthMe21VerificationErrorCodeO6idt400yA2CmF",
+            "mangledName": "$s6AuthMe21VerificationErrorCodeO6idt400yA2CmF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "idp100",
             "printedName": "idp100",
             "children": [
@@ -6774,12 +6814,12 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(AuthMe.VerificationState.Type) -> (AuthMe.VerificationErrorCode) -> AuthMe.VerificationState",
+                "printedName": "(AuthMe.VerificationState.Type) -> (AuthMe.VerificationErrorCode, Swift.String?) -> AuthMe.VerificationState",
                 "children": [
                   {
                     "kind": "TypeFunc",
                     "name": "Function",
-                    "printedName": "(AuthMe.VerificationErrorCode) -> AuthMe.VerificationState",
+                    "printedName": "(AuthMe.VerificationErrorCode, Swift.String?) -> AuthMe.VerificationState",
                     "children": [
                       {
                         "kind": "TypeNominal",
@@ -6789,9 +6829,30 @@
                       },
                       {
                         "kind": "TypeNominal",
-                        "name": "VerificationErrorCode",
-                        "printedName": "AuthMe.VerificationErrorCode",
-                        "usr": "s:6AuthMe21VerificationErrorCodeO"
+                        "name": "Tuple",
+                        "printedName": "(code: AuthMe.VerificationErrorCode, detail: Swift.String?)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "VerificationErrorCode",
+                            "printedName": "AuthMe.VerificationErrorCode",
+                            "usr": "s:6AuthMe21VerificationErrorCodeO"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Optional",
+                            "printedName": "Swift.String?",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "String",
+                                "printedName": "Swift.String",
+                                "usr": "s:SS"
+                              }
+                            ],
+                            "usr": "s:Sq"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -6812,8 +6873,8 @@
               }
             ],
             "declKind": "EnumElement",
-            "usr": "s:6AuthMe17VerificationStateO8rejectedyAcA0C9ErrorCodeOcACmF",
-            "mangledName": "$s6AuthMe17VerificationStateO8rejectedyAcA0C9ErrorCodeOcACmF",
+            "usr": "s:6AuthMe17VerificationStateO8rejectedyAcA0C9ErrorCodeO_SSSgtcACmF",
+            "mangledName": "$s6AuthMe17VerificationStateO8rejectedyAcA0C9ErrorCodeO_SSSgtcACmF",
             "moduleName": "AuthMe"
           },
           {
@@ -6824,12 +6885,12 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(AuthMe.VerificationState.Type) -> (AuthMe.VerificationErrorCode) -> AuthMe.VerificationState",
+                "printedName": "(AuthMe.VerificationState.Type) -> (AuthMe.VerificationErrorCode, Swift.String?) -> AuthMe.VerificationState",
                 "children": [
                   {
                     "kind": "TypeFunc",
                     "name": "Function",
-                    "printedName": "(AuthMe.VerificationErrorCode) -> AuthMe.VerificationState",
+                    "printedName": "(AuthMe.VerificationErrorCode, Swift.String?) -> AuthMe.VerificationState",
                     "children": [
                       {
                         "kind": "TypeNominal",
@@ -6839,9 +6900,30 @@
                       },
                       {
                         "kind": "TypeNominal",
-                        "name": "VerificationErrorCode",
-                        "printedName": "AuthMe.VerificationErrorCode",
-                        "usr": "s:6AuthMe21VerificationErrorCodeO"
+                        "name": "Tuple",
+                        "printedName": "(code: AuthMe.VerificationErrorCode, detail: Swift.String?)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "VerificationErrorCode",
+                            "printedName": "AuthMe.VerificationErrorCode",
+                            "usr": "s:6AuthMe21VerificationErrorCodeO"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Optional",
+                            "printedName": "Swift.String?",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "String",
+                                "printedName": "Swift.String",
+                                "usr": "s:SS"
+                              }
+                            ],
+                            "usr": "s:Sq"
+                          }
+                        ]
                       }
                     ]
                   },
@@ -6862,8 +6944,8 @@
               }
             ],
             "declKind": "EnumElement",
-            "usr": "s:6AuthMe17VerificationStateO7pendingyAcA0C9ErrorCodeOcACmF",
-            "mangledName": "$s6AuthMe17VerificationStateO7pendingyAcA0C9ErrorCodeOcACmF",
+            "usr": "s:6AuthMe17VerificationStateO7pendingyAcA0C9ErrorCodeO_SSSgtcACmF",
+            "mangledName": "$s6AuthMe17VerificationStateO7pendingyAcA0C9ErrorCodeO_SSSgtcACmF",
             "moduleName": "AuthMe"
           },
           {
@@ -16265,48 +16347,6 @@
         "children": [
           {
             "kind": "Var",
-            "name": "fileID",
-            "printedName": "fileID",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:6AuthMe9OCRResultP6fileIDSSvp",
-            "mangledName": "$s6AuthMe9OCRResultP6fileIDSSvp",
-            "moduleName": "AuthMe",
-            "protocolReq": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:6AuthMe9OCRResultP6fileIDSSvg",
-                "mangledName": "$s6AuthMe9OCRResultP6fileIDSSvg",
-                "moduleName": "AuthMe",
-                "genericSig": "<τ_0_0 where τ_0_0 : AuthMe.OCRResult>",
-                "sugared_genericSig": "<Self where Self : AuthMe.OCRResult>",
-                "protocolReq": true,
-                "reqNewWitnessTableEntry": true,
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Var",
             "name": "scanID",
             "printedName": "scanID",
             "children": [
@@ -16322,6 +16362,9 @@
             "mangledName": "$s6AuthMe9OCRResultP6scanIDSSvp",
             "moduleName": "AuthMe",
             "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
             "accessors": [
               {
                 "kind": "Accessor",
@@ -16408,6 +16451,76 @@
                 "declKind": "Accessor",
                 "usr": "s:6AuthMe9OCRResultP4dataSDyS2SGvg",
                 "mangledName": "$s6AuthMe9OCRResultP4dataSDyS2SGvg",
+                "moduleName": "AuthMe",
+                "genericSig": "<τ_0_0 where τ_0_0 : AuthMe.OCRResult>",
+                "sugared_genericSig": "<Self where Self : AuthMe.OCRResult>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "modifiedData",
+            "printedName": "modifiedData",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : AuthMe.ModifiedData]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ModifiedData",
+                    "printedName": "AuthMe.ModifiedData",
+                    "usr": "s:6AuthMe12ModifiedDataV"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6AuthMe9OCRResultP12modifiedDataSDySSAA08ModifiedE0VGvp",
+            "mangledName": "$s6AuthMe9OCRResultP12modifiedDataSDySSAA08ModifiedE0VGvp",
+            "moduleName": "AuthMe",
+            "protocolReq": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : AuthMe.ModifiedData]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ModifiedData",
+                        "printedName": "AuthMe.ModifiedData",
+                        "usr": "s:6AuthMe12ModifiedDataV"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6AuthMe9OCRResultP12modifiedDataSDySSAA08ModifiedE0VGvg",
+                "mangledName": "$s6AuthMe9OCRResultP12modifiedDataSDySSAA08ModifiedE0VGvg",
                 "moduleName": "AuthMe",
                 "genericSig": "<τ_0_0 where τ_0_0 : AuthMe.OCRResult>",
                 "sugared_genericSig": "<Self where Self : AuthMe.OCRResult>",
@@ -16732,7 +16845,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(Swift.Error?) -> ()",
+                "printedName": "(Swift.Result<(data: [Swift.String : Swift.String], modifiedData: [Swift.String : AuthMe.ModifiedData]), Swift.Error>) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -16741,9 +16854,56 @@
                   },
                   {
                     "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Swift.Error?",
+                    "name": "Result",
+                    "printedName": "Swift.Result<(data: [Swift.String : Swift.String], modifiedData: [Swift.String : AuthMe.ModifiedData]), Swift.Error>",
                     "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(data: [Swift.String : Swift.String], modifiedData: [Swift.String : AuthMe.ModifiedData])",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Dictionary",
+                            "printedName": "[Swift.String : Swift.String]",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "String",
+                                "printedName": "Swift.String",
+                                "usr": "s:SS"
+                              },
+                              {
+                                "kind": "TypeNominal",
+                                "name": "String",
+                                "printedName": "Swift.String",
+                                "usr": "s:SS"
+                              }
+                            ],
+                            "usr": "s:SD"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Dictionary",
+                            "printedName": "[Swift.String : AuthMe.ModifiedData]",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "String",
+                                "printedName": "Swift.String",
+                                "usr": "s:SS"
+                              },
+                              {
+                                "kind": "TypeNominal",
+                                "name": "ModifiedData",
+                                "printedName": "AuthMe.ModifiedData",
+                                "usr": "s:6AuthMe12ModifiedDataV"
+                              }
+                            ],
+                            "usr": "s:SD"
+                          }
+                        ]
+                      },
                       {
                         "kind": "TypeNominal",
                         "name": "Error",
@@ -16751,14 +16911,14 @@
                         "usr": "s:s5ErrorP"
                       }
                     ],
-                    "usr": "s:Sq"
+                    "usr": "s:s6ResultO"
                   }
                 ]
               }
             ],
             "declKind": "Func",
-            "usr": "s:6AuthMe9OCRResultP11confirmScan8completeyys5Error_pSgc_tF",
-            "mangledName": "$s6AuthMe9OCRResultP11confirmScan8completeyys5Error_pSgc_tF",
+            "usr": "s:6AuthMe9OCRResultP11confirmScan8completeyys6ResultOySDyS2SG4data_SDySSAA12ModifiedDataVG08modifiedJ0ts5Error_pGc_tF",
+            "mangledName": "$s6AuthMe9OCRResultP11confirmScan8completeyys6ResultOySDyS2SG4data_SDySSAA12ModifiedDataVG08modifiedJ0ts5Error_pGc_tF",
             "moduleName": "AuthMe",
             "genericSig": "<τ_0_0 where τ_0_0 : AuthMe.OCRResult>",
             "sugared_genericSig": "<Self where Self : AuthMe.OCRResult>",
@@ -16841,11 +17001,84 @@
             "protocolReq": true,
             "reqNewWitnessTableEntry": true,
             "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setModifiedData",
+            "printedName": "setModifiedData(with:modifiedData:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : AuthMe.ModifiedData]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ModifiedData",
+                    "printedName": "AuthMe.ModifiedData",
+                    "usr": "s:6AuthMe12ModifiedDataV"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe9OCRResultP15setModifiedData4with08modifiedF0ySDyS2SG_SDySSAA0eF0VGtF",
+            "mangledName": "$s6AuthMe9OCRResultP15setModifiedData4with08modifiedF0ySDyS2SG_SDySSAA0eF0VGtF",
+            "moduleName": "AuthMe",
+            "genericSig": "<τ_0_0 where τ_0_0 : AuthMe.OCRResult>",
+            "sugared_genericSig": "<Self where Self : AuthMe.OCRResult>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
           }
         ],
         "declKind": "Protocol",
         "usr": "s:6AuthMe9OCRResultP",
         "mangledName": "$s6AuthMe9OCRResultP",
+        "moduleName": "AuthMe",
+        "declAttributes": [
+          "AccessControl"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ModifiedData",
+        "printedName": "ModifiedData",
+        "declKind": "Struct",
+        "usr": "s:6AuthMe12ModifiedDataV",
+        "mangledName": "$s6AuthMe12ModifiedDataV",
         "moduleName": "AuthMe",
         "declAttributes": [
           "AccessControl"
@@ -16887,11 +17120,9 @@
             "mangledName": "$s6AuthMe13OCRBaseResultC4dataSDyS2SGvp",
             "moduleName": "AuthMe",
             "declAttributes": [
-              "Final",
               "HasStorage",
               "AccessControl"
             ],
-            "isLet": true,
             "hasStorage": true,
             "accessors": [
               {
@@ -16927,10 +17158,67 @@
                 "genericSig": "<τ_0_0 where τ_0_0 : Swift.RawRepresentable, τ_0_0.RawValue == Swift.String>",
                 "sugared_genericSig": "<DataType where DataType : Swift.RawRepresentable, DataType.RawValue == Swift.String>",
                 "implicit": true,
-                "declAttributes": [
-                  "Final"
-                ],
                 "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Swift.String]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6AuthMe13OCRBaseResultC4dataSDyS2SGvs",
+                "mangledName": "$s6AuthMe13OCRBaseResultC4dataSDyS2SGvs",
+                "moduleName": "AuthMe",
+                "genericSig": "<τ_0_0 where τ_0_0 : Swift.RawRepresentable, τ_0_0.RawValue == Swift.String>",
+                "sugared_genericSig": "<DataType where DataType : Swift.RawRepresentable, DataType.RawValue == Swift.String>",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6AuthMe13OCRBaseResultC4dataSDyS2SGvM",
+                "mangledName": "$s6AuthMe13OCRBaseResultC4dataSDyS2SGvM",
+                "moduleName": "AuthMe",
+                "genericSig": "<τ_0_0 where τ_0_0 : Swift.RawRepresentable, τ_0_0.RawValue == Swift.String>",
+                "sugared_genericSig": "<DataType where DataType : Swift.RawRepresentable, DataType.RawValue == Swift.String>",
+                "implicit": true,
+                "accessorKind": "_modify"
               }
             ]
           },
@@ -17059,6 +17347,139 @@
                 "declKind": "Accessor",
                 "usr": "s:6AuthMe13OCRBaseResultC13confirmedDataSDyS2SGvM",
                 "mangledName": "$s6AuthMe13OCRBaseResultC13confirmedDataSDyS2SGvM",
+                "moduleName": "AuthMe",
+                "genericSig": "<τ_0_0 where τ_0_0 : Swift.RawRepresentable, τ_0_0.RawValue == Swift.String>",
+                "sugared_genericSig": "<DataType where DataType : Swift.RawRepresentable, DataType.RawValue == Swift.String>",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "modifiedData",
+            "printedName": "modifiedData",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : AuthMe.ModifiedData]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ModifiedData",
+                    "printedName": "AuthMe.ModifiedData",
+                    "usr": "s:6AuthMe12ModifiedDataV"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6AuthMe13OCRBaseResultC12modifiedDataSDySSAA08ModifiedF0VGvp",
+            "mangledName": "$s6AuthMe13OCRBaseResultC12modifiedDataSDySSAA08ModifiedF0VGvp",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : AuthMe.ModifiedData]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ModifiedData",
+                        "printedName": "AuthMe.ModifiedData",
+                        "usr": "s:6AuthMe12ModifiedDataV"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6AuthMe13OCRBaseResultC12modifiedDataSDySSAA08ModifiedF0VGvg",
+                "mangledName": "$s6AuthMe13OCRBaseResultC12modifiedDataSDySSAA08ModifiedF0VGvg",
+                "moduleName": "AuthMe",
+                "genericSig": "<τ_0_0 where τ_0_0 : Swift.RawRepresentable, τ_0_0.RawValue == Swift.String>",
+                "sugared_genericSig": "<DataType where DataType : Swift.RawRepresentable, DataType.RawValue == Swift.String>",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : AuthMe.ModifiedData]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ModifiedData",
+                        "printedName": "AuthMe.ModifiedData",
+                        "usr": "s:6AuthMe12ModifiedDataV"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6AuthMe13OCRBaseResultC12modifiedDataSDySSAA08ModifiedF0VGvs",
+                "mangledName": "$s6AuthMe13OCRBaseResultC12modifiedDataSDySSAA08ModifiedF0VGvs",
+                "moduleName": "AuthMe",
+                "genericSig": "<τ_0_0 where τ_0_0 : Swift.RawRepresentable, τ_0_0.RawValue == Swift.String>",
+                "sugared_genericSig": "<DataType where DataType : Swift.RawRepresentable, DataType.RawValue == Swift.String>",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6AuthMe13OCRBaseResultC12modifiedDataSDySSAA08ModifiedF0VGvM",
+                "mangledName": "$s6AuthMe13OCRBaseResultC12modifiedDataSDySSAA08ModifiedF0VGvM",
                 "moduleName": "AuthMe",
                 "genericSig": "<τ_0_0 where τ_0_0 : Swift.RawRepresentable, τ_0_0.RawValue == Swift.String>",
                 "sugared_genericSig": "<DataType where DataType : Swift.RawRepresentable, DataType.RawValue == Swift.String>",
@@ -17433,106 +17854,6 @@
           },
           {
             "kind": "Var",
-            "name": "isAuto",
-            "printedName": "isAuto",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Bool",
-                "printedName": "Swift.Bool",
-                "usr": "s:Sb"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:6AuthMe13OCRBaseResultC6isAutoSbvp",
-            "mangledName": "$s6AuthMe13OCRBaseResultC6isAutoSbvp",
-            "moduleName": "AuthMe",
-            "declAttributes": [
-              "Final",
-              "HasStorage",
-              "AccessControl"
-            ],
-            "isLet": true,
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Bool",
-                    "printedName": "Swift.Bool",
-                    "usr": "s:Sb"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:6AuthMe13OCRBaseResultC6isAutoSbvg",
-                "mangledName": "$s6AuthMe13OCRBaseResultC6isAutoSbvg",
-                "moduleName": "AuthMe",
-                "genericSig": "<τ_0_0 where τ_0_0 : Swift.RawRepresentable, τ_0_0.RawValue == Swift.String>",
-                "sugared_genericSig": "<DataType where DataType : Swift.RawRepresentable, DataType.RawValue == Swift.String>",
-                "implicit": true,
-                "declAttributes": [
-                  "Final"
-                ],
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Var",
-            "name": "fileID",
-            "printedName": "fileID",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:6AuthMe13OCRBaseResultC6fileIDSSvp",
-            "mangledName": "$s6AuthMe13OCRBaseResultC6fileIDSSvp",
-            "moduleName": "AuthMe",
-            "declAttributes": [
-              "Final",
-              "HasStorage",
-              "AccessControl"
-            ],
-            "isLet": true,
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:6AuthMe13OCRBaseResultC6fileIDSSvg",
-                "mangledName": "$s6AuthMe13OCRBaseResultC6fileIDSSvg",
-                "moduleName": "AuthMe",
-                "genericSig": "<τ_0_0 where τ_0_0 : Swift.RawRepresentable, τ_0_0.RawValue == Swift.String>",
-                "sugared_genericSig": "<DataType where DataType : Swift.RawRepresentable, DataType.RawValue == Swift.String>",
-                "implicit": true,
-                "declAttributes": [
-                  "Final"
-                ],
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Var",
             "name": "scanID",
             "printedName": "scanID",
             "children": [
@@ -17549,7 +17870,8 @@
             "moduleName": "AuthMe",
             "declAttributes": [
               "HasStorage",
-              "AccessControl"
+              "AccessControl",
+              "RawDocComment"
             ],
             "hasStorage": true,
             "accessors": [
@@ -17763,6 +18085,68 @@
           },
           {
             "kind": "Function",
+            "name": "setModifiedData",
+            "printedName": "setModifiedData(with:modifiedData:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : AuthMe.ModifiedData]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ModifiedData",
+                    "printedName": "AuthMe.ModifiedData",
+                    "usr": "s:6AuthMe12ModifiedDataV"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe13OCRBaseResultC15setModifiedData4with08modifiedG0ySDyS2SG_SDySSAA0fG0VGtF",
+            "mangledName": "$s6AuthMe13OCRBaseResultC15setModifiedData4with08modifiedG0ySDyS2SG_SDySSAA0fG0VGtF",
+            "moduleName": "AuthMe",
+            "genericSig": "<τ_0_0 where τ_0_0 : Swift.RawRepresentable, τ_0_0.RawValue == Swift.String>",
+            "sugared_genericSig": "<DataType where DataType : Swift.RawRepresentable, DataType.RawValue == Swift.String>",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "confirmScan",
             "printedName": "confirmScan(complete:)",
             "children": [
@@ -17774,7 +18158,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(Swift.Error?) -> ()",
+                "printedName": "(Swift.Result<(data: [Swift.String : Swift.String], modifiedData: [Swift.String : AuthMe.ModifiedData]), Swift.Error>) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -17783,9 +18167,56 @@
                   },
                   {
                     "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Swift.Error?",
+                    "name": "Result",
+                    "printedName": "Swift.Result<(data: [Swift.String : Swift.String], modifiedData: [Swift.String : AuthMe.ModifiedData]), Swift.Error>",
                     "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(data: [Swift.String : Swift.String], modifiedData: [Swift.String : AuthMe.ModifiedData])",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Dictionary",
+                            "printedName": "[Swift.String : Swift.String]",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "String",
+                                "printedName": "Swift.String",
+                                "usr": "s:SS"
+                              },
+                              {
+                                "kind": "TypeNominal",
+                                "name": "String",
+                                "printedName": "Swift.String",
+                                "usr": "s:SS"
+                              }
+                            ],
+                            "usr": "s:SD"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Dictionary",
+                            "printedName": "[Swift.String : AuthMe.ModifiedData]",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "String",
+                                "printedName": "Swift.String",
+                                "usr": "s:SS"
+                              },
+                              {
+                                "kind": "TypeNominal",
+                                "name": "ModifiedData",
+                                "printedName": "AuthMe.ModifiedData",
+                                "usr": "s:6AuthMe12ModifiedDataV"
+                              }
+                            ],
+                            "usr": "s:SD"
+                          }
+                        ]
+                      },
                       {
                         "kind": "TypeNominal",
                         "name": "Error",
@@ -17793,14 +18224,14 @@
                         "usr": "s:s5ErrorP"
                       }
                     ],
-                    "usr": "s:Sq"
+                    "usr": "s:s6ResultO"
                   }
                 ]
               }
             ],
             "declKind": "Func",
-            "usr": "s:6AuthMe13OCRBaseResultC11confirmScan8completeyys5Error_pSgc_tF",
-            "mangledName": "$s6AuthMe13OCRBaseResultC11confirmScan8completeyys5Error_pSgc_tF",
+            "usr": "s:6AuthMe13OCRBaseResultC11confirmScan8completeyys0D0OySDyS2SG4data_SDySSAA12ModifiedDataVG08modifiedJ0ts5Error_pGc_tF",
+            "mangledName": "$s6AuthMe13OCRBaseResultC11confirmScan8completeyys0D0OySDyS2SG4data_SDySSAA12ModifiedDataVG08modifiedJ0ts5Error_pGc_tF",
             "moduleName": "AuthMe",
             "genericSig": "<τ_0_0 where τ_0_0 : Swift.RawRepresentable, τ_0_0.RawValue == Swift.String>",
             "sugared_genericSig": "<DataType where DataType : Swift.RawRepresentable, DataType.RawValue == Swift.String>",
@@ -18844,6 +19275,74 @@
             "init_kind": "Convenience"
           },
           {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(data:image:shouldEncrypt:publicKey:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MRZResult",
+                "printedName": "AuthMe.MRZResult",
+                "usr": "s:6AuthMe9MRZResultC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIImage?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIImage",
+                    "printedName": "UIKit.UIImage",
+                    "usr": "c:objc(cs)UIImage"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6AuthMe9MRZResultC4data5image13shouldEncrypt9publicKeyACSDyS2SG_So7UIImageCSgSbSStcfc",
+            "mangledName": "$s6AuthMe9MRZResultC4data5image13shouldEncrypt9publicKeyACSDyS2SG_So7UIImageCSgSbSStcfc",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "Convenience",
+              "AccessControl"
+            ],
+            "init_kind": "Convenience"
+          },
+          {
             "kind": "Function",
             "name": "setScanID",
             "printedName": "setScanID(_:)",
@@ -19738,62 +20237,6 @@
                 "mangledName": "$ss12CaseIterableP"
               }
             ]
-          },
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(data:image:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "TWNResidentResult",
-                "printedName": "AuthMe.TWNResidentResult",
-                "usr": "s:6AuthMe17TWNResidentResultC"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Dictionary",
-                "printedName": "[Swift.String : Swift.String]",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "usr": "s:SD"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "UIKit.UIImage?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "UIImage",
-                    "printedName": "UIKit.UIImage",
-                    "usr": "c:objc(cs)UIImage"
-                  }
-                ],
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:6AuthMe17TWNResidentResultC4data5imageACSDyS2SG_So7UIImageCSgtcfc",
-            "mangledName": "$s6AuthMe17TWNResidentResultC4data5imageACSDyS2SG_So7UIImageCSgtcfc",
-            "moduleName": "AuthMe",
-            "declAttributes": [
-              "Convenience",
-              "AccessControl"
-            ],
-            "init_kind": "Convenience"
           }
         ],
         "declKind": "Class",
@@ -60743,63 +61186,70 @@
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 842,
+      "offset": 841,
+      "length": 8,
+      "value": "\"IDT400\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
+      "kind": "StringLiteral",
+      "offset": 903,
       "length": 8,
       "value": "\"IDP100\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 888,
+      "offset": 949,
       "length": 8,
       "value": "\"IDP101\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 937,
+      "offset": 998,
       "length": 8,
       "value": "\"IDP102\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 992,
+      "offset": 1053,
       "length": 8,
       "value": "\"IDP103\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 1053,
+      "offset": 1114,
       "length": 8,
       "value": "\"IDP104\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 1108,
+      "offset": 1169,
       "length": 8,
       "value": "\"IDP106\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 1172,
+      "offset": 1233,
       "length": 8,
       "value": "\"IDP107\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 1242,
+      "offset": 1303,
       "length": 8,
       "value": "\"IDP108\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 1314,
+      "offset": 1375,
       "length": 8,
       "value": "\"IDP200\""
     },
@@ -60890,329 +61340,343 @@
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 842,
+      "offset": 841,
+      "length": 8,
+      "value": "\"IDT400\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
+      "kind": "StringLiteral",
+      "offset": 903,
       "length": 8,
       "value": "\"IDP100\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 888,
+      "offset": 949,
       "length": 8,
       "value": "\"IDP101\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 937,
+      "offset": 998,
       "length": 8,
       "value": "\"IDP102\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 992,
+      "offset": 1053,
       "length": 8,
       "value": "\"IDP103\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 1053,
+      "offset": 1114,
       "length": 8,
       "value": "\"IDP104\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 1108,
+      "offset": 1169,
       "length": 8,
       "value": "\"IDP106\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 1172,
+      "offset": 1233,
       "length": 8,
       "value": "\"IDP107\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 1242,
+      "offset": 1303,
       "length": 8,
       "value": "\"IDP108\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 1314,
+      "offset": 1375,
       "length": 8,
       "value": "\"IDP200\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 2488,
+      "offset": 2581,
       "length": 161,
       "value": "\"活體檢測信心度過低：系統審核活體檢測信心度小於身分驗證條件(KYC Option)配置的通過門檻，請用戶重新進行活體檢測。\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 2679,
+      "offset": 2772,
       "length": 182,
       "value": "\"人證比對信心度過低：系統審核人證比對信心度小於身分驗證條件(KYC Option)配置的通過門檻，請用戶重新上傳證件及重新進行活體檢測。\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 2891,
+      "offset": 2984,
       "length": 122,
       "value": "\"證件防偽辨識失敗：比對由前端防偽引擎提供的防偽數據發現異常，請用戶重新上傳證件。\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 3043,
+      "offset": 3136,
       "length": 121,
       "value": "\"證件資訊驗證失敗：透過台灣內政部領補換證件 API 驗證失敗，請用戶重新上傳最新證件。\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 3194,
+      "offset": 3287,
       "length": 163,
       "value": "\"證件資訊驗證次數已達上限：透過台灣內政部領補換證件 API 驗證時超過存取次數上限，請用戶隔日再重新上傳最新證件。\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 3387,
+      "offset": 3480,
       "length": 145,
       "value": "\"證件掛失中：透過台灣內政部領補換證件 API 驗證時發現該證件掛失中，請用戶辦理新證件或取消掛失狀態。\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 3562,
+      "offset": 3655,
       "length": 157,
       "value": "\"身分證號碼已停止使用：透過台灣內政部領補換證件 API 驗證時發現該身分證號碼已停用，請用戶重新上傳可用證件。\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 3749,
+      "offset": 3842,
       "length": 202,
       "value": "\"身分證號碼已暫停使用者權限：透過台灣內政部領補換證件 API 驗證時發現該身分證號碼已暫停使用者權限，請用戶重新上傳可用證件或洽詢相關單位。\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 3981,
+      "offset": 4074,
       "length": 131,
       "value": "\"未通過同證件比對：用戶在驗證證件正反面的過程中更換了證件，請用戶使用相同證件重新操作。\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 4142,
+      "offset": 4235,
       "length": 121,
       "value": "\"證件資料不完整：用戶上傳證件的 OCR 文字辨識結果缺少必要欄位，請用戶重新上傳證件。\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 4293,
+      "offset": 4386,
       "length": 128,
       "value": "\"活體檢測失敗：未能取得前端活體辨識引擎提供的活體檢測信心度，請用戶重新進行活體檢測。\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 4451,
+      "offset": 4544,
       "length": 155,
       "value": "\"人臉比對失敗：未能取得後端人臉特徵比對引擎提供的人證比對信心度，請用戶重新上傳證件及重新進行活體檢測。\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 4636,
+      "offset": 4741,
+      "length": 32,
+      "value": "\"未通過外部自定義審核\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
+      "kind": "StringLiteral",
+      "offset": 4803,
       "length": 89,
       "value": "\"強制待審核：身分驗證條件(KYC Option)要求證件上傳需要人工審核。\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 4755,
+      "offset": 4922,
       "length": 94,
       "value": "\"證件內容異動：使用者在確認證件 OCR 文件辨識結果時有修改欄位值。\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 4879,
+      "offset": 5046,
       "length": 163,
       "value": "\"證件比對發生錯誤：身分驗證條件(KYC Option)啟用了證件防偽辨識，比對防偽證件與 OCR 證件是否為相同證件時發現不相符。\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 5072,
+      "offset": 5239,
       "length": 187,
       "value": "\"證件資訊驗證發生錯誤：身分驗證條件(KYC Option)啟用了證件資訊驗證，但是在嘗試透過台灣內政部領補換證件 API 驗證證件資訊時發生錯誤。\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 5289,
+      "offset": 5456,
       "length": 140,
       "value": "\"防偽辨識發生錯誤：身分驗證條件(KYC Option)啟用了證件防偽辨識，但是在驗證證件防偽資訊時發生錯誤。\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 5459,
+      "offset": 5626,
       "length": 143,
       "value": "\"相片完整性比對發生錯誤：比對證件照片的色彩解析度及是否為支援的證件類型時發現不符合完整性要求。\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 5632,
+      "offset": 5799,
       "length": 113,
       "value": "\"數位影像真實性比對發生錯誤：比對證件照片發現有被數位修改跡或沒有人臉特徵。\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 5775,
+      "offset": 5942,
       "length": 135,
       "value": "\"證件相片 OCR 文字辨識發生錯誤：無法透過 OCR 引擎辨識證件相片中的文字欄位或辨識階段發生錯誤。\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 5940,
+      "offset": 6107,
       "length": 167,
       "value": "\"未通過單證件欄位比對：身分驗證條件(KYC Option)啟用了單證件欄位比對，在比對證件正面身分證號與背面條碼時發現不相符。\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 6165,
+      "offset": 6332,
       "length": 56,
       "value": "\"未知錯誤碼\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 6193,
+      "offset": 6360,
       "length": 27,
       "value": "\"，請洽Authme團隊處理\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "IntegerLiteral",
-      "offset": 7793,
+      "offset": 8055,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "IntegerLiteral",
-      "offset": 7840,
+      "offset": 8102,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "IntegerLiteral",
-      "offset": 7888,
+      "offset": 8153,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "IntegerLiteral",
-      "offset": 7935,
+      "offset": 8203,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "IntegerLiteral",
-      "offset": 7987,
+      "offset": 8255,
       "length": 1,
       "value": "5"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 8255,
+      "offset": 8523,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "StringLiteral",
-      "offset": 8413,
+      "offset": 8681,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "IntegerLiteral",
-      "offset": 9231,
+      "offset": 9569,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "IntegerLiteral",
-      "offset": 9252,
+      "offset": 9590,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "IntegerLiteral",
-      "offset": 9466,
+      "offset": 9804,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "IntegerLiteral",
-      "offset": 9575,
+      "offset": 9913,
       "length": 10,
       "value": "1000000000"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "IntegerLiteral",
-      "offset": 9904,
+      "offset": 10242,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "IntegerLiteral",
-      "offset": 10083,
+      "offset": 10421,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "IntegerLiteral",
-      "offset": 10182,
+      "offset": 10520,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Status\/VerificationHandler.swift",
       "kind": "IntegerLiteral",
-      "offset": 10360,
+      "offset": 10698,
       "length": 1,
       "value": "1"
     },
@@ -62584,259 +63048,273 @@
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 11239,
+      "offset": 11277,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 11717,
+      "offset": 11305,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
+      "kind": "BooleanLiteral",
+      "offset": 13747,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
+      "kind": "StringLiteral",
+      "offset": 13790,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 13774,
+      "offset": 13829,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 15376,
+      "offset": 15431,
       "length": 5,
       "value": "\"sex\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 15386,
+      "offset": 15441,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 15410,
+      "offset": 15465,
       "length": 3,
       "value": "\"F\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 15427,
+      "offset": 15482,
       "length": 3,
       "value": "\"f\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 15454,
+      "offset": 15509,
       "length": 8,
       "value": "\"female\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 15491,
+      "offset": 15546,
       "length": 3,
       "value": "\"M\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 15508,
+      "offset": 15563,
       "length": 3,
       "value": "\"m\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 15535,
+      "offset": 15590,
       "length": 6,
       "value": "\"male\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 15568,
+      "offset": 15623,
       "length": 5,
       "value": "\"sex\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 16324,
+      "offset": 16379,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 16400,
+      "offset": 16455,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 16897,
+      "offset": 16952,
       "length": 3,
       "value": "401"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 19298,
+      "offset": 19353,
       "length": 1,
       "value": "7"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 23591,
+      "offset": 23646,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 23744,
+      "offset": 23799,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 26523,
+      "offset": 26578,
       "length": 3,
       "value": "409"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 26538,
+      "offset": 26593,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 26597,
+      "offset": 26652,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 27050,
+      "offset": 27105,
       "length": 3,
       "value": "401"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 27597,
+      "offset": 27652,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 27777,
+      "offset": 27832,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 29362,
+      "offset": 29417,
       "length": 3,
       "value": "409"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 29377,
+      "offset": 29432,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 29442,
+      "offset": 29497,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 29705,
+      "offset": 29760,
       "length": 3,
       "value": "401"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 31651,
+      "offset": 31706,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "Dictionary",
-      "offset": 32137,
+      "offset": 32192,
       "length": 8,
       "value": "[(\"\", \"\")]"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "Dictionary",
-      "offset": 32426,
+      "offset": 32481,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "Dictionary",
-      "offset": 34079,
+      "offset": 34134,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 34146,
+      "offset": 34201,
       "length": 26,
       "value": "\"documentNumberCheckDigit\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 34183,
+      "offset": 34238,
       "length": 22,
       "value": "\"expiryDateCheckDigit\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 34216,
+      "offset": 34271,
       "length": 24,
       "value": "\"optionaldataCheckDigit\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 34251,
+      "offset": 34306,
       "length": 21,
       "value": "\"birthDateCheckDigit\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/MRZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 34283,
+      "offset": 34338,
       "length": 19,
       "value": "\"overallCheckDigit\""
     },
@@ -65215,274 +65693,302 @@
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
+      "kind": "Dictionary",
+      "offset": 1681,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 1724,
+      "offset": 1782,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2240,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 1764,
+      "offset": 2280,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 2216,
+      "offset": 2732,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 2618,
+      "offset": 3447,
       "length": 8,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 2625,
+      "offset": 3454,
       "length": 10,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
+      "kind": "Dictionary",
+      "offset": 4308,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
+      "kind": "Dictionary",
+      "offset": 4363,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 3443,
+      "offset": 4964,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 3469,
+      "offset": 4990,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 3515,
+      "offset": 5036,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 3576,
+      "offset": 5097,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 3628,
+      "offset": 5149,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 4036,
+      "offset": 5557,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 4062,
+      "offset": 5583,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 4117,
+      "offset": 5638,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 4187,
+      "offset": 5708,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 4248,
+      "offset": 5769,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 5164,
+      "offset": 6685,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 5190,
+      "offset": 6711,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 5214,
+      "offset": 6735,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 6106,
+      "offset": 7055,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 6132,
+      "offset": 7081,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 6156,
+      "offset": 7105,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 6351,
+      "offset": 8319,
       "length": 5,
       "value": "\"TWN\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 6990,
+      "offset": 8958,
       "length": 5,
       "value": "\"TWN\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 7519,
+      "offset": 9487,
       "length": 5,
       "value": "\"TWN\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 8760,
+      "offset": 10728,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 8786,
+      "offset": 10754,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 8810,
+      "offset": 10778,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 11094,
+      "offset": 13062,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 11120,
+      "offset": 13088,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 11144,
+      "offset": 13112,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 12423,
+      "offset": 14391,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 12449,
+      "offset": 14417,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 12473,
+      "offset": 14441,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 17266,
+      "offset": 19234,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 17292,
+      "offset": 19260,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 17316,
+      "offset": 19284,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 17661,
+      "offset": 19629,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 17687,
+      "offset": 19655,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 17730,
+      "offset": 19698,
       "length": 2,
       "value": "\"\""
     },
@@ -66385,140 +66891,154 @@
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 8155,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
-      "kind": "BooleanLiteral",
-      "offset": 8806,
+      "offset": 7021,
       "length": 5,
       "value": "false"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
-      "kind": "BooleanLiteral",
-      "offset": 8882,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
-      "kind": "IntegerLiteral",
-      "offset": 9379,
-      "length": 3,
-      "value": "401"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
-      "kind": "BooleanLiteral",
-      "offset": 10174,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
-      "kind": "Dictionary",
-      "offset": 10541,
-      "length": 8,
-      "value": "[(\"\", \"\")]"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
-      "kind": "BooleanLiteral",
-      "offset": 10922,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
-      "kind": "BooleanLiteral",
-      "offset": 11157,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
-      "kind": "IntegerLiteral",
-      "offset": 11845,
-      "length": 1,
-      "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 12296,
-      "length": 12,
-      "value": "\"SearchWord\""
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
-      "kind": "StringLiteral",
-      "offset": 12324,
+      "offset": 7039,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 12584,
+      "offset": 8192,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 12742,
+      "offset": 8843,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
+      "kind": "BooleanLiteral",
+      "offset": 8919,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9416,
+      "length": 3,
+      "value": "401"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
+      "kind": "BooleanLiteral",
+      "offset": 10211,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
+      "kind": "Dictionary",
+      "offset": 10578,
+      "length": 8,
+      "value": "[(\"\", \"\")]"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
+      "kind": "BooleanLiteral",
+      "offset": 10959,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
+      "kind": "BooleanLiteral",
+      "offset": 11194,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11882,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
+      "kind": "StringLiteral",
+      "offset": 12333,
+      "length": 12,
+      "value": "\"SearchWord\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
+      "kind": "StringLiteral",
+      "offset": 12361,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
+      "kind": "BooleanLiteral",
+      "offset": 12621,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 12832,
+      "offset": 12779,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
+      "kind": "BooleanLiteral",
+      "offset": 12869,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 13006,
+      "offset": 13043,
       "length": 13,
       "value": "\"CustomWords\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "Array",
-      "offset": 13037,
+      "offset": 13074,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 13167,
+      "offset": 13204,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 13214,
+      "offset": 13251,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "Array",
-      "offset": 13262,
+      "offset": 13299,
       "length": 18,
       "value": "[\"de-DE\", \"en-US\"]"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Offline\/ScanFlows\/OfflineMRZVIZScanFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 13478,
+      "offset": 13515,
       "length": 5,
       "value": "false"
     },
@@ -67582,84 +68102,91 @@
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/SDKSettings\/FrameworkModes\/OnlineMode\/OnlineMode.swift",
       "kind": "IntegerLiteral",
-      "offset": 1540,
+      "offset": 1392,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/SDKSettings\/FrameworkModes\/OnlineMode\/OnlineMode.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1407,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/SDKSettings\/FrameworkModes\/OnlineMode\/OnlineMode.swift",
       "kind": "StringLiteral",
-      "offset": 1746,
+      "offset": 1688,
       "length": 8,
       "value": "\"Bearer\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/SDKSettings\/FrameworkModes\/OnlineMode\/OnlineMode.swift",
       "kind": "BooleanLiteral",
-      "offset": 1771,
+      "offset": 1713,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/SDKSettings\/FrameworkModes\/OnlineMode\/OnlineMode.swift",
       "kind": "StringLiteral",
-      "offset": 1866,
+      "offset": 1808,
       "length": 17,
       "value": "\"Bearer \""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/SDKSettings\/FrameworkModes\/OnlineMode\/OnlineMode.swift",
       "kind": "StringLiteral",
-      "offset": 1882,
+      "offset": 1824,
       "length": 1,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/SDKSettings\/FrameworkModes\/OnlineMode\/OnlineMode.swift",
       "kind": "StringLiteral",
-      "offset": 2033,
+      "offset": 1975,
       "length": 15,
       "value": "\"client_tenant\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/SDKSettings\/FrameworkModes\/OnlineMode\/OnlineMode.swift",
       "kind": "StringLiteral",
-      "offset": 2097,
+      "offset": 2039,
       "length": 7,
       "value": "\"scope\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/SDKSettings\/FrameworkModes\/OnlineMode\/OnlineMode.swift",
       "kind": "IntegerLiteral",
-      "offset": 2148,
+      "offset": 2090,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/SDKSettings\/FrameworkModes\/OnlineMode\/OnlineMode.swift",
       "kind": "IntegerLiteral",
-      "offset": 2235,
+      "offset": 2177,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/SDKSettings\/FrameworkModes\/OnlineMode\/OnlineMode.swift",
       "kind": "StringLiteral",
-      "offset": 2263,
+      "offset": 2205,
       "length": 14,
       "value": "\"customer_id:\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/SDKSettings\/FrameworkModes\/OnlineMode\/OnlineMode.swift",
       "kind": "StringLiteral",
-      "offset": 2285,
+      "offset": 2227,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/SDKSettings\/FrameworkModes\/OnlineMode\/OnlineMode.swift",
       "kind": "StringLiteral",
-      "offset": 2338,
+      "offset": 2280,
       "length": 2,
       "value": "\"\""
     },
@@ -68604,105 +69131,105 @@
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 30243,
+      "offset": 30242,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 30396,
+      "offset": 30395,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 33191,
+      "offset": 33190,
       "length": 3,
       "value": "409"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 33206,
+      "offset": 33205,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 33265,
+      "offset": 33264,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 33718,
+      "offset": 33717,
       "length": 3,
       "value": "401"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 34265,
+      "offset": 34264,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 34445,
+      "offset": 34444,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 36030,
+      "offset": 36029,
       "length": 3,
       "value": "409"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 36045,
+      "offset": 36044,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 36110,
+      "offset": 36109,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 36373,
+      "offset": 36372,
       "length": 3,
       "value": "401"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 38554,
+      "offset": 38553,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "Dictionary",
-      "offset": 39044,
+      "offset": 39043,
       "length": 8,
       "value": "[(\"\", \"\")]"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "Dictionary",
-      "offset": 39353,
+      "offset": 39352,
       "length": 3,
       "value": "[]"
     },

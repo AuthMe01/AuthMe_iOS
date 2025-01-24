@@ -263,6 +263,7 @@ public enum VerificationErrorCode {
   case idt121
   case idt200
   case idt300
+  case idt400
   case idp100
   case idp101
   case idp102
@@ -290,8 +291,8 @@ public enum VerificationState : Swift.Equatable {
   case approved
   case incomplete
   case pendingApproval
-  case rejected(VerificationErrorCode)
-  case pending(VerificationErrorCode)
+  case rejected(code: VerificationErrorCode, detail: Swift.String?)
+  case pending(code: VerificationErrorCode, detail: Swift.String?)
   public static func == (lhs: VerificationState, rhs: VerificationState) -> Swift.Bool
 }
 public struct VerificationHandler {
@@ -584,33 +585,36 @@ extension EKYCType {
   public static func == (lhs: Self, rhs: Self) -> Swift.Bool
 }
 public protocol OCRResult {
-  var fileID: Swift.String { get }
   var scanID: Swift.String { get }
   var data: [Swift.String : Swift.String] { get }
+  var modifiedData: [Swift.String : ModifiedData] { get }
   var confirmedData: [Swift.String : Swift.String] { get }
   var frontImage: UIKit.UIImage? { get }
   var backImage: UIKit.UIImage? { get }
   var frontCropImage: UIKit.UIImage? { get }
   var backCropImage: UIKit.UIImage? { get }
-  func confirmScan(complete: @escaping ((any Swift.Error)?) -> Swift.Void)
+  func confirmScan(complete: @escaping (Swift.Result<(data: [Swift.String : Swift.String], modifiedData: [Swift.String : ModifiedData]), any Swift.Error>) -> Swift.Void)
   func orderedData() -> [(Swift.String, Swift.String)]
   func set(key: Swift.String, value: Swift.String)
+  func setModifiedData(with data: [Swift.String : Swift.String], modifiedData: [Swift.String : ModifiedData])
+}
+public struct ModifiedData {
 }
 @_hasMissingDesignatedInitializers public class OCRBaseResult<DataType> : OCRResult where DataType : Swift.RawRepresentable, DataType.RawValue == Swift.String {
-  final public let data: [Swift.String : Swift.String]
+  public var data: [Swift.String : Swift.String]
   public var confirmedData: [Swift.String : Swift.String]
+  public var modifiedData: [Swift.String : ModifiedData]
   final public let frontImage: UIKit.UIImage?
   final public let backImage: UIKit.UIImage?
   public var frontCropImage: UIKit.UIImage?
   public var backCropImage: UIKit.UIImage?
-  final public let isAuto: Swift.Bool
-  final public let fileID: Swift.String
   public var scanID: Swift.String
   public func orderedData() -> [(Swift.String, Swift.String)]
   public func get(type: DataType) -> Swift.String
   public func set(type: DataType, value: Swift.String)
   public func set(key: Swift.String, value: Swift.String)
-  public func confirmScan(complete: @escaping ((any Swift.Error)?) -> Swift.Void)
+  public func setModifiedData(with data: [Swift.String : Swift.String], modifiedData: [Swift.String : ModifiedData])
+  public func confirmScan(complete: @escaping (Swift.Result<(data: [Swift.String : Swift.String], modifiedData: [Swift.String : ModifiedData]), any Swift.Error>) -> Swift.Void)
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class MRZResult : OCRBaseResult<MRZResult.DataType> {
@@ -646,6 +650,7 @@ public protocol OCRResult {
     }
   }
   convenience public init(data: [Swift.String : Swift.String], image: UIKit.UIImage?)
+  convenience public init(data: [Swift.String : Swift.String], image: UIKit.UIImage?, shouldEncrypt: Swift.Bool, publicKey: Swift.String)
   public func setScanID(_ scanID: Swift.String)
   @objc deinit
 }
@@ -678,7 +683,6 @@ public protocol OCRResult {
       get
     }
   }
-  convenience public init(data: [Swift.String : Swift.String], image: UIKit.UIImage?)
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class TWIDResult : OCRBaseResult<TWIDResult.DataType> {
