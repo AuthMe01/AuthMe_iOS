@@ -17076,6 +17076,178 @@
         "kind": "TypeDecl",
         "name": "ModifiedData",
         "printedName": "ModifiedData",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "isModified",
+            "printedName": "isModified",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6AuthMe12ModifiedDataV02isC0Sbvp",
+            "mangledName": "$s6AuthMe12ModifiedDataV02isC0Sbvp",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6AuthMe12ModifiedDataV02isC0Sbvg",
+                "mangledName": "$s6AuthMe12ModifiedDataV02isC0Sbvg",
+                "moduleName": "AuthMe",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6AuthMe12ModifiedDataV02isC0Sbvs",
+                "mangledName": "$s6AuthMe12ModifiedDataV02isC0Sbvs",
+                "moduleName": "AuthMe",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6AuthMe12ModifiedDataV02isC0SbvM",
+                "mangledName": "$s6AuthMe12ModifiedDataV02isC0SbvM",
+                "moduleName": "AuthMe",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "value",
+            "printedName": "value",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6AuthMe12ModifiedDataV5valueSSvp",
+            "mangledName": "$s6AuthMe12ModifiedDataV5valueSSvp",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6AuthMe12ModifiedDataV5valueSSvg",
+                "mangledName": "$s6AuthMe12ModifiedDataV5valueSSvg",
+                "moduleName": "AuthMe",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6AuthMe12ModifiedDataV5valueSSvs",
+                "mangledName": "$s6AuthMe12ModifiedDataV5valueSSvs",
+                "moduleName": "AuthMe",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6AuthMe12ModifiedDataV5valueSSvM",
+                "mangledName": "$s6AuthMe12ModifiedDataV5valueSSvM",
+                "moduleName": "AuthMe",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          }
+        ],
         "declKind": "Struct",
         "usr": "s:6AuthMe12ModifiedDataV",
         "mangledName": "$s6AuthMe12ModifiedDataV",
@@ -65694,301 +65866,301 @@
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "Dictionary",
-      "offset": 1681,
+      "offset": 1695,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 1782,
+      "offset": 1796,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 2240,
+      "offset": 2254,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 2280,
+      "offset": 2294,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 2732,
+      "offset": 2746,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 3447,
+      "offset": 3461,
       "length": 8,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 3454,
+      "offset": 3468,
       "length": 10,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "Dictionary",
-      "offset": 4308,
+      "offset": 4322,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "Dictionary",
-      "offset": 4363,
+      "offset": 4377,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 4964,
+      "offset": 4978,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 4990,
+      "offset": 5004,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 5036,
+      "offset": 5050,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 5097,
+      "offset": 5111,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 5149,
+      "offset": 5163,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 5557,
+      "offset": 5571,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 5583,
+      "offset": 5597,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 5638,
+      "offset": 5652,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 5708,
+      "offset": 5722,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 5769,
+      "offset": 5783,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 6685,
+      "offset": 6699,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 6711,
+      "offset": 6725,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 6735,
+      "offset": 6749,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 7055,
+      "offset": 7069,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 7081,
+      "offset": 7095,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 7105,
+      "offset": 7119,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 8319,
+      "offset": 8333,
       "length": 5,
       "value": "\"TWN\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 8958,
+      "offset": 8972,
       "length": 5,
       "value": "\"TWN\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 9487,
+      "offset": 9501,
       "length": 5,
       "value": "\"TWN\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 10728,
+      "offset": 10742,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 10754,
+      "offset": 10768,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 10778,
+      "offset": 10792,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 13062,
+      "offset": 13076,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 13088,
+      "offset": 13102,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 13112,
+      "offset": 13126,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 14391,
+      "offset": 14405,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 14417,
+      "offset": 14431,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 14441,
+      "offset": 14455,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 19234,
+      "offset": 19248,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 19260,
+      "offset": 19274,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 19284,
+      "offset": 19298,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "BooleanLiteral",
-      "offset": 19629,
+      "offset": 19643,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 19655,
+      "offset": 19669,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/OCRResult.swift",
       "kind": "StringLiteral",
-      "offset": 19698,
+      "offset": 19712,
       "length": 2,
       "value": "\"\""
     },

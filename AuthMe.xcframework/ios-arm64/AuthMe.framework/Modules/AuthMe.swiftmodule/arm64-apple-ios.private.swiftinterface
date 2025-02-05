@@ -599,6 +599,8 @@ public protocol OCRResult {
   func setModifiedData(with data: [Swift.String : Swift.String], modifiedData: [Swift.String : ModifiedData])
 }
 public struct ModifiedData {
+  public var isModified: Swift.Bool
+  public var value: Swift.String
 }
 @_hasMissingDesignatedInitializers public class OCRBaseResult<DataType> : OCRResult where DataType : Swift.RawRepresentable, DataType.RawValue == Swift.String {
   public var data: [Swift.String : Swift.String]
