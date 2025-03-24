@@ -14,15 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		FFsSECXMXHNnqD7jHJC4z8pafOk=
-		</data>
-		<key>MRZ_00_V1.2.authme</key>
-		<data>
-		auPT5pmbu5+JJVyOtbobnK1zIW8=
-		</data>
-		<key>MRZ_01_V1.1.authme</key>
-		<data>
-		NPJLSUMDt63Z8NDcVZ5hCK3XqjM=
+		V/W5uNbZSMB1PNe6LYWr5BpeJvQ=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -72,18 +64,6 @@
 		<data>
 		IUatYuVIxMPiClgS9j3hvrndkCA=
 		</data>
-		<key>OCR_00_V2.0.authme</key>
-		<data>
-		EdLhkINBzULLe3T8D3peAbXWVt0=
-		</data>
-		<key>OCR_01_V0.0.authme</key>
-		<data>
-		gkCLer3okZO4fX3M4k0IQ7nZfUs=
-		</data>
-		<key>OCR_02_V0.0.authme</key>
-		<data>
-		IY5hfd7w092/PV/wX9P08AElHlI=
-		</data>
 		<key>PrivacyInfo.xcprivacy</key>
 		<data>
 		ajrw1efAhuJdG8bDfUIycK7XQJ0=
@@ -115,20 +95,6 @@
 			<key>hash2</key>
 			<data>
 			Qq+2jEK7kD4DCeGlFCRSFBwpR0E6FuGmO9fEyKBtmKQ=
-			</data>
-		</dict>
-		<key>MRZ_00_V1.2.authme</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			jCPDpHpuv+ql6vpD3aUxaspMslCgqAQYuhbmUfihx9o=
-			</data>
-		</dict>
-		<key>MRZ_01_V1.1.authme</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			hMek6CusE7wu+Vw947gLMZg+IQP5sC02R4Mek4ZCqbw=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -213,27 +179,6 @@
 			<key>hash2</key>
 			<data>
 			3U+qO4Gz9XoTkjUC+kagxbqsw0y4x18L6x+dYqbZZxI=
-			</data>
-		</dict>
-		<key>OCR_00_V2.0.authme</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			MqPS6hzN/98da5DZBs3tKZ1m8RqSAQzPMsqftwXtrNg=
-			</data>
-		</dict>
-		<key>OCR_01_V0.0.authme</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			eW9DDcQfOHF3sCzrkn49f76As83RV/YlKCAY5vBmNRU=
-			</data>
-		</dict>
-		<key>OCR_02_V0.0.authme</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			14FovotSYiyLbGp8itY/2/ZS4Jm17QPWd/Zs0TXD0z4=
 			</data>
 		</dict>
 		<key>PrivacyInfo.xcprivacy</key>
