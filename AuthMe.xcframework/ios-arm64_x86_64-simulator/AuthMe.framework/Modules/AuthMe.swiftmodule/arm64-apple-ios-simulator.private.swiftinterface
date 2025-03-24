@@ -11,7 +11,6 @@ import Foundation
 import MobileCoreServices
 import Security
 import Swift
-import UIKit.UIImage
 import UIKit
 import UIKit/*.UIEdgeInsets*/
 import UIKit/*.UIImage*/
@@ -21,6 +20,15 @@ import _StringProcessing
 import _SwiftConcurrencyShims
 extension Swift.Array where Element : Swift.Equatable {
   public mutating func mergeElements<C>(newElements: C) where Element == C.Element, C : Swift.Collection
+}
+public enum AuthmeDeviceType : Swift.String {
+  case mobile
+  case pad
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
 }
 public struct AuthMeConfig {
   public static var `default`: AuthMeConfig {
@@ -35,6 +43,8 @@ public struct AuthMeConfig {
     public let credentialURL: Foundation.URL
     public init(host: Swift.String, credentialURL: Foundation.URL)
   }
+  public var customParameters: Swift.String?
+  public var deviceType: AuthmeDeviceType?
 }
 @_hasMissingDesignatedInitializers public class AuthMeCore<T> where T : FrameworkMode {
   public static var version: Swift.String {
@@ -45,6 +55,69 @@ public struct AuthMeConfig {
   }
   @objc deinit
 }
+public struct LogFAS {
+  public enum LogStage {
+    case Passive
+    case OpenMouth
+    case CloseMouth
+    case Smile
+    case Scale
+    case Done
+    public static func == (a: LogFAS.LogStage, b: LogFAS.LogStage) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum LogFASResult {
+    case Failed
+    case NoFace
+    case FaceNotAtCenter
+    case FaceTooSmall
+    case FaceTooLarge
+    case NeedFaceToCamera
+    case FaceMasked
+    case NeedOpenMouth
+    case NeedCloseMouth
+    case NeedSmile
+    case DepthFake
+    case NeedOpenEyes
+    case NeedMoreFrame
+    case Error
+    case Pass
+    public static func == (a: LogFAS.LogFASResult, b: LogFAS.LogFASResult) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let logStage: LogFAS.LogStage
+  public let logFASResult: LogFAS.LogFASResult
+  public init(logStage: LogFAS.LogStage, logFASResult: LogFAS.LogFASResult)
+}
+public enum LivenessDetectStatus {
+  case Failed
+  case NoFace
+  case FaceNotAtCenter
+  case FaceTooSmall
+  case FaceTooLarge
+  case NeedFaceToCamera
+  case FaceMasked
+  case NeedOpenMouth
+  case NeedCloseMouth
+  case NeedOpenEyes
+  case NeedSmile
+  case DepthFake
+  case NeedMoreFrame
+  case Pass
+  case Error
+  case Empty
+  public static func == (a: LivenessDetectStatus, b: LivenessDetectStatus) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
 public protocol LivenessFlowDelegate : AnyObject {
   func livenessDidStart()
   func livenessDidNotifyMessage(status: LivenessDetectStatus)
@@ -52,25 +125,19 @@ public protocol LivenessFlowDelegate : AnyObject {
   func livenessDidFailureWith(error: FlowError, retryHandler: @escaping (() -> Swift.Void))
   func livenessDidRecognize(image: UIKit.UIImage)
   func livenessDidFaceScale(direction: LivenessFlow.FaceScaleDirection.Direction)
-  func livenessNotifyStage(log: LogFAS)
-  func livenessNotifyUpload(log: LogUpload)
 }
 public class LivenessFlow : LivenessFlowProtocol {
-  public func setDelegate(_ delegate: any LivenessFlowDelegate)
   weak public var delegate: (any LivenessFlowDelegate)?
-  public var isDetecting: Swift.Bool {
-    get
-  }
-  public init(action: Action = .register(waitResult: true))
+  public init()
   @objc deinit
   public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)? = nil, handler: ((Swift.Result<Swift.Void, FlowError>) -> Swift.Void)?)
   public func setPreviewSize(previewSize: CoreFoundation.CGSize)
-  public func start(encrypt: Swift.Bool)
+  public func start()
   public func recognize(image: UIKit.UIImage)
   public func recognize(normal normalImage: UIKit.UIImage, depthImage: UIKit.UIImage)
-  public func roiRect(in previewSize: CoreFoundation.CGSize) -> CoreFoundation.CGRect
   public func cancelExpired()
-  public func getResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
+  public func roiRect(in previewSize: CoreFoundation.CGSize) -> CoreFoundation.CGRect
+  public func getResult(completion: @escaping ((Swift.Result<Swift.Bool, OCRError>) -> Swift.Void))
   public func isExpired() -> Swift.Bool
   public func getVerifyResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
   public func enableUploadFullFrame()
@@ -121,45 +188,6 @@ extension Swift.Collection where Self.Element : Swift.BinaryInteger {
 extension Swift.Collection where Self.Element : Swift.FloatingPoint {
   public func average() -> Self.Element
 }
-public struct LogFAS {
-  public enum LogStage {
-    case Passive
-    case OpenMouth
-    case CloseMouth
-    case Smile
-    case Scale
-    case Done
-    public static func == (a: LogFAS.LogStage, b: LogFAS.LogStage) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
-    public var hashValue: Swift.Int {
-      get
-    }
-  }
-  public enum LogFASResult {
-    case Failed
-    case NoFace
-    case FaceNotAtCenter
-    case FaceTooSmall
-    case FaceTooLarge
-    case NeedFaceToCamera
-    case FaceMasked
-    case NeedOpenMouth
-    case NeedCloseMouth
-    case NeedSmile
-    case NeedOpenEyes
-    case NeedMoreFrame
-    case Error
-    case Pass
-    public static func == (a: LogFAS.LogFASResult, b: LogFAS.LogFASResult) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
-    public var hashValue: Swift.Int {
-      get
-    }
-  }
-  public let logStage: LogFAS.LogStage
-  public let logFASResult: LogFAS.LogFASResult
-  public init(logStage: LogFAS.LogStage, logFASResult: LogFAS.LogFASResult)
-}
 public struct LogUpload {
   public enum Event {
     case start
@@ -174,28 +202,6 @@ public struct LogUpload {
   public let event: LogUpload.Event
   public let frameNo: Swift.String
   public init(duration: Swift.String = "0", event: LogUpload.Event, frameNo: Swift.String)
-}
-public enum LivenessDetectStatus {
-  case Failed
-  case NoFace
-  case FaceNotAtCenter
-  case FaceTooSmall
-  case FaceTooLarge
-  case NeedFaceToCamera
-  case FaceMasked
-  case NeedOpenMouth
-  case NeedCloseMouth
-  case NeedOpenEyes
-  case NeedSmile
-  case NeedMoreFrame
-  case Pass
-  case Error
-  case Empty
-  public static func == (a: LivenessDetectStatus, b: LivenessDetectStatus) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public var hashValue: Swift.Int {
-    get
-  }
 }
 extension AuthMeCore where T == OnlineMode {
   public static func configure() -> AuthmeCoreOnlineBuilder
@@ -251,6 +257,63 @@ public struct Claim {
   public var array: [Swift.String]? {
     get
   }
+}
+public enum VerificationErrorCode {
+  case idee100
+  case idee101
+  case idee200
+  case idee201
+  case ide100
+  case ide101
+  case idt004
+  case idt005
+  case idt113
+  case idt115
+  case idt116
+  case idt117
+  case idt118
+  case idt119
+  case idt120
+  case idt121
+  case idt200
+  case idt300
+  case idt400
+  case idp100
+  case idp101
+  case idp102
+  case idp103
+  case idp104
+  case idp106
+  case idp107
+  case idp108
+  case idp200
+  case unknown(Swift.String)
+  public var description: Swift.String {
+    get
+  }
+}
+public enum VerificationError : Swift.Error {
+  case responseError
+  case apiError
+  public static func == (a: VerificationError, b: VerificationError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum VerificationState : Swift.Equatable {
+  case approved
+  case incomplete
+  case pendingApproval
+  case rejected(code: VerificationErrorCode, customDetails: Swift.String?)
+  case pending(code: VerificationErrorCode, customDetails: Swift.String?)
+  public static func == (lhs: VerificationState, rhs: VerificationState) -> Swift.Bool
+}
+public struct VerificationHandler {
+  public init()
+  #if compiler(>=5.3) && $AsyncAwait
+  public func getCustomerState(waitingTime: Swift.Int = 3, retryTimes: Swift.Int = 2) async throws -> VerificationState
+  #endif
 }
 @dynamicMemberLookup public struct Fluent<Subject> {
   public let subject: Subject
@@ -410,7 +473,25 @@ public enum OCRType : Swift.String, Swift.Codable {
     get
   }
 }
-public enum OCRError : Swift.String, Foundation.LocalizedError {
+public enum AuthmeError : Swift.Equatable, Swift.Error {
+  public static func == (lhs: AuthmeError, rhs: AuthmeError) -> Swift.Bool
+  case EXPIRED
+  case CameraError
+  case ERROR_DownloadModel
+  case ERROR_Upload
+  case Liveness_Not_Pass
+  case ERROR_EngineFailed
+  case ERROR_AccessToken
+  public var value: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum OCRError : Swift.Equatable, Foundation.LocalizedError {
+  public static func == (lhs: OCRError, rhs: OCRError) -> Swift.Bool
   case ERROR_NETWORK
   case ERROR_RESPONSE
   case ERROR_SYSTEM_BUSY
@@ -418,6 +499,7 @@ public enum OCRError : Swift.String, Foundation.LocalizedError {
   case NO_DETECTED
   case CARD_REFLECTIVE
   case LOW_SHARPNESS
+  case Gray
   case WORNG_CARD_TYPE
   case CARD_NOT_IN_REGION
   case CARD_TOO_SMALL
@@ -433,13 +515,30 @@ public enum OCRError : Swift.String, Foundation.LocalizedError {
   case DEFORMATION_UP
   case DEFORMATION_DOWN
   case CARD_THICKNESS_FAILED
-  public init?(rawValue: Swift.String)
-  public typealias RawValue = Swift.String
-  public var rawValue: Swift.String {
-    get
-  }
+  case ERROR_DownloadModel
+  case Error_AccessToken
+  case Error_Theme(error: any Swift.Error)
 }
 public struct OCRFinishScanDocRequest {
+}
+public struct FinishScanDocResponse : Swift.Decodable {
+  public let fields: [OCRResultField]
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct OCRResultField : Swift.Decodable {
+  public let name: Swift.String
+  public var value: Swift.String
+  public let regex: Swift.String?
+  public let hidden: Swift.Bool
+  public let order: Swift.Int?
+  public let dateFormat: Swift.String?
+  public let selections: [Selection]?
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct Selection : Swift.Decodable {
+  public let name: Swift.String
+  public let value: Swift.String
+  public init(from decoder: any Swift.Decoder) throws
 }
 public protocol OCRFlowDelegate : AnyObject {
   func didFailureWith(error: OCRError, retryHandler: @escaping (() -> Swift.Void))
@@ -535,33 +634,38 @@ extension EKYCType {
   public static func == (lhs: Self, rhs: Self) -> Swift.Bool
 }
 public protocol OCRResult {
-  var fileID: Swift.String { get }
   var scanID: Swift.String { get }
   var data: [Swift.String : Swift.String] { get }
+  var modifiedData: [Swift.String : ModifiedData] { get }
   var confirmedData: [Swift.String : Swift.String] { get }
   var frontImage: UIKit.UIImage? { get }
   var backImage: UIKit.UIImage? { get }
   var frontCropImage: UIKit.UIImage? { get }
   var backCropImage: UIKit.UIImage? { get }
-  func confirmScan(complete: @escaping ((any Swift.Error)?) -> Swift.Void)
+  func confirmScan(complete: @escaping (Swift.Result<(data: [Swift.String : Swift.String], modifiedData: [Swift.String : ModifiedData]), any Swift.Error>) -> Swift.Void)
   func orderedData() -> [(Swift.String, Swift.String)]
   func set(key: Swift.String, value: Swift.String)
+  func setModifiedData(with data: [Swift.String : Swift.String], modifiedData: [Swift.String : ModifiedData])
+}
+public struct ModifiedData {
+  public var isModified: Swift.Bool
+  public var value: Swift.String
 }
 @_hasMissingDesignatedInitializers public class OCRBaseResult<DataType> : OCRResult where DataType : Swift.RawRepresentable, DataType.RawValue == Swift.String {
-  final public let data: [Swift.String : Swift.String]
+  public var data: [Swift.String : Swift.String]
   public var confirmedData: [Swift.String : Swift.String]
+  public var modifiedData: [Swift.String : ModifiedData]
   final public let frontImage: UIKit.UIImage?
   final public let backImage: UIKit.UIImage?
   public var frontCropImage: UIKit.UIImage?
   public var backCropImage: UIKit.UIImage?
-  final public let isAuto: Swift.Bool
-  final public let fileID: Swift.String
   public var scanID: Swift.String
   public func orderedData() -> [(Swift.String, Swift.String)]
   public func get(type: DataType) -> Swift.String
   public func set(type: DataType, value: Swift.String)
   public func set(key: Swift.String, value: Swift.String)
-  public func confirmScan(complete: @escaping ((any Swift.Error)?) -> Swift.Void)
+  public func setModifiedData(with data: [Swift.String : Swift.String], modifiedData: [Swift.String : ModifiedData])
+  public func confirmScan(complete: @escaping (Swift.Result<(data: [Swift.String : Swift.String], modifiedData: [Swift.String : ModifiedData]), any Swift.Error>) -> Swift.Void)
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class MRZResult : OCRBaseResult<MRZResult.DataType> {
@@ -597,6 +701,7 @@ public protocol OCRResult {
     }
   }
   convenience public init(data: [Swift.String : Swift.String], image: UIKit.UIImage?)
+  convenience public init(data: [Swift.String : Swift.String], image: UIKit.UIImage?, shouldEncrypt: Swift.Bool, publicKey: Swift.String)
   public func setScanID(_ scanID: Swift.String)
   @objc deinit
 }
@@ -629,7 +734,6 @@ public protocol OCRResult {
       get
     }
   }
-  convenience public init(data: [Swift.String : Swift.String], image: UIKit.UIImage?)
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class TWIDResult : OCRBaseResult<TWIDResult.DataType> {
@@ -1453,6 +1557,7 @@ public enum ScanType : Swift.String, Swift.Codable {
 }
 extension JPNNFCResidentCardFlow : ScanDocProtocol {
   public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
+  public func prepareOptionAndTheme(handler: @escaping (Swift.Result<(), OCRError>) -> Swift.Void)
   public func prepareScan(handler: @escaping (Swift.Result<(cardType: [ScanDocCardType], info: SessionInfo, expiredIn: Foundation.TimeInterval), OCRError>) -> Swift.Void)
   public func setPreviewSize(_ previewSize: CoreFoundation.CGSize)
   public func start(enableUploadFullFrame enable: Swift.Bool? = nil, handler: @escaping (Swift.Result<OCRInitScanDocResponse, OCRError>) -> Swift.Void)
@@ -1470,6 +1575,10 @@ extension JPNNFCResidentCardFlow : ScanDocProtocol {
   public func addImage(_ image: UIKit.UIImage?)
   public func onGetThicknessPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<(stage: OCRIDCardFraudStage, cropImage: UIKit.UIImage), OCRError>) -> Swift.Void)
   public func onGetThicknessManualData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, OCRError>) -> Swift.Void)
+  public func getResultWithVerificationRules() -> [OCRResultField]
+  public func getExpired() -> Swift.Bool
+  public func getExpiredTimeInterval() -> Foundation.TimeInterval
+  public func stopEngine()
 }
 @_hasMissingDesignatedInitializers public class HKVIZClassifier {
   #if compiler(>=5.3) && $AsyncAwait
@@ -1499,6 +1608,7 @@ public enum JWTDecodeError : Foundation.LocalizedError, Swift.CustomDebugStringC
 }
 extension HKGIDCardFlow : ScanDocProtocol {
   public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
+  public func prepareOptionAndTheme(handler: @escaping (Swift.Result<(), OCRError>) -> Swift.Void)
   public func prepareScan(handler: @escaping (Swift.Result<(cardType: [ScanDocCardType], info: SessionInfo, expiredIn: Foundation.TimeInterval), OCRError>) -> Swift.Void)
   public func setPreviewSize(_ previewSize: CoreFoundation.CGSize)
   public func start(enableUploadFullFrame enable: Swift.Bool? = nil, handler: @escaping (Swift.Result<OCRInitScanDocResponse, OCRError>) -> Swift.Void)
@@ -1516,6 +1626,10 @@ extension HKGIDCardFlow : ScanDocProtocol {
   public func addImage(_ image: UIKit.UIImage?)
   public func onGetThicknessPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<(stage: OCRIDCardFraudStage, cropImage: UIKit.UIImage), OCRError>) -> Swift.Void)
   public func onGetThicknessManualData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, OCRError>) -> Swift.Void)
+  public func getResultWithVerificationRules() -> [OCRResultField]
+  public func getExpired() -> Swift.Bool
+  public func getExpiredTimeInterval() -> Foundation.TimeInterval
+  public func stopEngine()
 }
 public class OCRScanDocFactory {
   public init()
@@ -1523,14 +1637,14 @@ public class OCRScanDocFactory {
   @objc deinit
 }
 public protocol LivenessFlowProtocol {
-  func setDelegate(_ delegate: any LivenessFlowDelegate)
+  var delegate: (any LivenessFlowDelegate)? { get set }
   func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, FlowError>) -> Swift.Void)?)
   func setPreviewSize(previewSize: CoreFoundation.CGSize)
-  func start(encrypt: Swift.Bool)
+  func start()
   func roiRect(in previewSize: CoreFoundation.CGSize) -> CoreFoundation.CGRect
   func recognize(image: UIKit.UIImage)
   func recognize(normal normalImage: UIKit.UIImage, depthImage: UIKit.UIImage)
-  func getResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
+  func getResult(completion: @escaping ((Swift.Result<Swift.Bool, OCRError>) -> Swift.Void))
   func isExpired() -> Swift.Bool
   func cancelExpired()
   func enableUploadFullFrame()
@@ -1540,9 +1654,7 @@ extension LivenessFlowProtocol {
 }
 public class LivenessFactory {
   public init()
-  public func prepare(with action: Action = .register(waitResult: true)) -> any LivenessFlowProtocol
-  public func preparePlayground() -> any LivenessFlowProtocol
-  public func prepareRecordPlayground() -> any LivenessFlowProtocol
+  public func prepare() -> any LivenessFlowProtocol
   @objc deinit
 }
 public enum Action {
@@ -1553,8 +1665,11 @@ public enum FlowError : Swift.Error {
   case checkModel
   case start
   case recognize
+  case livenessFailed
   case service(FlowError.Endpoint, code: Swift.String?)
   case expiredIn
+  case accessTokenError
+  case ERROR_DownloadModel
   public enum Endpoint {
     case `init`
     case detect
@@ -1566,7 +1681,11 @@ public enum FlowError : Swift.Error {
     }
   }
 }
+public enum ConfigError : Swift.Error {
+  case verifyFail(Swift.Int)
+}
 @_hasMissingDesignatedInitializers public class OnlineMode : FrameworkMode {
+  public static func getConfig() -> AuthMeConfig
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers public class AuthmeCoreOnlineBuilder : ObjectiveC.NSObject {
@@ -1576,20 +1695,13 @@ public enum FlowError : Swift.Error {
   @objc override dynamic public init()
   @objc deinit
 }
-public protocol LivenessPlaygroundRecordFlowDelegate : LivenessFlowDelegate {
-  func livenessDidNotifyMessage(message: Swift.String)
-  func livenessDidUpdateReconize(result: Swift.Bool)
-  func livenessDidFailureWith(error: FlowError, retryHandler: @escaping (() -> Swift.Void))
-  func livenessDidRecognize(image: UIKit.UIImage)
-  func livenessDidFaceScale(direction: LivenessFlow.FaceScaleDirection.Direction)
-  func livenessDidProcessed(jsonString: Swift.String)
-}
 public class JPIDNFCCardFlow {
   public init(scanType: ScanType, needConfirm: Swift.Bool)
   @objc deinit
 }
 extension JPIDNFCCardFlow : ScanDocProtocol {
   public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
+  public func prepareOptionAndTheme(handler: @escaping (Swift.Result<(), OCRError>) -> Swift.Void)
   public func prepareScan(handler: @escaping (Swift.Result<(cardType: [ScanDocCardType], info: SessionInfo, expiredIn: Foundation.TimeInterval), OCRError>) -> Swift.Void)
   public func setPreviewSize(_ previewSize: CoreFoundation.CGSize)
   public func start(enableUploadFullFrame enable: Swift.Bool? = nil, handler: @escaping (Swift.Result<OCRInitScanDocResponse, OCRError>) -> Swift.Void)
@@ -1607,6 +1719,10 @@ extension JPIDNFCCardFlow : ScanDocProtocol {
   public func addImage(_ image: UIKit.UIImage?)
   public func onGetThicknessPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<(stage: OCRIDCardFraudStage, cropImage: UIKit.UIImage), OCRError>) -> Swift.Void)
   public func onGetThicknessManualData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, OCRError>) -> Swift.Void)
+  public func getResultWithVerificationRules() -> [OCRResultField]
+  public func getExpired() -> Swift.Bool
+  public func getExpiredTimeInterval() -> Foundation.TimeInterval
+  public func stopEngine()
 }
 public class EncryptHelper {
   public init()
@@ -1626,12 +1742,171 @@ public class BaseFlow {
   public init(scanType: ScanType, needConfirm: Swift.Bool)
   @objc deinit
 }
+public struct ResultPageCountdown : Swift.Decodable {
+  public var textColor: Swift.String?
+  public var textWeight: Swift.String?
+  public var fontSize: Swift.Int?
+  public var timeTextColor: Swift.String?
+  public var timeTextWeight: Swift.String?
+  public var timeFontSize: Swift.Int?
+  public var isEnabled: Swift.Bool
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct HeaderTitle : Swift.Decodable {
+  public var textColor: Swift.String?
+  public var textWeight: Swift.String?
+  public var fontSize: Swift.Int?
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ButtonConfig : Swift.Decodable {
+  public var contentColor: Swift.String?
+  public var contentOpacity: CoreFoundation.CGFloat?
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct EkycCloseButton : Swift.Decodable {
+  public var contentColor: Swift.String?
+  public var contentOpacity: CoreFoundation.CGFloat?
+  public var backgroundColor: Swift.String?
+  public var backgroundOpacity: CoreFoundation.CGFloat?
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct MajorButton : Swift.Decodable {
+  public var cornerRadius: CoreFoundation.CGFloat?
+  public var backgroundColor: Swift.String?
+  public var disabledBackgroundColor: Swift.String?
+  public var backgroundOpacity: CoreFoundation.CGFloat?
+  public var borderColor: Swift.String?
+  public var disabledBorderColor: Swift.String?
+  public var borderOpacity: CoreFoundation.CGFloat?
+  public var borderWidth: CoreFoundation.CGFloat?
+  public var textColor: Swift.String?
+  public var disabledTextColor: Swift.String?
+  public var textWeight: Swift.String?
+  public var fontSize: Swift.Int?
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct MinorButton : Swift.Decodable {
+  public var cornerRadius: CoreFoundation.CGFloat?
+  public var backgroundColor: Swift.String?
+  public var disabledBackgroundColor: Swift.String?
+  public var backgroundOpacity: CoreFoundation.CGFloat?
+  public var borderColor: Swift.String?
+  public var disabledBorderColor: Swift.String?
+  public var borderOpacity: CoreFoundation.CGFloat?
+  public var borderWidth: CoreFoundation.CGFloat?
+  public var textColor: Swift.String?
+  public var disabledTextColor: Swift.String?
+  public var textWeight: Swift.String?
+  public var fontSize: Swift.Int?
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct Hint : Swift.Decodable {
+  public var cornerRadius: CoreFoundation.CGFloat?
+  public var backgroundColor: Swift.String?
+  public var opacity: CoreFoundation.CGFloat?
+  public var textColor: Swift.String?
+  public var textWeight: Swift.String?
+  public var fontSize: Swift.Int?
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct FraudIntroStepTitle : Swift.Decodable {
+  public var cornerRadius: CoreFoundation.CGFloat?
+  public var backgroundColor: Swift.String?
+  public var backgroundOpacity: CoreFoundation.CGFloat?
+  public var textColor: Swift.String?
+  public var textWeight: Swift.String?
+  public var fontSize: Swift.Int?
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct UploadStatusView : Swift.Decodable {
+  public var contentColor: Swift.String?
+  public var contentOpacity: CoreFoundation.CGFloat?
+  public var backgroundColor: Swift.String?
+  public var backgroundOpacity: CoreFoundation.CGFloat?
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ScanFrame : Swift.Decodable {
+  public var isEnabled: Swift.Bool
+  public var style: FrameStyle?
+  public var width: CoreFoundation.CGFloat?
+  public var opacity: CoreFoundation.CGFloat?
+  public var undetectedColor: Swift.String?
+  public var detectedColor: Swift.String?
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum FrameStyle : Swift.String, Swift.Decodable {
+  case bordered
+  case cornered
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct ScanLine : Swift.Decodable {
+  public var isEnabled: Swift.Bool
+  public var color: Swift.String?
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ScanHint : Swift.Decodable {
+  public var isEnabled: Swift.Bool
+  public var style: HintStyle?
+  public var color: Swift.String?
+  public var opacity: CoreFoundation.CGFloat?
+  public var textWeight: Swift.String?
+  public var fontSize: CoreFoundation.CGFloat?
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum HintStyle : Swift.String, Swift.Decodable {
+  case image
+  case text
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct FraudScanHint : Swift.Decodable {
+  public var isEnabled: Swift.Bool
+  public var style: FraudHintStyle?
+  public var color: Swift.String?
+  public var opacity: CoreFoundation.CGFloat?
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum FraudHintStyle : Swift.String, Swift.Decodable {
+  case animation
+  case image
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct PopupView : Swift.Decodable {
+  public var width: CoreFoundation.CGFloat?
+  public var cornerRadius: CoreFoundation.CGFloat?
+  public var backgroundColor: Swift.String?
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct LivenessScanFrame : Swift.Decodable {
+  public var color: Swift.String?
+  public var opacity: CoreFoundation.CGFloat?
+  public var borderWidth: CoreFoundation.CGFloat?
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct TextStyle : Swift.Decodable {
+  public var textColor: Swift.String?
+  public var textWeight: Swift.String?
+  public var fontSize: Swift.Int?
+  public init(from decoder: any Swift.Decoder) throws
+}
 @_inheritsConvenienceInitializers public class JPNNFCDriverLicenseFlow : BaseFlow {
   override public init(scanType: ScanType, needConfirm: Swift.Bool)
   @objc deinit
 }
 extension JPNNFCDriverLicenseFlow : ScanDocProtocol {
   public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
+  public func prepareOptionAndTheme(handler: @escaping (Swift.Result<(), OCRError>) -> Swift.Void)
   public func prepareScan(handler: @escaping (Swift.Result<(cardType: [ScanDocCardType], info: SessionInfo, expiredIn: Foundation.TimeInterval), OCRError>) -> Swift.Void)
   public func setPreviewSize(_ previewSize: CoreFoundation.CGSize)
   public func start(enableUploadFullFrame enable: Swift.Bool? = nil, handler: @escaping (Swift.Result<OCRInitScanDocResponse, OCRError>) -> Swift.Void)
@@ -1649,30 +1924,184 @@ extension JPNNFCDriverLicenseFlow : ScanDocProtocol {
   public func addImage(_ image: UIKit.UIImage?)
   public func onGetThicknessPreviewData(image: UIKit.UIImage, handler: @escaping (Swift.Result<(stage: OCRIDCardFraudStage, cropImage: UIKit.UIImage), OCRError>) -> Swift.Void)
   public func onGetThicknessManualData(image: UIKit.UIImage, handler: @escaping (Swift.Result<UIKit.UIImage, OCRError>) -> Swift.Void)
+  public func getResultWithVerificationRules() -> [OCRResultField]
+  public func getExpired() -> Swift.Bool
+  public func getExpiredTimeInterval() -> Foundation.TimeInterval
+  public func stopEngine()
 }
-public protocol LivenessPlaygroundFlowDelegate : LivenessFlowDelegate {
-  func livenessDidNotifyMessage(status: LivenessDetectStatus)
-  func livenessDidUpdateReconize(result: Swift.Bool)
-  func livenessDidFailureWith(error: FlowError, retryHandler: @escaping (() -> Swift.Void))
-  func livenessDidRecognize(image: UIKit.UIImage)
-  func livenessQueueDidUpload(currentCount: Swift.Int)
-}
-public class LivenessPlaygroundFlow {
-  weak public var delegate: (any LivenessPlaygroundFlowDelegate)?
-  public init()
+@_hasMissingDesignatedInitializers public class AuthmeThemeSetting {
+  public static var shared: AuthmeThemeSetting
+  public var isStatementEnabled: Swift.Bool
+  public var resultPageCountdownTextColor: Swift.String
+  public var resultPageCountdownTextWeight: Swift.String
+  public var resultPageCountdownFontSize: Swift.Int
+  public var resultPageCountdownTimeTextColor: Swift.String
+  public var resultPageCountdownTimeTextWeight: Swift.String
+  public var resultPageCountdownTimeFontSize: Swift.Int
+  public var resultPageCountdownIsEnabled: Swift.Bool
+  public var headerTitleTextColor: Swift.String
+  public var headerTitleTextWeight: Swift.String
+  public var headerTitleFontSize: Swift.Int
+  public var nonEkycCloseButtonContentColor: Swift.String
+  public var nonEkycCloseButtonContentOpacity: CoreFoundation.CGFloat
+  public var backButtonContentColor: Swift.String
+  public var backButtonContentOpacity: CoreFoundation.CGFloat
+  public var ekycCloseButtonContentColor: Swift.String
+  public var ekycCloseButtonContentOpacity: CoreFoundation.CGFloat
+  public var ekycCloseButtonBackgroundColor: Swift.String
+  public var ekycCloseButtonBackgroundOpacity: CoreFoundation.CGFloat
+  public var majorButtonCornerRadius: CoreFoundation.CGFloat
+  public var majorButtonBackgroundColor: Swift.String
+  public var majorButtonDisabledBackgroundColor: Swift.String
+  public var majorButtonBackgroundOpacity: CoreFoundation.CGFloat
+  public var majorButtonBorderColor: Swift.String
+  public var majorButtonDisabledBorderColor: Swift.String
+  public var majorButtonBorderOpacity: CoreFoundation.CGFloat
+  public var majorButtonBorderWidth: CoreFoundation.CGFloat
+  public var majorButtonTextColor: Swift.String
+  public var majorButtonDisabledTextColor: Swift.String
+  public var majorButtonTextWeight: Swift.String
+  public var majorButtonFontSize: Swift.Int
+  public var fraudInfoButtonCornerRadius: CoreFoundation.CGFloat
+  public var fraudInfoButtonBackgroundColor: Swift.String
+  public var fraudInfoButtonDisabledBackgroundColor: Swift.String
+  public var fraudInfoButtonBackgroundOpacity: CoreFoundation.CGFloat
+  public var fraudInfoButtonBorderColor: Swift.String
+  public var fraudInfoButtonDisabledBorderColor: Swift.String
+  public var fraudInfoButtonBorderOpacity: CoreFoundation.CGFloat
+  public var fraudInfoButtonBorderWidth: CoreFoundation.CGFloat
+  public var fraudInfoButtonTextColor: Swift.String
+  public var fraudInfoButtonDisabledTextColor: Swift.String
+  public var fraudInfoButtonTextWeight: Swift.String
+  public var fraudInfoButtonFontSize: Swift.Int
+  public var minorButtonCornerRadius: CoreFoundation.CGFloat
+  public var minorButtonBackgroundColor: Swift.String
+  public var minorButtonDisabledBackgroundColor: Swift.String
+  public var minorButtonBackgroundOpacity: CoreFoundation.CGFloat
+  public var minorButtonBorderColor: Swift.String
+  public var minorButtonDisabledBorderColor: Swift.String
+  public var minorButtonBorderOpacity: CoreFoundation.CGFloat
+  public var minorButtonBorderWidth: CoreFoundation.CGFloat
+  public var minorButtonTextColor: Swift.String
+  public var minorButtonDisabledTextColor: Swift.String
+  public var minorButtonTextWeight: Swift.String
+  public var minorButtonFontSize: Swift.Int
+  public var smallerMajorButtonCornerRadius: CoreFoundation.CGFloat
+  public var smallerMajorButtonBackgroundColor: Swift.String
+  public var smallerMajorButtonDisabledBackgroundColor: Swift.String
+  public var smallerMajorButtonBackgroundOpacity: CoreFoundation.CGFloat
+  public var smallerMajorButtonBorderColor: Swift.String
+  public var smallerMajorButtonDisabledBorderColor: Swift.String
+  public var smallerMajorButtonBorderOpacity: CoreFoundation.CGFloat
+  public var smallerMajorButtonBorderWidth: CoreFoundation.CGFloat
+  public var smallerMajorButtonTextColor: Swift.String
+  public var smallerMajorButtonDisabledTextColor: Swift.String
+  public var smallerMajorButtonTextWeight: Swift.String
+  public var smallerMajorButtonFontSize: Swift.Int
+  public var smallerMinorButtonCornerRadius: CoreFoundation.CGFloat
+  public var smallerMinorButtonBackgroundColor: Swift.String
+  public var smallerMinorButtonDisabledBackgroundColor: Swift.String
+  public var smallerMinorButtonBackgroundOpacity: CoreFoundation.CGFloat
+  public var smallerMinorButtonBorderColor: Swift.String
+  public var smallerMinorButtonDisabledBorderColor: Swift.String
+  public var smallerMinorButtonBorderOpacity: CoreFoundation.CGFloat
+  public var smallerMinorButtonBorderWidth: CoreFoundation.CGFloat
+  public var smallerMinorButtonTextColor: Swift.String
+  public var smallerMinorButtonDisabledTextColor: Swift.String
+  public var smallerMinorButtonTextWeight: Swift.String
+  public var smallerMinorButtonFontSize: Swift.Int
+  public var hintCornerRadius: CoreFoundation.CGFloat
+  public var hintBackgroundColor: Swift.String
+  public var hintOpacity: CoreFoundation.CGFloat
+  public var hintTextColor: Swift.String
+  public var hintTextWeight: Swift.String
+  public var hintFontSize: Swift.Int
+  public var fraudIntroStepTitleCornerRadius: CoreFoundation.CGFloat
+  public var fraudIntroStepTitleBackgroundColor: Swift.String
+  public var fraudIntroStepTitleBackgroundOpacity: CoreFoundation.CGFloat
+  public var fraudIntroStepTitleTextColor: Swift.String
+  public var fraudIntroStepTitleTextWeight: Swift.String
+  public var fraudIntroStepTitleFontSize: Swift.Int
+  public var uploadCompleteViewContentColor: Swift.String
+  public var uploadCompleteViewContentOpacity: CoreFoundation.CGFloat
+  public var uploadCompleteViewBackgroundColor: Swift.String
+  public var uploadCompleteViewBackgroundOpacity: CoreFoundation.CGFloat
+  public var uploadIncompleteViewContentColor: Swift.String
+  public var uploadIncompleteViewContentOpacity: CoreFoundation.CGFloat
+  public var uploadIncompleteViewBackgroundColor: Swift.String
+  public var uploadIncompleteViewBackgroundOpacity: CoreFoundation.CGFloat
+  public var loadingViewContentColor: Swift.String
+  public var scanFrameIsEnabled: Swift.Bool
+  public var scanFrameStyle: FrameStyle
+  public var scanFrameWidth: CoreFoundation.CGFloat
+  public var scanFrameOpacity: CoreFoundation.CGFloat
+  public var scanFrameUndetectedColor: Swift.String
+  public var scanFrameDetectedColor: Swift.String
+  public var scanLineIsEnabled: Swift.Bool
+  public var scanLineColor: Swift.String
+  public var scanHintIsEnabled: Swift.Bool
+  public var scanHintStyle: HintStyle
+  public var scanHintColor: Swift.String
+  public var scanHintOpacity: CoreFoundation.CGFloat
+  public var scanHintTextWeight: Swift.String
+  public var scanHintFontSize: CoreFoundation.CGFloat
+  public var fraudScanHintIsEnabled: Swift.Bool
+  public var fraudScanHintStyle: FraudHintStyle
+  public var fraudScanHintColor: Swift.String
+  public var fraudScanHintOpacity: CoreFoundation.CGFloat
+  public var popupViewWidth: CoreFoundation.CGFloat
+  public var popupViewCornerRadius: CoreFoundation.CGFloat
+  public var popupViewBackgroundColor: Swift.String
+  public var livenessErrorScanFrameColor: Swift.String
+  public var livenessErrorScanFrameOpacity: CoreFoundation.CGFloat
+  public var livenessErrorScanFrameBorderWidth: CoreFoundation.CGFloat
+  public var livenessSuccessScanFrameColor: Swift.String
+  public var livenessSuccessScanFrameOpacity: CoreFoundation.CGFloat
+  public var livenessSuccessScanFrameBorderWidth: CoreFoundation.CGFloat
+  public var isFraudScanIntroPageEnabled: Swift.Bool
+  public var isFraudAnimationLoadingPageEnabled: Swift.Bool
+  public var isLivenessIntroPageEnabled: Swift.Bool
+  public var pageDotColor: Swift.String
+  public var titleOneTextColor: Swift.String
+  public var titleOneTextWeight: Swift.String
+  public var titleOneFontSize: Swift.Int
+  public var titleTwoTextColor: Swift.String
+  public var titleTwoTextWeight: Swift.String
+  public var titleTwoFontSize: Swift.Int
+  public var titleThreeTextColor: Swift.String
+  public var titleThreeTextWeight: Swift.String
+  public var titleThreeFontSize: Swift.Int
+  public var bodyOneTextColor: Swift.String
+  public var bodyOneTextWeight: Swift.String
+  public var bodyOneFontSize: Swift.Int
+  public var bodyTwoTextColor: Swift.String
+  public var bodyTwoTextWeight: Swift.String
+  public var bodyTwoFontSize: Swift.Int
+  public var bodyThreeTextColor: Swift.String
+  public var bodyThreeTextWeight: Swift.String
+  public var bodyThreeFontSize: Swift.Int
+  public var titleOneDarkModeTextColor: Swift.String
+  public var titleOneDarkModeTextWeight: Swift.String
+  public var titleOneDarkModeFontSize: Swift.Int
+  public var titleTwoDarkModeTextColor: Swift.String
+  public var titleTwoDarkModeTextWeight: Swift.String
+  public var titleTwoDarkModeFontSize: Swift.Int
+  public var bodyTwoDarkModeTextColor: Swift.String
+  public var bodyTwoDarkModeTextWeight: Swift.String
+  public var bodyTwoDarkModeFontSize: Swift.Int
+  public var bodyThreeDarkModeTextColor: Swift.String
+  public var bodyThreeDarkModeTextWeight: Swift.String
+  public var bodyThreeDarkModeFontSize: Swift.Int
+  public var resultTitleTextColor: Swift.String
+  public var resultTitleTextWeight: Swift.String
+  public var resultTitleFontSize: Swift.Int
+  public var resultBodyTextColor: Swift.String
+  public var resultBodyTextWeight: Swift.String
+  public var resultBodyFontSize: Swift.Int
+  public var resultTimeTextColor: Swift.String
+  public var resultTimeTextWeight: Swift.String
+  public var resultTimeFontSize: Swift.Int
   @objc deinit
-}
-extension LivenessPlaygroundFlow : LivenessFlowProtocol {
-  public func setDelegate(_ delegate: any LivenessFlowDelegate)
-  public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)? = nil, handler: ((Swift.Result<Swift.Void, FlowError>) -> Swift.Void)?)
-  public func setPreviewSize(previewSize: CoreFoundation.CGSize)
-  public func start(encrypt: Swift.Bool)
-  public func recognize(image: UIKit.UIImage)
-  public func roiRect(in previewSize: CoreFoundation.CGSize) -> CoreFoundation.CGRect
-  public func getResult(completion: @escaping ((Swift.Bool) -> Swift.Void))
-  public func isExpired() -> Swift.Bool
-  public func cancelExpired()
-  public func enableUploadFullFrame()
 }
 final public class URLEncodedFormEncoder {
   public enum ArrayEncoding {
@@ -1770,6 +2199,7 @@ extension JWT {
 }
 public protocol ScanDocProtocol {
   func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void)?)
+  func prepareOptionAndTheme(handler: @escaping (Swift.Result<(), OCRError>) -> Swift.Void)
   func prepareScan(handler: @escaping (Swift.Result<(cardType: [ScanDocCardType], info: SessionInfo, expiredIn: Foundation.TimeInterval), OCRError>) -> Swift.Void)
   func setPreviewSize(_ previewSize: CoreFoundation.CGSize)
   func start(enableUploadFullFrame: Swift.Bool?, handler: @escaping (Swift.Result<OCRInitScanDocResponse, OCRError>) -> Swift.Void)
@@ -1785,10 +2215,14 @@ public protocol ScanDocProtocol {
   func recordImageWithBase64(_ image: UIKit.UIImage, progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   func getStatus() -> (scanDocs: [ScanDocCardType], processing: ScanDocCardType)
   func stopScan() -> (any OCRResult)?
+  func getResultWithVerificationRules() -> [OCRResultField]
   func abortScan(completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
   func addResult(_ result: [Swift.String : Swift.String])
   func addImage(_ image: UIKit.UIImage?)
   func startWithoutEngine(cardType: OCRType, handler: @escaping (Swift.Result<OCRInitScanDocResponse, OCRError>) -> Swift.Void)
+  func getExpired() -> Swift.Bool
+  func getExpiredTimeInterval() -> Foundation.TimeInterval
+  func stopEngine()
 }
 extension ScanDocProtocol {
   public func recordImageWithBase64(_ image: UIKit.UIImage, progressHandler: ((Swift.Double) -> Swift.Void)?, completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
@@ -1835,10 +2269,10 @@ public enum ScanDocCardType : Swift.String, Swift.Codable {
   case NFCPassport
   case TWN_ResidentCard_Front
   case TWN_ResidentCard_Back
-  case JPN_IDCARD_Front
-  case JPN_IDCARD_Back
+  case JPN_IDCard_Front
+  case JPN_IDCard_Back
   case JPN_IDCard_NFC
-  case JPN_IDCARD_Thickness
+  case JPN_IDCard_Thickness
   case JPN_DriverLicense_Front
   case JPN_DriverLicense_Back
   case JPN_DriverLicense_NFC
@@ -1850,8 +2284,8 @@ public enum ScanDocCardType : Swift.String, Swift.Codable {
   case USA_IDCARD_Front
   case USA_DriverLicense_Front
   case USA_VisitorVISA_FRONT
-  case IDN_IDCARD_Front
-  case IDN_IDCARD_Back
+  case IDN_IDCard_Front
+  case IDN_IDCard_Back
   case IDN_DriverLicense_Front
   case Liveness
   case PassportWithVIZ
@@ -1933,16 +2367,21 @@ public class EventHelper {
 public struct EventInfo {
   public init(eventID: Foundation.UUID = UUID(), log: Swift.String, language: Swift.String = "", description: Swift.String = "", extraInfo: Swift.String = "")
 }
-extension LivenessFlow.FaceScaleDirection.Direction : Swift.Equatable {}
-extension LivenessFlow.FaceScaleDirection.Direction : Swift.Hashable {}
+extension AuthmeDeviceType : Swift.Equatable {}
+extension AuthmeDeviceType : Swift.Hashable {}
+extension AuthmeDeviceType : Swift.RawRepresentable {}
 extension LogFAS.LogStage : Swift.Equatable {}
 extension LogFAS.LogStage : Swift.Hashable {}
 extension LogFAS.LogFASResult : Swift.Equatable {}
 extension LogFAS.LogFASResult : Swift.Hashable {}
-extension LogUpload.Event : Swift.Equatable {}
-extension LogUpload.Event : Swift.Hashable {}
 extension LivenessDetectStatus : Swift.Equatable {}
 extension LivenessDetectStatus : Swift.Hashable {}
+extension LivenessFlow.FaceScaleDirection.Direction : Swift.Equatable {}
+extension LivenessFlow.FaceScaleDirection.Direction : Swift.Hashable {}
+extension LogUpload.Event : Swift.Equatable {}
+extension LogUpload.Event : Swift.Hashable {}
+extension VerificationError : Swift.Equatable {}
+extension VerificationError : Swift.Hashable {}
 extension LogAntiFraud : Swift.Equatable {}
 extension LogAntiFraud : Swift.Hashable {}
 extension LogAntiFraud : Swift.RawRepresentable {}
@@ -1952,9 +2391,7 @@ extension OCRCardType : Swift.RawRepresentable {}
 extension OCRType : Swift.Equatable {}
 extension OCRType : Swift.Hashable {}
 extension OCRType : Swift.RawRepresentable {}
-extension OCRError : Swift.Equatable {}
-extension OCRError : Swift.Hashable {}
-extension OCRError : Swift.RawRepresentable {}
+extension AuthmeError : Swift.Hashable {}
 extension OCRNotifyMessage : Swift.Equatable {}
 extension OCRNotifyMessage : Swift.Hashable {}
 extension OCRNotifyMessage : Swift.RawRepresentable {}
@@ -2067,6 +2504,15 @@ extension ScanType : Swift.Hashable {}
 extension ScanType : Swift.RawRepresentable {}
 extension FlowError.Endpoint : Swift.Equatable {}
 extension FlowError.Endpoint : Swift.Hashable {}
+extension FrameStyle : Swift.Equatable {}
+extension FrameStyle : Swift.Hashable {}
+extension FrameStyle : Swift.RawRepresentable {}
+extension HintStyle : Swift.Equatable {}
+extension HintStyle : Swift.Hashable {}
+extension HintStyle : Swift.RawRepresentable {}
+extension FraudHintStyle : Swift.Equatable {}
+extension FraudHintStyle : Swift.Hashable {}
+extension FraudHintStyle : Swift.RawRepresentable {}
 extension URLEncodedFormEncoder.ArrayEncoding : Swift.Equatable {}
 extension URLEncodedFormEncoder.ArrayEncoding : Swift.Hashable {}
 extension URLEncodedFormEncoder.BoolEncoding : Swift.Equatable {}

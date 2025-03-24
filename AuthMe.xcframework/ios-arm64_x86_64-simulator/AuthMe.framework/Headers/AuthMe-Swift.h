@@ -313,6 +313,7 @@ SWIFT_CLASS("_TtC6AuthMe23AuthmeCoreOnlineBuilder")
 
 
 
+
 #endif
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop
@@ -632,6 +633,7 @@ SWIFT_CLASS("_TtC6AuthMe23AuthmeCoreOnlineBuilder")
 @interface AuthmeCoreOnlineBuilder : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
+
 
 
 
