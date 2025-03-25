@@ -1,3 +1,9 @@
+//
+//  EngineWrapper.hpp
+//  Algo
+//
+//  Created by Evan Wu on 2022/10/12.
+//
 
 #ifndef EngineWrapper_hpp
 #define EngineWrapper_hpp
@@ -8,12 +14,9 @@ extern "C" {
 
 #import <UIKit/UIKit.h>
 #import "engine_type.h"
-#import "authme_ml_engine_type.h"
 
-//UIImage* convertAuthMeImage(AuthMeImage *image);
-//UIImage* convertAuthmeDebugImage(AuthMeImage *image);
-UIImage* convertAuthmeImg_3ch(AuthmeImg *image);
-UIImage* convertAuthmeImg_4ch(AuthmeImg *image);
+UIImage* convertAuthMeImage(AuthMeImage *image);
+UIImage* convertAuthmeDebugImage(AuthMeImage *image);
 
 #ifdef __cplusplus
 }
