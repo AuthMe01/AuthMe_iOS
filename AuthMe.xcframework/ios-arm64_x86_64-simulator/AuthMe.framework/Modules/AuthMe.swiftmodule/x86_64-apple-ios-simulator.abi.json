@@ -66132,55 +66132,6 @@
       "value": "\"iOS 15\""
     },
     {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessPlaygroundRecordFlow.swift",
-      "kind": "StringLiteral",
-      "offset": 6241,
-      "length": 11,
-      "value": "\"folderId:\""
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessPlaygroundRecordFlow.swift",
-      "kind": "StringLiteral",
-      "offset": 6317,
-      "length": 2,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessPlaygroundRecordFlow.swift",
-      "kind": "IntegerLiteral",
-      "offset": 6430,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessPlaygroundRecordFlow.swift",
-      "kind": "IntegerLiteral",
-      "offset": 6472,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessPlaygroundRecordFlow.swift",
-      "kind": "IntegerLiteral",
-      "offset": 6523,
-      "length": 1,
-      "value": "9"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessPlaygroundRecordFlow.swift",
-      "kind": "IntegerLiteral",
-      "offset": 6568,
-      "length": 2,
-      "value": "60"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessPlaygroundRecordFlow.swift",
-      "kind": "StringLiteral",
-      "offset": 7397,
-      "length": 9,
-      "value": "\"failure\""
-    },
-    {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/Online\/JPIDNFCCardFlow.swift",
       "kind": "IntegerLiteral",
       "offset": 152,
@@ -70344,55 +70295,6 @@
       "offset": 6300,
       "length": 8,
       "value": "\"iOS 15\""
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessPlaygroundFlow.swift",
-      "kind": "StringLiteral",
-      "offset": 6518,
-      "length": 11,
-      "value": "\"folderId:\""
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessPlaygroundFlow.swift",
-      "kind": "StringLiteral",
-      "offset": 6594,
-      "length": 2,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessPlaygroundFlow.swift",
-      "kind": "IntegerLiteral",
-      "offset": 6707,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessPlaygroundFlow.swift",
-      "kind": "IntegerLiteral",
-      "offset": 6749,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessPlaygroundFlow.swift",
-      "kind": "IntegerLiteral",
-      "offset": 6800,
-      "length": 1,
-      "value": "9"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessPlaygroundFlow.swift",
-      "kind": "IntegerLiteral",
-      "offset": 6845,
-      "length": 2,
-      "value": "60"
-    },
-    {
-      "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessPlaygroundFlow.swift",
-      "kind": "StringLiteral",
-      "offset": 7657,
-      "length": 9,
-      "value": "\"failure\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Networking\/Uploadable.swift",
