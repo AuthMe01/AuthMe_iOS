@@ -1,15 +1,32 @@
 #pragma once
 
-#if __cplusplus >= 202002L
-// C++20 (and later) code
+#if defined(_WIN32) || defined(_WIN64) || (defined(__APPLE__) && !defined(USE_XCODE))
+// Windows platform or Apple platform
+#ifdef __cplusplus
 #define DEFAULT_COMPARISON(typeName) bool operator==(const typeName&) const = default;
 #else
 #define DEFAULT_COMPARISON(typeName)
 #endif
+#elif defined(__APPLE__) && defined(USE_XCODE)
+#define DEFAULT_COMPARISON(typeName)
+#elif defined(__linux__) && __cplusplus >= 202002L
+// Linux platform with C++20 or later
+#ifdef __cplusplus
+#define DEFAULT_COMPARISON(typeName) bool operator==(const typeName&) const = default;
+#else
+#define DEFAULT_COMPARISON(typeName)
+#endif
+#else
+// Default case for other platforms or earlier C++ versions
+#define DEFAULT_COMPARISON(typeName)
+#endif
+
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+#include <stdbool.h>
 
 typedef enum _E_AUTHME_COLOR_FORMAT
 {
@@ -55,11 +72,18 @@ typedef struct _AUTHME_FAS_MODULE_OUTPUT
     decorate(RightProfile) \
     decorate(UpFrontal) \
     decorate(DownFrontal)
-
-#define AUTHME_FACE_POSE_PREFIX(name, ...) eAuthMe_FacePose_##name __VA_ARGS__,
+//
+//#define AUTHME_FACE_POSE_PREFIX(name, ...) eAuthMe_FacePose_##name __VA_ARGS__,
 typedef enum _E_AUTHME_FACE_POSE : int
 {
-    AUTHME_FACE_POSE_TAG(AUTHME_FACE_POSE_PREFIX)
+    eAuthMe_FacePose_Unknown = -1,
+    eAuthMe_FacePose_LeftProfile = 0,
+    eAuthMe_FacePose_LeftFrontal,
+    eAuthMe_FacePose_Frontal,
+    eAuthMe_FacePose_RightFrontal,
+    eAuthMe_FacePose_RightProfile,
+    eAuthMe_FacePose_UpFrontal,
+    eAuthMe_FacePose_DownFrontal,
 } EAuthMeFacePose;
 
 #define CARD_CLASS_TAG(decorate) \
@@ -75,9 +99,8 @@ typedef enum _E_AUTHME_FACE_POSE : int
     decorate(TWN_HealthCard_Front) \
     decorate(TWN_VehiclesLicense_Front)
 
-
 #define CARD_CLASS_PREFIX(name, ...) eAuthMe_Card_##name __VA_ARGS__,
-typedef enum _E_AUTHME_CARD_CLASS : int
+typedef enum _E_AUTHME_CARD_CLASS: int
 {
     CARD_CLASS_TAG(CARD_CLASS_PREFIX)
 } EAuthMeCardClass;
@@ -211,7 +234,21 @@ typedef struct _AUTHME_FACE_INFO
 
 typedef struct _AUTHME_T_MRZ_FIELD
 {
-    MRZ_FILED_CONTENT(IMPL_FIELD_MRZ)
+    char surname[40];
+    char givenName[40];
+    char birthDate[12];
+    char expiryDate[12];
+    char country[4];
+    char documentNumber[12];
+    char documentType[4];
+    char sex[4];
+    char nationality[4];
+    char personalNumber[16];
+    char documentNumberCheckDigit[4];
+    char birthDateCheckDigit[4];
+    char expiryDateCheckDigit[4]; 
+    char optionaldataCheckDigit[4];
+    char overallCheckDigit[4];
     DEFAULT_COMPARISON(_AUTHME_T_MRZ_FIELD)
 }
 AuthMeMRZField;

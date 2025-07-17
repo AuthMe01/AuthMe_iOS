@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/AuthMe-Swift.h</key>
 		<data>
-		vOliDIskI9V4GaB0QD6mlXvZSIY=
+		D1HwTYYmg8p0UTltn+JFPlsVkBw=
 		</data>
 		<key>Headers/AuthMe.h</key>
 		<data>
@@ -14,15 +14,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		AVo0jedWlrvoekcEZFvLxAK2BJI=
+		M6r/nS3FI67PuNn5B5tLK8W22uU=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		GXfXSTuVa0sOOdmxN4TsX/1X2LI=
+		zONmYWHAt4VfcM6UOPr2fL1q/eg=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		mUYDtZct2XnbAXXXyKG+RXLBsjk=
+		Vlq+MYtj9KIqjARV6ulur/fCfoU=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -30,19 +30,19 @@
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		mUYDtZct2XnbAXXXyKG+RXLBsjk=
+		Vlq+MYtj9KIqjARV6ulur/fCfoU=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		quOw/Va+f5iuuGlHkK0GGs+7QiI=
+		z7KNqRmElsyQDfx1sdpX0tzni6o=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		GXfXSTuVa0sOOdmxN4TsX/1X2LI=
+		zONmYWHAt4VfcM6UOPr2fL1q/eg=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		/TAllPllKsstkC8hN4CQUNYXxjI=
+		ZfUOwroUj8Ju6OvDIkOXx1mGp4w=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -50,11 +50,11 @@
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		/TAllPllKsstkC8hN4CQUNYXxjI=
+		ZfUOwroUj8Ju6OvDIkOXx1mGp4w=
 		</data>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		2paFVBXs+k8Dpni4KnuWFQC1BMY=
+		bjqmMy2j0ET5UvCH06ML6cY2A+w=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -87,7 +87,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			KFRoVFC8cSOulRBcrYOicBbMtFr66fa3dU11qhM5/OE=
+			jLuf760z4z4DoaeZjQ9ScBBMcGwh5SM++cMX6qIRL+4=
 			</data>
 		</dict>
 		<key>Headers/AuthMe.h</key>
@@ -101,14 +101,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Pke38V1JAPphm0nLjERpKD1TLLAH6cGZHK0Fri7n0SU=
+			71Jm+pQtDX1mU1InPra923Lvo8xmocGXHuP8cLv8geY=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			j34fBIM4oURYnxhgtixvggEIz3AktwA5oPO9xcBM6V0=
+			9xfxMtcSBznwL3/quR2sFOYKMwgNIxruwWZZmnRCz3E=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
@@ -122,28 +122,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			j34fBIM4oURYnxhgtixvggEIz3AktwA5oPO9xcBM6V0=
+			9xfxMtcSBznwL3/quR2sFOYKMwgNIxruwWZZmnRCz3E=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			C95K73oUGFFevRgRzPya3A+5K2OptpdSwkU3nkj5rHE=
+			eK7cVXBdJrknMBcefLEFkysbesWZfYQR8XfYIHiutP8=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Pke38V1JAPphm0nLjERpKD1TLLAH6cGZHK0Fri7n0SU=
+			71Jm+pQtDX1mU1InPra923Lvo8xmocGXHuP8cLv8geY=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			m6eRzAhJijzEOKp3ukrDPMqUU29HPkK5ECPf+9RPke8=
+			SBuvCD0/DOlL3sg/hCm7yXUm2/E/1/EoSpRC1eCgD/4=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -157,14 +157,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			m6eRzAhJijzEOKp3ukrDPMqUU29HPkK5ECPf+9RPke8=
+			SBuvCD0/DOlL3sg/hCm7yXUm2/E/1/EoSpRC1eCgD/4=
 			</data>
 		</dict>
 		<key>Modules/AuthMe.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			rloSuM+DXONUU/ZmZ1rWQn6ups87XfxE/xtw6p/oTZo=
+			SvX3Ai0ihnBFI34e+kW3W+y6cckbKP3a8UWZVfu9A/8=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
