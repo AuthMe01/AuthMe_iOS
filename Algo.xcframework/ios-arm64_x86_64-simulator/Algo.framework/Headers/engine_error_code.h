@@ -15,6 +15,7 @@ typedef enum _E_AUTHME_ENGINE_RETUEN_CODE : int
     eAuthMe_Engine_InvalidStages,
     eAuthMe_Engine_MissingConfig,
     eAuthMe_Engine_InvalidUIParams,
+    eAuthMe_Engine_OutputArraySizeInvalid,
 } EAuthMeEngineReturnCode;
 
 #ifdef __cplusplus
