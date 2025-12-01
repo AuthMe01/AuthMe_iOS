@@ -1,7 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)
-// swift-module-flags: -target arm64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AuthMe
-// swift-module-flags-ignorable: -enable-bare-slash-regex
+// swift-compiler-version: Apple Swift version 6.1.2 effective-5.10 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)
+// swift-module-flags: -target arm64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name AuthMe
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1.2
 import Algo
 @_exported import AuthMe
 import CoreGraphics/*.CGFloat*/
@@ -121,7 +121,7 @@ public protocol LivenessFlowDelegate : AnyObject {
   func livenessDidStart()
   func livenessDidNotifyMessage(status: LivenessDetectStatus)
   func livenessDidUpdateReconize(result: Swift.Bool)
-  func livenessDidFailureWith(error: FlowError, retryHandler: @escaping (() -> Swift.Void))
+  func livenessDidFailureWith(error: FlowError, retryHandler: @escaping () -> Swift.Void)
   func livenessDidRecognize(image: UIKit.UIImage)
   func livenessDidFaceScale(direction: LivenessFlow.FaceScaleDirection.Direction)
 }
@@ -136,10 +136,11 @@ public class LivenessFlow : LivenessFlowProtocol {
   public func recognize(normal normalImage: UIKit.UIImage, depthImage: UIKit.UIImage)
   public func cancelExpired()
   public func roiRect(in previewSize: CoreFoundation.CGSize) -> CoreFoundation.CGRect
-  public func uploadMeta(completion: @escaping ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void))
-  public func getResult(completion: @escaping ((Swift.Result<Swift.Bool, OCRError>) -> Swift.Void))
+  public func uploadMeta(completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  public func getResult(completion: @escaping (Swift.Result<Swift.Bool, OCRError>) -> Swift.Void)
   public func isExpired() -> Swift.Bool
   public func enableUploadFullFrame()
+  public func logApi(_ message: Swift.String, error: (any Swift.Error)?, extra: Swift.String?)
 }
 extension LivenessFlow {
   public struct RoiParam {
@@ -303,20 +304,18 @@ public enum VerificationState : Swift.Equatable {
 }
 public struct VerificationHandler {
   public init()
-  #if compiler(>=5.3) && $AsyncAwait
   public func getCustomerState(waitingTime: Swift.Int = 3, retryTimes: Swift.Int = 2) async throws -> VerificationState
-  #endif
 }
 @dynamicMemberLookup public struct Fluent<Subject> {
   public let subject: Subject
-  public subscript<Value>(dynamicMember keyPath: Swift.WritableKeyPath<Subject, Value>) -> ((Value) -> Fluent<Subject>) {
+  public subscript<Value>(dynamicMember keyPath: Swift.WritableKeyPath<Subject, Value>) -> (Value) -> Fluent<Subject> {
     get
   }
   public func set<Value>(_ keyPath: Swift.WritableKeyPath<Subject, Value>, _ value: Value) -> Fluent<Subject>
 }
 @dynamicMemberLookup public struct ObjectFluent<Subject> where Subject : AnyObject {
   public let subject: Subject
-  public subscript<Value>(dynamicMember keyPath: Swift.ReferenceWritableKeyPath<Subject, Value>) -> ((Value) -> ObjectFluent<Subject>) {
+  public subscript<Value>(dynamicMember keyPath: Swift.ReferenceWritableKeyPath<Subject, Value>) -> (Value) -> ObjectFluent<Subject> {
     get
   }
   @discardableResult
@@ -481,6 +480,7 @@ public enum AuthmeError : Swift.Equatable, Swift.Error {
   case Liveness_Canceled_btn
   case Error_Network_Parse
   case ERROR_ModelInit
+  case ERROR_CameraSessionMissing
   public var value: Swift.Int {
     get
   }
@@ -543,7 +543,7 @@ public struct Selection : Swift.Decodable {
   public init(from decoder: any Swift.Decoder) throws
 }
 public protocol OCRFlowDelegate : AnyObject {
-  func didFailureWith(error: OCRError, retryHandler: @escaping (() -> Swift.Void))
+  func didFailureWith(error: OCRError, retryHandler: @escaping () -> Swift.Void)
   func notifyAntiFraudWith(status: LogAntiFraud)
 }
 public enum OCRNotifyMessage : Swift.String {
@@ -695,7 +695,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [MRZResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [MRZResult.DataType] {
+    nonisolated public static var allCases: [MRZResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -729,7 +729,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [TWNResidentResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [TWNResidentResult.DataType] {
+    nonisolated public static var allCases: [TWNResidentResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -759,7 +759,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [TWIDResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [TWIDResult.DataType] {
+    nonisolated public static var allCases: [TWIDResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -785,7 +785,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [TWLicenseResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [TWLicenseResult.DataType] {
+    nonisolated public static var allCases: [TWLicenseResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -805,7 +805,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [TWHealthResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [TWHealthResult.DataType] {
+    nonisolated public static var allCases: [TWHealthResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -827,7 +827,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [JPNIDCardResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [JPNIDCardResult.DataType] {
+    nonisolated public static var allCases: [JPNIDCardResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -848,7 +848,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [JPNIDCardNFCResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [JPNIDCardNFCResult.DataType] {
+    nonisolated public static var allCases: [JPNIDCardNFCResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -871,7 +871,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [JPNDriverLicenseResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [JPNDriverLicenseResult.DataType] {
+    nonisolated public static var allCases: [JPNDriverLicenseResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -926,7 +926,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [JPNDriverLicenseNFCResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [JPNDriverLicenseNFCResult.DataType] {
+    nonisolated public static var allCases: [JPNDriverLicenseNFCResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -950,7 +950,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [JPNResidentCardResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [JPNResidentCardResult.DataType] {
+    nonisolated public static var allCases: [JPNResidentCardResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -976,7 +976,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [JPNResidentCardNFCResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [JPNResidentCardNFCResult.DataType] {
+    nonisolated public static var allCases: [JPNResidentCardNFCResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1005,7 +1005,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [USAIDCardResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [USAIDCardResult.DataType] {
+    nonisolated public static var allCases: [USAIDCardResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1032,7 +1032,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [USADriverLicenseResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [USADriverLicenseResult.DataType] {
+    nonisolated public static var allCases: [USADriverLicenseResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1055,7 +1055,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [USAVisitorVISAResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [USAVisitorVISAResult.DataType] {
+    nonisolated public static var allCases: [USAVisitorVISAResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1080,7 +1080,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [IDNIDCardResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [IDNIDCardResult.DataType] {
+    nonisolated public static var allCases: [IDNIDCardResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1104,7 +1104,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [IDNDriverLicenseResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [IDNDriverLicenseResult.DataType] {
+    nonisolated public static var allCases: [IDNDriverLicenseResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1129,7 +1129,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [INDIDCardResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [INDIDCardResult.DataType] {
+    nonisolated public static var allCases: [INDIDCardResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1153,7 +1153,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [INDDriverLicenseResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [INDDriverLicenseResult.DataType] {
+    nonisolated public static var allCases: [INDDriverLicenseResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1178,7 +1178,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [MYIDCardResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [MYIDCardResult.DataType] {
+    nonisolated public static var allCases: [MYIDCardResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1202,7 +1202,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [MYDriverLicenseResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [MYDriverLicenseResult.DataType] {
+    nonisolated public static var allCases: [MYDriverLicenseResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1227,7 +1227,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [HKIDCardResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [HKIDCardResult.DataType] {
+    nonisolated public static var allCases: [HKIDCardResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1254,7 +1254,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [HKDriverLicenseResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [HKDriverLicenseResult.DataType] {
+    nonisolated public static var allCases: [HKDriverLicenseResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1279,7 +1279,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [UKIDCardResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [UKIDCardResult.DataType] {
+    nonisolated public static var allCases: [UKIDCardResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1303,7 +1303,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [UKDriverLicenseResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [UKDriverLicenseResult.DataType] {
+    nonisolated public static var allCases: [UKDriverLicenseResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1328,7 +1328,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [EGIDCardResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [EGIDCardResult.DataType] {
+    nonisolated public static var allCases: [EGIDCardResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1352,7 +1352,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [EGDriverLicenseResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [EGDriverLicenseResult.DataType] {
+    nonisolated public static var allCases: [EGDriverLicenseResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1377,7 +1377,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [SAIDCardResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [SAIDCardResult.DataType] {
+    nonisolated public static var allCases: [SAIDCardResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1401,7 +1401,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [SADriverLicenseResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [SADriverLicenseResult.DataType] {
+    nonisolated public static var allCases: [SADriverLicenseResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1426,7 +1426,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [NLIDCardResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [NLIDCardResult.DataType] {
+    nonisolated public static var allCases: [NLIDCardResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1450,7 +1450,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [NLDriverLicenseResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [NLDriverLicenseResult.DataType] {
+    nonisolated public static var allCases: [NLDriverLicenseResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1475,7 +1475,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [SGIDCardResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [SGIDCardResult.DataType] {
+    nonisolated public static var allCases: [SGIDCardResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1499,7 +1499,7 @@ public struct ModifiedData {
     public init?(rawValue: Swift.String)
     public typealias AllCases = [SGDriverLicenseResult.DataType]
     public typealias RawValue = Swift.String
-    public static var allCases: [SGDriverLicenseResult.DataType] {
+    nonisolated public static var allCases: [SGDriverLicenseResult.DataType] {
       get
     }
     public var rawValue: Swift.String {
@@ -1582,9 +1582,7 @@ extension JPNNFCResidentCardFlow : ScanDocProtocol {
   public func getExpiredTimeInterval() -> Foundation.TimeInterval
 }
 @_hasMissingDesignatedInitializers public class HKVIZClassifier {
-  #if compiler(>=5.3) && $AsyncAwait
   public func containingTargetString(image: UIKit.UIImage?) async -> Swift.Bool
-  #endif
   @objc deinit
 }
 public protocol FrameworkMode {
@@ -1644,11 +1642,12 @@ public protocol LivenessFlowProtocol {
   func roiRect(in previewSize: CoreFoundation.CGSize) -> CoreFoundation.CGRect
   func recognize(image: UIKit.UIImage)
   func recognize(normal normalImage: UIKit.UIImage, depthImage: UIKit.UIImage)
-  func uploadMeta(completion: @escaping ((Swift.Result<Swift.Void, OCRError>) -> Swift.Void))
-  func getResult(completion: @escaping ((Swift.Result<Swift.Bool, OCRError>) -> Swift.Void))
+  func uploadMeta(completion: @escaping (Swift.Result<Swift.Void, OCRError>) -> Swift.Void)
+  func getResult(completion: @escaping (Swift.Result<Swift.Bool, OCRError>) -> Swift.Void)
   func isExpired() -> Swift.Bool
   func cancelExpired()
   func enableUploadFullFrame()
+  func logApi(_ message: Swift.String, error: (any Swift.Error)?, extra: Swift.String?)
 }
 extension LivenessFlowProtocol {
   public func recognize(normal normalImage: UIKit.UIImage, depthImage: UIKit.UIImage)
@@ -1742,7 +1741,7 @@ public struct OCRScanViewContentViewRequest {
   }
 }
 extension UIKit.UIDevice {
-  @_Concurrency.MainActor(unsafe) public static let modelName: Swift.String
+  @_Concurrency.MainActor @preconcurrency public static let modelName: Swift.String
 }
 public class BaseFlow {
   public init(scanType: ScanType, needConfirm: Swift.Bool)
