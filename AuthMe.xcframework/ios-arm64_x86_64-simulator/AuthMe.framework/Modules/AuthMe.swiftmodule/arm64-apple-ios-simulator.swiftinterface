@@ -84,6 +84,7 @@ public struct LogFAS {
     case NeedMoreFrame
     case Error
     case Pass
+    case Motion
     public static func == (a: LogFAS.LogFASResult, b: LogFAS.LogFASResult) -> Swift.Bool
     public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
@@ -111,6 +112,7 @@ public enum LivenessDetectStatus {
   case Pass
   case Error
   case Empty
+  case Motion
   public static func == (a: LivenessDetectStatus, b: LivenessDetectStatus) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
@@ -125,12 +127,22 @@ public protocol LivenessFlowDelegate : AnyObject {
   func livenessDidRecognize(image: UIKit.UIImage)
   func livenessDidFaceScale(direction: LivenessFlow.FaceScaleDirection.Direction)
 }
+public enum LivenessDetectThreshold {
+  case Normal
+  case Low
+  public static func == (a: LivenessDetectThreshold, b: LivenessDetectThreshold) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
 public class LivenessFlow : LivenessFlowProtocol {
   weak public var delegate: (any LivenessFlowDelegate)?
   public init()
   @objc deinit
   public func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)? = nil, handler: ((Swift.Result<Swift.Void, FlowError>) -> Swift.Void)?)
   public func setPreviewSize(previewSize: CoreFoundation.CGSize)
+  public func setDetectThreshold(_ threshold: LivenessDetectThreshold)
   public func start()
   public func recognize(image: UIKit.UIImage)
   public func recognize(normal normalImage: UIKit.UIImage, depthImage: UIKit.UIImage)
@@ -1638,6 +1650,7 @@ public protocol LivenessFlowProtocol {
   var delegate: (any LivenessFlowDelegate)? { get set }
   func checkModel(progressHandler: ((Swift.Double) -> Swift.Void)?, handler: ((Swift.Result<Swift.Void, FlowError>) -> Swift.Void)?)
   func setPreviewSize(previewSize: CoreFoundation.CGSize)
+  func setDetectThreshold(_ threshold: LivenessDetectThreshold)
   func start()
   func roiRect(in previewSize: CoreFoundation.CGSize) -> CoreFoundation.CGRect
   func recognize(image: UIKit.UIImage)
@@ -2435,6 +2448,8 @@ extension LogFAS.LogFASResult : Swift.Equatable {}
 extension LogFAS.LogFASResult : Swift.Hashable {}
 extension LivenessDetectStatus : Swift.Equatable {}
 extension LivenessDetectStatus : Swift.Hashable {}
+extension LivenessDetectThreshold : Swift.Equatable {}
+extension LivenessDetectThreshold : Swift.Hashable {}
 extension LivenessFlow.FaceScaleDirection.Direction : Swift.Equatable {}
 extension LivenessFlow.FaceScaleDirection.Direction : Swift.Hashable {}
 extension LogUpload.Event : Swift.Equatable {}

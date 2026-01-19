@@ -175,7 +175,8 @@ typedef struct AUTHME_FAS_SERVICE_INFO
     decorate(DepthFake) \
     decorate(NeedMoreFrame) \
     decorate(Pass) \
-    decorate(Error)
+    decorate(Error) \
+    decorate(Motion)
 
 //#define FAS_SERVICE_STATUS_PREFIX(name) eAuthMe_FASService_##name,
 typedef enum E_AUTHME_FAS_SERVICE_STATUS
@@ -195,6 +196,7 @@ typedef enum E_AUTHME_FAS_SERVICE_STATUS
     eAuthMe_FASService_NeedMoreFrame,
     eAuthMe_FASService_Pass,
     eAuthMe_FASService_Error,
+    eAuthMe_FASService_Motion,
 } EAuthMeFASServiceStatus;
 
 

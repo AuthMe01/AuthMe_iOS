@@ -433,6 +433,7 @@ typedef enum _FASStatus
     FAS_NeedMoreFrame,
     FAS_Pass,
     FAS_Error,
+    FAS_Motion
 } FASStatus;
 
 typedef struct _FASResult

@@ -2186,6 +2186,43 @@
                 "moduleName": "AuthMe"
               },
               {
+                "kind": "Var",
+                "name": "Motion",
+                "printedName": "Motion",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(AuthMe.LogFAS.LogFASResult.Type) -> AuthMe.LogFAS.LogFASResult",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LogFASResult",
+                        "printedName": "AuthMe.LogFAS.LogFASResult",
+                        "usr": "s:6AuthMe6LogFASV0C9FASResultO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "AuthMe.LogFAS.LogFASResult.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "LogFASResult",
+                            "printedName": "AuthMe.LogFAS.LogFASResult",
+                            "usr": "s:6AuthMe6LogFASV0C9FASResultO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:6AuthMe6LogFASV0C9FASResultO6MotionyA2EmF",
+                "mangledName": "$s6AuthMe6LogFASV0C9FASResultO6MotionyA2EmF",
+                "moduleName": "AuthMe"
+              },
+              {
                 "kind": "Function",
                 "name": "==",
                 "printedName": "==(_:_:)",
@@ -3064,6 +3101,43 @@
             "moduleName": "AuthMe"
           },
           {
+            "kind": "Var",
+            "name": "Motion",
+            "printedName": "Motion",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(AuthMe.LivenessDetectStatus.Type) -> AuthMe.LivenessDetectStatus",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LivenessDetectStatus",
+                    "printedName": "AuthMe.LivenessDetectStatus",
+                    "usr": "s:6AuthMe20LivenessDetectStatusO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "AuthMe.LivenessDetectStatus.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LivenessDetectStatus",
+                        "printedName": "AuthMe.LivenessDetectStatus",
+                        "usr": "s:6AuthMe20LivenessDetectStatusO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6AuthMe20LivenessDetectStatusO6MotionyA2CmF",
+            "mangledName": "$s6AuthMe20LivenessDetectStatusO6MotionyA2CmF",
+            "moduleName": "AuthMe"
+          },
+          {
             "kind": "Function",
             "name": "==",
             "printedName": "==(_:_:)",
@@ -3405,6 +3479,220 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "LivenessDetectThreshold",
+        "printedName": "LivenessDetectThreshold",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "Normal",
+            "printedName": "Normal",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(AuthMe.LivenessDetectThreshold.Type) -> AuthMe.LivenessDetectThreshold",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LivenessDetectThreshold",
+                    "printedName": "AuthMe.LivenessDetectThreshold",
+                    "usr": "s:6AuthMe23LivenessDetectThresholdO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "AuthMe.LivenessDetectThreshold.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LivenessDetectThreshold",
+                        "printedName": "AuthMe.LivenessDetectThreshold",
+                        "usr": "s:6AuthMe23LivenessDetectThresholdO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6AuthMe23LivenessDetectThresholdO6NormalyA2CmF",
+            "mangledName": "$s6AuthMe23LivenessDetectThresholdO6NormalyA2CmF",
+            "moduleName": "AuthMe"
+          },
+          {
+            "kind": "Var",
+            "name": "Low",
+            "printedName": "Low",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(AuthMe.LivenessDetectThreshold.Type) -> AuthMe.LivenessDetectThreshold",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LivenessDetectThreshold",
+                    "printedName": "AuthMe.LivenessDetectThreshold",
+                    "usr": "s:6AuthMe23LivenessDetectThresholdO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "AuthMe.LivenessDetectThreshold.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LivenessDetectThreshold",
+                        "printedName": "AuthMe.LivenessDetectThreshold",
+                        "usr": "s:6AuthMe23LivenessDetectThresholdO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6AuthMe23LivenessDetectThresholdO3LowyA2CmF",
+            "mangledName": "$s6AuthMe23LivenessDetectThresholdO3LowyA2CmF",
+            "moduleName": "AuthMe"
+          },
+          {
+            "kind": "Function",
+            "name": "==",
+            "printedName": "==(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LivenessDetectThreshold",
+                "printedName": "AuthMe.LivenessDetectThreshold",
+                "usr": "s:6AuthMe23LivenessDetectThresholdO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LivenessDetectThreshold",
+                "printedName": "AuthMe.LivenessDetectThreshold",
+                "usr": "s:6AuthMe23LivenessDetectThresholdO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe23LivenessDetectThresholdO2eeoiySbAC_ACtFZ",
+            "mangledName": "$s6AuthMe23LivenessDetectThresholdO2eeoiySbAC_ACtFZ",
+            "moduleName": "AuthMe",
+            "static": true,
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6AuthMe23LivenessDetectThresholdO9hashValueSivp",
+            "mangledName": "$s6AuthMe23LivenessDetectThresholdO9hashValueSivp",
+            "moduleName": "AuthMe",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6AuthMe23LivenessDetectThresholdO9hashValueSivg",
+                "mangledName": "$s6AuthMe23LivenessDetectThresholdO9hashValueSivg",
+                "moduleName": "AuthMe",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe23LivenessDetectThresholdO4hash4intoys6HasherVz_tF",
+            "mangledName": "$s6AuthMe23LivenessDetectThresholdO4hash4intoys6HasherVz_tF",
+            "moduleName": "AuthMe",
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:6AuthMe23LivenessDetectThresholdO",
+        "mangledName": "$s6AuthMe23LivenessDetectThresholdO",
+        "moduleName": "AuthMe",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
         "name": "LivenessFlow",
         "printedName": "LivenessFlow",
         "children": [
@@ -3639,6 +3927,32 @@
             "declKind": "Func",
             "usr": "s:6AuthMe12LivenessFlowC14setPreviewSize07previewG0ySo6CGSizeV_tF",
             "mangledName": "$s6AuthMe12LivenessFlowC14setPreviewSize07previewG0ySo6CGSizeV_tF",
+            "moduleName": "AuthMe",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setDetectThreshold",
+            "printedName": "setDetectThreshold(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LivenessDetectThreshold",
+                "printedName": "AuthMe.LivenessDetectThreshold",
+                "usr": "s:6AuthMe23LivenessDetectThresholdO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe12LivenessFlowC18setDetectThresholdyyAA0cfG0OF",
+            "mangledName": "$s6AuthMe12LivenessFlowC18setDetectThresholdyyAA0cfG0OF",
             "moduleName": "AuthMe",
             "declAttributes": [
               "AccessControl"
@@ -49081,6 +49395,33 @@
           },
           {
             "kind": "Function",
+            "name": "setDetectThreshold",
+            "printedName": "setDetectThreshold(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LivenessDetectThreshold",
+                "printedName": "AuthMe.LivenessDetectThreshold",
+                "usr": "s:6AuthMe23LivenessDetectThresholdO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6AuthMe20LivenessFlowProtocolP18setDetectThresholdyyAA0cgH0OF",
+            "mangledName": "$s6AuthMe20LivenessFlowProtocolP18setDetectThresholdyyAA0cgH0OF",
+            "moduleName": "AuthMe",
+            "genericSig": "<τ_0_0 where τ_0_0 : AuthMe.LivenessFlowProtocol>",
+            "sugared_genericSig": "<Self where Self : AuthMe.LivenessFlowProtocol>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "start",
             "printedName": "start()",
             "children": [
@@ -94329,175 +94670,175 @@
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "FloatLiteral",
-      "offset": 1987,
+      "offset": 2093,
       "length": 3,
       "value": "0.0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "FloatLiteral",
-      "offset": 2027,
+      "offset": 2133,
       "length": 3,
       "value": "0.5"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 2437,
+      "offset": 2543,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 2479,
+      "offset": 2585,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 2510,
+      "offset": 2616,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "StringLiteral",
-      "offset": 2557,
+      "offset": 2663,
       "length": 26,
       "value": "\"com.authme.specificQueue\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "StringLiteral",
-      "offset": 2689,
+      "offset": 2795,
       "length": 13,
       "value": "\"RecordQueue\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 2747,
+      "offset": 2853,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "StringLiteral",
-      "offset": 2870,
+      "offset": 2976,
       "length": 19,
       "value": "\"VerifyResultQueue\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "StringLiteral",
-      "offset": 2978,
+      "offset": 3084,
       "length": 33,
       "value": "\"com.authme.serialQueue.liveness\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 3151,
+      "offset": 3257,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "FloatLiteral",
-      "offset": 3185,
+      "offset": 3291,
       "length": 3,
       "value": "0.0"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 3330,
+      "offset": 3436,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "StringLiteral",
-      "offset": 3396,
+      "offset": 3502,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "StringLiteral",
-      "offset": 3437,
+      "offset": 3543,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 5404,
+      "offset": 5722,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 21665,
+      "offset": 22043,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 21690,
+      "offset": 22068,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 22410,
+      "offset": 22788,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 22435,
+      "offset": 22813,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 23078,
+      "offset": 23456,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 23161,
+      "offset": 23539,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 25012,
+      "offset": 25390,
       "length": 1,
       "value": "5"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 40916,
+      "offset": 41294,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/Liveness\/LivenessFlow.swift",
       "kind": "BooleanLiteral",
-      "offset": 40960,
+      "offset": 41338,
       "length": 5,
       "value": "false"
     },
@@ -96254,28 +96595,28 @@
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 34646,
+      "offset": 33495,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 34799,
+      "offset": 33648,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "IntegerLiteral",
-      "offset": 38833,
+      "offset": 37682,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/ekyc-sdk-core-ios\/ekyc-sdk-core-ios\/AuthMe\/OCR\/FlowControl\/OCRScanFlow.swift",
       "kind": "StringLiteral",
-      "offset": 39013,
+      "offset": 37862,
       "length": 2,
       "value": "\"\""
     },
